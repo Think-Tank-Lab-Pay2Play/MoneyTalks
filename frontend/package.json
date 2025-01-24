@@ -9,7 +9,8 @@
   "dependencies": {
     "packages": "^0.0.8",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "styled-components": "^6.1.14"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",

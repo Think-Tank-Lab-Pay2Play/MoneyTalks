@@ -1,3 +1,5 @@
+import LoginForm from "../../components/loginForm/LoginForm";
+import RegisterForm from "../../components/registerForm/RegisterForm";
 
 
 export default function Welcome()
@@ -5,7 +7,8 @@ export default function Welcome()
     const text = ">:D";
     return (
         <>
-            <h1>{text}</h1>
+            <RegisterForm/>
+            <LoginForm/>
         </>
     );
 }
