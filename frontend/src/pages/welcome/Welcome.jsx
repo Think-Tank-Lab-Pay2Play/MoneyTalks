@@ -6,6 +6,7 @@ import WelcomePageImage from "./welcomePageImage/WelcomePageImage.jsx";
 import WelcomePageWriting from "./welcomePageWriting/WelcomePageWriting.jsx";
 import WelcomePageTopBar from "./welcomePageTopBar/WelcomePageTopBar.jsx";
 import WelcomePageLogo from "./welcomePageLogo/WelcomePageLogo.jsx";
+import MarioBlock from "./marioBlock/MarioBlock.jsx";
 
 
 export default function Welcome() {
@@ -19,6 +20,7 @@ export default function Welcome() {
             <WelcomePageWriting />
             <AboutButton />
             <WelcomePageLogo />
+            <MarioBlock />
         </>
     );
 }
