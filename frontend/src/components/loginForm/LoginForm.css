@@ -16,6 +16,13 @@
     margin: 20px;
 }
 
+.subtitle-login {
+    font-size: 1.2rem;
+    color: #666;
+    position: relative;
+    margin-left: 50px;
+  }
+
 .heading {
     text-align: center;
     font-weight: 900;

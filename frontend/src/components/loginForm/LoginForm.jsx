@@ -24,6 +24,7 @@ const LoginForm = () => {
         <div className="login-form-wrapper">
             <div className="container">
                 <div className="heading">Autentificare</div>
+                <span className="subtitle-login">Autentifică-te pentru a continua!</span>
                 <form className="form" onSubmit={handleSubmit}>
                     <input
                         required

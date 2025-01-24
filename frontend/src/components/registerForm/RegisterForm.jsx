@@ -30,6 +30,7 @@ const RegisterForm = () => {
         <div className="register-form-wrapper">
             <div className="container">
                 <div className="heading">Înregistrare</div>
+                <span className="subtitle-register">Creează un cont pentru a începe.</span>
                 <form className="form" onSubmit={handleSubmit}>
                     <input
                         required
