@@ -16,20 +16,20 @@
     margin: 20px;
 }
 
-.subtitle-register{
+.subtitle-register {
     font-size: 1.2rem;
     color: #666;
     position: relative;
     margin-left: 50px;
-  }
+}
 
-  .subtitle-already-have-acc{
+.subtitle-already-have-acc {
     font-size: 1.2rem;
     font-weight: 550;
     color: #666;
     position: relative;
     margin-left: 40px;
-  }
+}
 
 .heading {
     text-align: center;

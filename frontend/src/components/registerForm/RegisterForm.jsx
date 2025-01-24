@@ -20,10 +20,10 @@ const RegisterForm = () => {
         e.preventDefault();
         if (password !== confirmPassword) {
             setSamePassword(false);
-            setError('Passwords do not match!');
+            setError('Parolele introduse nu se potrivesc!');
             return;
         }
-        alert('Form submitted successfully!');
+        alert(`Inregistrarea s-a realizat cu succes`);
     };
 
     return (

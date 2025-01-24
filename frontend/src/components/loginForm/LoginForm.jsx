@@ -17,7 +17,7 @@ const LoginForm = () => {
         e.preventDefault();
 
         // daca autentificarea are loc cu succes, afisam momentan o alerta
-        alert(`Logged in successfully with Email: ${email}`);
+        alert(`Logarea s-a realizat cu succes pentru user-ul cu emailul: ${email}`);
     };
 
     return (
