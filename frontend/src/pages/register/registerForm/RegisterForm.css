@@ -66,8 +66,8 @@
     display: block;
     width: 100%;
     font-weight: bold;
-    background: linear-gradient(45deg, #1089d3 0%, #12b1d1 100%);
-    color: white;
+    background: linear-gradient(45deg, #FFFF00 0%, #dede05 100%);
+    color: rgb(0, 0, 0);
     padding: 15px;
     margin: 20px auto;
     border-radius: 20px;

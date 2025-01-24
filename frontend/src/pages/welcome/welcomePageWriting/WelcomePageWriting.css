@@ -1,0 +1,15 @@
+.welcome-page-writing {
+    position: absolute;
+    top: 350px;
+    left: 800px;
+}
+
+.message {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: #183153;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 100%;
+}

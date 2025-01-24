@@ -1,0 +1,49 @@
+.register-wrapper .register-button {
+    cursor: pointer;
+    background-color: rgb(16, 137, 211);
+    padding: 10px 32px;
+    border-radius: 20px;
+    position: relative;
+    top: 5px;
+    left: 1300px;
+    overflow: hidden;
+    transition: 0.1s linear 0.1s;
+    border: none;
+    font-size: 15px;
+}
+
+.register-wrapper .register-button span {
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 2;
+    transition: 0.2s linear 0.1s;
+}
+
+.register-wrapper .register-button::after {
+    display: block;
+    content: "";
+    background-color: gold;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-40%);
+    transition: 0.2s linear 0.1s;
+    z-index: 1;
+}
+
+.register-wrapper .register-button:hover {
+    box-shadow: 0px 0px 20px gold;
+}
+
+.register-wrapper .register-button:hover::after {
+    top: -125%;
+}
+
+.register-wrapper .register-button:hover span {
+    color: black;
+    letter-spacing: 3px;
+}

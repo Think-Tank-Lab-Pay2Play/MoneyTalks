@@ -1,0 +1,12 @@
+.topbar {
+    position: fixed;
+    top: 45px;
+    left: 30px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #e0e6e6;
+    opacity: 40%;
+    padding: 40px;
+    border-radius: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

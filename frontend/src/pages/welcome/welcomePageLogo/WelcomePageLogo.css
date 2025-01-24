@@ -1,0 +1,11 @@
+.wlcPageLogo {
+    position: absolute;
+    max-width: 700px; /* dimensiune container imagine */
+    top: 175px;
+    left: 850px;
+}
+
+.wlcPageLogo img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+}

@@ -1,14 +1,24 @@
-import LoginForm from "../../components/loginForm/LoginForm";
-import RegisterForm from "../../components/registerForm/RegisterForm";
+import AboutButton from "./aboutButton/AboutButton.jsx";
+import HomeButton from "./HomeButton/HomeButton.jsx";
+import LoginButton from "./loginButton/LoginButton.jsx";
+import RegisterButton from "./registerButton/RegisterButton.jsx";
+import WelcomePageImage from "./welcomePageImage/WelcomePageImage.jsx";
+import WelcomePageWriting from "./welcomePageWriting/WelcomePageWriting.jsx";
+import WelcomePageTopBar from "./welcomePageTopBar/WelcomePageTopBar.jsx";
+import WelcomePageLogo from "./welcomePageLogo/WelcomePageLogo.jsx";
 
 
-export default function Welcome()
-{
-    const text = ">:D";
+export default function Welcome() {
     return (
         <>
-            <RegisterForm/>
-            <LoginForm/>
+            <WelcomePageTopBar />
+            <WelcomePageImage />
+            <HomeButton />
+            <RegisterButton />
+            <LoginButton />
+            <WelcomePageWriting />
+            <AboutButton />
+            <WelcomePageLogo />
         </>
     );
 }
