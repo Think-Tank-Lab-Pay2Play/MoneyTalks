@@ -77,6 +77,7 @@ const RegisterForm = () => {
                         onChange={handleConfirmPasswordChange}
                     />
                     <input className="register-button" type="submit" value="Înregistrează-te" />
+                    <span className="subtitle-already-have-acc">Deții deja un cont? Autentifică-te</span> {/*TODO ADAUGARE RUTA PAGINA LOGIN*/}
                 </form>
 
                 {!samePassword && (

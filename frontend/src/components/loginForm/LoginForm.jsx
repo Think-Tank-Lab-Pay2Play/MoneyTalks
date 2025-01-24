@@ -47,6 +47,7 @@ const LoginForm = () => {
                         onChange={handlePasswordChange}
                     />
                     <input className="login-button" type="submit" value="Autentifică-te" />
+                    <span className="subtitle-dont-have-acc">Nu deții un cont? Înregistrează-te!</span> {/*TODO ADAUGARE RUTA PAGINA REGISTER*/}
                 </form>
 
             </div>

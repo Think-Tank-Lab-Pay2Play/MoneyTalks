@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f8f9fd;
+    /*background-color: #f8f9fd;  face background-ul de culoarea cu codu ala*/
 }
 
 .container {
@@ -21,6 +21,14 @@
     color: #666;
     position: relative;
     margin-left: 50px;
+  }
+
+  .subtitle-dont-have-acc{
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: #666;
+    position: relative;
+    margin-left: 35px;
   }
 
 .heading {
