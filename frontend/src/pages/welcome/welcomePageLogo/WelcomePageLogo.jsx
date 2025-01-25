@@ -1,4 +1,4 @@
-import welcomePageLogo from "../../../assets/welcome-page-logo.png";
+import welcomePageLogo from "../../../assets/app-logo.png";
 import "./WelcomePageLogo.css"
 
 export default function WelcomePageLogo() {

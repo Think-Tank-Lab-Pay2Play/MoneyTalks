@@ -1,9 +1,9 @@
 .login-form-wrapper {
-    display: flex;
-    justify-content: center;
+    position: fixed;
+    left: 250px;
+    bottom: 210px;
     align-items: center;
-    min-height: 100vh;
-    /*background-color: #f8f9fd;  face background-ul de culoarea cu codu ala*/
+    /*background-color: #f8f9fd;         face background-ul de culoarea cu codu ala*/
 }
 
 .container {

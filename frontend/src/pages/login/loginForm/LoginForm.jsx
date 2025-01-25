@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
 
 const LoginForm = () => {
+    const navigate = useNavigate();
+
+    const handleDontHaveAccountClick = () => {
+        navigate("/register");
+    };
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -47,7 +54,7 @@ const LoginForm = () => {
                         onChange={handlePasswordChange}
                     />
                     <input className="login-button" type="submit" value="Autentifică-te" />
-                    <span className="subtitle-dont-have-acc">Nu deții un cont? Înregistrează-te!</span> {/*TODO ADAUGARE RUTA PAGINA REGISTER*/}
+                    <span className="subtitle-dont-have-acc" onClick={handleDontHaveAccountClick}>Nu deții un cont? Înregistrează-te!</span> {/*TODO ADAUGARE DEISGN BUTON SA SE VADA CA E CLICKABLE*/}
                 </form>
 
             </div>

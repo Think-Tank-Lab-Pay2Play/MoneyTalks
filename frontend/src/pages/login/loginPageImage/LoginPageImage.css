@@ -1,0 +1,12 @@
+.logPageImg {
+    position: absolute;
+    max-width: 700px; /* dimensiune container imagine */
+    top: 250px;
+    left: 850px;
+  }
+  
+  .logPageImg img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+  }
+  

@@ -1,0 +1,12 @@
+.regPageImg {
+    position: absolute;
+    max-width: 600px; /* dimensiune container imagine */
+    top: 250px;
+    left: 150px;
+  }
+  
+  .regPageImg img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+  }
+  

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './RegisterForm.css';
 
 const RegisterForm = () => {
+
+    const navigate = useNavigate();
+
+    const handleAlreadyHaveAccountClick = () => {
+        navigate("/login");
+    };
+
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [samePassword, setSamePassword] = useState(true);
@@ -77,7 +85,7 @@ const RegisterForm = () => {
                         onChange={handleConfirmPasswordChange}
                     />
                     <input className="register-button" type="submit" value="Înregistrează-te" />
-                    <span className="subtitle-already-have-acc">Deții deja un cont? Autentifică-te</span> {/*TODO ADAUGARE RUTA PAGINA LOGIN*/}
+                    <span className="subtitle-already-have-acc" onClick={handleAlreadyHaveAccountClick}>Deții deja un cont? Autentifică-te!</span> {/*TODO schimba stilu scrisului sa se vada ca e clickable */}
                 </form>
 
                 {!samePassword && (

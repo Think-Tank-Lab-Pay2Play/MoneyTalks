@@ -1,8 +1,8 @@
 .register-form-wrapper {
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    left: 950px;
+    bottom: 100px;
     align-items: center;
-    min-height: 100vh;
     /*background-color: #f8f9fd;         face background-ul de culoarea cu codu ala*/
 }
 
