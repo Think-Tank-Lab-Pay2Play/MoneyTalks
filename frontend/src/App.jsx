@@ -1,4 +1,8 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Welcome from "./pages/welcome/Welcome.jsx";
+import Login from "./pages/login/Login.jsx";
+import Register from "./pages/register/Register.jsx"
 
 {/* open the terminal and run: npm install packages */ }
 {/* to run the project run: npm run dev     in the terminal and go to your localhost address shown in the terminal*/ }
@@ -6,9 +10,15 @@ import Welcome from "./pages/welcome/Welcome.jsx";
 function App() {
   return (
     <>
-      <main>
-        <Welcome/>
-      </main>
+      <Router>
+        <main>
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </main>
+      </Router>
     </>
   );
 }
