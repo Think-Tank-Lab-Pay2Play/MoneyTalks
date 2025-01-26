@@ -14,16 +14,16 @@ export default function Menu() {
     }
 
     return (
-        <Section title="Pe aceasta pagina puteti afla functionalitatile aplicatiei" id="examples">
+        <Section title="Pe aceasta pagina puteti afla informatii interesante despre aplicatie" id="examples">
             <Tabs buttons={
                 <>
                     <div style={{ position: "relative" }}>
                         <div className="background-for-buttons" />
                         <menu>
-                            <TabButton isSelected={selectedTopic === "ceEsteAplicatia"} onClick={() => handleSelect("ceEsteAplicatia")}>Ce este aceasta aplicatie?</TabButton>
-                            <TabButton isSelected={selectedTopic === "jsx"} onClick={() => handleSelect("jsx")}>Cum ma poate ajuta?</TabButton>
-                            <TabButton isSelected={selectedTopic === "props"} onClick={() => handleSelect("props")}>Props</TabButton>
-                            <TabButton isSelected={selectedTopic === "state"} onClick={() => handleSelect("state")}>State</TabButton>
+                            <TabButton isSelected={selectedTopic === "ceEsteAplicatia"} onClick={() => handleSelect("ceEsteAplicatia")}>Ce este această aplicație?</TabButton>
+                            <TabButton isSelected={selectedTopic === "cumFunctioneaza"} onClick={() => handleSelect("cumFunctioneaza")}>Cum funcționează aplicația?</TabButton>
+                            <TabButton isSelected={selectedTopic === "beneficiiAplicatie"} onClick={() => handleSelect("beneficiiAplicatie")}>Ce beneficii oferă aplicația?</TabButton>
+                            <TabButton isSelected={selectedTopic === "alteInformatii"} onClick={() => handleSelect("alteInformatii")}>Alte informatii</TabButton>
                         </menu>
                     </div>
                 </>
@@ -37,7 +37,7 @@ export default function Menu() {
                             {EXAMPLES[selectedTopic].code}
                         </code>
                     </pre>
-                </div>) : "Selectati unul dintre topicurile de mai sus!"}
+                </div>) : "☆ Selectati unul dintre topicurile de mai sus si aflati mai multe informatii despre aplicatie! ☆"}
             </Tabs>
         </Section>
     );

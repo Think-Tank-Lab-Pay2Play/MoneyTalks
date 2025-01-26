@@ -1,47 +1,61 @@
 export const EXAMPLES = {
-    ceEsteAplicatia: {
-    title: 'Ce este aceasta aplicatie?',
-    description:
-      'Descriere',
-    code: ``,
-  },
-  jsx: {
-    title: 'JSX',
-    description:
-      'JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript (e.g., it may output dynamic content).',
-    code: `
-<div>
-  <h1>Welcome {userName}</h1>
-  <p>Time to learn React!</p>
-</div>`,
-  },
-  props: {
-    title: 'Props',
-    description:
-      'Components accept arbitrary inputs called props. They are like function arguments.',
-    code: `
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
-}`,
-  },
-  state: {
-    title: 'State',
-    description:
-      'State allows React components to change their output over time in response to user actions, network responses, and anything else.',
-    code: `
-function Counter() {
-  const [isVisible, setIsVisible] = useState(false);
+  ceEsteAplicatia: {
+    title: 'Aplicația Money Talks',
+    code: ` 
+   Aceasta este o aplicație web care te ajută să-ți gestionezi mai bine cheltuielile
+ și să-ți optimizezi finanțele personale. 
+ 
 
-  function handleClick() {
-    setIsVisible(true);
-  }
+   Poți încărca bonuri fiscale, facturi sau alte tipuri de cheltuieli, iar aplicația
+ îți va analiza datele și va genera rapoarte utile despre obiceiurile tale financiare. `,
+  },
 
-  return (
-    <div>
-      <button onClick={handleClick}>Show Details</button>
-      {isVisible && <p>Amazing details!</p>}
-    </div>
-  );
-}`,
+  cumFunctioneaza: {
+    title: 'Money Talks functioneaza in felul urmator:',
+    code: ` 
+    Folosește inteligența artificială pentru a analiza cheltuielile pe care
+  le încarci. 
+ 
+    După ce introduci poze cu bonuri sau facturi, sistemul extrage 
+  informațiile relevante, le organizează, și generează statistici și rapoarte
+  personalizate pentru tine.`,
+  },
+
+  beneficiiAplicatie: {
+    title: 'Aplicația te ajută să:',
+    code: `
+   ☆ Înțelegi mai bine pe ce cheltui banii.
+
+   ☆ Identifici modalități de a economisi.
+
+   ☆ Primești sfaturi personalizate pentru a-ți îmbunătăți obiceiurile financiare.
+   
+   ☆ Monitorizezi mai eficient cheltuielile pe termen lung.`,
+  },
+
+  alteInformatii: {
+    title: 'Informatii utile:',
+    code: `
+   Aplicația este concepută să fie un instrument pe termen lung pentru gestionarea
+ și îmbunătățirea obiceiurilor financiare. Cu cât o folosești mai mult, cu atât 
+ devine mai precisă și mai utilă.
+
+   Ce tipuri de rapoarte generează aplicația?
+
+ ☆ Analiza cheltuielilor și recomandări pentru o viață mai bună.
+ ☆ Sugestii pentru economisire.
+ ☆ Evoluția cheltuielilor lunare.
+ ☆ Alte analize personalizate, adaptate nevoilor tale.
+
+   Ce statistici pot vizualiza în aplicație?
+
+ ☆ Totalul cheltuielilor pe o perioada de timp.
+ ☆ Procentajul cheltuielilor pentru diferite categorii (alimente, transport, investiții, etc.).
+ ☆ Evoluția cheltuielilor lunare.
+ ☆ Alte analize personalizate, adaptate nevoilor tale.
+
+   Poți începe să folosești aplicația gratuit, beneficiind de funcționalități avansate,
+ precum rapoarte detaliate și planuri de economisire pentru a-ți optimiza finanțele personale.
+  `,
   },
 };

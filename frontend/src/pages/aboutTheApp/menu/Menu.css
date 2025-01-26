@@ -1,6 +1,7 @@
 #examples {
     margin: 3rem auto;
     position: fixed;
+    left: 75px;
   }
   
   #examples h2 {
@@ -53,10 +54,10 @@
   
 
   .background-for-buttons {
-    position: fixed; /* Modifică din fixed în absolute */
+    position: fixed;
     top: 255px;
-    left: 1px;
-    width: 33%;
+    left: 65px;
+    width: 50%;
     margin: 0 auto;
     background-color: #82e8e8;
     opacity: 40%;
@@ -66,6 +67,6 @@
 }
 
 menu {
-    position: relative; /* Setează punctul de referință */
-    z-index: 1; /* Butoanele sunt peste fundal */
+    position: relative;
+    z-index: 1;
 }

@@ -1,0 +1,11 @@
+.aboutPageAppLogo {
+    position: absolute;
+    max-width: 500px; /* dimensiune container imagine */
+    top: 230px;
+    left: 1050px;
+}
+
+.aboutPageAppLogo img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+}
