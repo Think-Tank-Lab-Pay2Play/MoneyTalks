@@ -13,7 +13,7 @@ const RegisterButton = () => {
     return (
         <div className="register-wrapper">
             <button className="register-button" onClick={handleRegisterClick}>
-                <span>Inregistrare</span>
+                <span>Înregistrare</span>
             </button>
         </div>
     );

@@ -14,7 +14,7 @@ export default function Menu() {
     }
 
     return (
-        <Section title="Pe aceasta pagina puteti afla informatii interesante despre aplicatie" id="examples">
+        <Section title="Pe această pagină puteți afla informații interesante despre aplicație." id="examples">
             <Tabs buttons={
                 <>
                     <div style={{ position: "relative" }}>
@@ -23,7 +23,7 @@ export default function Menu() {
                             <TabButton isSelected={selectedTopic === "ceEsteAplicatia"} onClick={() => handleSelect("ceEsteAplicatia")}>Ce este această aplicație?</TabButton>
                             <TabButton isSelected={selectedTopic === "cumFunctioneaza"} onClick={() => handleSelect("cumFunctioneaza")}>Cum funcționează aplicația?</TabButton>
                             <TabButton isSelected={selectedTopic === "beneficiiAplicatie"} onClick={() => handleSelect("beneficiiAplicatie")}>Ce beneficii oferă aplicația?</TabButton>
-                            <TabButton isSelected={selectedTopic === "alteInformatii"} onClick={() => handleSelect("alteInformatii")}>Alte informatii</TabButton>
+                            <TabButton isSelected={selectedTopic === "alteInformatii"} onClick={() => handleSelect("alteInformatii")}>Alte informații</TabButton>
                         </menu>
                     </div>
                 </>
@@ -37,7 +37,7 @@ export default function Menu() {
                             {EXAMPLES[selectedTopic].code}
                         </code>
                     </pre>
-                </div>) : "☆ Selectati unul dintre topicurile de mai sus si aflati mai multe informatii despre aplicatie! ☆"}
+                </div>) : "☆ Selectați unul dintre topicurile de mai sus și aflați mai multe informații despre aplicație! ☆"}
             </Tabs>
         </Section>
     );

@@ -12,7 +12,7 @@ const AboutButton = () => {
     return (
         <div className="about-button-wrapper">
             <button type="button" className="about-button" onClick={handleAboutTheAppClick}>
-                <strong>Despre aplicatie</strong>
+                <strong>Despre aplicație</strong>
                 <div id="container-stars">
                     <div id="stars" />
                 </div>

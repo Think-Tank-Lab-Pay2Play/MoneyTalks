@@ -12,7 +12,7 @@ const HomeButton = () => {
   return (
     <div className="styledWrapper">
       <button onClick={handleHomeClick}>
-        <span>Acasa</span>
+        <span>Acasă</span>
       </button>
     </div>
   );

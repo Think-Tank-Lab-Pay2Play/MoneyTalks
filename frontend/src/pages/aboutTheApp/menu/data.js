@@ -34,9 +34,9 @@ export const EXAMPLES = {
   },
 
   alteInformatii: {
-    title: 'Informatii utile:',
+    title: 'Informații utile:',
     code: `
-   Aplicația este concepută să fie un instrument pe termen lung pentru gestionarea
+   Money Talks este concepută să fie un instrument pe termen lung pentru gestionarea
  și îmbunătățirea obiceiurilor financiare. Cu cât o folosești mai mult, cu atât 
  devine mai precisă și mai utilă.
 
