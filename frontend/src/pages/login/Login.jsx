@@ -1,4 +1,4 @@
-import HomeButton from "../welcome/HomeButton/HomeButton";
+import HomeButton from "../welcome/homeButton/HomeButton";
 import LoginButton from "../welcome/loginButton/LoginButton";
 import RegisterButton from "../welcome/registerButton/RegisterButton";
 import WelcomePageTopBar from "../welcome/welcomePageTopBar/WelcomePageTopBar";

@@ -3,7 +3,7 @@ import "./WelcomePageTopBar.css";
 
 const WelcomePageTopBar = () => {
     return (
-        <div className="topbar">
+        <div className="wc-page-topbar">
         </div>
     );
 };
