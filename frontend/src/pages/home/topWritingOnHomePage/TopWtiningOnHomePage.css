@@ -1,0 +1,26 @@
+.top-writing-background-on-home-page {
+    position: fixed;
+    top: 15%;
+    left: 25%;
+    width: 46%;
+    margin: 0 auto;
+    background-color: #e0e6e6;
+    opacity: 40%;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
+}
+
+/* Stil pentru text */
+.top-writing-on-home-page {
+    position: fixed;
+    top: 16.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #000000;
+}

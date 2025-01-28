@@ -1,0 +1,48 @@
+.spendings-table-container {
+    position: absolute;
+    top: 500px;
+    width: 90%;
+    left:5%;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+/* Stiluri generale pentru tabel */
+.spendings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    table-layout: fixed; /* Adăugat pentru a fixa dimensiunile coloanelor */
+}
+
+/* Stiluri pentru antetul tabelului */
+.spendings-table th,
+.spendings-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Stiluri pentru antetul tabelului */
+.spendings-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Stiluri pentru rândurile datelor */
+.spendings-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.spendings-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Stiluri pentru cazul în care nu există date */
+.no-data {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+}
