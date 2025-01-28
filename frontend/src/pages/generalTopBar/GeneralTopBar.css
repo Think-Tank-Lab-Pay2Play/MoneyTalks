@@ -1,0 +1,15 @@
+.general-topbar {
+    position: fixed; /* Fixează bara în partea de sus */
+    top: 0;
+    left: 0;
+    width: 100%; /* Lățime completă */
+    height: 80px; /* Înălțimea de 50px */
+    background-color: #fff9ff; /* Fundal închis */
+    color: white; /* Text alb */
+    display: flex; /* Flexbox pentru centrare */
+    align-items: center; /* Centrează vertical */
+    justify-content: center; /* Centrează orizontal */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Umbra */
+    z-index: 1337; /* Deasupra altor elemente */
+  }
+  

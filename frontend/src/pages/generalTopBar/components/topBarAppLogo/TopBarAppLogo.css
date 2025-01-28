@@ -1,0 +1,6 @@
+.general-top-bar-logo{
+    position: fixed;
+    transform: scale(0.3);
+    right: 55%;
+    cursor: pointer;
+}

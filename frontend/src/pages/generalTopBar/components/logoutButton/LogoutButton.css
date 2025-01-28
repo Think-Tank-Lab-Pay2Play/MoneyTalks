@@ -1,0 +1,89 @@
+/* Wrapper-ul pentru butonul de logout */
+.logout-button-wrapper {
+    position: fixed;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Stiluri pentru buton */
+  .logout-btn {
+    --black: #000000;
+    --ch-black: #141414;
+    --eer-black: #1b1b1b;
+    --night-rider: #2e2e2e;
+    --white: #ffffff;
+    --af-white: #f3f3f3;
+    --ch-white: #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: var(--night-rider);
+  }
+  
+  /* Semnul din stânga butonului */
+  .logout-sign {
+    width: 100%;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logout-sign svg {
+    width: 17px;
+  }
+  
+  .logout-sign svg path {
+    fill: var(--af-white);
+  }
+  
+  /* Textul butonului */
+  .logout-text {
+    position: absolute;
+    left: 28%;
+    width: 0%;
+    opacity: 0;
+    color: var(--af-white);
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: 0.3s;
+    align-items: left;
+  }
+  
+  /* Efect de hover pentru lățimea butonului */
+  .logout-btn:hover {
+    width: 125px;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+  }
+  
+  .logout-btn:hover .logout-sign {
+    width: 30%;
+    transition-duration: 0.3s;
+    padding-left: 8px;
+  }
+  
+  /* Efect de hover pentru textul butonului */
+  .logout-btn:hover .logout-text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: 0.3s;
+    padding-right: 10px;
+  }
+  
+  /* Efect de click pe buton */
+  .logout-btn:active {
+    transform: translate(2px, 2px);
+  }
+  
