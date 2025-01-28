@@ -1,8 +1,9 @@
 .logPageImg {
     position: absolute;
-    max-width: 700px; /* dimensiune container imagine */
-    top: 250px;
-    left: 850px;
+    max-width: 300px; /* dimensiune container imagine */
+    top: 45%;
+    left: 60%;
+    transform: scale(2); /* Reduce dimensiunea cu 90% */ 
   }
   
   .logPageImg img {

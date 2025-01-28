@@ -1,13 +1,13 @@
 .register-form-wrapper {
-    position: absolute;
-    left: 950px;
-    bottom: 100px;
-    align-items: center;
-    /*background-color: #f8f9fd;         face background-ul de culoarea cu codu ala*/
+    width: 100%;
 }
 
-.container {
-    max-width: 350px;
+.register-container {
+    position: absolute;
+    top: 22%;
+    left: 68%;
+    transform: translateX(-50%) scale(0.9);
+    max-width: 450px;
     background: linear-gradient(0deg, #ffffff 0%, #f4f7fb 100%);
     border-radius: 40px;
     padding: 25px 35px;
@@ -16,33 +16,36 @@
     margin: 20px;
 }
 
-.subtitle-register {
+/* Stiluri pentru titluri și subtitluri */
+.register-subtitle-register {
     font-size: 1.2rem;
     color: #666;
     position: relative;
-    margin-left: 50px;
+    margin-left: 80px;
 }
 
-.subtitle-already-have-acc {
+.register-subtitle-already-have-acc {
     font-size: 1.2rem;
     font-weight: 550;
     color: #666;
     position: relative;
-    margin-left: 40px;
+    margin-left: 75px;
+    cursor: pointer;
 }
 
-.heading {
+.register-heading {
     text-align: center;
     font-weight: 900;
-    font-size: 30px;
+    font-size: 2rem; /* Creștem dimensiunea fontului pentru o mai bună vizibilitate */
     color: rgb(16, 137, 211);
 }
 
-.form {
+/* Formularele și butoanele de input */
+.register-form {
     margin-top: 20px;
 }
 
-.form .input {
+.register-form .register-input {
     width: 100%;
     background: white;
     border: none;
@@ -53,16 +56,17 @@
     border-inline: 2px solid transparent;
 }
 
-.form .input::placeholder {
+.register-form .register-input::placeholder {
     color: rgb(170, 170, 170);
 }
 
-.form .input:focus {
+.register-form .register-input:focus {
     outline: none;
     border-inline: 2px solid #12b1d1;
 }
 
-.form .register-button {
+/* Stiluri buton */
+.register-form .register-button {
     display: block;
     width: 100%;
     font-weight: bold;
@@ -75,14 +79,56 @@
     transition: all 0.2s ease-in-out;
 }
 
-.form .register-button:hover {
+.register-form .register-button:hover {
     transform: scale(1.03);
     box-shadow: rgba(133, 189, 215, 0.88) 0px 23px 10px -20px;
 }
 
-.error-message {
+/* Mesaje de eroare */
+.register-error-message {
     color: red;
     font-size: 12px;
     margin-top: 10px;
     text-align: center;
+}
+
+/* Media Queries pentru a face formularul mai adaptabil */
+@media screen and (max-width: 768px) {
+    .register-container {
+        top: 15%; /* Poziționăm formularul mai sus pe ecrane mici */
+        width: 90%;
+        padding: 20px 25px;
+    }
+
+    .register-heading {
+        font-size: 1.8rem; /* Reducem dimensiunea fontului pentru titlu */
+    }
+
+    .register-form .register-input {
+        padding: 12px 3px;
+    }
+
+    .register-form .register-button {
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .register-container {
+        top: 20%; /* Ajustăm și mai mult pentru dispozitive foarte mici */
+        width: 85%;
+        padding: 15px 20px;
+    }
+
+    .register-heading {
+        font-size: 1.6rem; /* Reducem dimensiunea fontului și mai mult */
+    }
+
+    .register-form .register-input {
+        padding: 10px 3px;
+    }
+
+    .register-form .register-button {
+        padding: 10px;
+    }
 }

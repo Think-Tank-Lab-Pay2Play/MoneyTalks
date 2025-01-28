@@ -31,18 +31,18 @@ const RegisterForm = () => {
             setError('Parolele introduse nu se potrivesc!');
             return;
         }
-        alert(`Inregistrarea s-a realizat cu succes`);
+        alert(`Înregistrarea s-a realizat cu succes`);
     };
 
     return (
         <div className="register-form-wrapper">
-            <div className="container">
-                <div className="heading">Înregistrare</div>
-                <span className="subtitle-register">Creează un cont pentru a începe.</span>
-                <form className="form" onSubmit={handleSubmit}>
+            <div className="register-container">
+                <div className="register-heading">Înregistrare</div>
+                <span className="register-subtitle-register">Creează un cont pentru a începe.</span>
+                <form className="register-form" onSubmit={handleSubmit}>
                     <input
                         required
-                        className="input"
+                        className="register-input"
                         type="text"
                         name="lastName"
                         id="lastName"
@@ -50,7 +50,7 @@ const RegisterForm = () => {
                     />
                     <input
                         required
-                        className="input"
+                        className="register-input"
                         type="text"
                         name="firstName"
                         id="firstName"
@@ -58,7 +58,7 @@ const RegisterForm = () => {
                     />
                     <input
                         required
-                        className="input"
+                        className="register-input"
                         type="email"
                         name="email"
                         id="email"
@@ -66,7 +66,7 @@ const RegisterForm = () => {
                     />
                     <input
                         required
-                        className="input"
+                        className="register-input"
                         type="password"
                         name="password"
                         id="password"
@@ -76,7 +76,7 @@ const RegisterForm = () => {
                     />
                     <input
                         required
-                        className="input"
+                        className="register-input"
                         type="password"
                         name="confirmPassword"
                         id="confirmPassword"
@@ -85,11 +85,13 @@ const RegisterForm = () => {
                         onChange={handleConfirmPasswordChange}
                     />
                     <input className="register-button" type="submit" value="Înregistrează-te" />
-                    <span className="subtitle-already-have-acc" onClick={handleAlreadyHaveAccountClick}>Deții deja un cont? Autentifică-te!</span> {/*TODO schimba stilu scrisului sa se vada ca e clickable */}
+                    <span className="register-subtitle-already-have-acc" onClick={handleAlreadyHaveAccountClick}>
+                        Deții deja un cont? Autentifică-te!
+                    </span>
                 </form>
 
                 {!samePassword && (
-                    <div className="error-message">{error}</div>
+                    <div className="register-error-message">{error}</div>
                 )}
             </div>
         </div>

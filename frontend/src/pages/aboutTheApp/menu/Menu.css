@@ -1,72 +1,153 @@
 #examples {
-    margin: 3rem auto;
-    position: fixed;
-    left: 75px;
-  }
-  
-  #examples h2 {
-    text-align: left;
-  }
-  
-  #examples menu {
-    margin: 1rem 0;
-    padding: 0;
-    display: flex;
-    gap: 0.5rem;
-    list-style: none;
-  }
-  
-  #examples menu button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    background-color: transparent;
-    color: #a18aba;
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  #examples menu button:hover {
-    background-color: #1b082f;
-    color: #ebe7ef;
-  }
-  
-  #examples menu button.active {
-    background-color: #FFFF00;
-    color: #000000;
-  }
-  
-  #tab-content {
-    padding: 1rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  #tab-content h3 {
-    margin: 0;
-  }
-  
-  #tab-content code {
-    font-size: 1rem;
-  }
-  
+  margin: 3rem auto;
+  position: fixed;
+  left: 5%; /* Ajustăm poziționarea pe orizontală pentru mai mult spațiu pe ecrane mari */
+  right: 5%; /* Asigurăm un spațiu la dreapta pentru un aspect mai echilibrat */
+  width: auto;
+}
 
-  .background-for-buttons {
-    position: fixed;
-    top: 255px;
-    left: 65px;
-    width: 50%;
-    margin: 0 auto;
-    background-color: #82e8e8;
-    opacity: 40%;
-    padding: 25px;
-    border-radius: 100px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+#examples h2 {
+  text-align: left;
+  font-size: 1.5rem; /* Dimensiune mai mare pentru titlu */
+}
+
+#examples menu {
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  justify-content: flex-start; /* Modificat pentru aliniere la stânga */
+}
+
+
+#examples menu button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #a18aba;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#examples menu button:hover {
+  background-color: #1b082f;
+  color: #ebe7ef;
+}
+
+#examples menu button.active {
+  background-color: #FFFF00;
+  color: #000000;
+}
+
+#tab-content {
+  padding: 1rem;
+  width: auto;
+  display: inline-block; /* Permite cutiei să se ajusteze la dimensiunea textului */
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+#tab-content h3 {
+  margin: 0;
+}
+
+#tab-content code {
+  font-size: 0.9rem;
+}
+
+.background-for-buttons {
+  position: fixed;
+  top: 179px;
+  left: 4%; /* Ajustăm stânga pentru o poziționare mai centralizată */
+  width: 56%; /* Folosim 90% din lățimea ferestrei pentru a fi mai adaptabil */
+  margin: 0 auto;
+  background-color: #82e8e8;
+  opacity: 40%;
+  padding: 25px;
+  border-radius: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 menu {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Media Queries pentru a adapta stilurile pe dispozitive mai mici */
+
+@media screen and (max-width: 1024px) {
+  #examples {
+      left: 10%; /* Ajustăm la 10% pe ecrane mai mici */
+      right: 10%;
+  }
+
+  .background-for-buttons {
+      left: 10%; /* Ajustăm și pentru butoanele cu fundal */
+      width: 56%; /* Reducem lățimea pe ecrane mai mici */
+  }
+
+  #examples menu {
+      gap: 0.2rem; /* Reducem distanța între butoane pe ecrane mai mici */
+  }
+
+  #examples menu button {
+      font-size: 0.9rem; /* Reducem dimensiunea fontului pentru butoane */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #examples {
+      left: 5%; /* Lasăm 5% pe ecrane mici */
+      right: 5%;
+  }
+
+  .background-for-buttons {
+      left: 5%; /* Poziționăm la 5% și pe ecrane mici */
+      width: 56%; /* Folosim lățimea mai mică */
+  }
+
+  #examples menu {
+      flex-direction: column; /* Aranjăm butoanele pe verticală pe ecrane mici */
+      justify-content: flex-start; /* Aliniem butoanele la stânga */
+  }
+
+  #examples menu button {
+      width: 100%; /* Facem butoanele să ocupe întreaga lățime a containerului */
+      font-size: 0.9rem;
+  }
+
+  #examples h2 {
+      font-size: 1.2rem; /* Reducem dimensiunea titlului pe ecrane mici */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #examples {
+      left: 5%; /* Ajustăm din nou pentru dispozitive foarte mici */
+      right: 5%;
+  }
+
+  .background-for-buttons {
+      left: 5%;
+      width: 56%; /* Reducem lățimea pe dispozitive foarte mici */
+  }
+
+  #examples menu {
+      flex-direction: column; /* Butoanele pe verticală */
+      gap: 0.5rem; /* Distanta mai mare între butoane */
+  }
+
+  #examples menu button {
+      width: 100%;
+      font-size: 0.8rem; /* Reducem dimensiunea fontului pe dispozitive mici */
+  }
+
+  #examples h2 {
+      font-size: 1rem; /* Reducem titlul pentru a-l face mai mic pe ecrane mici */
+  }
 }

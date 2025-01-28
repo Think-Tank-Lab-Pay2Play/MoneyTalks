@@ -3,13 +3,14 @@
     background-color: rgb(16, 137, 211);
     padding: 10px 32px;
     border-radius: 20px;
-    position: relative;
-    top: 5px;
-    left: 1300px;
+    position: fixed;
+    top: 7.5%;
+    left: 75%;
     overflow: hidden;
     transition: 0.1s linear 0.1s;
     border: none;
     font-size: 15px;
+    transform: scale(0.95);
 }
 
 .register-wrapper .register-button span {

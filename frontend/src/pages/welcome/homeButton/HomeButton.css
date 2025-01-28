@@ -1,7 +1,8 @@
+
 .styledWrapper button {
-  position: relative;
-  top: 50px; /* De aici modifici pozitia butonului */
-  left: 100px; /* De aici modifici pozitia butonului */
+  position: fixed;
+  top: 6.5%; /* De aici modifici pozitia butonului */
+  left: 7%; /* De aici modifici pozitia butonului */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,6 +13,7 @@
   overflow: hidden;
   cursor: pointer;
   border: none;
+  transform: scale(0.9);
 }
 
 .styledWrapper button:after {

@@ -1,13 +1,13 @@
 .login-form-wrapper {
-    position: fixed;
-    left: 250px;
-    bottom: 210px;
-    align-items: center;
-    /*background-color: #f8f9fd;         face background-ul de culoarea cu codu ala*/
+    width: 100%;
 }
 
 .container {
-    max-width: 350px;
+    position: absolute;
+    top: 35%;
+    left: 26%;
+    transform: translateX(-50%);
+    max-width: 450px;
     background: linear-gradient(0deg, #ffffff 0%, #f4f7fb 100%);
     border-radius: 40px;
     padding: 25px 35px;
@@ -16,19 +16,22 @@
     margin: 20px;
 }
 
-.subtitle-login {
+.subtitle-login,
+.subtitle-dont-have-acc {
     font-size: 1.2rem;
     color: #666;
+}
+
+.subtitle-login {
     position: relative;
     margin-left: 50px;
 }
 
 .subtitle-dont-have-acc {
-    font-size: 1.2rem;
     font-weight: 550;
-    color: #666;
     position: relative;
     margin-left: 35px;
+    cursor: pointer;
 }
 
 .heading {
@@ -78,6 +81,7 @@
 .form .login-button:hover {
     transform: scale(1.03);
     box-shadow: rgba(133, 189, 215, 0.88) 0px 23px 10px -20px;
+    cursor: pointer;
 }
 
 .error-message {
@@ -85,4 +89,56 @@
     font-size: 12px;
     margin-top: 10px;
     text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 80%;
+        padding: 2rem;
+    }
+
+    .heading {
+        font-size: 2rem;
+    }
+
+    .form .input {
+        padding: 1.2rem;
+    }
+
+    .form .login-button {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .heading {
+        font-size: 1.8rem;
+    }
+
+    .form .input {
+        padding: 1rem;
+    }
+
+    .form .login-button {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 1.5rem;
+    }
+
+    .form .input {
+        padding: 0.8rem;
+    }
+
+    .form .login-button {
+        padding: 1rem;
+    }
 }

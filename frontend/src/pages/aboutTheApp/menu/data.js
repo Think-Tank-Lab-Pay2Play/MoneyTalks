@@ -55,7 +55,6 @@ export const EXAMPLES = {
  ☆ Alte analize personalizate, adaptate nevoilor tale.
 
    Poți începe să folosești aplicația gratuit, beneficiind de funcționalități avansate,
- precum rapoarte detaliate și planuri de economisire pentru a-ți optimiza finanțele personale.
-  `,
+ precum rapoarte detaliate și planuri de economisire pentru a-ți optimiza finanțele personale.`,
   },
 };

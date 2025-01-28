@@ -1,11 +1,34 @@
+/* Containerul logo-ului */
 .aboutPageAppLogo {
     position: absolute;
-    max-width: 500px; /* dimensiune container imagine */
-    top: 230px;
-    left: 1065px;
+    top: 160px; /* Poziționare de sus */
+    left: 80%; /* Centrarea pe axa orizontală */
+    transform: translateX(-50%); /* Ajustăm pentru a centra exact */
+    max-width: 500px; /* Dimensiune maximă pentru container */
+    width: 100%; /* Permite lățimea flexibilă */
+    display: flex;
+    justify-content: center; /* Centrarea imaginii în container */
 }
 
+/* Imaginea propriu-zisă */
 .aboutPageAppLogo img {
-    max-width: 100%; /* imaginea este 100% din container */
-    height: auto;
+    width: 100%; /* Imaginea va ocupa 100% din container */
+    height: auto; /* Păstrează proporțiile imaginii */
+}
+
+/* Media Queries pentru a adapta pe dispozitive mai mici */
+@media screen and (max-width: 768px) {
+    .aboutPageAppLogo {
+        top: 120px; /* Poziționare mai aproape de sus pe ecrane mici */
+        left: 50%; /* Centrarea orizontală */
+        transform: translateX(-50%); /* Asigurăm că rămâne centrat */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .aboutPageAppLogo {
+        top: 100px; /* Poziționare ajustată pentru dispozitive foarte mici */
+        left: 50%; /* Centrarea pe ecrane mici */
+        transform: translateX(-50%);
+    }
 }
