@@ -4,17 +4,17 @@
     align-items: center;
     height: 100vh;
     position: absolute;
-    top:100px;
-    left: 250px;
+    top: 100px;
+    left: 270px;
     transform: scale(1.2);
-  }
-  
-  .home-page-user-options-cards {
+}
+
+.home-page-user-options-cards {
     display: flex;
     gap: 100px;
-  }
-  
-  .home-page-user-options-card {
+}
+
+.home-page-user-options-card {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,38 +26,46 @@
     color: white;
     cursor: pointer;
     transition: 400ms;
-  }
-  
-  .home-page-user-options-card p.tip {
+}
+
+.home-page-user-options-card p.tip {
     font-size: 1em;
     font-weight: 700;
-  }
-  
-  .home-page-user-options-card p.second-text {
-    font-size: 0.7em;
-  }
-  
-  .home-page-user-options-card:hover {
-    transform: scale(1.1, 1.1);
-  }
+}
 
-  .red {
+.home-page-user-options-card p.second-text {
+    font-size: 0.7em;
+}
+
+.home-page-user-options-card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.red {
     background-color: #3b82f6;
-  }
-  
-  .blue {
+}
+
+.blue {
     background-color: #f43f5e;
-  }
-  
-  .green {
+}
+
+.green {
     background-color: #22c55e;
-  }
-  
-  .yellow {
+}
+
+.yellow {
     background-color: #20b2aa;
-  }
-  
-  .purple {
+}
+
+.purple {
     background-color: #a855f7;
-  }
-  
+}
+
+
+/* Pentru ecrane între 1281px și 1920px */
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .home-page-user-options-wrapper {
+        top: 175px;
+        left: 185px;
+    }
+}

@@ -1,6 +1,12 @@
-.general-top-bar-logo{
+.general-top-bar-logo {
     position: fixed;
     transform: scale(0.3);
     right: 55%;
     cursor: pointer;
+}
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .general-top-bar-logo {
+        right: 50%;
+    }
 }

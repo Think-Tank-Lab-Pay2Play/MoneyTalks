@@ -1,7 +1,7 @@
 .chart-container {
     position: absolute;
     top: 1150px;
-    right: 23%;
+    right: 22%;
     width: 80%;
     max-width: 900px;
     height: 400px; /* Asigură o înălțime fixă pentru grafic */
@@ -33,3 +33,10 @@
     height: 100% !important;
   }
   
+
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .chart-container{
+      top: 1150px;
+      right: 19%;
+    }
+}
