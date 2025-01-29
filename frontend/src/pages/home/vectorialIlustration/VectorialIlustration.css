@@ -1,0 +1,13 @@
+.homePageImage {
+    position: absolute;
+    width: 80%; /* dimensiune container imagine */
+    top: 1650px;
+    left: 7.5%;
+    padding: 48px;
+  }
+  
+  .homePageImage img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+  }
+  

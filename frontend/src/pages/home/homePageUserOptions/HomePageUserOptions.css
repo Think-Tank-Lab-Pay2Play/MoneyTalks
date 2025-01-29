@@ -1,0 +1,63 @@
+.home-page-user-options-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: absolute;
+    top:100px;
+    left: 250px;
+    transform: scale(1.2);
+  }
+  
+  .home-page-user-options-cards {
+    display: flex;
+    gap: 100px;
+  }
+  
+  .home-page-user-options-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 150px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+  }
+  
+  .home-page-user-options-card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  .home-page-user-options-card p.second-text {
+    font-size: 0.7em;
+  }
+  
+  .home-page-user-options-card:hover {
+    transform: scale(1.1, 1.1);
+  }
+
+  .red {
+    background-color: #3b82f6;
+  }
+  
+  .blue {
+    background-color: #f43f5e;
+  }
+  
+  .green {
+    background-color: #22c55e;
+  }
+  
+  .yellow {
+    background-color: #20b2aa;
+  }
+  
+  .purple {
+    background-color: #a855f7;
+  }
+  

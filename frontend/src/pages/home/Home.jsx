@@ -4,6 +4,8 @@ import TopWtiningOnHomePage from "./topWritingOnHomePage/TopWtiningOnHomePage";
 import "./Home.css";
 import SpendingsStatistic from "./spendingsStatistics/SpendingsStatistics";
 import SpendingsTable from "./spendingsTable/SpendingsTable";
+import HomePageUserOptions from "./homePageUserOptions/HomePageUserOptions";
+import VectorialIlustration from "./vectorialIlustration/VectorialIlustration";
 
 
 export default function Home() {
@@ -67,10 +69,12 @@ export default function Home() {
             <GeneralTopBar />
             <TopWtiningOnHomePage />
             <TheRatingUploadSpentCards />
+            <HomePageUserOptions/>
             <h3 className="last-5-bills-uploaded-text">Ultimele 5 bonuri incarcate</h3>
             <SpendingsTable data={sampleData} /> {/* seteaza parametrul "data" dupa implementare backend */}
             <h3 className="last-12-month-spendings">Cheltuielile tale pe ultimele 12 luni</h3>
             <SpendingsStatistic data={mockData} />
+            <VectorialIlustration/>
         </>
     );
 }
