@@ -28,10 +28,10 @@ function App() {
             <Route path="/home" element={<Home />} /> {/* Home Page-ul pe care user-ul il poate accesa doar daca e logat */}
             <Route path="/account" element={<Account />} /> {/* Pagina se setari cont. Momentan se poate ajunge doar prin adresa http://localhost:5173/home */}
             <Route path="/tutorial" element={<Tutorial />} /> {/* Pagina pentru informatii utilizare platforma */}
-            <Route path="/generate-raports" element={<GenerateRaports />} /> {/* Pagina de logare */}
-            <Route path="/upload-bill" element={<UploadBill />} /> {/* Pagina de logare */}
-            <Route path="/view-spendings" element={<ViewSpendings />} /> {/* Pagina de logare */}
-            <Route path="/more-statistics" element={<MoreStatistics />} /> {/* Pagina de logare */}
+            <Route path="/generate-raports" element={<GenerateRaports />} /> {/* Pagina pentru generarea rapoartelor personalizate */}
+            <Route path="/upload-bill" element={<UploadBill />} /> {/* Pagina pentru upload bill */}
+            <Route path="/view-spendings" element={<ViewSpendings />} /> {/* Pagina pentru vizualizarea cheltuielilor */}
+            <Route path="/more-statistics" element={<MoreStatistics />} /> {/* Pagina pentru diferite statistici */}
           </Routes>
         </main>
       </Router>

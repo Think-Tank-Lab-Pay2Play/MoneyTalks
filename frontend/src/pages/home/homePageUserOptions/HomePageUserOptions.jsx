@@ -41,7 +41,7 @@ const HomePageUserOptions = () => {
                     <p className="tip">Incarca un bon</p>
                     <p className="second-text">Incarca bonurile tale si tine evidenta echeltuielilor!</p>
                 </div>
-                <div className="home-page-user-options-card yellow" onClick={handleViewSpendingsButtonClick}>
+                <div className="home-page-user-options-card turquoise" onClick={handleViewSpendingsButtonClick}>
                     <p className="tip">Tabel cheltuieli</p>
                     <p className="second-text">Vezi cheltuielile tale pe o perioada de timp!</p>
                 </div>
