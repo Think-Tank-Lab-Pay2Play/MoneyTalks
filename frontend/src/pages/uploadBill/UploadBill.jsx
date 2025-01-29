@@ -1,7 +1,6 @@
 
 
-export default function ScanBill()
-{
+export default function UploadBill() {
     const fatalError = ">:D scan";
     return (
         <>

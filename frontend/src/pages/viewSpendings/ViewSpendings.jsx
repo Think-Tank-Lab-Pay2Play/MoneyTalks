@@ -1,7 +1,6 @@
 
 
-export default function ViewSpendings()
-{
+export default function ViewSpendings() {
     const fatalError = ">:D view sp";
     return (
         <>

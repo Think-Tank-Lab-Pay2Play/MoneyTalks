@@ -1,6 +1,6 @@
 
 
-export default function GenerateRaport()
+export default function GenerateRaports()
 {
     const fatalError = ">:D gen rap";
     return (

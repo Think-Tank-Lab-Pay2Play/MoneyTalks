@@ -1,7 +1,5 @@
+export default function Tutorial() {
 
-
-export default function Tutorial()
-{
     const fatalError = ">:D tutorial";
     return (
         <>
