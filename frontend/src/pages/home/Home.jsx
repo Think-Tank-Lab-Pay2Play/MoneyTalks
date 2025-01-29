@@ -48,6 +48,48 @@ export default function Home() {
             numberOfProducts: 20,
             totalPrice: 500.99,
             date: "2025-01-26 21:03:39"
+        },
+        {
+            id: 4,
+            companyName: "Exemplu companie 4",
+            numberOfProducts: 1,
+            totalPrice: 46.99,
+            date: "2025-01-26 21:03:39"
+        },
+        {
+            id: 5,
+            companyName: "Exemplu companie 5",
+            numberOfProducts: 62,
+            totalPrice: 1234,
+            date: "2025-01-26 21:03:39"
+        },
+        {
+            id: 6,
+            companyName: "Exemplu companie 5",
+            numberOfProducts: 62,
+            totalPrice: 1234,
+            date: "2025-01-26 21:03:39"
+        },
+        {
+            id: 7,
+            companyName: "Exemplu companie 5",
+            numberOfProducts: 62,
+            totalPrice: 1234,
+            date: "2025-01-26 21:03:39"
+        },
+        {
+            id: 8,
+            companyName: "Exemplu companie 5",
+            numberOfProducts: 62,
+            totalPrice: 1234,
+            date: "2025-01-26 21:03:39"
+        },
+        {
+            id: 9,
+            companyName: "Exemplu companie 5",
+            numberOfProducts: 62,
+            totalPrice: 1234,
+            date: "2025-01-26 21:03:39"
         }
     ];
 

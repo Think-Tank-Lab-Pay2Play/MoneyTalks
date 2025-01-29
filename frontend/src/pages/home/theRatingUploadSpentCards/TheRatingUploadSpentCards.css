@@ -2,10 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position:fixed;
-    top:300px;
-    right:29%;
-    transform: scale(1.5);
+    position:relative;
+    top:150px;
   }
   
   .custom-card {
@@ -22,6 +20,7 @@
     justify-content: space-between;
     width: 115px;
     height: 80px;
+    transform: scale(1.5); /* controleaza dimensiunea */
     border-radius: 20px;
     background-color: #ffffff;
     padding: 15px;

@@ -6,7 +6,7 @@ const TheRatingUploadSpentCards = () => {
         <div className="custom-card-container">
             <div className="custom-card">
                 <div className="custom-stat-box">
-                    <p className="custom-title">Nota acordata de AI</p>
+                    <p className="custom-title">Nota AI pentru gestionare buget</p>
                     <div className="custom-bottom-section">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="custom-icon custom-star">
                             <g data-name="Layer 2">
@@ -36,7 +36,7 @@ const TheRatingUploadSpentCards = () => {
                     </div>
                 </div>
                 <div className="custom-stat-box">
-                    <p className="custom-title">Bani cheltuiti (30 zile)</p>
+                    <p className="custom-title">Bani cheltuiti <br/>(30 zile)</p>
                     <div className="custom-bottom-section">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className="custom-icon custom-tag">
                             <path d="M448 183.8v-123A44.66 44.66 0 00403.29 16H280.36a30.62 30.62 0 00-21.51 8.89L13.09 270.58a44.86 44.86 0 000 63.34l117 117a44.84 44.84 0 0063.33 0l245.69-245.61A30.6 30.6 0 00448 183.8zM352 144a32 32 0 1132-32 32 32 0 01-32 32z" />

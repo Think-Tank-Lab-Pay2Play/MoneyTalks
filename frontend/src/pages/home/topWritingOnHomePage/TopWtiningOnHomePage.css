@@ -1,7 +1,7 @@
 .top-writing-background-on-home-page {
-    position: fixed;
-    top: 15%;
-    left: 25%;
+    position: relative;
+    top: 100px;
+    align-items: center;
     width: 46%;
     margin: 0 auto;
     background-color: #e0e6e6;
@@ -13,10 +13,9 @@
 
 /* Stil pentru text */
 .top-writing-on-home-page {
-    position: fixed;
-    top: 16.5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    top: 40px;
+    align-items: center;
     text-align: center;
     display: flex;
     align-items: center;
