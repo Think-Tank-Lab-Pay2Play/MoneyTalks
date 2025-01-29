@@ -1,0 +1,16 @@
+.last-5-bills-uploaded-text
+{
+    position:absolute;
+    top:475px;
+    left: 38%;
+    font-size: 32px;
+}
+
+
+.last-12-month-spendings
+{
+    position:absolute;
+    top:875px;
+    left: 35%;
+    font-size: 32px;
+}

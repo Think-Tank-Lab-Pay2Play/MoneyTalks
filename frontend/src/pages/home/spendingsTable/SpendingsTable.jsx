@@ -1,7 +1,27 @@
 import React from "react";
 import "./SpendingsTable.css";
 
+import {useState, useEffect} from "react";
+
 export default function SpendingsTable({ data }) {
+
+    const [spendings, setSpendings] = useState([]);
+
+    useEffect(() => {
+        const fetchSpendings = async () => {
+            try {
+                const response = await fetch("http://localhost:5173/api/spendings/home");
+                if (!response.ok) throw new Error("Failed to fetch");
+                const data = await response.json();
+                setSpendings(data);
+            } catch (error) {
+                console.error("Error fetching spendings:", error);
+                setSpendings([]);
+            }
+        };
+        fetchSpendings();
+    }, []);
+
     return (
         <div className="spendings-table-container">
             <table className="spendings-table">

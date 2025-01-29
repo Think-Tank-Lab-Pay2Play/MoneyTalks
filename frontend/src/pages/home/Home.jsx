@@ -1,32 +1,12 @@
-import SpendingsTable from "../dynamicComponents/spendingsTable/SpendingsTable";
 import GeneralTopBar from "../generalTopBar/GeneralTopBar";
 import TheRatingUploadSpentCards from "./theRatingUploadSpentCards/TheRatingUploadSpentCards";
 import TopWtiningOnHomePage from "./topWritingOnHomePage/TopWtiningOnHomePage";
-
-import { useState, useEffect } from "react";
+import "./Home.css";
+import SpendingsStatistic from "./spendingsStatistics/SpendingsStatistics";
+import SpendingsTable from "./spendingsTable/SpendingsTable";
 
 
 export default function Home() {
-
-    /* request prin api pentru cererea de date */
-
-    const [spendings, setSpendings] = useState([]);
-
-    useEffect(() => {
-        const fetchSpendings = async () => {
-            try {
-                const response = await fetch("http://localhost:5173/api/spendings/home");
-                if (!response.ok) throw new Error("Failed to fetch");
-                const data = await response.json();
-                setSpendings(data);
-            } catch (error) {
-                console.error("Error fetching spendings:", error);
-                setSpendings([]);
-            }
-        };
-        fetchSpendings();
-    }, []);
-
     const sampleData = [
         {
             id: 1,
@@ -62,43 +42,35 @@ export default function Home() {
             numberOfProducts: 62,
             totalPrice: 1234,
             date: "2025-01-26 21:03:39"
-        },
-        {
-            id: 6,
-            companyName: "Exemplu companie 5",
-            numberOfProducts: 62,
-            totalPrice: 1234,
-            date: "2025-01-26 21:03:39"
-        },
-        {
-            id: 7,
-            companyName: "Exemplu companie 5",
-            numberOfProducts: 62,
-            totalPrice: 1234,
-            date: "2025-01-26 21:03:39"
-        },
-        {
-            id: 8,
-            companyName: "Exemplu companie 5",
-            numberOfProducts: 62,
-            totalPrice: 1234,
-            date: "2025-01-26 21:03:39"
-        },
-        {
-            id: 9,
-            companyName: "Exemplu companie 5",
-            numberOfProducts: 62,
-            totalPrice: 1234,
-            date: "2025-01-26 21:03:39"
         }
     ];
+
+
+    const mockData = [
+        { luna: "Ianuarie", suma: 1250 },
+        { luna: "Februarie", suma: 1500 },
+        { luna: "Martie", suma: 1000 },
+        { luna: "Aprilie", suma: 1000 },
+        { luna: "Mai", suma: 1250 },
+        { luna: "Iunie", suma: 1300 },
+        { luna: "Iulie", suma: 1500 },
+        { luna: "August", suma: 1700 },
+        { luna: "Septembrie", suma: 1250 },
+        { luna: "Octombrie", suma: 1200 },
+        { luna: "Noiembrie", suma: 1300 },
+        { luna: "Decembrie", suma: 1100 },
+    ];
+
 
     return (
         <>
             <GeneralTopBar />
             <TopWtiningOnHomePage />
             <TheRatingUploadSpentCards />
-            <SpendingsTable data={sampleData} /> {/* reutilizabil in pagina de all spendings || seteaza parametrul "data" dupa implementare backend */ }
+            <h3 className="last-5-bills-uploaded-text">Ultimele 5 bonuri incarcate</h3>
+            <SpendingsTable data={sampleData} /> {/* seteaza parametrul "data" dupa implementare backend */}
+            <h3 className="last-12-month-spendings">Cheltuielile tale pe ultimele 12 luni</h3>
+            <SpendingsStatistic data={mockData} />
         </>
     );
 }
