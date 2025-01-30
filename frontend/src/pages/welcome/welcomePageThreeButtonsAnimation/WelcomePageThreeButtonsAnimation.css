@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 100vh;
+    height: 97vh;
     overflow: hidden;
 }
 
@@ -11,7 +11,7 @@
     display: flex;
     gap: 10px;
     position: absolute;
-    top: 650px;
+    bottom: 200px;
     z-index: 10;
 }
 
@@ -78,4 +78,15 @@
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
+}
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .welcome-page-three-buttons-animation-radio-input {
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        bottom: 160px;
+        right: 690px;
+        z-index: 10;
+    }
 }
