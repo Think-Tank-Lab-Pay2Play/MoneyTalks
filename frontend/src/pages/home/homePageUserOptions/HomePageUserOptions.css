@@ -2,9 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     position: absolute;
-    top: 100px;
+    top: 510px;
     left: 270px;
     transform: scale(1.2);
 }
@@ -65,7 +64,7 @@
 /* Pentru ecrane între 1281px și 1920px */
 @media (max-width: 2000px) and (max-width: 1600px) {
     .home-page-user-options-wrapper {
-        top: 175px;
+        top: 525px;
         left: 185px;
     }
 }
