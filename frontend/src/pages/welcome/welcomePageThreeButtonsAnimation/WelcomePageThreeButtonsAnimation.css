@@ -2,16 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .welcome-page-three-buttons-animation-radio-input {
-    display: flex; /* Face ca radio buttons să fie aliniate pe orizontală */
-    gap: 10px; /* Spațiu între ele */
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.welcome-page-three-buttons-animation-radio-input {
+    display: flex;
+    gap: 10px;
     position: absolute;
-    top:650px;
-  }
-  
-  .welcome-page-three-buttons-animation-input {
+    top: 650px;
+    z-index: 10;
+}
+
+.welcome-page-three-buttons-animation-input {
     -webkit-appearance: none;
     display: block;
     width: 24px;
@@ -26,30 +30,52 @@
     -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
       -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
     outline: none;
-  }
-  
-  .welcome-page-three-buttons-animation-input:checked {
+}
+
+.welcome-page-three-buttons-animation-input:checked {
     -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
       -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
-  }
-  
-  .welcome-page-three-buttons-animation-input:active {
+}
+
+.welcome-page-three-buttons-animation-input:active {
     -webkit-transform: scale(1.5);
     -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
-  }
-  
-  /* The up/down direction logic */
-  .welcome-page-three-buttons-animation-input,
-  .welcome-page-three-buttons-animation-input:active {
+}
+
+.welcome-page-three-buttons-animation-input,
+.welcome-page-three-buttons-animation-input:active {
     background-position: 0 24px;
-  }
-  
-  .welcome-page-three-buttons-animation-input:checked {
+}
+
+.welcome-page-three-buttons-animation-input:checked {
     background-position: 0 0;
-  }
-  
-  .welcome-page-three-buttons-animation-input:checked ~ .welcome-page-three-buttons-animation-input,
-  .welcome-page-three-buttons-animation-input:checked ~ .welcome-page-three-buttons-animation-input:active {
+}
+
+.welcome-page-three-buttons-animation-input:checked ~ .welcome-page-three-buttons-animation-input,
+.welcome-page-three-buttons-animation-input:checked ~ .welcome-page-three-buttons-animation-input:active {
     background-position: 0 -24px;
-  }
-  
+}
+
+.welcome-page-layer-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out, transform 1s ease-in-out;
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.layer.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}

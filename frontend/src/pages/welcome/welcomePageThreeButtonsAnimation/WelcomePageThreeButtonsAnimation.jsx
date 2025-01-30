@@ -6,7 +6,7 @@ import WelcomePageLayer3 from '../welcomePageLayer3/WelcomePageLayer3';
 
 const WelcomePageThreeButtonsAnimation = () => {
     const [selectedLayer, setSelectedLayer] = useState(1);
-    const intervalRef = useRef(null); 
+    const intervalRef = useRef(null);
 
     useEffect(() => {
         startInterval();
@@ -24,7 +24,7 @@ const WelcomePageThreeButtonsAnimation = () => {
 
     const handleRadioChange = (layer) => {
         setSelectedLayer(layer);
-        clearInterval(intervalRef.current); 
+        clearInterval(intervalRef.current);
         startInterval();
     };
 
@@ -33,7 +33,6 @@ const WelcomePageThreeButtonsAnimation = () => {
             <div className="welcome-page-three-buttons-animation-radio-input">
                 <input
                     className="welcome-page-three-buttons-animation-input"
-                    defaultChecked={selectedLayer === 1} 
                     type="radio"
                     name="welcome-radio"
                     id="welcome-radio-1"
@@ -42,7 +41,6 @@ const WelcomePageThreeButtonsAnimation = () => {
                 />
                 <input
                     className="welcome-page-three-buttons-animation-input"
-                    defaultChecked={selectedLayer === 2} 
                     type="radio"
                     name="welcome-radio"
                     id="welcome-radio-2"
@@ -51,7 +49,6 @@ const WelcomePageThreeButtonsAnimation = () => {
                 />
                 <input
                     className="welcome-page-three-buttons-animation-input"
-                    defaultChecked={selectedLayer === 3} 
                     type="radio"
                     name="welcome-radio"
                     id="welcome-radio-3"
@@ -61,9 +58,15 @@ const WelcomePageThreeButtonsAnimation = () => {
             </div>
 
             <div className="welcome-page-layer-content">
-                {selectedLayer === 1 && <WelcomePageLayer1 />}
-                {selectedLayer === 2 && <WelcomePageLayer2 />}
-                {selectedLayer === 3 && <WelcomePageLayer3 />}
+                <div className={`layer ${selectedLayer === 1 ? 'active' : ''}`}>
+                    <WelcomePageLayer1 />
+                </div>
+                <div className={`layer ${selectedLayer === 2 ? 'active' : ''}`}>
+                    <WelcomePageLayer2 />
+                </div>
+                <div className={`layer ${selectedLayer === 3 ? 'active' : ''}`}>
+                    <WelcomePageLayer3 />
+                </div>
             </div>
         </div>
     );
