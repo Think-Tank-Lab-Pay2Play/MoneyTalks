@@ -1,0 +1,55 @@
+.welcome-page-three-buttons-animation-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .welcome-page-three-buttons-animation-radio-input {
+    display: flex; /* Face ca radio buttons să fie aliniate pe orizontală */
+    gap: 10px; /* Spațiu între ele */
+    position: absolute;
+    top:650px;
+  }
+  
+  .welcome-page-three-buttons-animation-input {
+    -webkit-appearance: none;
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
+    background-color: hsla(0,0%,0%,.2);
+    background-image: -webkit-radial-gradient(hsla(200,100%,90%,1) 0%, hsla(200,100%,70%,1) 15%, hsla(200,100%,60%,.3) 28%, hsla(200,100%,30%,0) 70%);
+    background-repeat: no-repeat;
+    -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+      -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+    outline: none;
+  }
+  
+  .welcome-page-three-buttons-animation-input:checked {
+    -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+      -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+  }
+  
+  .welcome-page-three-buttons-animation-input:active {
+    -webkit-transform: scale(1.5);
+    -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
+  }
+  
+  /* The up/down direction logic */
+  .welcome-page-three-buttons-animation-input,
+  .welcome-page-three-buttons-animation-input:active {
+    background-position: 0 24px;
+  }
+  
+  .welcome-page-three-buttons-animation-input:checked {
+    background-position: 0 0;
+  }
+  
+  .welcome-page-three-buttons-animation-input:checked ~ .welcome-page-three-buttons-animation-input,
+  .welcome-page-three-buttons-animation-input:checked ~ .welcome-page-three-buttons-animation-input:active {
+    background-position: 0 -24px;
+  }
+  
