@@ -5,7 +5,6 @@ import Section from "./Section.jsx";
 import Tabs from "./Tabs.jsx";
 import "./Menu.css"
 
-
 export default function Menu() {
     const [selectedTopic, setSelectedTopic] = useState();
 
@@ -14,7 +13,7 @@ export default function Menu() {
     }
 
     return (
-        <div id="examples" class="custom-position">
+        <div id="examples" className="custom-position">
             <Section title="Pe această pagină puteți afla informații interesante despre aplicație." id="examples">
                 <Tabs buttons={
                     <>
@@ -29,16 +28,21 @@ export default function Menu() {
                         </div>
                     </>
                 }>
-
-                    {selectedTopic !== undefined ? (<div id="tab-content">
-                        <h3>{EXAMPLES[selectedTopic].title}</h3>
-                        <p>{EXAMPLES[selectedTopic].description}</p>
-                        <pre>
-                            <code>
-                                {EXAMPLES[selectedTopic].code}
-                            </code>
-                        </pre>
-                    </div>) : "☆ Selectați unul dintre topicurile de mai sus și aflați mai multe informații despre aplicație! ☆"}
+                    {selectedTopic !== undefined ? (
+                        <div id="tab-content" key={selectedTopic}>
+                            <h3>{EXAMPLES[selectedTopic].title}</h3>
+                            <p>{EXAMPLES[selectedTopic].description}</p>
+                            <pre>
+                                <code>
+                                    {EXAMPLES[selectedTopic].code}
+                                </code>
+                            </pre>
+                        </div>
+                    ) : (
+                        <div className="placeholder-message">
+                            ☆ Selectați unul dintre topicurile de mai sus și aflați mai multe informații despre aplicație! ☆
+                        </div>
+                    )}
                 </Tabs>
             </Section>
         </div>

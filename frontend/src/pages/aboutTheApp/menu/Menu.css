@@ -6,6 +6,17 @@
   top: 6.5%
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #examples h2 {
   text-align: left;
   font-size: 1.5rem;
@@ -49,10 +60,17 @@
   padding: 1rem;
   width: auto;
   display: inline-block;
-  /* Permite cutiei să se ajusteze la dimensiunea textului */
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   margin-top: 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+.placeholder-message {
+  animation: fadeIn 1s ease-out;
+  color: #666;
+  font-style: italic;
+  padding: 1rem;
 }
 
 #tab-content h3 {
