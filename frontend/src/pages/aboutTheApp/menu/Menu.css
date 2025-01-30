@@ -2,8 +2,7 @@
   margin: 3rem auto;
   position: fixed;
   left: 5%; /* Ajustăm poziționarea pe orizontală pentru mai mult spațiu pe ecrane mari */
-  right: 5%; /* Asigurăm un spațiu la dreapta pentru un aspect mai echilibrat */
-  width: auto;
+  top:6.5%
 }
 
 #examples h2 {
