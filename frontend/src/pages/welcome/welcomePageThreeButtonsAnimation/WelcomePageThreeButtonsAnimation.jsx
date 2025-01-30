@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './WelcomePageThreeButtonsAnimation.css';
 import WelcomePageLayer1 from '../welcomePageLayer1/WelcomePageLayer1';
 import WelcomePageLayer2 from '../welcomePageLayer2/WelcomePageLayer2';
@@ -6,17 +6,26 @@ import WelcomePageLayer3 from '../welcomePageLayer3/WelcomePageLayer3';
 
 const WelcomePageThreeButtonsAnimation = () => {
     const [selectedLayer, setSelectedLayer] = useState(1);
+    const intervalRef = useRef(null); 
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        startInterval();
+
+        return () => {
+            clearInterval(intervalRef.current);
+        };
+    }, []);
+
+    const startInterval = () => {
+        intervalRef.current = setInterval(() => {
             setSelectedLayer(prevLayer => (prevLayer % 3) + 1);
         }, 15000);
-
-        return () => clearInterval(interval);
-    }, []);
+    };
 
     const handleRadioChange = (layer) => {
         setSelectedLayer(layer);
+        clearInterval(intervalRef.current); 
+        startInterval();
     };
 
     return (
