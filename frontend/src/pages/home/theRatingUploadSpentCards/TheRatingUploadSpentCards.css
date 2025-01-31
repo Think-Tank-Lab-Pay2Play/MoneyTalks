@@ -4,7 +4,7 @@
   justify-content: center;
   position: relative;
   top: 150px;
-  right: 10px;
+  right: 23px;
 }
 
 .custom-card {
@@ -64,25 +64,21 @@
 
 
 
+
 .custom-first-card {
   background-image: url('./../../../assets/img-card1.png');
-  /* Înlocuiește cu calea corectă */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   transform: none;
-  /* Asigură că nu este mărit */
 }
-
-/* Stilizare pentru a menține textul vizibil */
 .custom-first-card .custom-title,
 .custom-first-card .custom-bottom-section {
   position: relative;
   z-index: 2;
 }
 
-/* Adaugă un strat semi-transparent dacă textul nu se vede clar */
 .custom-first-card::before {
   content: "";
   position: absolute;
@@ -91,9 +87,7 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.4);
-  /* Ajustează opacitatea după nevoie */
   border-radius: 20px;
-  /* Asigură-te că urmează forma cardului */
   z-index: 1;
 }
 
@@ -102,23 +96,19 @@
 
 .custom-second-card {
   background-image: url('./../../../assets/img-card2.png');
-  /* Înlocuiește cu calea corectă */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   transform: none;
-  /* Asigură că nu este mărit */
 }
 
-/* Stilizare pentru a menține textul vizibil */
 .custom-second-card .custom-title,
 .custom-second-card .custom-bottom-section {
   position: relative;
   z-index: 2;
 }
 
-/* Adaugă un strat semi-transparent dacă textul nu se vede clar */
 .custom-second-card::before {
   content: "";
   position: absolute;
@@ -127,9 +117,7 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.4);
-  /* Ajustează opacitatea după nevoie */
   border-radius: 20px;
-  /* Asigură-te că urmează forma cardului */
   z-index: 1;
 }
 
@@ -139,23 +127,19 @@
 
 .custom-third-card {
   background-image: url('./../../../assets/img-card3.png');
-  /* Înlocuiește cu calea corectă */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   transform: none;
-  /* Asigură că nu este mărit */
 }
 
-/* Stilizare pentru a menține textul vizibil */
 .custom-third-card .custom-title,
 .custom-third-card .custom-bottom-section {
   position: relative;
   z-index: 2;
 }
 
-/* Adaugă un strat semi-transparent dacă textul nu se vede clar */
 .custom-third-card::before {
   content: "";
   position: absolute;
@@ -164,9 +148,7 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.4);
-  /* Ajustează opacitatea după nevoie */
   border-radius: 20px;
-  /* Asigură-te că urmează forma cardului */
   z-index: 1;
 }
 
