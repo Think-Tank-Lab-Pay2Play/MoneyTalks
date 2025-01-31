@@ -1,11 +1,13 @@
 .wlcPageLogo {
     position: fixed;
-    max-width: 700px; /* dimensiune container imagine */
+    max-width: 700px;
+    /* dimensiune container imagine */
     top: 21%;
     left: 51%;
 }
 
 .wlcPageLogo img {
-    max-width: 95%; /* imaginea este 100% din container */
+    max-width: 95%;
+    /* imaginea este 100% din container */
     height: auto;
 }

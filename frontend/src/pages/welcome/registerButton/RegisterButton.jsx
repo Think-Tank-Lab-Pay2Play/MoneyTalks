@@ -4,10 +4,10 @@ import './RegisterButton.css';
 
 const RegisterButton = () => {
     const navigate = useNavigate();
-    
-        const handleRegisterClick = () => {
-            navigate("/register");
-        };
+
+    const handleRegisterClick = () => {
+        navigate("/register");
+    };
 
     return (
         <div className="register-wrapper">

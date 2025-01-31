@@ -69,12 +69,12 @@ export default function Home() {
             <GeneralTopBar />
             <TopWtiningOnHomePage />
             <TheRatingUploadSpentCards />
-            <HomePageUserOptions/>
+            <HomePageUserOptions />
             <h3 className="last-5-bills-uploaded-text">Ultimele 5 bonuri incarcate</h3>
             <SpendingsTable data={sampleData} /> {/* seteaza parametrul "data" dupa implementare backend */}
             <h3 className="last-12-month-spendings">Cheltuielile tale pe ultimele 12 luni</h3>
             <SpendingsStatistic data={mockData} />
-            <VectorialIlustration/>
+            <VectorialIlustration />
         </>
     );
 }

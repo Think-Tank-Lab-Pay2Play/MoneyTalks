@@ -1,12 +1,18 @@
 .regPageImg {
   position: absolute;
-  max-width: 500px; /* Dimensiune container imagine */
-  top: 30%; /* Poziționează imaginea la 20% din înălțimea ferestrei */
-  left: 25%; /* Centrează imaginea pe orizontală */
-  transform: translateX(-50%); /* Corectează poziționarea orizontală */
+  max-width: 500px;
+  /* Dimensiune container imagine */
+  top: 30%;
+  /* Poziționează imaginea la 20% din înălțimea ferestrei */
+  left: 25%;
+  /* Centrează imaginea pe orizontală */
+  transform: translateX(-50%);
+  /* Corectează poziționarea orizontală */
 }
 
 .regPageImg img {
-  max-width: 100%; /* Imaginea va ocupa 100% din containerul său */
-  height: auto; /* Menține raportul corect de aspect */
+  max-width: 100%;
+  /* Imaginea va ocupa 100% din containerul său */
+  height: auto;
+  /* Menține raportul corect de aspect */
 }

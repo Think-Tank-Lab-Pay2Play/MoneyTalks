@@ -1,12 +1,18 @@
 .logPageAppLogo {
     position: fixed;
-    max-width: 450px; /* dimensiune container imagine */
-    top: 15%; /* Ajustează procentajul pentru a fi relativ la înălțimea ferestrei */
-    left: 50%; /* Center the logo horizontally */
-    transform: translateX(-50%); /* Corectează poziționarea pentru a o centra exact */
+    max-width: 450px;
+    /* dimensiune container imagine */
+    top: 15%;
+    /* Ajustează procentajul pentru a fi relativ la înălțimea ferestrei */
+    left: 50%;
+    /* Center the logo horizontally */
+    transform: translateX(-50%);
+    /* Corectează poziționarea pentru a o centra exact */
 }
 
 .logPageAppLogo img {
-    max-width: 100%; /* Imaginea va ocupa 100% din containerul său */
-    height: auto; /* Menține raportul corect de aspect */
+    max-width: 100%;
+    /* Imaginea va ocupa 100% din containerul său */
+    height: auto;
+    /* Menține raportul corect de aspect */
 }

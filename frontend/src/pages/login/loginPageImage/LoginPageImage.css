@@ -1,13 +1,15 @@
 .logPageImg {
-    position: absolute;
-    max-width: 300px; /* dimensiune container imagine */
-    top: 45%;
-    left: 60%;
-    transform: scale(2); /* Reduce dimensiunea cu 90% */ 
-  }
-  
-  .logPageImg img {
-    max-width: 100%; /* imaginea este 100% din container */
-    height: auto;
-  }
-  
+  position: absolute;
+  max-width: 300px;
+  /* dimensiune container imagine */
+  top: 45%;
+  left: 60%;
+  transform: scale(2);
+  /* Reduce dimensiunea cu 90% */
+}
+
+.logPageImg img {
+  max-width: 100%;
+  /* imaginea este 100% din container */
+  height: auto;
+}
