@@ -1,14 +1,14 @@
 import "./WelcomePageLayer2.css"
-import WelcomePageImage from "../welcomePageImage/WelcomePageImage";
-import WelcomePageWriting from "../welcomePageWriting/WelcomePageWriting";
-import WelcomePageLogo from "../welcomePageLogo/WelcomePageLogo";
+import WelcomePageLayer2Logo from "./welcomePageLayer2Logo/WelcomePageLayer2Logo";
+import WelcomePageLayer2Image from "./welcomePageLayer2Image/WelcomePageLayer2Image";
+import WelcomePageLayer2Writing from "./welcomePageLayer2Writing/WelcomePageLayer2Writing";
 
 export default function WelcomePageLayer2() {
     return (
         <div>
-            {/* CREEAZA INTERFATA 2 */}
-            <WelcomePageImage />
-            <WelcomePageLogo />
+            <WelcomePageLayer2Logo />
+            <WelcomePageLayer2Image />
+            <WelcomePageLayer2Writing />
         </div>
     );
 }

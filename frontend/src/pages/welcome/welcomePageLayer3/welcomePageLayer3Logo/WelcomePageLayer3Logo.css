@@ -1,0 +1,11 @@
+.wlcPageLayer3Logo {
+    position: fixed;
+    max-width: 700px; /* dimensiune container imagine */
+    top: 55%;
+    left: 30%;
+}
+
+.wlcPageLayer3Logo img {
+    max-width: 95%; /* imaginea este 100% din container */
+    height: auto;
+}

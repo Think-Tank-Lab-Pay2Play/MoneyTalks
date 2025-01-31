@@ -1,0 +1,11 @@
+.wlcPageLayer2Logo {
+    position: fixed;
+    max-width: 700px; /* dimensiune container imagine */
+    top: 25%;
+    left: 16%;
+}
+
+.wlcPageLayer2Logo img {
+    max-width: 95%; /* imaginea este 100% din container */
+    height: auto;
+}

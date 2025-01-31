@@ -1,0 +1,12 @@
+.wlcPageLayer3Img {
+    position: absolute;
+    width: 25%; /* dimensiune container imagine */
+    top: 35%;
+    left: 71%;
+  }
+  
+  .wlcPageLayer3Img img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+  }
+  

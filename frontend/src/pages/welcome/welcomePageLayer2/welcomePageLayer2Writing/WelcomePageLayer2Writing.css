@@ -1,0 +1,16 @@
+.welcome-page-layer2-writing {
+    position: fixed;
+    top: 40%;
+    left: -5%;
+    width: 80%;
+}
+
+.messageLayer2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 46px;
+    font-weight: 600;
+    color: #183153;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 100%;
+}

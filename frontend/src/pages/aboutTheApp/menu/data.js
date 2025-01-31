@@ -11,14 +11,14 @@ export const EXAMPLES = {
   },
 
   cumFunctioneaza: {
-    title: 'Money Talks functioneaza in felul urmator:',
+    title: 'Money Talks funcționează în felul următor:',
     code: ` 
     Folosește inteligența artificială pentru a analiza cheltuielile pe care
   le încarci. 
  
-    După ce introduci poze cu bonuri sau facturi, sistemul extrage 
-  informațiile relevante, le organizează, și generează statistici și rapoarte
-  personalizate pentru tine.`,
+    După ce introduci poze cu bonuri, facturi, sau cheltuieli online, sistemul
+  extrage informațiile relevante, le organizează, și generează statistici și
+  rapoarte personalizate pentru tine.`,
   },
 
   beneficiiAplicatie: {

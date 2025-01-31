@@ -179,3 +179,11 @@
     }
   }
   
+
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .about-button-wrapper {
+      position: fixed;
+      top: 84%;
+      left: 40%;
+    }
+  }
