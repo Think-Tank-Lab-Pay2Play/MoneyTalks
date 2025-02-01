@@ -32,6 +32,7 @@ function App() {
             <Route path="/upload-bill" element={<UploadBill />} /> {/* Pagina pentru upload bill */}
             <Route path="/view-spendings" element={<ViewSpendings />} /> {/* Pagina pentru vizualizarea cheltuielilor */}
             <Route path="/more-statistics" element={<MoreStatistics />} /> {/* Pagina pentru diferite statistici */}
+            {/* test */}
           </Routes>
         </main>
       </Router>
