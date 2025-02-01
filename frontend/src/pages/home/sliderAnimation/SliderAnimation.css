@@ -1,0 +1,34 @@
+:root {
+    --items-count: 6;
+    --width: 170px;
+    --height: 200px;
+    --duration: 16s;
+}
+
+.slider {
+    width: 100%;
+    height: var(--height);
+    position: relative;
+    top: 1800px;
+    overflow: hidden;
+}
+
+.slider img {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    object-fit: contain;
+    left: 100%;
+    animation: autoRunSlider var(--duration) linear infinite;
+    animation-delay: calc((var(--pos) - 1) * (var(--duration) / var(--items-count)));
+}
+
+@keyframes autoRunSlider {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: calc(-1 * var(--width));
+    }
+}
