@@ -13,9 +13,10 @@ export default function OnlineSpending() {
                 <OnlineSpendingCompanyNameInput />
                 <OnlineSpendingDateInput />
                 <OnlineSpendingHourInput />
-                <OnlineSpendingAddItemButton />
             </div>
+            <OnlineSpendingAddItemButton />
             <div className="line"></div>
+            <div className="line2"></div>
         </div>
     );
 }

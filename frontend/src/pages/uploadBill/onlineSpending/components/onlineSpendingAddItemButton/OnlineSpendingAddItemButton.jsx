@@ -1,67 +1,100 @@
-// OnlineSpendingAddItemButton.jsx
 import React, { useState } from 'react';
 import './OnlineSpendingAddItemButton.css';
 
+const IconAdd = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    strokeWidth={2}
+    stroke="currentColor"
+    fill="none"
+    className="online-spending-add-item-button__svg"
+  >
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
+const InputGroup = ({ id, onInputChange }) => {
+  const handleChange = (field, value) => {
+    onInputChange(id, field, value);
+  };
+
+  return (
+    <div className="online-spending-add-item-button__container">
+      <div className="online-spending-add-item-button__input-group">
+        <input
+          type="text"
+          className="online-spending-add-item-button__input online-spending-add-item-button__input--name"
+          placeholder="Denumire Produs"
+          onChange={(e) => handleChange('name', e.target.value)}
+        />
+        <input
+          type="number"
+          className="online-spending-add-item-button__input online-spending-add-item-button__input--quantity"
+          placeholder="Cantitate"
+          min="1"
+          onChange={(e) => handleChange('quantity', e.target.value)}
+        />
+        <input
+          type="number"
+          className="online-spending-add-item-button__input online-spending-add-item-button__input--price"
+          placeholder="Pret Total"
+          min="0"
+          step="0.01"
+          onChange={(e) => handleChange('price', e.target.value)}
+        />
+      </div>
+    </div>
+  );
+};
+
+const AddButton = ({ onClick }) => (
+  <button
+    type="button"
+    className="online-spending-add-item-button__button"
+    onClick={onClick}
+  >
+    <span className="online-spending-add-item-button__text">Adauga produs</span>
+    <span className="online-spending-add-item-button__icon">
+      <IconAdd />
+    </span>
+  </button>
+);
+
 const OnlineSpendingAddItemButton = () => {
-    const [buttons, setButtons] = useState([{ id: 1, showButton: true }]);
+  const [inputGroups, setInputGroups] = useState([]);
+  const [items, setItems] = useState([]);
 
-    const handleButtonClick = (id) => {
-        setButtons((prevButtons) => {
-            const updatedButtons = prevButtons.map((button) =>
-                button.id === id ? { ...button, showButton: false } : button
-            );
+  const handleAddClick = () => {
+    if (inputGroups.length < 10) {
+      const newId = Date.now();
+      setInputGroups(prev => [...prev, newId]);
+      setItems(prev => [...prev, { id: newId, name: '', quantity: '', price: '' }]);
+    }
+  };
 
-            if (updatedButtons.length < 10) {
-                updatedButtons.push({
-                    id: Date.now(), // Utilizăm timestamp pentru ID-uri unice
-                    showButton: true
-                });
-            }
+  const handleInputChange = (id, field, value) => {
+    setItems(prev => prev.map(item => 
+      item.id === id ? { ...item, [field]: value } : item
+    ));
+  };
 
-            return updatedButtons;
-        });
-    };
-
-    const renderButton = (button) => {
-        return (
-            <div key={button.id} className="online-spending-add-item-button-wrapper">
-                {button.showButton ? (
-                    <button
-                        type="button"
-                        className="online-spending-add-item-button"
-                        onClick={() => handleButtonClick(button.id)}
-                    >
-                        <span className="online-spending-add-item-button__text">Add Item</span>
-                        <span className="online-spending-add-item-button__icon">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={24}
-                                viewBox="0 0 24 24"
-                                strokeWidth={2}
-                                strokeLinejoin="round"
-                                strokeLinecap="round"
-                                stroke="currentColor"
-                                height={24}
-                                fill="none"
-                                className="svg"
-                            >
-                                <line y2={19} y1={5} x2={12} x1={12} />
-                                <line y2={12} y1={12} x2={19} x1={5} />
-                            </svg>
-                        </span>
-                    </button>
-                ) : (
-                    <div className="online-spending-add-item-inputs">
-                        <input type="text" placeholder="Name" />
-                        <input type="number" placeholder="Price" />
-                        <input type="number" placeholder="Quantity" />
-                    </div>
-                )}
-            </div>
-        );
-    };
-
-    return <div>{buttons.map(renderButton)}</div>;
+  return (
+    <div className="online-spending-add-item-button__wrapper">
+      {inputGroups.map((id) => (
+        <InputGroup
+          key={id}
+          id={id}
+          onInputChange={handleInputChange}
+        />
+      ))}
+      
+      {inputGroups.length < 10 && <AddButton onClick={handleAddClick} />}
+    </div>
+  );
 };
 
 export default OnlineSpendingAddItemButton;

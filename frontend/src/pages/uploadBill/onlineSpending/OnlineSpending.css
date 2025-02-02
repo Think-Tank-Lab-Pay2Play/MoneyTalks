@@ -1,14 +1,14 @@
 /* background-ul elementului */
 .online-spending-background-wrapper {
     position: absolute;
-    top:300px;
-    right:200px;
+    top:320px;
+    right:150px;
   }
   
   .online-spending-background-card {
-    --bg: #f7f7f7;
-    --contrast: #645353;
-    --grey: #ffffff;
+    --bg: #000000;
+    --contrast: #FFFF00;
+    --grey: #000000;
     position: relative;
     padding: 9px;
     background-color: var(--bg);
@@ -20,7 +20,6 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: repeating-conic-gradient(var(--bg) 0.0000001%, var(--grey) 0.000104%) 60% 60%/600% 600%;
     filter: opacity(10%) contrast(105%);
   }
   
@@ -32,10 +31,9 @@
     align-items: center;
     overflow: hidden;
     width: 700px;
-    height: 500px;
+    height: 550px;
     background-color: var(--contrast);
     border-radius: 30px;
-    /* Content style */
     font-size: 30px;
     font-weight: 900;
     color: #c7c4c4;
@@ -47,8 +45,17 @@
   .line {
     position: absolute;
     top: 400px;
-    bottom: 260px;
-    left: 63.5%;
+    bottom: 60px;
+    left: 1110px;
     width: 5px;
     background-color: black;
   }
+
+  .line2 {
+    position: absolute;
+    left: 841px;
+    right: 159px;
+    top: 400px;
+    height: 5px;
+    background-color: black;
+}

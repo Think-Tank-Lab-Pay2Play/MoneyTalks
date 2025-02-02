@@ -1,16 +1,51 @@
-.online-spending-add-item-button-wrapper {
-    margin-bottom: 20px;
+.online-spending-add-item-button__wrapper {
     display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
-    position:relative;
-    bottom:490px;
-    right:15px;
-}
-
-.online-spending-add-item-button {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 500px;
+    margin: 0 auto;
     position: relative;
-    right:110px;
+    top: 300px;
+    left: 480px;
+  }
+  
+  .online-spending-add-item-button__container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .online-spending-add-item-button__input-group {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Ștergem regulile generale pentru input și le mutăm în clasele specifice */
+  .online-spending-add-item-button__input {
+    padding: 8px;
+    border: 1px solid #34974d;
+    border-radius: 4px;
+    flex-grow: 0;
+  }
+  
+  .online-spending-add-item-button__input--name {
+    width: 150px;
+  }
+  
+  .online-spending-add-item-button__input--quantity {
+    width: 75px;
+  }
+  
+  .online-spending-add-item-button__input--price {
+    width: 75px;
+  }
+  
+  .online-spending-add-item-button__button {
+    position: relative;
     width: 150px;
     height: 40px;
     cursor: pointer;
@@ -18,66 +53,54 @@
     align-items: center;
     border: 1px solid #34974d;
     background-color: #3aa856;
-    overflow: hidden;
-}
-
-.online-spending-add-item-button,
-.online-spending-add-item-button__icon,
-.online-spending-add-item-button__text {
+    margin: 8px 0;
+  }
+  
+  .online-spending-add-item-button__button,
+  .online-spending-add-item-button__icon,
+  .online-spending-add-item-button__text {
     transition: all 0.3s;
-}
-
-.online-spending-add-item-button .online-spending-add-item-button__text {
-    transform: translateX(30px);
+  }
+  
+  .online-spending-add-item-button__text {
+    transform: translateX(5px);
     color: #fff;
     font-weight: 600;
-    white-space: nowrap;
-}
-
-.online-spending-add-item-button .online-spending-add-item-button__icon {
+  }
+  
+  .online-spending-add-item-button__icon {
     position: absolute;
-    right: 39px;
-    height: 75px;
-    width: 40px;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
     background-color: #34974d;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateX(40px);
-}
-
-.online-spending-add-item-button .svg {
+  }
+  
+  .online-spending-add-item-button__svg {
+    width: 30px;
     stroke: #fff;
-}
-
-.online-spending-add-item-button:hover {
+  }
+  
+  .online-spending-add-item-button__button:hover {
     background: #34974d;
-}
-
-.online-spending-add-item-button:hover .online-spending-add-item-button__text {
-    transform: translateX(-70px);
-    color: #fff;
-}
-
-.online-spending-add-item-button:hover .online-spending-add-item-button__icon {
-    width: 66px;
+  }
+  
+  .online-spending-add-item-button__button:hover .online-spending-add-item-button__text {
+    color: transparent;
+  }
+  
+  .online-spending-add-item-button__button:hover .online-spending-add-item-button__icon {
+    width: 148px;
     transform: translateX(0);
-}
-
-.online-spending-add-item-button:active .online-spending-add-item-button__icon {
+  }
+  
+  .online-spending-add-item-button__button:active .online-spending-add-item-button__icon {
     background-color: #2e8644;
-}
-
-.online-spending-add-item-button:active {
+  }
+  
+  .online-spending-add-item-button__button:active {
     border: 1px solid #2e8644;
-}
-
-.online-spending-add-item-inputs {
-    display: flex;
-    gap: 10px;
-}
-
-.online-spending-add-item-inputs input {
-    padding: 5px;
-    width: 100px;
-}
+  }
