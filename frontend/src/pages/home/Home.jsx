@@ -6,7 +6,6 @@ import SpendingsStatistic from "./spendingsStatistics/SpendingsStatistics";
 import SpendingsTable from "./spendingsTable/SpendingsTable";
 import HomePageUserOptions from "./homePageUserOptions/HomePageUserOptions";
 import VectorialIlustration from "./vectorialIlustration/VectorialIlustration";
-import SliderAnimation from "./sliderAnimation/SliderAnimation";
 
 
 export default function Home() {
@@ -76,7 +75,6 @@ export default function Home() {
             <h3 className="last-12-month-spendings">Cheltuielile tale pe ultimele 12 luni</h3>
             <SpendingsStatistic data={mockData} />
             <VectorialIlustration />
-            <SliderAnimation/>
         </>
     );
 }

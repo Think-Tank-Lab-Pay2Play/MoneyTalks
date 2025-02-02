@@ -1,0 +1,25 @@
+.top-writing-background-on-bill-page {
+    position: relative;
+    top: 100px;
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+    background-color: #e0e6e6;
+    opacity: 40%;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
+}
+
+/* Stil pentru text */
+.top-writing-on-bill-page {
+    position: relative;
+    top: 35px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #000000;
+}
