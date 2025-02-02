@@ -7,7 +7,7 @@
   
   .online-spending-background-card {
     --bg: #000000;
-    --contrast: #FFFF00;
+    --contrast: #cfcfc4;
     --grey: #000000;
     position: relative;
     padding: 9px;
@@ -58,4 +58,16 @@
     top: 400px;
     height: 5px;
     background-color: black;
+}
+
+.add-product-list-title{
+  position: absolute;
+  right:260px;
+  bottom: 475px;
+}
+
+.online-spending-form-title{
+  position: absolute;
+  right:350px;
+  bottom: 540px;
 }
