@@ -1,0 +1,44 @@
+.online-spending-hour-input {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    max-width: 300px;
+    position: absolute;
+    top:160px;
+    left:35px;
+  }
+  
+  .time-label {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .time-select {
+    padding: 8px;
+    font-size: 14px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    margin-right: 15px; 
+  }
+  
+  .time-select:focus {
+    border-color: #4a90e2;
+  }
+  
+  .selected-time p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+
+  .time-label {
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block; /* Asigură că eticheta se aliniază corect cu selectorul */
+    margin-right: 10px;
+}

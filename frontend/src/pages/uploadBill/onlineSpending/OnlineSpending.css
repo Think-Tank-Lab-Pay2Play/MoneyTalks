@@ -1,0 +1,54 @@
+/* background-ul elementului */
+.online-spending-background-wrapper {
+    position: absolute;
+    top:300px;
+    right:200px;
+  }
+  
+  .online-spending-background-card {
+    --bg: #f7f7f7;
+    --contrast: #645353;
+    --grey: #ffffff;
+    position: relative;
+    padding: 9px;
+    background-color: var(--bg);
+    border-radius: 35px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .online-spending-background-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-conic-gradient(var(--bg) 0.0000001%, var(--grey) 0.000104%) 60% 60%/600% 600%;
+    filter: opacity(10%) contrast(105%);
+  }
+  
+  .online-spending-background-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 700px;
+    height: 500px;
+    background-color: var(--contrast);
+    border-radius: 30px;
+    /* Content style */
+    font-size: 30px;
+    font-weight: 900;
+    color: #c7c4c4;
+    text-align: center;
+    font-family: monospace;
+  }
+  
+
+  .line {
+    position: absolute;
+    top: 400px;
+    bottom: 260px;
+    left: 63.5%;
+    width: 5px;
+    background-color: black;
+  }

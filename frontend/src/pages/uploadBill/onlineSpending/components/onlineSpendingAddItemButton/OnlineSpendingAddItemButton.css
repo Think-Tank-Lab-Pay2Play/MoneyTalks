@@ -1,0 +1,83 @@
+.online-spending-add-item-button-wrapper {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    position:relative;
+    bottom:490px;
+    right:15px;
+}
+
+.online-spending-add-item-button {
+    position: relative;
+    right:110px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 1px solid #34974d;
+    background-color: #3aa856;
+    overflow: hidden;
+}
+
+.online-spending-add-item-button,
+.online-spending-add-item-button__icon,
+.online-spending-add-item-button__text {
+    transition: all 0.3s;
+}
+
+.online-spending-add-item-button .online-spending-add-item-button__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.online-spending-add-item-button .online-spending-add-item-button__icon {
+    position: absolute;
+    right: 39px;
+    height: 75px;
+    width: 40px;
+    background-color: #34974d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(40px);
+}
+
+.online-spending-add-item-button .svg {
+    stroke: #fff;
+}
+
+.online-spending-add-item-button:hover {
+    background: #34974d;
+}
+
+.online-spending-add-item-button:hover .online-spending-add-item-button__text {
+    transform: translateX(-70px);
+    color: #fff;
+}
+
+.online-spending-add-item-button:hover .online-spending-add-item-button__icon {
+    width: 66px;
+    transform: translateX(0);
+}
+
+.online-spending-add-item-button:active .online-spending-add-item-button__icon {
+    background-color: #2e8644;
+}
+
+.online-spending-add-item-button:active {
+    border: 1px solid #2e8644;
+}
+
+.online-spending-add-item-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.online-spending-add-item-inputs input {
+    padding: 5px;
+    width: 100px;
+}
