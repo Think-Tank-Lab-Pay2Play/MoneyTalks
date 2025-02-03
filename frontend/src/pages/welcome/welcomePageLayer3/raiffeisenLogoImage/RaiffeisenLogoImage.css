@@ -1,0 +1,12 @@
+.wlcPageRaiffeisenLogo {
+    position: absolute;
+    width: 5%; /* dimensiune container imagine */
+    top: 45%;
+    left: 40%;
+  }
+  
+  .wlcPageRaiffeisenLogo img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+  }
+  
