@@ -2,7 +2,7 @@
   margin: 20px;
   overflow-x: auto;
   position: absolute;
-  top: 300px;
+  top: 350px;
   left: 75px;
   right: 75px;
 }
@@ -141,7 +141,7 @@
 
 .filters-container {
   position: absolute;
-  top: 200px;
+  top: 250px;
   left: 75px;
   right: 75px;
   background: #fff;
@@ -151,7 +151,7 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-between; /* Distribuie spațiul între elemente */
+  justify-content: space-between;
   z-index: 1;
 }
 
@@ -159,9 +159,9 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  flex: 1 1 200px; /* Flex-grow | Flex-shrink | Flex-basis */
+  flex: 1 1 200px;
   min-width: 200px;
-  max-width: calc(25% - 15px); /* 4 elemente pe rând cu gap de 20px */
+  max-width: calc(25% - 15px);
 }
 
 .filter-group label {
@@ -198,4 +198,13 @@
 .filter-select:focus {
   outline: none;
   border-color: #009879;
+}
+
+.filter-group button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-end;
+  margin-top: auto;
 }
