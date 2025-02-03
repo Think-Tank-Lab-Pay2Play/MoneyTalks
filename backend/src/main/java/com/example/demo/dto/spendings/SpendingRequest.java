@@ -2,7 +2,9 @@ package com.example.demo.dto.spendings;
 
 import com.example.demo.model.Item;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -11,8 +13,7 @@ import java.util.List;
 public record SpendingRequest(
 
         @Schema(description = "The ID of the user")
-        @NotBlank(message = "User ID is mandatory")
-        @Size(min = 1)
+        @NotNull(message = "User ID is mandatory")
         Long userId,
 
         @Schema(description = "The name of the company of the spending")
@@ -27,7 +28,7 @@ public record SpendingRequest(
 
         @Schema(description = "The total price of the spending")
         @NotBlank(message = "Total price is mandatory")
-        @Size(min = 1)
+        @Min(value = 1, message = "Price must be at least 1")
         float totalPrice,
 
         @Schema(description = "The date when the spending was made")

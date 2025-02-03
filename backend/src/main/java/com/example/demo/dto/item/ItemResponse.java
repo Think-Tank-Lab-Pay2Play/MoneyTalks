@@ -19,13 +19,21 @@ public record ItemResponse(
         int units,
 
         @Schema(description = "The category of the item")
-        Category category
+        Category category,
+
+        @Schema(description = "The ID of the user who purchased the item")
+        Long userId,
+
+        @Schema(description = "The ID of the spending entry")
+        Long spendingId
 ) {
-    public ItemResponse(long itemId, String itemName, float pricePerUnit, int units, Category category) {
+    public ItemResponse(long itemId, String itemName, float pricePerUnit, int units, Category category, Long userId, Long spendingId) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.pricePerUnit = pricePerUnit;
         this.units = units;
         this.category = category;
+        this.userId = userId;
+        this.spendingId = spendingId;
     }
 }

@@ -13,7 +13,9 @@ public class ItemMapper {
                 item.getItemName(),
                 item.getPricePerUnit(),
                 item.getUnits(),
-                item.getCategory()
+                item.getCategory(),
+                item.getUser().getId(),
+                item.getSpending().getSpendingsId()
         );
     }
 
