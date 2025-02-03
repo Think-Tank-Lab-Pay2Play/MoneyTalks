@@ -9,6 +9,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
     const [selectedCompany, setSelectedCompany] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [sortOrder, setSortOrder] = useState('desc');
     const itemsPerPage = 15;
 
     const filterByPrice = (spending) => {
@@ -46,15 +47,20 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
         return true;
     };
 
-    const filteredSpendings = spendings?.filter(spending => 
+    const filteredSpendings = (spendings?.filter(spending => 
         filterByPrice(spending) && 
         filterByCompany(spending) && 
         filterByDate(spending)
-    ) || [];
+    ) || [])
+    .sort((a, b) => {
+        const dateA = parseEuropeanDate(a.purchaseDate);
+        const dateB = parseEuropeanDate(b.purchaseDate);
+        return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
+    });
 
     useEffect(() => {
         setCurrentPage(1);
-    }, [minPrice, maxPrice, selectedCompany, startDate, endDate]);
+    }, [minPrice, maxPrice, selectedCompany, startDate, endDate, sortOrder]);
 
     const totalPages = Math.ceil(filteredSpendings.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -136,6 +142,15 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
                     />
+                </div>
+
+                <div className="filter-group">
+                    <button
+                        className="view-all-spendings-table-details-btn"
+                        onClick={() => setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc')}
+                    >
+                        Sortare după dată ({sortOrder === 'desc' ? 'descrescător' : 'crescător'})
+                    </button>
                 </div>
             </div>
 

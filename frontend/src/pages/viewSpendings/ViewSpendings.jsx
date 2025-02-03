@@ -1,11 +1,14 @@
 import GeneralTopBar from "../generalTopBar/GeneralTopBar";
+import ViewAllSpendingsImage from "./viewAllSpendingsImage/ViewAllSpendingsImage";
 import ViewAllSpendingsTable from "./ViewAllSpendingsTable/ViewAllSpendingsTable";
 import "./ViewSpendings.css"
+import ViewSpendingsTopWriting from "./viewSpendingsTopWriting/ViewSpendingsTopWriting";
 
 export default function ViewSpendings() {
     return (
         <>
             <GeneralTopBar />
+            <ViewSpendingsTopWriting/>
 
             <ViewAllSpendingsTable
                 spendings={[
@@ -42,7 +45,8 @@ export default function ViewSpendings() {
                 ]}
                 onDelete={(deletedId) => console.log('Deleted:', deletedId)}
             />
-
+            
+            <ViewAllSpendingsImage/>
 
         </>
     );
