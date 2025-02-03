@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public record SpendingRequest(
@@ -29,6 +30,11 @@ public record SpendingRequest(
         @Size(min = 1)
         float totalPrice,
 
+        @Schema(description = "The date when the spending was made")
+        @NotBlank(message = "Date is mandatory")
+        @Size(min = 10, max = 10, message = "Date must be in YYYY-MM-DD format")
+        LocalDate date,
+
         @Schema(description = "The path of the image of the spending") //nu stiu daca e ok aici asta
         @Size(min = 2, max = 255, message = "Image path must be between 2 and 255 charaters")
         String image,
@@ -37,11 +43,12 @@ public record SpendingRequest(
         @Size(min = 2, max = 100, message = "Description must be between 2 and 255 charaters")
         String description
 ) {
-    public SpendingRequest(Long userId, String companyName, List<Item> products, float totalPrice, String image, String description) {
+    public SpendingRequest(Long userId, String companyName, List<Item> products, float totalPrice, LocalDate date, String image, String description) {
         this.userId = userId;
         this.companyName = companyName;
         this.products = products;
         this.totalPrice = totalPrice;
+        this.date = date;
         this.image = image;
         this.description = description;
     }

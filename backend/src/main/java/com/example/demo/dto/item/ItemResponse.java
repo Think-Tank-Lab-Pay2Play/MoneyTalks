@@ -1,8 +1,8 @@
 package com.example.demo.dto.item;
 
+
+import com.example.demo.model.enums.Category;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 public record ItemResponse(
 
