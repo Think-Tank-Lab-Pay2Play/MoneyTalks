@@ -1,0 +1,50 @@
+.confirmation-button-fixed {
+    position: absolute;
+    bottom: 90px;
+    right: 640px;
+    z-index: 100;
+}
+
+.confirmation-button {
+    position: relative;
+    padding: 14px 25px;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.confirmation-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.confirmation-button::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: #ffffff;
+    border-radius: 9px;
+    transition: 0.5s;
+}
+
+.confirmation-button:hover::after {
+    opacity: 0.7;
+}
+
+.confirmation-button::after {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    border-radius: 9px;
+    opacity: 0;
+    filter: blur(20px);
+    transition: 0.5s;
+}
+
+.confirmation-button:hover::after {
+    opacity: 1;
+}

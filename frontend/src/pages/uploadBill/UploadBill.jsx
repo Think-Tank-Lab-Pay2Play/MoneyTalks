@@ -3,6 +3,7 @@ import BillPageTopWriting from "./billPageTopWriting/BillPageTopWriting";
 import OnlineSpending from "./onlineSpending/OnlineSpending";
 import SliderAnimation from "./sliderAnimation/SliderAnimation";
 import "./UploadBill.css"
+import UploadBillForm from "./uploadBillForm/UploadBillForm";
 
 export default function UploadBill() {
     return (
@@ -11,6 +12,7 @@ export default function UploadBill() {
             <SliderAnimation/>
             <BillPageTopWriting/>
             <OnlineSpending/>
+            <UploadBillForm/>
         </>
     );
 }
