@@ -69,7 +69,7 @@ public class ItemService {
     }
 
     public List<ItemResponse> getItemsBySpendingId(Long spendingId) {
-        return ItemMapper.entityListToDto(itemRepository.findBySpendingId(spendingId));
+        return ItemMapper.entityListToDto(itemRepository.findBySpending_SpendingsId(spendingId));
     }
 
 }
