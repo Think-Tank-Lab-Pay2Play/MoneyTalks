@@ -1,6 +1,9 @@
 package com.example.demo.dto.user;
 
+import com.example.demo.dto.spendings.SpendingResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.util.List;
 
 public record UserResponse(
 
@@ -14,7 +17,7 @@ public record UserResponse(
         String lastName,
 
         @Schema(description = "The email of the user")
-        String email
+        String email,
 
         @Schema(description = "The list of spendings of the user")
         List<SpendingResponse> spendings
