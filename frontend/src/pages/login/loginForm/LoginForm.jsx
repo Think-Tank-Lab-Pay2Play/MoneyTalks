@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../../components/authContext/AuthContext';
 import './LoginForm.css';
 
 const LoginForm = () => {
     const navigate = useNavigate();
-
-    const handleDontHaveAccountClick = () => {
-        navigate("/register");
-    };
-
+    const { user, login } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // daca autentificarea are loc cu succes, afisam momentan o alerta
-        alert(`Logarea s-a realizat cu succes pentru user-ul cu emailul: ${email}`);
+        setError('');
+        
+        try {
+            const success = await login(email, password);
+            
+            if (success) {
+                navigate("/home");
+            } else {
+                setError('Email sau parolă incorectă');
+            }
+        } catch (error) {
+            setError('Eroare la conexiunea cu serverul');
+        }
     };
 
     return (
@@ -32,6 +33,7 @@ const LoginForm = () => {
             <div className="container">
                 <div className="heading">Autentificare</div>
                 <span className="subtitle-login">Autentifică-te pentru a continua!</span>
+                {error && <div className="error-message">{error}</div>}
                 <form className="form" onSubmit={handleSubmit}>
                     <input
                         required
@@ -41,7 +43,7 @@ const LoginForm = () => {
                         id="email"
                         placeholder="E-mail"
                         value={email}
-                        onChange={handleEmailChange}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         required
@@ -51,12 +53,10 @@ const LoginForm = () => {
                         id="password"
                         placeholder="Parolă"
                         value={password}
-                        onChange={handlePasswordChange}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <input className="login-button" type="submit" value="Autentifică-te" />
-                    <span className="subtitle-dont-have-acc" onClick={handleDontHaveAccountClick}>Nu deții un cont? Înregistrează-te!</span> {/*TODO ADAUGARE DEISGN BUTON SA SE VADA CA E CLICKABLE*/}
                 </form>
-
             </div>
         </div>
     );

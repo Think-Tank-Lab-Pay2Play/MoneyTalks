@@ -79,6 +79,10 @@
     transition: all 0.2s ease-in-out;
 }
 
+.register-button{
+    cursor: pointer;
+}
+
 .register-form .register-button:hover {
     transform: scale(1.03);
     box-shadow: rgba(133, 189, 215, 0.88) 0px 23px 10px -20px;
