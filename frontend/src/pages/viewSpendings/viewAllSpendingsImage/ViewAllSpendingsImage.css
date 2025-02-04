@@ -1,5 +1,5 @@
 .viewAllSpendingsPageImage {
-    position: absolute;
+    position: relative;
     width: 80%; /* dimensiune container imagine */
     top: 1400px;
     left: 7.5%;

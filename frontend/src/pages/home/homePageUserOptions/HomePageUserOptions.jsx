@@ -10,8 +10,8 @@ const HomePageUserOptions = () => {
         navigate("/tutorial");
     };
 
-    const handleGenerateRaportsButtonClick = () => {
-        navigate("/generate-raports");
+    const handleGenerateReportsButtonClick = () => {
+        navigate("/generate-reports");
     };
 
     const handleUploadBillButtonClick = () => {
@@ -33,7 +33,7 @@ const HomePageUserOptions = () => {
                     <p className="tip">Tutorial</p>
                     <p className="second-text">Afla cum utilizezi platforma!</p>
                 </div>
-                <div className="home-page-user-options-card blue" onClick={handleGenerateRaportsButtonClick}>
+                <div className="home-page-user-options-card blue" onClick={handleGenerateReportsButtonClick}>
                     <p className="tip">Generare rapoarte</p>
                     <p className="second-text">Genereaza rapoarte personalizate pentru tine!</p>
                 </div>
