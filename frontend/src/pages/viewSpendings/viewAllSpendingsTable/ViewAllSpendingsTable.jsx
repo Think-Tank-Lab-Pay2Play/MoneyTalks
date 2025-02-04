@@ -33,7 +33,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
 
     const filterByDate = (spending) => {
         if (!startDate && !endDate) return true;
-        
+
         const purchaseDate = parseEuropeanDate(spending.purchaseDate);
         const start = startDate ? new Date(startDate) : null;
         const end = endDate ? new Date(endDate) : null;
@@ -47,16 +47,16 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
         return true;
     };
 
-    const filteredSpendings = (spendings?.filter(spending => 
-        filterByPrice(spending) && 
-        filterByCompany(spending) && 
+    const filteredSpendings = (spendings?.filter(spending =>
+        filterByPrice(spending) &&
+        filterByCompany(spending) &&
         filterByDate(spending)
     ) || [])
-    .sort((a, b) => {
-        const dateA = parseEuropeanDate(a.purchaseDate);
-        const dateB = parseEuropeanDate(b.purchaseDate);
-        return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
-    });
+        .sort((a, b) => {
+            const dateA = parseEuropeanDate(a.purchaseDate);
+            const dateB = parseEuropeanDate(b.purchaseDate);
+            return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
+        });
 
     useEffect(() => {
         setCurrentPage(1);
@@ -226,6 +226,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                         <tr>
                                                             <th>ID Produs</th>
                                                             <th>Nume Produs</th>
+                                                            <th>Categorie</th>
                                                             <th>Cantitate</th>
                                                             <th>Preț Total</th>
                                                         </tr>
@@ -235,6 +236,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                             <tr key={index}>
                                                                 <td>{index + 1}</td>
                                                                 <td>{product.name}</td>
+                                                                <td>{product.category}</td>
                                                                 <td>{product.quantity}</td>
                                                                 <td>{product.totalPrice.toFixed(2)}</td>
                                                             </tr>
