@@ -139,6 +139,12 @@
   vertical-align: middle;
 }
 
+
+.view-all-spendings-table-products-table th:nth-child(3),
+.view-all-spendings-table-products-table td:nth-child(3) {
+    min-width: 150px;
+}
+
 .filters-container {
   position: absolute;
   top: 250px;

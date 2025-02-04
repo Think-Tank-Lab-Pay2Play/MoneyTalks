@@ -33,7 +33,7 @@
   }
   
   .online-spending-add-item-button__input--name {
-    width: 150px;
+    width: 100px;
   }
   
   .online-spending-add-item-button__input--quantity {
@@ -43,6 +43,10 @@
   .online-spending-add-item-button__input--price {
     width: 75px;
   }
+
+  .online-spending-add-item-button__input--category {
+    width: 75px;
+}
   
   .online-spending-add-item-button__button {
     position: relative;
