@@ -32,8 +32,6 @@ const Reports = () => {
     setIsLoading(false);
   };
 
-
-
   return (
     <div className="reports-container">
       {!selectedReport ? (
