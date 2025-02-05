@@ -42,7 +42,7 @@ public class AuthController {
         return ResponseEntity.ok("Login successful");
     }
 
-    @PostMapping("/register")
+    @PostMapping("/signuo")
     @Operation(summary = "Signup", description = "This endpoint is used to create a new user." +
             "The details of the user to be created are passed in the request body. " +
             "The response body contains the details of the created user.")

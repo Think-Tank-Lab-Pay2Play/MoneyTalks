@@ -39,6 +39,7 @@ public class SecurityConfiguration {
         List<UserDetails> userDetails = users.stream()
                 .map(user -> User.withUsername(user.getEmail())
                         .password(user.getPassword())
+                        .roles("USER")
                         .build())
                 .toList();
         logger.info("userDetails: {}", userDetails);
@@ -46,26 +47,28 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/webjars/**").permitAll()
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/swagger-ui.html").permitAll()
+                        .requestMatchers("/webjars/**").permitAll()
+                        .requestMatchers("/signup").permitAll()
                         .anyRequest().authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())
-                .cors(cors -> cors.configurationSource(request -> {
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(corsCustomizer -> corsCustomizer.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
                     config.setAllowedOriginPatterns(Collections.singletonList("*"));
-                    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
-                    config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-                    config.setExposedHeaders(List.of("Authorization"));
+                    config.setAllowedMethods(Collections.singletonList("*"));
                     config.setAllowCredentials(true);
+                    config.setAllowedHeaders(Collections.singletonList("*"));
+                    config.setExposedHeaders(List.of("Authorization"));
+                    config.setMaxAge(1800L);
                     return config;
                 }))
                 .csrf(AbstractHttpConfigurer::disable);
-
         return http.build();
     }
 }
