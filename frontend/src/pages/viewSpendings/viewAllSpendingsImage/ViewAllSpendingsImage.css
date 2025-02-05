@@ -1,0 +1,13 @@
+.viewAllSpendingsPageImage {
+    position: relative;
+    width: 80%; /* dimensiune container imagine */
+    top: 1400px;
+    left: 7.5%;
+    padding: 48px;
+  }
+  
+  .viewAllSpendingsPageImage img {
+    max-width: 100%; /* imaginea este 100% din container */
+    height: auto;
+  }
+  

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @Validated
 public class AuthController {
@@ -28,7 +29,7 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    @Operation(summary = "Login", description = "This endpoint is used to check the user credentials.")
+    @Operation(summary = "Login", description = "This endpoint is used to authenticate a user.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Login successful",
                     content = {@Content(mediaType = "application/json",
@@ -41,7 +42,7 @@ public class AuthController {
         return ResponseEntity.ok("Login successful");
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     @Operation(summary = "Signup", description = "This endpoint is used to create a new user." +
             "The details of the user to be created are passed in the request body. " +
             "The response body contains the details of the created user.")

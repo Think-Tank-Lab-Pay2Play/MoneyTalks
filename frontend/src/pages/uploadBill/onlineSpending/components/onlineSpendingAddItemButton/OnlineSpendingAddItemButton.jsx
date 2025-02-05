@@ -20,7 +20,7 @@ const InputGroup = ({ id, onInputChange }) => {
                 <input
                     type="text"
                     className="online-spending-add-item-button__input online-spending-add-item-button__input--name"
-                    placeholder="Denumire Produs"
+                    placeholder="Nume produs"
                     onChange={(e) => handleChange('name', e.target.value)}
                 />
                 <input
@@ -37,6 +37,12 @@ const InputGroup = ({ id, onInputChange }) => {
                     min="0"
                     step="0.01"
                     onChange={(e) => handleChange('price', e.target.value)}
+                />
+                <input
+                    type="text"
+                    className="online-spending-add-item-button__input online-spending-add-item-button__input--category"
+                    placeholder="Categorie"
+                    onChange={(e) => handleChange('category', e.target.value)}
                 />
             </div>
         </div>
@@ -60,7 +66,7 @@ const OnlineSpendingAddItemButton = () => {
         if (inputGroups.length < 10) {
             const newId = Date.now();
             setInputGroups((prev) => [...prev, newId]);
-            setItems((prev) => [...prev, { id: newId, name: '', quantity: '', price: '' }]);
+            setItems((prev) => [...prev, { id: newId, name: '', quantity: '', price: '', category: '' }]);
         }
     };
 
@@ -79,7 +85,6 @@ const OnlineSpendingAddItemButton = () => {
                 {inputGroups.length < 10 && <AddButton onClick={handleAddClick} />}
             </div>
             
-            {/* Butonul de confirmare într-un container fix */}
             <div className="confirmation-button-fixed">
                 <OnlineSpendingConfirmationButton items={items} />
             </div>

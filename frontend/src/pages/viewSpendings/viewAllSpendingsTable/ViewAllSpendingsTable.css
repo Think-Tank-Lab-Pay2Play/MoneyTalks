@@ -1,0 +1,216 @@
+.view-all-spendings-table-container {
+  margin: 20px;
+  overflow-x: auto;
+  position: absolute;
+  top: 350px;
+  left: 75px;
+  right: 75px;
+}
+
+.view-all-spendings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1.2em;
+  min-width: 1500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.view-all-spendings-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;
+}
+
+.view-all-spendings-table th,
+.view-all-spendings-table td {
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.view-all-spendings-table td:nth-child(5) {
+  white-space: nowrap;
+  min-width: 160px;
+}
+
+.view-all-spendings-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.view-all-spendings-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.view-all-spendings-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.view-all-spendings-table-details-btn {
+  background-color: #009879;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-all-spendings-table-details-btn:hover {
+  background-color: #007f67;
+}
+
+.view-all-spendings-table-details-row {
+  background-color: #f8f9fa;
+}
+
+.view-all-spendings-table-products-details {
+  padding: 20px;
+}
+
+.view-all-spendings-table-products-table {
+  width: 100%;
+  margin: 15px 0;
+  border-collapse: collapse;
+}
+
+.view-all-spendings-table-products-table th {
+  background-color: #e9ecef;
+  padding: 10px;
+  text-align: center;
+}
+
+.view-all-spendings-table-products-table td {
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.view-all-spendings-table-delete-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-all-spendings-table-delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-all-spendings-table-delete-btn:hover {
+  background-color: #bb2d3b;
+}
+
+.view-all-spendings-table-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.view-all-spendings-table-pagination-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.view-all-spendings-table-pagination-btn:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+.view-all-spendings-table-pagination-info {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.view-all-spendings-table-products-table th,
+.view-all-spendings-table-products-table td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.view-all-spendings-table-products-table th:nth-child(3),
+.view-all-spendings-table-products-table td:nth-child(3) {
+    min-width: 150px;
+}
+
+.filters-container {
+  position: absolute;
+  top: 250px;
+  left: 75px;
+  right: 75px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: calc(25% - 15px);
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #009879;
+  font-size: 14px;
+}
+
+.filter-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 200px;
+  transition: border-color 0.3s;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: #009879;
+  box-shadow: 0 0 0 2px rgba(0, 152, 121, 0.1);
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #009879;
+}
+
+.filter-group button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-end;
+  margin-top: auto;
+}

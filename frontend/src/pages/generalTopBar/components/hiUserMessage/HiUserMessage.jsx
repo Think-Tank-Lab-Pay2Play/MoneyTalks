@@ -1,16 +1,19 @@
-import "./HiUserMessage.css"
+import "./HiUserMessage.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React from 'react';
+import { useAuth } from '../../../../components/authContext/AuthContext.jsx';
 
-export default function HiUserMessage()
-{
+export default function HiUserMessage() {
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     const handleGoToAccount = () => {
         navigate("/account");
     };
+
     return(
-        <h1 className='general-topbar-hi-user' onClick={handleGoToAccount}>Salut, "user"!</h1> /* TODO: dupa ce se implementeaza login logic, fa sa apara {user}, si la click
-                                                                    pe {user} sa te duca pe pagina account settings */
+        <h1 className='general-topbar-hi-user' onClick={handleGoToAccount}>
+            Salut, {user?.firstName}!
+        </h1>
     );
 }

@@ -1,0 +1,203 @@
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #6d5eea;
+  --accent-color: #2ecc71;
+  --background: #f8f9fa;
+  --text-dark: #2c3e50;
+  --text-light: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.reports-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 160px);
+  position: relative;
+  top: 100px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Selection View */
+.report-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.report-buttons-grid button {
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-light);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Custom Report Section */
+.custom-report-input {
+  display: flex;
+  gap: 1rem;
+  background: var(--glass-bg);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.custom-report-input input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #e0e7ff;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.custom-report-input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.custom-report-input button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--accent-color), #27ae60);
+  color: var(--text-light);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.custom-report-input button:disabled {
+  background: #c1cad1;
+  cursor: not-allowed;
+}
+
+/* Results View */
+.report-results {
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.report-content-box {
+  background: var(--glass-bg);
+  border-radius: 24px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.report-content-box p {
+  margin: 1.2rem 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--primary-color);
+}
+
+.back-button {
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d) !important;
+  padding: 1rem 2.5rem !important;
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+  transition: transform 0.3s ease !important;
+}
+
+.back-button:hover {
+  transform: translateX(-5px) !important;
+}
+
+/* Loading Animation */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--primary-color);
+  font-style: italic;
+}
+
+.loading::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1200px) {
+  .report-buttons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reports-container {
+    padding: 1.5rem;
+    top: 80px;
+  }
+
+  .report-buttons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .custom-report-input {
+    flex-direction: column;
+  }
+
+  .report-content-box {
+    padding: 2rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --text-dark: #ffffff;
+    --glass-bg: rgba(30, 30, 30, 0.95);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .custom-report-input input {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+}

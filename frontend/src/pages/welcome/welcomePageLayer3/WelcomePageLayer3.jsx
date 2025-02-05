@@ -1,3 +1,5 @@
+import CsUBBLogoImage from "./csUBBLogoImage/CsUBBLogoImage";
+import RaiffeisenLogoImage from "./raiffeisenLogoImage/RaiffeisenLogoImage";
 import "./WelcomePageLayer3.css"
 import WelcomePageLayer3Image from "./welcomePageLayer3Image/WelcomePageLayer3Image";
 import WelcomePageLayer3Image2 from "./welcomePageLayer3Image2/WelcomePageLayer3Image2";
@@ -11,6 +13,8 @@ export default function WelcomePageLayer3() {
             <WelcomePageLayer3Image />
             <WelcomePageLayer3Writing />
             <WelcomePageLayer3Image2 />
+            <RaiffeisenLogoImage />
+            <CsUBBLogoImage />
         </div>
     );
 }
