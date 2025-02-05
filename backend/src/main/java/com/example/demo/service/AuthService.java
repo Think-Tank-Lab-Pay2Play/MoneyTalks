@@ -3,11 +3,14 @@ package com.example.demo.service;
 import com.example.demo.dto.user.UserRequest;
 import com.example.demo.dto.user.UserResponse;
 import com.example.demo.exceptions.AuthException;
+import com.example.demo.exceptions.NotFoundException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AuthService {
@@ -24,7 +27,7 @@ public class AuthService {
 
     public UserResponse signup(UserRequest userRequest) throws AuthException {
         if (userService.checkIfEmailExists(userRequest.email())) {
-            throw new AuthException("Username already exists");
+            throw new AuthException("Acest email este deja folosit pentru un cont!");
         }
         UserResponse userResponse = userService.save(userRequest);
         UserDetails userDetails = User.withUsername(userRequest.email())

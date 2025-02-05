@@ -1,37 +1,49 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'; // Adaugă axios
 import './RegisterForm.css';
 
 const RegisterForm = () => {
-
     const navigate = useNavigate();
-
-    const handleAlreadyHaveAccountClick = () => {
-        navigate("/login");
-    };
-
+    
+    // Adaugă state-uri pentru toate câmpurile
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [samePassword, setSamePassword] = useState(true);
     const [error, setError] = useState('');
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const handleConfirmPasswordChange = (e) => {
-        setConfirmPassword(e.target.value);
-        setSamePassword(e.target.value === password);
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        
         if (password !== confirmPassword) {
             setSamePassword(false);
             setError('Parolele introduse nu se potrivesc!');
             return;
         }
-        alert(`Înregistrarea s-a realizat cu succes`);
+
+        try {
+            // Trimite datele către backend
+            const response = await axios.post('http://localhost:8080/register', {
+                firstName,
+                lastName,
+                email,
+                password
+            });
+
+            if (response.status === 200) {
+                alert('Înregistrarea s-a realizat cu succes!');
+                navigate("/login");
+            }
+        } catch (err) {
+            if (err.response && err.response.status === 400) {
+                setError(err.response.data);
+            } else {
+                setError('A apărut o eroare la înregistrare.');
+            }
+        }
     };
 
     return (
@@ -47,6 +59,8 @@ const RegisterForm = () => {
                         name="lastName"
                         id="lastName"
                         placeholder="Nume"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                     />
                     <input
                         required
@@ -55,6 +69,8 @@ const RegisterForm = () => {
                         name="firstName"
                         id="firstName"
                         placeholder="Prenume"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                     />
                     <input
                         required
@@ -63,6 +79,8 @@ const RegisterForm = () => {
                         name="email"
                         id="email"
                         placeholder="E-mail"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         required
@@ -72,7 +90,7 @@ const RegisterForm = () => {
                         id="password"
                         placeholder="Parolă"
                         value={password}
-                        onChange={handlePasswordChange}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <input
                         required
@@ -82,15 +100,18 @@ const RegisterForm = () => {
                         id="confirmPassword"
                         placeholder="Confirmă parolă"
                         value={confirmPassword}
-                        onChange={handleConfirmPasswordChange}
+                        onChange={(e) => {
+                            setConfirmPassword(e.target.value);
+                            setSamePassword(e.target.value === password);
+                        }}
                     />
                     <input className="register-button" type="submit" value="Înregistrează-te" />
-                    <span className="register-subtitle-already-have-acc" onClick={handleAlreadyHaveAccountClick}>
+                    <span className="register-subtitle-already-have-acc" onClick={() => navigate("/login")}>
                         Deții deja un cont? Autentifică-te!
                     </span>
                 </form>
 
-                {!samePassword && (
+                {error && (
                     <div className="register-error-message">{error}</div>
                 )}
             </div>
