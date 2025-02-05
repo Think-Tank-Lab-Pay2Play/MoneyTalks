@@ -5,26 +5,40 @@ import './LoginForm.css';
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    const { user, login } = useAuth();
+    const { login } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        
+
         try {
-            const success = await login(email, password);
-            
-            if (success) {
-                navigate("/home");
-            } else {
-                setError('Email sau parolă incorectă');
+            const response = await fetch("http://localhost:8080/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+                credentials: "include", // Dacă backend-ul folosește cookie-uri pentru autentificare
+            });
+
+            if (!response.ok) {
+                throw new Error("Email sau parolă incorectă");
             }
+
+            const data = await response.json();
+            
+            // Salvează token-ul primit în localStorage
+            localStorage.setItem("token", data.token);
+
+            // Apelează funcția login din context pentru a actualiza starea autentificării
+            login(data.token);
+
+            navigate("/home");
         } catch (error) {
-            setError('Eroare la conexiunea cu serverul');
+            setError(error.message || "Eroare la conexiunea cu serverul");
         }
     };
 
