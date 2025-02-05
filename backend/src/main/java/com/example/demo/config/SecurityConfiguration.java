@@ -39,6 +39,7 @@ public class SecurityConfiguration {
         List<UserDetails> userDetails = users.stream()
                 .map(user -> User.withUsername(user.getEmail())
                         .password(user.getPassword())
+                        .roles("USER")
                         .build())
                 .toList();
         logger.info("userDetails: {}", userDetails);
@@ -52,6 +53,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/swagger-ui.html").permitAll()
                         .requestMatchers("/webjars/**").permitAll()
+                        .requestMatchers("/signup").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
