@@ -26,7 +26,7 @@ const RegisterForm = () => {
 
         try {
             // Trimite datele către backend
-            const response = await axios.post('http://localhost:8080/register', {
+            const response = await axios.post('http://localhost:8080/signup', {
                 firstName,
                 lastName,
                 email,

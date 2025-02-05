@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../../components/authContext/AuthContext';
 import './LoginForm.css';
+import axios from "axios";
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -15,27 +16,21 @@ const LoginForm = () => {
         setError('');
 
         try {
-            const response = await fetch("http://localhost:8080/login", {
-                method: "POST",
+            const response = await axios.get("http://localhost:8080/login", {
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
-                credentials: "include", // Dacă backend-ul folosește cookie-uri pentru autentificare
+                auth: {
+                    username: email, 
+                    password: password,
+                }
             });
-
-            if (!response.ok) {
-                throw new Error("Email sau parolă incorectă");
-            }
-
-            const data = await response.json();
-            
-            // Salvează token-ul primit în localStorage
+            console.log(email);
+            /*
+            const data = response.data;
+            console.log(data.token)
             localStorage.setItem("token", data.token);
-
-            // Apelează funcția login din context pentru a actualiza starea autentificării
-            login(data.token);
-
+            */
             navigate("/home");
         } catch (error) {
             setError(error.message || "Eroare la conexiunea cu serverul");
