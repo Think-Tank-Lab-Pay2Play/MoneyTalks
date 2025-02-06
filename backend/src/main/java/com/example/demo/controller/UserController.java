@@ -100,5 +100,21 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
+    @Operation(summary = "Get user with specified email", description = "This endpoint is used to retrieve a user with " +
+            "specified email.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User found successfully",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserResponse.class))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseDto.class))})
+    })
+    @GetMapping("/byEmail/{userEmail}")
+    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable("userEmail") String userEmail) {
+        UserResponse user = userService.findResponseByEmail(userEmail);
+        return ResponseEntity.ok(user);
+    }
+
 
 }
