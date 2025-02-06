@@ -158,7 +158,6 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                 <table className="view-all-spendings-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nume Companie</th>
                             <th>Număr Produse</th>
                             <th>Preț Total</th>
@@ -170,7 +169,6 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                         {currentSpendings.map((spending) => (
                             <React.Fragment key={spending.id}>
                                 <tr>
-                                    <td>{spending.id}</td>
                                     <td>{spending.companyName}</td>
                                     <td>{spending.numberOfProducts}</td>
                                     <td>{spending.totalPrice.toFixed(2)}</td>
@@ -224,7 +222,6 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                 <table className="view-all-spendings-table-products-table">
                                                     <thead>
                                                         <tr>
-                                                            <th>ID Produs</th>
                                                             <th>Nume Produs</th>
                                                             <th>Categorie</th>
                                                             <th>Cantitate</th>
@@ -234,7 +231,6 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                     <tbody>
                                                         {spending.products.map((product, index) => (
                                                             <tr key={index}>
-                                                                <td>{index + 1}</td>
                                                                 <td>{product.name}</td>
                                                                 <td>{product.category}</td>
                                                                 <td>{product.quantity}</td>

@@ -1,10 +1,9 @@
 .viewAllSpendingsPageImage {
-    position: relative;
-    width: 80%; /* dimensiune container imagine */
-    top: 1400px;
-    left: 7.5%;
-    padding: 48px;
-  }
+  width: 80%;
+  margin: -150px 150px auto;
+  padding-bottom: 15px;
+  position: absolute; 
+}
   
   .viewAllSpendingsPageImage img {
     max-width: 100%; /* imaginea este 100% din container */
