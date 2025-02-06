@@ -61,5 +61,12 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new AuthException.NotFoundException("User not found with email: " + email));
+    }
 
+    public UserResponse findResponseByEmail(String email) {
+        return UserMapper.entityToDto(findByEmail(email));
+    }
 }
