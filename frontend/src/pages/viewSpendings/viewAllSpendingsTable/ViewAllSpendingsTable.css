@@ -1,10 +1,6 @@
 .view-all-spendings-table-container {
-  margin: 20px;
+  margin: 250px 75px; /* Redus de la left/right absolute */
   overflow-x: auto;
-  position: absolute;
-  top: 350px;
-  left: 75px;
-  right: 75px;
 }
 
 .view-all-spendings-table {
