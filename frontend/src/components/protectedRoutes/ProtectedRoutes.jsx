@@ -1,19 +1,22 @@
-import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../authContext/AuthContext.jsx';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../authContext/AuthContext";
 
-const ProtectedRoutes = ({ children }) => {
-    const { user } = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
+const ProtectedRoute = ({ children, isPrivate = true }) => {
+  const { userEmail } = useAuth(); // Verificăm dacă utilizatorul este logat
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (user && (location.pathname === '/' || location.pathname === '/aboutapp' || location.pathname === '/login' || location.pathname === '/register')) {
-            navigate('/home');
-        }
-    }, [user, location.pathname, navigate]);
+  useEffect(() => {
+    if (!isPrivate && !userEmail) {
+      // Dacă utilizatorul nu este logat și ruta este privată, îl redirecționăm către login
+      navigate("/login");
+    } else if (isPrivate && userEmail) {
+      // Dacă utilizatorul este deja logat și încearcă să acceseze o pagină publică, îl redirecționăm
+      navigate("/home");
+    }
+  }, [isPrivate, userEmail, navigate]);
 
-    return children;
+  return children;
 };
 
-export default ProtectedRoutes;
+export default ProtectedRoute;

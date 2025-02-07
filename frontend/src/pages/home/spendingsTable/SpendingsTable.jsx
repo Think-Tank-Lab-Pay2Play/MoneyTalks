@@ -27,7 +27,6 @@ export default function SpendingsTable({ data }) {
             <table className="spendings-table">
                 <thead>
                     <tr>
-                        <th>Index</th>
                         <th>Numele companiei</th>
                         <th>Numar produse achizitionate</th>
                         <th>Pret total</th>
@@ -38,7 +37,6 @@ export default function SpendingsTable({ data }) {
                     {data.length > 0 ? (
                         data.map((item, index) => (
                             <tr key={index}>
-                                <td>{item.id}</td>
                                 <td>{item.companyName}</td>
                                 <td>{item.numberOfProducts}</td>
                                 <td>{item.totalPrice.toFixed(2)} RON</td>
@@ -48,7 +46,7 @@ export default function SpendingsTable({ data }) {
                     ) : (
                         <tr>
                             <td colSpan="5" className="no-data">
-                                Nu exista date despre cheltuielile tale. Incepe sa incarci bonuri pentru a le putea analiza!
+                                Nu există date despre cheltuielile tale. Începe să încarci bonuri, facturi și cheltuieli online pentru a le putea analiza!
                             </td>
                         </tr>
                     )}
