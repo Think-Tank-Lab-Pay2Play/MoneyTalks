@@ -29,7 +29,7 @@ function App() {
               <Route path="/aboutapp" element={<AboutTheApp />} /> {/* Pagina Despre aplicatie */}
               {/*<Route element={<ProtectedRoutes />}>*/}
                 <Route path="/home" element={<Home />} /> {/* Home Page-ul pe care user-ul il poate accesa doar daca e logat */}
-                <Route path="/account" element={<Account />} /> {/* Pagina se setari cont. Momentan se poate ajunge doar prin adresa http://localhost:5173/home */}
+                <Route path="/account" element={<Account />} /> {/* Pagina de setari cont */}
                 <Route path="/tutorial" element={<Tutorial />} /> {/* Pagina pentru informatii utilizare platforma */}
                 <Route path="/generate-reports" element={<GenerateReports />} /> {/* Pagina pentru generarea rapoartelor personalizate */}
                 <Route path="/upload-bill" element={<UploadBill />} /> {/* Pagina pentru upload bill */}
