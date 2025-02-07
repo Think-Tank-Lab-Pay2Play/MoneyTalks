@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function HiUserMessage() {
     const navigate = useNavigate();
-    const [firstName, setFirstName] = useState("Utilizator");
+    const [firstName, setFirstName] = useState("");
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -15,7 +15,7 @@ export default function HiUserMessage() {
             const { email, password } = JSON.parse(storedData);
             try {
                 const userEmail = email;
-                console.log(userEmail);
+                //console.log(userEmail);
 
                 const userResponse = await axios.get(`http://localhost:8080/users/byEmail/${userEmail}`, {
                     headers: {
@@ -38,7 +38,7 @@ export default function HiUserMessage() {
 
                 console.log(userData);
 
-                setFirstName(userResponse.data.firstName || "Utilizator");
+                setFirstName(userResponse.data.firstName || "");
             } catch (error) {
                 console.error("Eroare la preluarea userului:", error);
             }
