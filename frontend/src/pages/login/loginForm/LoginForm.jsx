@@ -16,7 +16,19 @@ const LoginForm = () => {
         setError('');
 
         try {
+            // Request pentru autentificare
             const response = await axios.get("http://localhost:8080/login", {
+                headers: { 'Content-Type': 'application/json' },
+                auth: { username: email, password: password }
+            });
+
+            console.log("Authentication successful");
+
+            /*
+            const userEmail = email;
+            console.log(userEmail);
+
+            const userResponse = await axios.get(`http://localhost:8080/users/byEmail/${userEmail}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -25,15 +37,25 @@ const LoginForm = () => {
                     password: password,
                 }
             });
-            console.log(email);
-            /*
-            const data = response.data;
-            console.log(data.token)
-            localStorage.setItem("token", data.token);
+        
+            // Stocăm datele utilizatorului conform structurii UML
+            const userData = {
+                id: userResponse.data.id,
+                firstName: userResponse.data.firstName,
+                lastName: userResponse.data.lastName,
+                email: userResponse.data.email,
+                password: userResponse.data.password,
+                allSpendings: userResponse.data.allSpendings
+            };
+
+            console.log(userData);
             */
+
+            login(email, password);
+
             navigate("/home");
         } catch (error) {
-            setError(error.message || "Eroare la conexiunea cu serverul");
+            setError(error.response?.data?.message || "Eroare la conexiunea cu serverul");
         }
     };
 
@@ -45,8 +67,7 @@ const LoginForm = () => {
                 {error && <div className="error-message">{error}</div>}
                 <form className="form" onSubmit={handleSubmit}>
                     <input
-                        required
-                        className="input"
+                        required className="input"
                         type="email"
                         name="email"
                         id="email"
@@ -55,8 +76,7 @@ const LoginForm = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
-                        required
-                        className="input"
+                        required className="input"
                         type="password"
                         name="password"
                         id="password"
