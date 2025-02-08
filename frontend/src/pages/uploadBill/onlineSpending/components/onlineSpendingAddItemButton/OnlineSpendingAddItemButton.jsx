@@ -55,7 +55,6 @@ const InputGroup = ({ id, onInputChange, categories }) => {
     );
 };
 
-
 const AddButton = ({ onClick }) => (
     <button type="button" className="online-spending-add-item-button__button" onClick={onClick}>
         <span className="online-spending-add-item-button__text">Adauga produs</span>
@@ -65,11 +64,10 @@ const AddButton = ({ onClick }) => (
     </button>
 );
 
-const OnlineSpendingAddItemButton = () => {
+const OnlineSpendingAddItemButton = ({ onItemsChange }) => {
     const [inputGroups, setInputGroups] = useState([]);
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState([{ id: Date.now(), name: '', quantity: '', price: '', category: '' }]); // Adăugăm un produs gol implicit
     
-    // aici categoriile din backend
     const categories = ["Alimente", "Transport", "Divertisment", "Utilități", "Altele"];
 
     const handleAddClick = () => {
@@ -84,6 +82,7 @@ const OnlineSpendingAddItemButton = () => {
         setItems((prev) =>
             prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
         );
+        onItemsChange(items);  // Trimite starea actualizată către părintele component
     };
 
     return (
@@ -94,13 +93,12 @@ const OnlineSpendingAddItemButton = () => {
                 ))}
                 {inputGroups.length < 10 && <AddButton onClick={handleAddClick} />}
             </div>
-            
+
             <div className="confirmation-button-fixed">
                 <OnlineSpendingConfirmationButton items={items} />
             </div>
         </div>
     );
 };
-
 
 export default OnlineSpendingAddItemButton;
