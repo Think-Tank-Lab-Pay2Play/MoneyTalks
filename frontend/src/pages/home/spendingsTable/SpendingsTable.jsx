@@ -1,26 +1,7 @@
 import React from "react";
 import "./SpendingsTable.css";
 
-import {useState, useEffect} from "react";
-
-export default function SpendingsTable({ data }) {
-
-    const [spendings, setSpendings] = useState([]);
-
-    useEffect(() => {
-        const fetchSpendings = async () => {
-            try {
-                const response = await fetch("http://localhost:5173/api/spendings/home");
-                if (!response.ok) throw new Error("Failed to fetch");
-                const data = await response.json();
-                setSpendings(data);
-            } catch (error) {
-                console.error("Error fetching spendings:", error);
-                setSpendings([]);
-            }
-        };
-        fetchSpendings();
-    }, []);
+export default function SpendingsTable({ data = [] }) {
 
     return (
         <div className="spendings-table-container">
@@ -34,7 +15,7 @@ export default function SpendingsTable({ data }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.length > 0 ? (
+                    {Array.isArray(data) && data.length > 0 ? (
                         data.map((item, index) => (
                             <tr key={index}>
                                 <td>{item.companyName}</td>
@@ -51,6 +32,7 @@ export default function SpendingsTable({ data }) {
                         </tr>
                     )}
                 </tbody>
+
             </table>
         </div>
     );
