@@ -6,10 +6,11 @@ import SpendingsStatistic from "./spendingsStatistics/SpendingsStatistics";
 import SpendingsTable from "./spendingsTable/SpendingsTable";
 import HomePageUserOptions from "./homePageUserOptions/HomePageUserOptions";
 import VectorialIlustration from "./vectorialIlustration/VectorialIlustration";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Home() {
-    const sampleData = [
+    const sampleDataForLastFiveSpendings = [
         {
             id: 1,
             companyName: "Conda",
@@ -48,7 +49,7 @@ export default function Home() {
     ];
 
 
-    const mockData = [
+    const sampleDataForLastTwelveMonthsSpendings = [
         { luna: "Ianuarie", suma: 1250 },
         { luna: "Februarie", suma: 1500 },
         { luna: "Martie", suma: 1000 },
@@ -64,16 +65,123 @@ export default function Home() {
     ];
 
 
+    const [lastFiveSpendings, setLastFiveSpendings] = useState("");
+    const [lastTwelveMonthsSpendings, setLastTwelveMonthsSpendings] = useState("");
+    const [lastThirtyDaysSpendingsSum, setLastThirtyDaysSpendingsSum] = useState("");
+    const [uploadedBillsOnThePastThirtyDays, setUploadedBillsOnThePastThirtyDays] = useState("");
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const storedData = localStorage.getItem("auth");
+            if (!storedData) return;
+
+            const { email, password } = JSON.parse(storedData);
+            try {
+                const userEmail = email;
+
+                const userResponse = await axios.get(`http://localhost:8080/users/byEmail/${userEmail}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    auth: {
+                        username: email,
+                        password: password,
+                    }
+                });
+
+                const userData = {
+                    id: userResponse.data.id,
+                    firstName: userResponse.data.firstName,
+                    lastName: userResponse.data.lastName,
+                    email: userResponse.data.email,
+                    password: password,
+                    allSpendings: userResponse.data.allSpendings
+                };
+
+                setLastFiveSpendings(
+                    userResponse.data.allSpendings
+                        ?.sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .slice(0, 5)
+                );
+
+                setLastTwelveMonthsSpendings(() => {
+                    const now = new Date();
+                    const monthlySpendings = new Map();
+
+                    userResponse.data.allSpendings?.forEach(spending => {
+                        const spendingDate = new Date(spending.date);
+                        const key = `${spendingDate.getFullYear()}-${spendingDate.getMonth() + 1}`;
+
+                        if (!monthlySpendings.has(key)) {
+                            monthlySpendings.set(key, {
+                                luna: spendingDate.toLocaleString("ro-RO", { month: "long", year: "numeric" }),
+                                suma: 0
+                            });
+                        }
+
+                        monthlySpendings.get(key).suma += spending.totalPrice;
+                    });
+
+                    return Array.from(monthlySpendings.values()).sort((a, b) => new Date(a.luna) - new Date(b.luna));
+                });
+
+                setLastThirtyDaysSpendingsSum(() => {
+                    const now = new Date();
+                    const thirtyDaysAgo = new Date();
+                    thirtyDaysAgo.setDate(now.getDate() - 30);
+
+                    const totalLastThirtyDays = userResponse.data.allSpendings
+                        ?.filter(spending => {
+                            const spendingDate = new Date(spending.date);
+                            return spendingDate >= thirtyDaysAgo && spendingDate <= now;
+                        })
+                        .reduce((sum, spending) => sum + spending.totalPrice, 0);
+
+                    return totalLastThirtyDays;
+                });
+
+                setUploadedBillsOnThePastThirtyDays(() => {
+                    const now = new Date();
+                    const thirtyDaysAgo = new Date();
+                    thirtyDaysAgo.setDate(now.getDate() - 30);
+
+                    const billsCount = userResponse.data.allSpendings
+                        ?.filter(spending => {
+                            const spendingDate = new Date(spending.date);
+                            return spendingDate >= thirtyDaysAgo && spendingDate <= now;
+                        }).length || 0; // Dacă nu sunt cheltuieli, returnează 0
+
+                    return billsCount;
+                });
+
+
+            } catch (error) {
+                console.error("Eroare la preluarea userului:", error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+
     return (
         <>
             <GeneralTopBar />
             <TopWtiningOnHomePage />
-            <TheRatingUploadSpentCards />
+
+            <TheRatingUploadSpentCards
+                lastThirtyDaysSpendingsSum={lastThirtyDaysSpendingsSum}
+                uploadedBillsOnThePastThirtyDays={uploadedBillsOnThePastThirtyDays}
+            />
+
             <HomePageUserOptions />
+
             <h3 className="last-5-bills-uploaded-text">Ultimele 5 bonuri incarcate</h3>
-            <SpendingsTable data={sampleData} /> {/* seteaza parametrul "data" dupa implementare backend */}
+            <SpendingsTable data={lastFiveSpendings} />
+
             <h3 className="last-12-month-spendings">Cheltuielile tale pe ultimele 12 luni</h3>
-            <SpendingsStatistic data={mockData} />
+            <SpendingsStatistic data={lastTwelveMonthsSpendings} />
+
             <VectorialIlustration />
         </>
     );

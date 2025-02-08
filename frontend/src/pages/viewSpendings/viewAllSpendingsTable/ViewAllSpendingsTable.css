@@ -210,3 +210,10 @@
   align-self: flex-end;
   margin-top: auto;
 }
+
+.no-spendings-to-show {
+  position: relative;
+  top:100px;
+  font-size: 48px;
+  text-align: center;
+}

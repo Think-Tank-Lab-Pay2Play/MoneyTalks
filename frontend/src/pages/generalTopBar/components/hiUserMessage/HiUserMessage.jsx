@@ -36,7 +36,7 @@ export default function HiUserMessage() {
                     allSpendings: userResponse.data.allSpendings
                 };
 
-                console.log(userData);
+                //console.log(userData);
 
                 setFirstName(userResponse.data.firstName || "");
             } catch (error) {

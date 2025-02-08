@@ -25,16 +25,13 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
     };
 
     const parseEuropeanDate = (dateString) => {
-        const [datePart, timePart] = dateString.split(' ');
-        const [day, month, year] = datePart.split('/');
-        const [hours, minutes] = timePart.split(':');
-        return new Date(`${year}-${month}-${day}T${hours}:${minutes}:00`);
+        return new Date(dateString);
     };
 
     const filterByDate = (spending) => {
         if (!startDate && !endDate) return true;
 
-        const purchaseDate = parseEuropeanDate(spending.purchaseDate);
+        const purchaseDate = parseEuropeanDate(spending.date);
         const start = startDate ? new Date(startDate) : null;
         const end = endDate ? new Date(endDate) : null;
 
@@ -53,8 +50,8 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
         filterByDate(spending)
     ) || [])
         .sort((a, b) => {
-            const dateA = parseEuropeanDate(a.purchaseDate);
-            const dateB = parseEuropeanDate(b.purchaseDate);
+            const dateA = parseEuropeanDate(a.date);
+            const dateB = parseEuropeanDate(b.date);
             return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
         });
 
@@ -82,7 +79,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
     };
 
     if (!spendings || !Array.isArray(spendings)) {
-        return <div>Nu există cheltuieli de afișat</div>;
+        return <div className='no-spendings-to-show'>Nu există cheltuieli de afișat.<br/>Scanează bonuri, facturi, sau încarcă manual o cheltuială online pentru a începe!</div>;
     }
 
     return (
@@ -167,58 +164,34 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                     </thead>
                     <tbody>
                         {currentSpendings.map((spending) => (
-                            <React.Fragment key={spending.id}>
+                            <React.Fragment key={spending.spendingsId}>
                                 <tr>
                                     <td>{spending.companyName}</td>
-                                    <td>{spending.numberOfProducts}</td>
+                                    <td>{spending.products.length}</td>
                                     <td>{spending.totalPrice.toFixed(2)}</td>
                                     <td>
-                                        {parseEuropeanDate(spending.purchaseDate).toLocaleDateString('ro-RO', {
+                                        {parseEuropeanDate(spending.date).toLocaleDateString('ro-RO', {
                                             day: '2-digit',
                                             month: '2-digit',
                                             year: 'numeric'
-                                        })}
-                                        {' '}
-                                        {parseEuropeanDate(spending.purchaseDate).toLocaleTimeString('ro-RO', {
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                            hour12: false
                                         })}
                                     </td>
                                     <td>
                                         <button
                                             className="view-all-spendings-table-details-btn"
                                             onClick={() => setSelectedSpendingId(
-                                                prev => prev === spending.id ? null : spending.id
+                                                prev => prev === spending.spendingsId ? null : spending.spendingsId
                                             )}
                                         >
-                                            {selectedSpendingId === spending.id ? 'Ascunde' : 'Vezi detalii'}
+                                            {selectedSpendingId === spending.spendingsId ? 'Ascunde' : 'Vezi detalii'}
                                         </button>
                                     </td>
                                 </tr>
-                                {selectedSpendingId === spending.id && (
+                                {selectedSpendingId === spending.spendingsId && (
                                     <tr className="view-all-spendings-table-details-row">
                                         <td colSpan="6">
                                             <div className="view-all-spendings-table-products-details">
                                                 <h4>Produse achiziționate:</h4>
-                                                <p>
-                                                    Această achiziție a fost făcută la data de:{" "}
-                                                    {parseEuropeanDate(spending.purchaseDate).toLocaleDateString("ro-RO", {
-                                                        day: "numeric",
-                                                        month: "long",
-                                                        year: "numeric",
-                                                    })}
-                                                    ,{" "}
-                                                    {parseEuropeanDate(spending.purchaseDate).toLocaleDateString("ro-RO", {
-                                                        weekday: "long",
-                                                    })}
-                                                    , ora{" "}
-                                                    {parseEuropeanDate(spending.purchaseDate).toLocaleTimeString("ro-RO", {
-                                                        hour: "2-digit",
-                                                        minute: "2-digit",
-                                                        hour12: false,
-                                                    })}
-                                                </p>
                                                 <table className="view-all-spendings-table-products-table">
                                                     <thead>
                                                         <tr>
@@ -231,10 +204,10 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                     <tbody>
                                                         {spending.products.map((product, index) => (
                                                             <tr key={index}>
-                                                                <td>{product.name}</td>
+                                                                <td>{product.itemName}</td>
                                                                 <td>{product.category}</td>
-                                                                <td>{product.quantity}</td>
-                                                                <td>{product.totalPrice.toFixed(2)}</td>
+                                                                <td>{product.units}</td>
+                                                                <td>{(product.pricePerUnit * product.units).toFixed(2)}</td>
                                                             </tr>
                                                         ))}
                                                     </tbody>
@@ -242,7 +215,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                 <div className="view-all-spendings-table-delete-container">
                                                     <button
                                                         className="view-all-spendings-table-delete-btn"
-                                                        onClick={() => handleDelete(spending.id)}
+                                                        onClick={() => handleDelete(spending.spendingsId)}
                                                     >
                                                         Șterge Cheltuiala
                                                     </button>
