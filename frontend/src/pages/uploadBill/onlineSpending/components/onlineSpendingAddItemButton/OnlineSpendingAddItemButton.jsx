@@ -9,7 +9,7 @@ const IconAdd = () => (
     </svg>
 );
 
-const InputGroup = ({ id, onInputChange }) => {
+const InputGroup = ({ id, onInputChange, categories }) => {
     const handleChange = (field, value) => {
         onInputChange(id, field, value);
     };
@@ -38,16 +38,23 @@ const InputGroup = ({ id, onInputChange }) => {
                     step="0.01"
                     onChange={(e) => handleChange('price', e.target.value)}
                 />
-                <input
-                    type="text"
+
+                <select
                     className="online-spending-add-item-button__input online-spending-add-item-button__input--category"
-                    placeholder="Categorie"
                     onChange={(e) => handleChange('category', e.target.value)}
-                />
+                >
+                    <option value="">Selectează o categorie</option>
+                    {categories.map((category) => (
+                        <option key={category} value={category}>
+                            {category}
+                        </option>
+                    ))}
+                </select>
             </div>
         </div>
     );
 };
+
 
 const AddButton = ({ onClick }) => (
     <button type="button" className="online-spending-add-item-button__button" onClick={onClick}>
@@ -61,6 +68,9 @@ const AddButton = ({ onClick }) => (
 const OnlineSpendingAddItemButton = () => {
     const [inputGroups, setInputGroups] = useState([]);
     const [items, setItems] = useState([]);
+    
+    // aici categoriile din backend
+    const categories = ["Alimente", "Transport", "Divertisment", "Utilități", "Altele"];
 
     const handleAddClick = () => {
         if (inputGroups.length < 10) {
@@ -80,7 +90,7 @@ const OnlineSpendingAddItemButton = () => {
         <div className="online-spending-container">
             <div className="online-spending-add-item-button__wrapper">
                 {inputGroups.map((id) => (
-                    <InputGroup key={id} id={id} onInputChange={handleInputChange} />
+                    <InputGroup key={id} id={id} onInputChange={handleInputChange} categories={categories} />
                 ))}
                 {inputGroups.length < 10 && <AddButton onClick={handleAddClick} />}
             </div>
@@ -91,5 +101,6 @@ const OnlineSpendingAddItemButton = () => {
         </div>
     );
 };
+
 
 export default OnlineSpendingAddItemButton;

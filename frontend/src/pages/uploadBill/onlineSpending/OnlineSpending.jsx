@@ -2,6 +2,7 @@ import "./OnlineSpending.css"
 import OnlineSpendingAddItemButton from "./components/onlineSpendingAddItemButton/OnlineSpendingAddItemButton";
 import OnlineSpendingCompanyNameInput from "./components/onlineSpendingCompanyNameInput/OnlineSpendingCompanyNameInput";
 import OnlineSpendingDateInput from "./components/onlineSpendingDateInput/OnlineSpendingDateInput";
+import OnlineSpendingDescription from "./components/onlineSpendingDescription/OnlineSpendingDescription";
 import OnlineSpendingHourInput from "./components/onlineSpendingHourInput/OnlineSpendingHourInput";
 
 export default function OnlineSpending() {
@@ -19,6 +20,7 @@ export default function OnlineSpending() {
             <div className="line2"></div>
             <h1 className="online-spending-form-title">Adaugă o cheltuială online</h1>
             <h1 className="add-product-list-title">Lista produselor:</h1>
+            <OnlineSpendingDescription/>
         </div>
     );
 }

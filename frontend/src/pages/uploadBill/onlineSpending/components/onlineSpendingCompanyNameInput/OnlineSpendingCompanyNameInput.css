@@ -1,8 +1,6 @@
-  /* input company name */
-
   .bill-page-company-name-input .input {
     position: absolute;
-    top:120px;
+    top:110px;
     left:33px;
     border: 2px solid transparent;
     width: 15em;
