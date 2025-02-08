@@ -1,55 +1,56 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AuthContext = createContext();
-const SESSION_EXPIRATION_MS = 12 * 60 * 60 * 1000; // 12 ore în milisecunde
+const SESSION_EXPIRATION_MS = 12 * 60 * 60 * 1000; // 12 ore pana la logout automat
 
 export const AuthProvider = ({ children }) => {
-    const [userEmail, setUserEmail] = useState(null);
-    const [userPassword, setUserPassword] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const [userEmail, setUserEmail] = useState(() => {
+        const storedData = localStorage.getItem("auth");
+        if (storedData) {
+            const { email, expiration } = JSON.parse(storedData);
+            return new Date().getTime() < expiration ? email : null;
+        }
+        return null;
+    });
 
     useEffect(() => {
-        const checkAuth = () => {
-            const storedData = localStorage.getItem('auth');
+        const checkExpiration = () => {
+            const storedData = localStorage.getItem("auth");
             if (storedData) {
-                const { email, password, expiration } = JSON.parse(storedData);
-                if (new Date().getTime() < expiration) {
-                    setUserEmail(email);
-                    setUserPassword(password);
-                    const remainingTime = expiration - new Date().getTime();
-                    setTimeout(logout, remainingTime);
-                } else {
+                const { expiration } = JSON.parse(storedData);
+                if (new Date().getTime() >= expiration) {
                     logout();
                 }
             }
         };
 
-        checkAuth();
+        checkExpiration();
+        const interval = setInterval(checkExpiration, 60 * 1000);
+        return () => clearInterval(interval);
     }, []);
 
-    const login = (email, password) => {
+    const login = (email) => {
         const expirationTime = new Date().getTime() + SESSION_EXPIRATION_MS;
-
-        localStorage.setItem('auth', JSON.stringify({ email, password, expiration: expirationTime }));
+        localStorage.setItem("auth", JSON.stringify({ email, expiration: expirationTime }));
         setUserEmail(email);
-        setUserPassword(password);
-        console.log(email);
-        console.log(password);
-        setTimeout(logout, SESSION_EXPIRATION_MS);
 
-        navigate('/home');
+        navigate(location.state?.from?.pathname || "/home");
     };
 
     const logout = () => {
-        localStorage.removeItem('auth');
+        localStorage.removeItem("auth");
         setUserEmail(null);
-        setUserPassword(null);
-        navigate('/login');
+        if (location.pathname !== "/login") {
+            navigate("/login");
+        }
     };
 
     return (
-        <AuthContext.Provider value={{ userEmail, userPassword, login, logout }}>
+        <AuthContext.Provider value={{ userEmail, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
