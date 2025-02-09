@@ -3,6 +3,7 @@
     width: 42%; /* dimensiune container imagine */
     top: 19.5%;
     left: 3%;
+    transform: scale(1.2);
   }
   
   .wlcPageImg img {
