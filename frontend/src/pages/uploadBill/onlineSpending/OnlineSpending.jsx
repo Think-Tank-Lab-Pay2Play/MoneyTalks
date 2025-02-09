@@ -56,10 +56,10 @@ export default function OnlineSpending() {
                 }
             }, {
                 companyName,
+                items: validItems,
                 date,
                 description,
                 hour,
-                items: validItems,
             });
         
             console.log(companyName);

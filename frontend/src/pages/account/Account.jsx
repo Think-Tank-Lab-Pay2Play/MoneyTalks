@@ -1,11 +1,11 @@
-
+import GeneralTopBar from "../generalTopBar/GeneralTopBar";
+import "./Account.css"
 
 export default function Account()
 {
-    const fatalError = ">:D acc";
     return (
         <>
-            <h1>{fatalError}</h1>
+            <GeneralTopBar/>
         </>
     );
 }

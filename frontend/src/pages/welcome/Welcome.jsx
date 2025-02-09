@@ -5,12 +5,14 @@ import WelcomePageTopBar from "./welcomePageTopBar/WelcomePageTopBar.jsx";
 import MarioBlock from "./marioBlock/MarioBlock.jsx";
 import HomeButton from "./homeButton/HomeButton.jsx";
 import WelcomePageThreeButtonsAnimation from "./welcomePageThreeButtonsAnimation/WelcomePageThreeButtonsAnimation.jsx";
+import PagesBackground from "../pages-background/PagesBackground.jsx";
 
 
 export default function Welcome() {
 
     return (
         <>
+            <PagesBackground/>
             <WelcomePageTopBar />
             <HomeButton />
             <RegisterButton />

@@ -8,6 +8,7 @@ import HomePageUserOptions from "./homePageUserOptions/HomePageUserOptions";
 import VectorialIlustration from "./vectorialIlustration/VectorialIlustration";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PagesBackground from "../pages-background/PagesBackground";
 
 export default function Home() {
     const sampleDataForLastFiveSpendings = [
@@ -166,6 +167,7 @@ export default function Home() {
 
     return (
         <>
+            <PagesBackground/>
             <GeneralTopBar />
             <TopWtiningOnHomePage />
 

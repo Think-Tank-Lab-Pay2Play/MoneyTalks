@@ -5,6 +5,7 @@ import "./ViewSpendings.css"
 import ViewSpendingsTopWriting from "./viewSpendingsTopWriting/ViewSpendingsTopWriting";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PagesBackground from "../pages-background/PagesBackground";
 
 export default function ViewSpendings() {
 
@@ -50,6 +51,7 @@ export default function ViewSpendings() {
 
     return (
         <>
+            <PagesBackground/>
             <GeneralTopBar />
             <ViewSpendingsTopWriting />
 
