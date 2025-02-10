@@ -1,8 +1,8 @@
 .confirmation-button-fixed {
     position: absolute;
-    bottom: 90px;
+    bottom: 200px;
     right: 640px;
-    z-index: 100;
+    z-index: 5;
 }
 
 .confirmation-button {
