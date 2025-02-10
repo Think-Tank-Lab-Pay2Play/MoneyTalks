@@ -5,15 +5,14 @@
     gap: 10px;
     font-family: Arial, sans-serif;
     max-width: 300px;
-    position: fixed;
-    top:585px;
-    right:635px;
+    position: absolute;
+    top:245px;
+    left:20px;
   }
   
   .time-label {
     font-weight: bold;
     font-size: 14px;
-    margin-left: 10px;
   }
   
   .time-select {
@@ -23,7 +22,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
-    margin-right: 10px; 
+    margin-right: 15px; 
   }
   
   .time-select:focus {
@@ -36,6 +35,7 @@
     color: #333;
   }
   
+
   .time-label {
     font-weight: bold;
     font-size: 14px;
