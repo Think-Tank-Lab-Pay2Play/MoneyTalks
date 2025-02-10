@@ -45,15 +45,15 @@
   .line {
     position: absolute;
     top: 400px;
-    bottom: 163px;
-    left: 1310px;
+    bottom: 60px;
+    left: 1110px;
     width: 5px;
     background-color: black;
   }
 
   .line2 {
     position: absolute;
-    left: 1030px;
+    left: 841px;
     right: 151px;
     top: 400px;
     height: 5px;
@@ -63,11 +63,11 @@
 .add-product-list-title{
   position: absolute;
   right:260px;
-  bottom: 575px;
+  bottom: 475px;
 }
 
 .online-spending-form-title{
   position: absolute;
   right:350px;
-  bottom: 650px;
+  bottom: 540px;
 }
