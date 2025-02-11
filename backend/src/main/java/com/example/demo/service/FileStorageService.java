@@ -50,15 +50,6 @@ public class FileStorageService {
         }
     }
 
-    public byte[] getFile(String fileName) {
-        try {
-            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
-            return Files.readAllBytes(filePath);
-        } catch (IOException ex) {
-            throw new RuntimeException("File not found " + fileName, ex);
-        }
-    }
-
     public void deleteFile(String fileName) {
         try {
             Path filePath = this.fileStorageLocation.resolve(fileName).normalize();

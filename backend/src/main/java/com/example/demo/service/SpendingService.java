@@ -1,14 +1,10 @@
 package com.example.demo.service;
-
 import com.example.demo.dto.item.ItemRequest;
 import com.example.demo.dto.spendings.SpendingRequest;
 import com.example.demo.dto.spendings.SpendingResponse;
 import com.example.demo.exceptions.AuthException;
 import com.example.demo.model.Spending;
-import com.example.demo.model.User;
 import com.example.demo.repository.SpendingRepo;
-import com.example.demo.service.FileStorageService;
-import com.example.demo.service.UserService;
 import com.example.demo.utils.mapper.SpendingMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -51,8 +47,6 @@ public class SpendingService {
             for (ItemRequest itemRequest : spendingRequest.products()) {
                 itemService.save(itemRequest, savedSpending.getSpendingsId());
             }
-
-        // Refresh spending to get the items
         return SpendingMapper.entityToDto(
                 spendingRepository.findById(savedSpending.getSpendingsId()).orElseThrow()
         );
@@ -65,13 +59,9 @@ public class SpendingService {
         }
 
         Spending spending = findById(spendingId);
-
-        // Delete old image if exists
         if (spending.getImageName() != null) {
             fileStorageService.deleteFile(spending.getImageName());
         }
-
-        // Store new image
         String imageName = fileStorageService.storeFile(file);
         spending.setImageName(imageName);
 
@@ -93,7 +83,6 @@ public class SpendingService {
     public void delete(Long id) {
         Spending spending = findById(id);
 
-        // Delete associated image if exists
         if (spending.getImageName() != null) {
             fileStorageService.deleteFile(spending.getImageName());
         }
