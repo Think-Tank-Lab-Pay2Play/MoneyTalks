@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -28,33 +29,37 @@ public class Spending {
     @Schema(description = "The name of the company of the spending")
     private String companyName;
 
-    @OneToMany(mappedBy = "spending", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Schema(description = "List of items purchased in the spending")
-    private List<Item> products;
-
     @Column(nullable = false)
     @Schema(description = "The total price of the spending")
     private float totalPrice;
 
     @Column(nullable = false)
     @Schema(description = "The date when the spending occurred")
-    private LocalDate date;
+    private LocalDateTime date;
 
-    @Column(length = 255)
-    @Schema(description = "Path to the image of the receipt")
-    private String image;
+    @OneToMany(mappedBy = "spending", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Schema(description = "List of items purchased in the spending")
+    private List<Item> products;
 
     @Column(length = 255)
     @Schema(description = "Description about the spending")
     private String description;
 
-    public Spending(User user, String companyName, List<Item> products, float totalPrice, LocalDate date, String image, String description) {
+    @Column(length = 255)
+    @Schema(description = "Name of the stored receipt image file")
+    private String imageName;
+
+    @Transient
+    private String imageBase64;
+
+    public Spending(User user, String companyName, float totalPrice, LocalDateTime date,
+                    List<Item> products, String description, String imageName) {
         this.user = user;
         this.companyName = companyName;
-        this.products = products;
         this.totalPrice = totalPrice;
         this.date = date;
-        this.image = image;
+        this.products = products;
         this.description = description;
+        this.imageName = imageName;
     }
 }
