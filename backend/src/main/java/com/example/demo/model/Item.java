@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.model.enums.Category;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,27 +33,28 @@ public class Item {
     @Schema(description = "The number of units of the item")
     private int units;
 
+    @Column(nullable = false)
+    @Schema(description = "The total price of the item")
+    float totalPrice;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Schema(description = "The ctegory of the item")
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id",nullable = false)
-    @Schema(description = "The user who purchased the item")
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "spendings_id", nullable = false)
-    @Schema(description = "The spendings entry to which the item belongs")
+    @JsonIgnore
+    @ToString.Exclude
+    @Schema(description = "The spending entry to which the item belongs")
     private Spending spending;
 
-    public Item(String itemName, float pricePerUnit, int units, Category category, User user, Spending spending) {
+    public Item(String itemName, float pricePerUnit, int units, float totalPrice, Category category, Spending spending) {
         this.itemName = itemName;
         this.pricePerUnit = pricePerUnit;
         this.units = units;
+        this.totalPrice = totalPrice;
         this.category = category;
-        this.user = user;
         this.spending = spending;
     }
 }
