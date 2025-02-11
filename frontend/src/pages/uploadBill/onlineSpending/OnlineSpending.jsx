@@ -13,60 +13,64 @@ export default function OnlineSpending() {
     const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
     const [hour, setHour] = useState({ hour: '', minute: '' });
-    const [items, setItems] = useState([{ id: Date.now(), name: '', quantity: '', price: '', category: '' }]);
-
-    const handleCompanyNameChange = (name) => setCompanyName(name);
-    const handleDateChange = (date) => setDate(date);
-    const handleDescriptionChange = (description) => setDescription(description);
-    const handleHourChange = (hour, minute) => setHour({ hour, minute });
-    const handleItemsChange = (newItems) => setItems(newItems);
+    const [items, setItems] = useState([{ itemName: '', pricePerUnit: '', units: '', category: '' }]);
 
     const handleSubmit = async () => {
-        if (!companyName || !date || !description || !hour.hour || !hour.minute) {
+        if (!companyName || !date || !description || !hour.hour || !hour.minute || items.length === 0) {
             alert("Toate câmpurile obligatorii trebuie completate!");
             return;
         }
 
-        const validItems = items.filter(item => item.name && item.quantity && item.price && item.category);
-        if (validItems.length === 0) {
-            validItems.push({ id: Date.now(), name: '', quantity: '', price: '', category: '' });
-        }
-
+        const formattedDate = `${date}T${hour.hour.padStart(2, '0')}:${hour.minute.padStart(2, '0')}:00`;
+        const formattedItems = items.map(item => ({
+            itemName: item.itemName,
+            pricePerUnit: parseFloat(item.pricePerUnit),
+            units: parseInt(item.units, 10),
+            category: item.category
+        }));
+        const totalPrice = formattedItems.reduce((sum, item) => sum + (item.pricePerUnit * item.units), 0);
 
         try {
             const storedData = localStorage.getItem("auth");
             if (!storedData) return;
-        
             const { email, password } = JSON.parse(storedData);
-            console.log(storedData);
 
+            const userResponse = await axios.get(`http://localhost:8080/users/byEmail/${email}`, {
+                headers: { 'Content-Type': 'application/json' },
+                auth: { username: email, password }
+            });
+
+            const userId = userResponse.data.id;
+            console.log(userId);
             console.log(companyName);
-            console.log(date);
+            console.log(totalPrice);
+            console.log(formattedDate);
+            console.log(formattedItems);
             console.log(description);
-            console.log(hour);
-            console.log(items);
-            
+
             const response = await axios.post('http://localhost:8080/spending', {
+                userId: userId,
+                companyName: companyName,
+                totalPrice: totalPrice,
+                date: formattedDate,
+                products: formattedItems,
+                description: description
+            }, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 auth: {
                     username: email,
-                    password: password,
+                    password,
                 }
-            }, {
-                companyName,
-                items: validItems,
-                date,
-                description,
-                hour,
             });
-        
+
+            console.log(userId);
             console.log(companyName);
-            console.log(date);
+            console.log(totalPrice);
+            console.log(formattedDate);
+            console.log(formattedItems);
             console.log(description);
-            console.log(hour);
-            console.log(items);
 
             if (response.status === 200) {
                 alert('Datele au fost trimise cu succes!');
@@ -74,10 +78,9 @@ export default function OnlineSpending() {
                 alert('Eroare la trimiterea datelor.');
             }
         } catch (error) {
-            console.error('Eroare:', error);
-            alert('A apărut o problemă.');
+            console.error('Eroare:', error.response ? error.response.data : error.message);
+            alert('A apărut o problemă. Detalii: ' + (error.response ? error.response.data : error.message));
         }
-        
     };
 
     return (
@@ -88,17 +91,17 @@ export default function OnlineSpending() {
                     <div className="online-spending-background-inner" />
                 </div>
 
-                <OnlineSpendingCompanyNameInput onChange={handleCompanyNameChange} />
-                <OnlineSpendingDateInput onChange={handleDateChange} />
-                <OnlineSpendingHourInput onChange={handleHourChange} />
+                <OnlineSpendingCompanyNameInput onChange={setCompanyName} />
+                <OnlineSpendingDateInput onChange={setDate} />
+                <OnlineSpendingHourInput onChange={(h, m) => setHour({ hour: h, minute: m })} />
             </div>
 
-            <OnlineSpendingAddItemButton onItemsChange={handleItemsChange} />
+            <OnlineSpendingAddItemButton onItemsChange={setItems} />
             <div className="line"></div>
             <div className="line2"></div>
             <h1 className="online-spending-form-title">Adaugă o cheltuială online</h1>
             <h1 className="add-product-list-title">Lista produselor:</h1>
-            <OnlineSpendingDescription onChange={handleDescriptionChange} />
+            <OnlineSpendingDescription onChange={setDescription} />
 
             <div className="confirmation-button-fixed">
                 <OnlineSpendingConfirmationButton onClick={handleSubmit} />
