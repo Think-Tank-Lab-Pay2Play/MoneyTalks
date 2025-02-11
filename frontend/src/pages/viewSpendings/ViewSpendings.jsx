@@ -39,7 +39,7 @@ export default function ViewSpendings() {
                     allSpendings: userResponse.data.allSpendings
                 };
 
-                setAllSpendings(userResponse.data.allSpendings);
+                setAllSpendings(userResponse.data.spendings);
 
             } catch (error) {
                 console.error("Eroare la preluarea userului:", error);

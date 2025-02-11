@@ -79,8 +79,12 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
     };
 
     if (!spendings || !Array.isArray(spendings)) {
-        return <div className='no-spendings-to-show'>Nu există cheltuieli de afișat.<br/>Scanează bonuri, facturi, sau încarcă manual o cheltuială online pentru a începe!</div>;
+        return <div className='no-spendings-to-show'>Nu există cheltuieli de afișat.<br />Scanează bonuri, facturi, sau încarcă manual o cheltuială online pentru a începe!</div>;
     }
+
+    const handleToggleDetails = (spendingId) => {
+        setSelectedSpendingId(prev => prev === spendingId ? null : spendingId);
+    };
 
     return (
         <div>
@@ -164,7 +168,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                     </thead>
                     <tbody>
                         {currentSpendings.map((spending) => (
-                            <React.Fragment key={spending.spendingsId}>
+                            <React.Fragment key={spending.spendingId}>
                                 <tr>
                                     <td>{spending.companyName}</td>
                                     <td>{spending.products.length}</td>
@@ -174,23 +178,41 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                             day: '2-digit',
                                             month: '2-digit',
                                             year: 'numeric'
+                                        })} {parseEuropeanDate(spending.date).toLocaleTimeString('ro-RO', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
                                         })}
                                     </td>
+
                                     <td>
                                         <button
                                             className="view-all-spendings-table-details-btn"
                                             onClick={() => setSelectedSpendingId(
-                                                prev => prev === spending.spendingsId ? null : spending.spendingsId
+                                                prev => prev === spending.spendingId ? null : spending.spendingId, console.log(spending)
                                             )}
                                         >
-                                            {selectedSpendingId === spending.spendingsId ? 'Ascunde' : 'Vezi detalii'}
+                                            {selectedSpendingId === spending.spendingId ? 'Ascunde' : 'Vezi detalii'}
                                         </button>
                                     </td>
                                 </tr>
-                                {selectedSpendingId === spending.spendingsId && (
+                                {selectedSpendingId === spending.spendingId && (
                                     <tr className="view-all-spendings-table-details-row">
                                         <td colSpan="6">
                                             <div className="view-all-spendings-table-products-details">
+                                                <p>Această achiziție a fost făcută la data de:{" "}
+                                                    {(() => {
+                                                        const date = new Date(spending.date);
+                                                        const day = date.getDate();
+                                                        const month = date.toLocaleString('ro-RO', { month: 'long' });
+                                                        const year = date.getFullYear();
+                                                        const time = date.toLocaleTimeString('ro-RO', { hour: '2-digit', minute: '2-digit' });
+
+                                                        return `${day} ${month} ${year}, ora ${time}`;
+                                                    })()}
+                                                </p>
+                                                {spending.description && (
+                                                    <p>Descriere: {spending.description}</p>
+                                                )}
                                                 <h4>Produse achiziționate:</h4>
                                                 <table className="view-all-spendings-table-products-table">
                                                     <thead>
@@ -215,7 +237,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
                                                 <div className="view-all-spendings-table-delete-container">
                                                     <button
                                                         className="view-all-spendings-table-delete-btn"
-                                                        onClick={() => handleDelete(spending.spendingsId)}
+                                                        onClick={() => handleDelete(spending.spendingId)}
                                                     >
                                                         Șterge Cheltuiala
                                                     </button>
