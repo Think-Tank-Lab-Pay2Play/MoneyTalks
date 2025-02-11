@@ -21,24 +21,23 @@ const InputGroup = ({ id, onInputChange, categories }) => {
                     type="text"
                     className="online-spending-add-item-button__input online-spending-add-item-button__input--name"
                     placeholder="Nume produs"
-                    onChange={(e) => handleChange('name', e.target.value)}
+                    onChange={(e) => handleChange('itemName', e.target.value)}
                 />
                 <input
                     type="number"
                     className="online-spending-add-item-button__input online-spending-add-item-button__input--quantity"
                     placeholder="Cantitate"
                     min="1"
-                    onChange={(e) => handleChange('quantity', e.target.value)}
+                    onChange={(e) => handleChange('units', Number(e.target.value))}
                 />
                 <input
                     type="number"
                     className="online-spending-add-item-button__input online-spending-add-item-button__input--price"
-                    placeholder="Pret Total"
+                    placeholder="Pret per unitate"
                     min="0"
                     step="0.01"
-                    onChange={(e) => handleChange('price', e.target.value)}
+                    onChange={(e) => handleChange('pricePerUnit', parseFloat(e.target.value))}
                 />
-
                 <select
                     className="online-spending-add-item-button__input online-spending-add-item-button__input--category"
                     onChange={(e) => handleChange('category', e.target.value)}
@@ -66,23 +65,22 @@ const AddButton = ({ onClick }) => (
 
 const OnlineSpendingAddItemButton = ({ onItemsChange }) => {
     const [inputGroups, setInputGroups] = useState([]);
-    const [items, setItems] = useState([{ id: Date.now(), name: '', quantity: '', price: '', category: '' }]); // Adăugăm un produs gol implicit
-    
-    const categories = ["Alimente", "Transport", "Divertisment", "Utilități", "Altele"];
+    const [items, setItems] = useState([]);
+
+    const categories = ["FOOD", "ELECTRONICS", "CLOTHES"];
 
     const handleAddClick = () => {
         if (inputGroups.length < 10) {
             const newId = Date.now();
             setInputGroups((prev) => [...prev, newId]);
-            setItems((prev) => [...prev, { id: newId, name: '', quantity: '', price: '', category: '' }]);
+            setItems((prev) => [...prev, { id: newId, itemName: '', units: '', pricePerUnit: '', category: '' }]);
         }
     };
 
     const handleInputChange = (id, field, value) => {
-        setItems((prev) =>
-            prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
-        );
-        onItemsChange(items);  // Trimite starea actualizată către părintele component
+        const updatedItems = items.map((item) => (item.id === id ? { ...item, [field]: value } : item));
+        setItems(updatedItems);
+        onItemsChange(updatedItems);
     };
 
     return (
@@ -95,7 +93,7 @@ const OnlineSpendingAddItemButton = ({ onItemsChange }) => {
             </div>
 
             <div className="confirmation-button-fixed">
-                <OnlineSpendingConfirmationButton items={items} />
+                <OnlineSpendingConfirmationButton />
             </div>
         </div>
     );
