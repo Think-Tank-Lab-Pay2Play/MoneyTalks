@@ -30,17 +30,7 @@ export default function ViewSpendings() {
                     }
                 });
 
-                const userData = {
-                    id: userResponse.data.id,
-                    firstName: userResponse.data.firstName,
-                    lastName: userResponse.data.lastName,
-                    email: userResponse.data.email,
-                    password: password,
-                    allSpendings: userResponse.data.allSpendings
-                };
-
                 setAllSpendings(userResponse.data.spendings);
-
             } catch (error) {
                 console.error("Eroare la preluarea userului:", error);
             }
@@ -48,6 +38,30 @@ export default function ViewSpendings() {
 
         fetchUserData();
     }, []);
+
+    const updateSpendings = async () => {
+        const storedData = localStorage.getItem("auth");
+        if (!storedData) return;
+
+        const { email, password } = JSON.parse(storedData);
+        try {
+            const userEmail = email;
+
+            const userResponse = await axios.get(`http://localhost:8080/users/byEmail/${userEmail}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                auth: {
+                    username: email,
+                    password: password,
+                }
+            });
+
+            setAllSpendings(userResponse.data.spendings);
+        } catch (error) {
+            console.error("Eroare la actualizarea cheltuielilor:", error);
+        }
+    };
 
     return (
         <>
@@ -85,7 +99,7 @@ export default function ViewSpendings() {
             />*/}
 
 
-            <ViewAllSpendingsTable spendings={allSpendings} />
+            <ViewAllSpendingsTable spendings={allSpendings} onSpendingDeleted={updateSpendings}/>
 
             <ViewAllSpendingsImage />
         </>
