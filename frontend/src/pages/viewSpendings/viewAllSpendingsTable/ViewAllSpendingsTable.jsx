@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ViewAllSpendingsTable.css';
+import axios from 'axios';
 
-const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
+const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
     const [selectedSpendingId, setSelectedSpendingId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [minPrice, setMinPrice] = useState('');
@@ -11,6 +12,7 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
     const [endDate, setEndDate] = useState('');
     const [sortOrder, setSortOrder] = useState('desc');
     const itemsPerPage = 15;
+
 
     const filterByPrice = (spending) => {
         if (!minPrice && !maxPrice) return true;
@@ -70,15 +72,30 @@ const ViewAllSpendingsTable = ({ spendings, onDelete }) => {
     const goToPreviousPage = () => currentPage > 1 && setCurrentPage(p => p - 1);
 
     const handleDelete = async (spendingId) => {
+        const storedData = localStorage.getItem("auth");
+        if (!storedData) return;
+
+        const { email, password } = JSON.parse(storedData);
         try {
-            await fetch(`/api/spendings/${spendingId}`, { method: 'DELETE' });
-            onDelete(spendingId);
+            const userEmail = email;
+
+            const response = await axios.delete(`http://localhost:8080/spending/${spendingId}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                auth: {
+                    username: email,
+                    password: password,
+                }
+            });
+            //console.log(response.data);
+            onSpendingDeleted();
         } catch (error) {
-            console.error('Error deleting spending:', error);
+            console.error(error);
         }
     };
 
-    if (!spendings || !Array.isArray(spendings)) {
+    if (!spendings || !Array.isArray(spendings) || spendings.length === 0) {
         return <div className='no-spendings-to-show'>Nu există cheltuieli de afișat.<br />Scanează bonuri, facturi, sau încarcă manual o cheltuială online pentru a începe!</div>;
     }
 
