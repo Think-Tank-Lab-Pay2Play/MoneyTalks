@@ -41,12 +41,12 @@ export default function OnlineSpending() {
             });
 
             const userId = userResponse.data.id;
-            console.log(userId);
-            console.log(companyName);
-            console.log(totalPrice);
-            console.log(formattedDate);
-            console.log(formattedItems);
-            console.log(description);
+            //console.log(userId);
+            //console.log(companyName);
+            //console.log(totalPrice);
+            //console.log(formattedDate);
+            //console.log(formattedItems);
+            //console.log(description);
 
             const response = await axios.post('http://localhost:8080/spending', {
                 userId: userId,

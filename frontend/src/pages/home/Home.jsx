@@ -99,17 +99,23 @@ export default function Home() {
                     allSpendings: userResponse.data.allSpendings
                 };
 
-                setLastFiveSpendings(
-                    userResponse.data.allSpendings
+                //console.log(userResponse.data.spendings);
+
+                 setLastFiveSpendings(
+                    userResponse.data.spendings
                         ?.sort((a, b) => new Date(b.date) - new Date(a.date))
                         .slice(0, 5)
+                        .map((spending) => ({
+                            ...spending, // Spread the original spending data
+                            numberOfProducts: spending.products?.length || 0
+                        }))
                 );
 
                 setLastTwelveMonthsSpendings(() => {
                     const now = new Date();
                     const monthlySpendings = new Map();
 
-                    userResponse.data.allSpendings?.forEach(spending => {
+                    userResponse.data.spendings?.forEach(spending => {
                         const spendingDate = new Date(spending.date);
                         const key = `${spendingDate.getFullYear()}-${spendingDate.getMonth() + 1}`;
 
@@ -131,7 +137,7 @@ export default function Home() {
                     const thirtyDaysAgo = new Date();
                     thirtyDaysAgo.setDate(now.getDate() - 30);
 
-                    const totalLastThirtyDays = userResponse.data.allSpendings
+                    const totalLastThirtyDays = userResponse.data.spendings
                         ?.filter(spending => {
                             const spendingDate = new Date(spending.date);
                             return spendingDate >= thirtyDaysAgo && spendingDate <= now;
@@ -146,7 +152,7 @@ export default function Home() {
                     const thirtyDaysAgo = new Date();
                     thirtyDaysAgo.setDate(now.getDate() - 30);
 
-                    const billsCount = userResponse.data.allSpendings
+                    const billsCount = userResponse.data.spendings
                         ?.filter(spending => {
                             const spendingDate = new Date(spending.date);
                             return spendingDate >= thirtyDaysAgo && spendingDate <= now;

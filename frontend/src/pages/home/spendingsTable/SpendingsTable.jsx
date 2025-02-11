@@ -2,7 +2,6 @@ import React from "react";
 import "./SpendingsTable.css";
 
 export default function SpendingsTable({ data = [] }) {
-
     return (
         <div className="spendings-table-container">
             <table className="spendings-table">
@@ -21,7 +20,8 @@ export default function SpendingsTable({ data = [] }) {
                                 <td>{item.companyName}</td>
                                 <td>{item.numberOfProducts}</td>
                                 <td>{item.totalPrice.toFixed(2)} RON</td>
-                                <td>{item.date}</td>
+                                <td>{new Date(item.date).toLocaleString('ro-RO', { hour12: false }).replace(',', '').slice(0, -3)}</td>
+
                             </tr>
                         ))
                     ) : (
