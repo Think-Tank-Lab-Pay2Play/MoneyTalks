@@ -3,6 +3,7 @@ import "./GeneralTopBar.css"
 import HiUserMessage from './components/hiUserMessage/HiUserMessage.jsx';
 import TopBarAppLogo from './components/topBarAppLogo/TopBarAppLogo.jsx';
 import LogoutButton from './components/logoutButton/LogoutButton.jsx';
+import GifPisicaMiu from './components/gifPisicaMiu/GifPisicaMiu.jsx';
 
 export default function GeneralTopBar() {
     return (
@@ -10,6 +11,7 @@ export default function GeneralTopBar() {
             <HiUserMessage />
             <TopBarAppLogo />
             <LogoutButton />
+            <GifPisicaMiu />
         </div>
     );
 }
