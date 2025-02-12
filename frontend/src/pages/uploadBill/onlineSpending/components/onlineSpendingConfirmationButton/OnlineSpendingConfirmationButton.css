@@ -48,3 +48,12 @@
 .confirmation-button:hover::after {
     opacity: 1;
 }
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .confirmation-button-fixed {
+        position: absolute;
+        bottom: -100px;
+        right: 570px;
+        z-index: 100;
+    }
+}
