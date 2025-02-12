@@ -144,7 +144,7 @@ export default function Home() {
                         })
                         .reduce((sum, spending) => sum + spending.totalPrice, 0);
 
-                    return totalLastThirtyDays;
+                    return totalLastThirtyDays.toFixed(2);
                 });
 
                 setUploadedBillsOnThePastThirtyDays(() => {
