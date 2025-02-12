@@ -1,9 +1,10 @@
-export default function Tutorial() {
+import GeneralTopBar from "../generalTopBar/GeneralTopBar"
+import "./Tutorial.css"
 
-    const fatalError = ">:D tutorial";
+export default function Tutorial() {
     return (
         <>
-            <h1>{fatalError}</h1>
+            <GeneralTopBar/>
         </>
     );
 }
