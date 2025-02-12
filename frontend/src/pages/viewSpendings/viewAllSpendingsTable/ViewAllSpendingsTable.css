@@ -217,3 +217,16 @@
   font-size: 48px;
   text-align: center;
 }
+
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+  .view-all-spendings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.2em;
+    min-width: 1350px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+}
