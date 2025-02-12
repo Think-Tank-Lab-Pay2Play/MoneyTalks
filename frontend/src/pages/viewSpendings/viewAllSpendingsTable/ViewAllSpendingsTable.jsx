@@ -12,6 +12,7 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
     const [endDate, setEndDate] = useState('');
     const [sortOrder, setSortOrder] = useState('desc');
     const itemsPerPage = 15;
+    const currentDate = new Date().toISOString().split('T')[0];
 
 
     const filterByPrice = (spending) => {
@@ -150,6 +151,7 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
                         className="filter-input"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
+                        max={currentDate}
                     />
                 </div>
                 <div className="filter-group">
@@ -159,6 +161,7 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
                         className="filter-input"
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
+                        max={currentDate}
                     />
                 </div>
 
