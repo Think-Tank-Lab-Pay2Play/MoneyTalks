@@ -1,15 +1,16 @@
 .onlineSpendingDescription-container {
     width: 130px;
     height: 50px;
-    border: 2px solid #a0aec0; /* Gri */
+    border: 2px solid #a0aec0;
+    /* Gri */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 8px;
     margin: auto;
-    position:absolute;
-    top:650px;
-    right:650px;
+    position: absolute;
+    top: 650px;
+    right: 650px;
 }
 
 .onlineSpendingDescription-input {
@@ -27,4 +28,22 @@
 
 .onlineSpendingDescription-input::placeholder {
     color: #888;
+}
+
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .onlineSpendingDescription-container {
+        width: 130px;
+        height: 50px;
+        border: 2px solid #a0aec0;
+        /* Gri */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        margin: auto;
+        position: absolute;
+        top: 650px;
+        right: 580px;
+    }
 }

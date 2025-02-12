@@ -96,3 +96,14 @@
 .confirm-button:hover {
   background-color: #2a4d9b;
 }
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+  .upload-bill-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 320px;
+    left:70px;
+  }
+}

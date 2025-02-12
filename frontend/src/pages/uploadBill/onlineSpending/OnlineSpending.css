@@ -1,73 +1,112 @@
 /* background-ul elementului */
 .online-spending-background-wrapper {
+  position: absolute;
+  top: 320px;
+  right: 150px;
+}
+
+.online-spending-background-card {
+  --bg: #4169e100;
+  --contrast: #f5f9ff00;
+  --grey: #000000;
+  position: relative;
+  padding: 9px;
+  background-color: var(--bg);
+  border-radius: 40px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.online-spending-background-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  filter: opacity(10%) contrast(105%);
+}
+
+.online-spending-background-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 700px;
+  height: 550px;
+  background-color: var(--contrast);
+  border-radius: 30px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #c7c4c4;
+  text-align: center;
+  font-family: monospace;
+}
+
+
+.line {
+  position: absolute;
+  top: 400px;
+  bottom: 60px;
+  left: 1110px;
+  width: 5px;
+  background-color: black;
+}
+
+.line2 {
+  position: absolute;
+  left: 841px;
+  right: 151px;
+  top: 400px;
+  height: 5px;
+  background-color: black;
+}
+
+.add-product-list-title {
+  position: absolute;
+  right: 260px;
+  bottom: 475px;
+}
+
+.online-spending-form-title {
+  position: absolute;
+  right: 350px;
+  bottom: 540px;
+}
+
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+  .online-spending-background-wrapper {
     position: absolute;
-    top:320px;
-    right:150px;
+    top: 320px;
+    right: 70px;
   }
-  
-  .online-spending-background-card {
-    --bg: #4169e100;
-    --contrast: #f5f9ff00;
-    --grey: #000000;
-    position: relative;
-    padding: 9px;
-    background-color: var(--bg);
-    border-radius: 40px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  }
-  
-  .online-spending-background-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    filter: opacity(10%) contrast(105%);
-  }
-  
-  .online-spending-background-inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 700px;
-    height: 550px;
-    background-color: var(--contrast);
-    border-radius: 30px;
-    font-size: 30px;
-    font-weight: 900;
-    color: #c7c4c4;
-    text-align: center;
-    font-family: monospace;
-  }
-  
 
   .line {
     position: absolute;
     top: 400px;
-    bottom: 60px;
-    left: 1110px;
+    bottom: -164px;
+    left: 1000px;
     width: 5px;
     background-color: black;
   }
 
   .line2 {
     position: absolute;
-    left: 841px;
-    right: 151px;
+    left: 732px;
+    right: 71px;
     top: 400px;
     height: 5px;
     background-color: black;
-}
+  }
 
-.add-product-list-title{
-  position: absolute;
-  right:260px;
-  bottom: 475px;
-}
+  .add-product-list-title {
+    position: absolute;
+    right: 175px;
+    bottom: 260px;
+  }
 
-.online-spending-form-title{
-  position: absolute;
-  right:350px;
-  bottom: 540px;
+  .online-spending-form-title {
+    position: absolute;
+    right: 250px;
+    bottom: 325px;
+  }
 }
