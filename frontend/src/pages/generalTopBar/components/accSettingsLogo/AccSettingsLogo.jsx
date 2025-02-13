@@ -8,7 +8,7 @@ export default function AccSettingsLogo(){
     const navigate = useNavigate();
     return (
         <div className="account-settings-logo" onClick={() => navigate("/account")}>
-            <Lottie animationData={animatieRotita} loop={true} />
+            <Lottie animationData={animatieRotita} loop={false} />
         </div>
     );
 }
