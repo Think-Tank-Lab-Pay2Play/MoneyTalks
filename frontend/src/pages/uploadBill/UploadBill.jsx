@@ -11,7 +11,7 @@ export default function UploadBill() {
         <>
             <PagesBackground/>
             <GeneralTopBar/>
-            <SliderAnimation/>
+            {/*<SliderAnimation/>*/}
             <BillPageTopWriting/>
             <OnlineSpending/>
             <UploadBillForm/>
