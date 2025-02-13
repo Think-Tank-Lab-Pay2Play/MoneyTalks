@@ -1,10 +1,10 @@
-import welcomePageLayer2Logo from "../../../../assets/app-logo.png";
+import Logos from "../../../components/logos/Logos";
 import "./WelcomePageLayer2Logo.css"
 
 export default function WelcomePageLayer2Logo() {
     return (
         <div className="wlcPageLayer2Logo">
-            <img src={welcomePageLayer2Logo} />
+            <Logos/>
         </div>
     );
 }

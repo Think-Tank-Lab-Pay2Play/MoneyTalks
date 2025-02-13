@@ -1,10 +1,10 @@
-import registerPageAppLogo from "../../../assets/app-logo.png"
+import Logos from "../../components/logos/Logos";
 import "./RegisterPageAppLogo.css"
 
 export default function RegisterPageAppLogo() {
     return (
         <div className="redPageAppLogo">
-            <img src={registerPageAppLogo} />
+            <Logos/>
         </div>
     );
 }

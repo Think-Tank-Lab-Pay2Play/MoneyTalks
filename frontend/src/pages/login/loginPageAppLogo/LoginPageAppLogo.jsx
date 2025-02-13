@@ -1,10 +1,10 @@
-import loginPageAppLogo from "../../../assets/app-logo.png"
+import Logos from "../../components/logos/Logos";
 import "./LoginPageAppLogo.css"
 
 export default function LoginPageAppLogo() {
     return (
         <div className="logPageAppLogo">
-            <img src={loginPageAppLogo} />
+            <Logos/>
         </div>
     );
 }
