@@ -1,0 +1,46 @@
+.show-hide-upload-bill-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    position: absolute;
+    bottom:248px;
+    left:400px;
+  }
+  
+  .show-hide-upload-bill-button-wrapper {
+    background: linear-gradient(to bottom, rgba(176, 164, 149, 0.4), transparent);
+    padding: 4px;
+    border-radius: 16px;
+  }
+  
+  .show-hide-upload-bill-button {
+    padding: 4px;
+    border-radius: 12px;
+    background: linear-gradient(to bottom, white, rgba(176, 164, 149, 0.4));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .show-hide-upload-bill-button:active {
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.5);
+    transform: scale(0.995);
+  }
+  
+  .show-hide-upload-bill-button-inner {
+    background: linear-gradient(to bottom, rgba(176, 164, 149, 0.4), rgba(255, 255, 255, 0.8));
+    border-radius: 8px;
+    padding: 8px 16px;
+  }
+  
+  .show-hide-upload-bill-button-content {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .show-hide-upload-bill-button-text {
+    font-weight: 600;
+  }
+  

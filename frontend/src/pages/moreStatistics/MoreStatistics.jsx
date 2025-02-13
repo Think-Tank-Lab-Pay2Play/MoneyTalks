@@ -1,7 +1,7 @@
 import "./MoreStatistics.css"
 import GeneralTopBar from "../generalTopBar/GeneralTopBar";
 import StatisticsOptions from "./components/statisticsOptions/StatisticsOptions";
-import PagesBackground from "../pages-background/PagesBackground";
+import PagesBackground from "../components/pages-background/PagesBackground";
 import ResultsForTheStatistics from "./components/resultsForTheStatistics/ResultsForTheStatistics";
 
 

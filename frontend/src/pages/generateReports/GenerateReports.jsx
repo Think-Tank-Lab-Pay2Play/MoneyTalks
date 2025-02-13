@@ -1,5 +1,5 @@
 import GeneralTopBar from "../generalTopBar/GeneralTopBar"
-import PagesBackground from "../pages-background/PagesBackground";
+import PagesBackground from "../components/pages-background/PagesBackground";
 import Reports from "./reports/Reports";
 
 export default function GenerateReports()
