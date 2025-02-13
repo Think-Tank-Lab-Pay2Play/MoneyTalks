@@ -1,5 +1,5 @@
 .statistics-options {
-    width: 300px;
+    width: 320px;
     padding: 20px;
     background: white;
     display: flex;
@@ -43,7 +43,7 @@
   }
   
   .statistics-options__icon {
-    width: 20px;
+    width: 35px;
   }
   
   .statistics-options__radio {
@@ -68,6 +68,9 @@
 
   .statistics-options__icon--top-topCheltuieli {
     fill: #48ff00;
+    width: 35px;
   }
 
-  
+  .statistics-options__icon--topProduseCumparate {
+    fill: #f7df1e;
+  }

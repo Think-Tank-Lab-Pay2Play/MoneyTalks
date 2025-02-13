@@ -2,6 +2,7 @@ import "./MoreStatistics.css"
 import GeneralTopBar from "../generalTopBar/GeneralTopBar";
 import StatisticsOptions from "./components/statisticsOptions/StatisticsOptions";
 import PagesBackground from "../pages-background/PagesBackground";
+import ResultsForTheStatistics from "./components/resultsForTheStatistics/ResultsForTheStatistics";
 
 
 export default function MoreStatistics() {
@@ -10,6 +11,7 @@ export default function MoreStatistics() {
             <PagesBackground/>
             <GeneralTopBar/>
             <StatisticsOptions/>
+            <ResultsForTheStatistics/>
             {/*
 
 1. afisarea cheltuielilor pe categorii in una din lunile unui an
