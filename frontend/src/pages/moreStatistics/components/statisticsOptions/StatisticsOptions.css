@@ -1,0 +1,73 @@
+.statistics-options {
+    width: 300px;
+    padding: 20px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
+    position: relative;
+    top:200px;
+    left:100px;
+  }
+  
+  .statistics-options__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    user-select: none;
+  }
+  
+  .statistics-options__item {
+    font-weight: 500;
+    height: 56px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .statistics-options__item:hover {
+    background: #f4f4f4;
+  }
+  
+  .statistics-options__item:has(:checked) {
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #93c5fd;
+  }
+  
+  .statistics-options__icon {
+    width: 20px;
+  }
+  
+  .statistics-options__radio {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    accent-color: #2563eb;
+  }
+  
+  .statistics-options__icon--cheltuieliPeCategorii {
+    fill: #ff5722;
+  }
+  
+  .statistics-options__icon--evolutieCheltuieli {
+    fill: #0277bd;
+  }
+  
+  .statistics-options__icon--medieCheltuieli {
+    fill: #f7df1e;
+  }
+
+  .statistics-options__icon--top-topCheltuieli {
+    fill: #48ff00;
+  }
+
+  

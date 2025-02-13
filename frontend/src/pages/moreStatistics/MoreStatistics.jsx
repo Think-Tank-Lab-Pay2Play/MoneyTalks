@@ -1,18 +1,29 @@
 import "./MoreStatistics.css"
 import GeneralTopBar from "../generalTopBar/GeneralTopBar";
+import StatisticsOptions from "./components/statisticsOptions/StatisticsOptions";
+import PagesBackground from "../pages-background/PagesBackground";
 
 
 export default function MoreStatistics() {
     return (
         <>
+            <PagesBackground/>
             <GeneralTopBar/>
+            <StatisticsOptions/>
             {/*
-Analiza Tendințelor de Cheltuieli
-Descriere: Afișează evoluția cheltuielilor pe categorii (ex: "Cheltuieli cu mâncarea au crescut cu 20% față de luna trecută").
 
-Beneficiu: Ajută utilizatorii să vadă dacă anumite obiceiuri se agravează sau se îmbunătățesc în timp.
+1. afisarea cheltuielilor pe categorii in una din lunile unui an
 
-Exemplu: Grafice linii cu tendințe lunare/anuale.
+2. Evoluția cheltuielilor pe categorii (ex: "Cheltuieli cu mâncarea au crescut cu 20% față de luna trecută").
+
+3. Media cheltuielilor pe o perioada de timp (cat ai cheltuit in medie pe zi/saptamana/luna intr-o saptamana/luna/an)
+
+4. Top cheltuieli pe o perioada de timp
+
+5. setare obiectiv cheltuieli maxime intr-o luna
+
+6. 
+
             
 
 
