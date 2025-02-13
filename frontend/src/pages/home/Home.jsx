@@ -8,7 +8,7 @@ import HomePageUserOptions from "./homePageUserOptions/HomePageUserOptions";
 import VectorialIlustration from "./vectorialIlustration/VectorialIlustration";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import PagesBackground from "../pages-background/PagesBackground";
+import PagesBackground from "../components/pages-background/PagesBackground";
 
 export default function Home() {
     const sampleDataForLastFiveSpendings = [
