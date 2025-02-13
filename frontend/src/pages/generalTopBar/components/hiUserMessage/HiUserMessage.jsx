@@ -48,7 +48,7 @@ export default function HiUserMessage() {
     }, []);
 
     return (
-        <h1 className="general-topbar-hi-user" onClick={() => navigate("/account")}>
+        <h1 className="general-topbar-hi-user">
             Salut, {firstName}!
         </h1>
     );
