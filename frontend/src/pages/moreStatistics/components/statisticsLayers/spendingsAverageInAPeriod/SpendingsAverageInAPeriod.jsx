@@ -1,7 +1,15 @@
 import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar";
 import "./SpendingsAverageInAPeriod.css";
 
-export default function SpendingsAverageInAPeriod({userSpendings}){
+export default function SpendingsAverageInAPeriod({ userSpendings, startDate, setStartDate, endDate, setEndDate }){
+    const filteredSpendings = userSpendings.filter(spending => {
+        const spendingDate = new Date(spending.date);
+        const start = startDate ? new Date(startDate) : null;
+        const end = endDate ? new Date(endDate) : null;
+
+        return (!start || spendingDate >= start) && (!end || spendingDate <= end);
+    });
+
     return (
         <>
             <DateInputCalendar startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
