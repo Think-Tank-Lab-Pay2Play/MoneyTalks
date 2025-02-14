@@ -89,7 +89,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--cheltuieliPeCategorii">
             <Lottie animationData={calendarAnimation} loop={true} />
           </div>
-          Afisarea cheltuielilor pe categorii<br /> in una din lunile unui an
+          Afisarea cheltuielilor pe categorii
           <input type="radio" name="status" defaultChecked id="cheltuieliPeCategorii" className="statistics-options__radio" onChange={() => setSelectedStatistic("cheltuieliPeCategorii")} />
         </label>
 
@@ -105,7 +105,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--medieCheltuieli">
             <Lottie animationData={walletAnimation} loop={true} />
           </div>
-          Media cheltuielilor pe o perioada<br /> de timp
+          Media cheltuielilor
           <input type="radio" name="status" id="medieCheltuieli" className="statistics-options__radio" onChange={() => setSelectedStatistic("medieCheltuieli")} />
         </label>
 
@@ -113,7 +113,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--topCheltuieli">
             <Lottie animationData={creditCardAnimation} loop={true} />
           </div>
-          Top cheltuieli pe o perioada de<br /> timp
+          Top cheltuieli
           <input type="radio" name="status" id="topCheltuieli" className="statistics-options__radio" onChange={() => setSelectedStatistic("topCheltuieli")} />
         </label>
 
@@ -121,7 +121,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--topProduseCumparate">
             <Lottie animationData={tagIconAnimation} loop={true} />
           </div>
-          Top produse achizitionate pe o<br /> perioada de timp
+          Top produse achizitionate
           <input type="radio" name="status" id="topProduseCumparate" className="statistics-options__radio" onChange={() => setSelectedStatistic("topProduseCumparate")} />
         </label>
 
