@@ -99,7 +99,7 @@ export default function Home() {
                     allSpendings: userResponse.data.allSpendings
                 };
 
-                //console.log(userResponse.data.spendings);
+                console.log(userResponse.data);
 
                  setLastFiveSpendings(
                     userResponse.data.spendings
