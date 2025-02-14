@@ -1,11 +1,7 @@
 import "./DateInputCalendar.css";
-import {useState} from "react";
 
-export default function DateInputCalendar() {
+export default function DateInputCalendar({ startDate, setStartDate, endDate, setEndDate }) {
     const currentDate = new Date().toISOString().split('T')[0];
-
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
 
     return (
         <>

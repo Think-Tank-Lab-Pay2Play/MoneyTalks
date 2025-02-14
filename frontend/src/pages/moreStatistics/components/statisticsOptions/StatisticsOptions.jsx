@@ -15,10 +15,15 @@ import TopSpendingsInAPeriod from "../statisticsLayers/topSpendingsInAPeriod/Top
 import SpendingsAverageInAPeriod from "../statisticsLayers/spendingsAverageInAPeriod/SpendingsAverageInAPeriod";
 import SpendingsEvolutionPerCategories from "../statisticsLayers/spendingsEvolutionPerCategories/SpendingsEvolutionPerCategories";
 import SpendingsPerCategories from "../statisticsLayers/spendingsPerCategories/SpendingsPerCategories";
+import DateInputCalendar from "../statisticsLayers/components/dateInputCalendar/DateInputCalendar";
 
 const StatisticsOptions = () => {
 
   const [selectedStatistic, setSelectedStatistic] = useState("cheltuieliPeCategorii");
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [userSpendingsData, setUserSpendingsData] = useState([]);
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -45,11 +50,10 @@ const StatisticsOptions = () => {
           lastName: userResponse.data.lastName,
           email: userResponse.data.email,
           password: password,
-          allSpendings: userResponse.data.allSpendings
+          allSpendings: userResponse.data.spendings
         };
 
-        console.log(userResponse.data.spendings);
-
+        setUserSpendingsData(userResponse.data.spendings);
 
       } catch (error) {
         console.error("Eroare la preluarea userului:", error);
@@ -62,17 +66,17 @@ const StatisticsOptions = () => {
   const renderStatisticComponent = () => {
     switch (selectedStatistic) {
       case "cheltuieliPeCategorii":
-        return <SpendingsPerCategories />;
+        return <SpendingsPerCategories userSpendings={userSpendingsData} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />;
       case "evolutieCheltuieli":
-        return <SpendingsEvolutionPerCategories />;
+        return <SpendingsEvolutionPerCategories userSpendings={userSpendingsData} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />;
       case "medieCheltuieli":
-        return <SpendingsAverageInAPeriod />;
+        return <SpendingsAverageInAPeriod userSpendings={userSpendingsData} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />;
       case "topCheltuieli":
-        return <TopSpendingsInAPeriod />;
+        return <TopSpendingsInAPeriod userSpendings={userSpendingsData} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />;
       case "topProduseCumparate":
-        return <TopItemsBoughtInAPeriod />;
+        return <TopItemsBoughtInAPeriod userSpendings={userSpendingsData} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />;
       case "topMagazineFrecventate":
-        return <TopShopsAttended />;
+        return <TopShopsAttended userSpendings={userSpendingsData} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />;
       default:
         return null;
     }
