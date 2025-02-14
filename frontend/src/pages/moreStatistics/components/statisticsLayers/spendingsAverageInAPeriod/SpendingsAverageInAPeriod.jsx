@@ -1,10 +1,10 @@
 import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar";
 import "./SpendingsAverageInAPeriod.css";
 
-export default function SpendingsAverageInAPeriod(){
+export default function SpendingsAverageInAPeriod({userSpendings}){
     return (
         <>
-            <DateInputCalendar />
+            <DateInputCalendar startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
         </>
     );
 }
