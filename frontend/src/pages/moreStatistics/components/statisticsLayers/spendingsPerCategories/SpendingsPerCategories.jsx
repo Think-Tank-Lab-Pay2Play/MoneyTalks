@@ -4,6 +4,7 @@ import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar
 import "./SpendingsPerCategories.css";
 
 export default function SpendingsPerCategories({ userSpendings, startDate, setStartDate, endDate, setEndDate }) {
+    // preia cheltuielile dintr-o anumita perioada de timp
     const filteredSpendings = userSpendings.filter(spending => {
         const spendingDate = new Date(spending.date);
         const start = startDate ? new Date(startDate) : null;
@@ -12,6 +13,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         return (!start || spendingDate >= start) && (!end || spendingDate <= end);
     });
 
+    // calculeaza suma cheltuita pe fiecare categorie pe o perioada de timp
     const categorySpendings = filteredSpendings.reduce((categories, spending) => {
         if (spending.products) {
             spending.products.forEach(product => {
@@ -27,7 +29,8 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
     const colors = [
         '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#E74C3C', '#1ABC9C'
     ];
-
+    
+    // sorteaza cheltuielile pe categorii
     const catSpend = Object.fromEntries(
         Object.entries(categorySpendings)
             .map(([category, total]) => [category, parseFloat(total.toFixed(2))])
@@ -60,6 +63,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         }
     };
 
+    // afiseaza cheltuielile per categorii pe o perioada de timp
     const categoryStatistics = Object.entries(catSpend).map(([category, totalPrice], index) => (
         <div key={category} className="category-statistic">
             <span
@@ -70,7 +74,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         </div>
     ));
 
-
+    // calculeaza cheltuielile totale pe o perioada de timp
     const getTotalSpendings = () => {
         return Object.values(catSpend).reduce((total, amount) => total + amount, 0).toFixed(2);
     };
