@@ -1,0 +1,113 @@
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .options-table {
+    width: 325px;
+    text-align: center;
+    border-right: 1px solid #000000;
+    padding: 20px;
+  }
+  
+  .option {
+    display: inline-flex;  /* Aliniază iconița și textul pe aceeași linie */
+    align-items: center;   /* Centrează vertical iconița și textul */
+    border: 2px solid black;
+    margin: 20px 0;
+    cursor: pointer;
+    padding: 10px 20px;  /* Asigură că butoanele au padding consistent */
+    background-color: #fff200;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    width: 250px;  /* Setează o lățime fixă pentru butoane */
+    text-align: center;  /* Centrează textul în interiorul butonului */
+  }
+  .option i {
+    margin-right: 10px;  /* Adaugă spațiu între iconiță și text */
+    font-size: 20px;  /* Ajustează dimensiunea iconiței */
+  }
+  
+  .option:hover {
+    background-color: #e5d119;
+  }
+  
+  .form-container {
+    display: none;
+    transition: transform 0.3s ease;
+    margin-left: 20px;
+    flex-grow: 1;
+  }
+  
+  .form-container.show {
+    display: block;
+    transform: translateX(20px);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form input {
+    width: 1050px;
+    margin-bottom: 15px; 
+    padding: 10px; 
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }
+  
+  
+  form button {
+    width: 250px; 
+    padding: 10px;
+    background-color: #fff200;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  form button:hover {
+    background-color: #fff200;
+  }
+  
+  button {
+    padding: 8px;
+    background-color: #c56257;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #c56257;
+  }
+
+  button[type="submit"] {
+    background-color: #fff200; 
+    color: rgb(0, 0, 0); 
+    border: 2px solid black; 
+    padding: 12px 24px; 
+    font-size: 14px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  
+ 
+  button[type="submit"]:hover {
+    background-color: #e5d119; 
+  }
+  
+  i {
+    margin-right: 10px; 
+    font-size: 20px; 
+    color: black;
+  }
