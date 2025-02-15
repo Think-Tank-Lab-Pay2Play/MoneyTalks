@@ -10,7 +10,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
     const [endYear, setEndYear] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("");
     const [filteredSpendings, setFilteredSpendings] = useState([]);
-    const [statistics, setStatistics] = useState([]);
+    const [statistics, setStatistics] = useState(null);
 
     const categories = spendingCategories;
 
@@ -48,6 +48,10 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
         setFilteredSpendings(filtered);
     };
 
+    useEffect(() => {
+        setStatistics(null);
+    }, [selectedCategory]);
+
     const calculateStatistics = () => {
         if (!selectedCategory || !startMonth || !startYear || !endMonth || !endYear) {
             setStatistics(null);
@@ -62,14 +66,13 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
             const month = spendingDate.getMonth() + 1;
             const year = spendingDate.getFullYear();
 
-            // Adăugăm cheltuielile pentru ambele perioade în același loop
             spending.products.forEach(product => {
                 if (product.category === selectedCategory) {
                     if (year === startYear && month === startMonth) {
-                        startTotal += product.totalPrice;
+                        startTotal += Number(product.totalPrice) || 0;
                     }
                     if (year === endYear && month === endMonth) {
-                        endTotal += product.totalPrice;
+                        endTotal += Number(product.totalPrice) || 0;
                     }
                 }
             });
@@ -83,6 +86,15 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
         const percentageChange = startTotal !== 0
             ? ((endTotal - startTotal) / startTotal) * 100
             : 100;
+
+
+        const isValid = !isNaN(startTotal) && !isNaN(endTotal);
+        const bothZero = startTotal === 0 && endTotal === 0;
+
+        if (!isValid || bothZero) {
+            setStatistics(null);
+            return;
+        }
 
         setStatistics({
             category: selectedCategory,
