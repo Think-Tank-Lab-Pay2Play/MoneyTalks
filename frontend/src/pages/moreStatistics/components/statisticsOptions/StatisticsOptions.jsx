@@ -15,7 +15,6 @@ import TopSpendingsInAPeriod from "../statisticsLayers/topSpendingsInAPeriod/Top
 import SpendingsAverageInAPeriod from "../statisticsLayers/spendingsAverageInAPeriod/SpendingsAverageInAPeriod";
 import SpendingsEvolutionPerCategories from "../statisticsLayers/spendingsEvolutionPerCategories/SpendingsEvolutionPerCategories";
 import SpendingsPerCategories from "../statisticsLayers/spendingsPerCategories/SpendingsPerCategories";
-import DateInputCalendar from "../statisticsLayers/components/dateInputCalendar/DateInputCalendar";
 
 const StatisticsOptions = () => {
 

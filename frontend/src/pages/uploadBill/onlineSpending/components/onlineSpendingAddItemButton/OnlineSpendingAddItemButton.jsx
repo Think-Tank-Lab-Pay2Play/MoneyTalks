@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './OnlineSpendingAddItemButton.css';
 import OnlineSpendingConfirmationButton from '../onlineSpendingConfirmationButton/OnlineSpendingConfirmationButton';
+import { spendingCategories } from "../../../../components/spendingsCategories/SpendingCategories.jsx";
 
 const IconAdd = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" fill="none" className="online-spending-add-item-button__svg">
@@ -67,7 +68,7 @@ const OnlineSpendingAddItemButton = ({ onItemsChange }) => {
     const [inputGroups, setInputGroups] = useState([]);
     const [items, setItems] = useState([]);
 
-    const categories = ["FOOD", "ELECTRONICS", "CLOTHES"];
+    const categories = spendingCategories;
 
     const handleAddClick = () => {
         if (inputGroups.length < 10) {

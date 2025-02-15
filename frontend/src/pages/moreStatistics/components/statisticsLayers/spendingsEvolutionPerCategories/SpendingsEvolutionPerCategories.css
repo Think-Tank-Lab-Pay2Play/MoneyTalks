@@ -1,0 +1,12 @@
+.spendings-evolution-per-categories-pick-category-button{
+    position: absolute;
+    top:235px;
+    right: 462px;
+}
+
+.spendings-evolution-per-categories-statistic{
+    position: absolute;
+    top:335px;
+    left: 800px;
+    z-index: 1;
+}
