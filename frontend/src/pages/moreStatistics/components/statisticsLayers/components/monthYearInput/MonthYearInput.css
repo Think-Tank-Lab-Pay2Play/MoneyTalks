@@ -1,11 +1,29 @@
 .month-year-input-one{
     position: absolute;
-    top: 235px;
+    top: 225px;
     right: 700px;
 }
 
 .month-year-input-two{
     position: absolute;
-    top: 235px;
+    top: 225px;
     right: 150px;
 }
+
+.month-year-input-one label {
+    font-weight: 500;
+    color: #009879;
+    font-size: 16px;
+    position: relative;
+    bottom: 25px;
+    left:67px;
+  }
+
+  .month-year-input-two label {
+    font-weight: 500;
+    color: #009879;
+    font-size: 16px;
+    position: relative;
+    bottom: 25px;
+    left:80px;
+  }

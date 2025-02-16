@@ -52,6 +52,7 @@ const MonthYearInput = ({
     return (
         <div className="month-year-input-container">
             <div className="month-year-input-one">
+            <label>De la data</label>
                 <select value={startMonth || ""} onChange={handleStartMonthChange} disabled={!startYear}>
                     <option value="" disabled> Selectează luna </option>
                     {months.map((name, index) => {
@@ -79,6 +80,7 @@ const MonthYearInput = ({
 
             {/* Select pentru final */}
             <div className="month-year-input-two">
+            <label>Până la data</label>
                 <select
                     value={endMonth || ""}
                     onChange={(e) => setEndMonth(Number(e.target.value))}

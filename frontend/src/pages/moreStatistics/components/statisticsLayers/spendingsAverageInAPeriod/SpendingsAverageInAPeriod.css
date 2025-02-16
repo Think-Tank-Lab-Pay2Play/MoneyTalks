@@ -6,7 +6,15 @@
 
 .spendings-average-in-a-period-title{
     position: absolute;
-    top:325px;
-    left:775px;
+    color: #dc3545;
+    top:290px;
+    left:780px;
     font-size: 20px;
+}
+
+.average-spendings-title{
+    position: relative;
+    bottom:53px;
+    right:20px;
+    font-size: 24px;
 }

@@ -3,6 +3,10 @@ import "./DateInputCalendar.css";
 export default function DateInputCalendar({ startDate, setStartDate, endDate, setEndDate }) {
     const currentDate = new Date().toISOString().split('T')[0];
 
+    const minEndDate = startDate
+        ? new Date(new Date(startDate).getTime() + 86400000).toISOString().split('T')[0]
+        : "";
+
     return (
         <>
             <div className="date-filter-group1">
@@ -22,6 +26,7 @@ export default function DateInputCalendar({ startDate, setStartDate, endDate, se
                     className="date-filter-input"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
+                    min={minEndDate}
                     max={currentDate}
                 />
             </div>

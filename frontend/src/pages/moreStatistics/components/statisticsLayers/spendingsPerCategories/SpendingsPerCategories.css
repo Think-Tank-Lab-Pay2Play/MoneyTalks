@@ -1,14 +1,14 @@
 .spendings-per-categories-title{
     position: absolute;
     font-size: 1.5em;
-    bottom:550px;
-    right: 670px;
+    bottom:600px;
+    right: 680px;
 }
 
 .spendings-per-categories-stats{
     position: absolute;
-    bottom:480px;
-    right: 670px;
+    bottom:530px;
+    right: 680px;
 }
 
 
@@ -35,8 +35,8 @@
 
 .spendings-per-categories-total-spendings{
     position: absolute;
-    top:90px;
-    left:425px;
+    top:135px;
+    left:435px;
     display: flex;
     flex-direction: column;
     align-items: center;

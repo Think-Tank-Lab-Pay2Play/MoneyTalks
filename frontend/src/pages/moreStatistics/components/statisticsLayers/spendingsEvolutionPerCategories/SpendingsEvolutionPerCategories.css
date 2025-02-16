@@ -1,6 +1,6 @@
 .spendings-evolution-per-categories-pick-category-button{
     position: absolute;
-    top:235px;
+    top:225px;
     right: 462px;
 }
 
@@ -9,4 +9,19 @@
     top:335px;
     left: 800px;
     z-index: 1;
+}
+
+.spendings-evolution-per-categories-statistic-title{
+    position: relative;
+    color: #dc3545;
+    bottom:53px;
+    right:20px;
+    font-size: 24px;
+}
+
+.spendings-evolution-per-categories-statistic-no-data{
+    position: relative;
+    bottom:53px;
+    right:20px;
+    font-size: 20px;
 }
