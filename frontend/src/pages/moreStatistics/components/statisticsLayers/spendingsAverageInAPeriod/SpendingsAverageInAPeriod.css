@@ -1,0 +1,12 @@
+.spendings-average-in-a-period{
+    position: absolute;
+    top:400px;
+    left:775px;
+}
+
+.spendings-average-in-a-period-title{
+    position: absolute;
+    top:325px;
+    left:775px;
+    font-size: 20px;
+}
