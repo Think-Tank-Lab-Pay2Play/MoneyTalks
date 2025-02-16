@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.dto.ResponseDto;
 import com.example.demo.dto.user.UserRequest;
 import com.example.demo.dto.user.UserResponse;
+import com.example.demo.dto.userUpdate.PasswordChangeRequest;
+import com.example.demo.dto.userUpdate.UserProfileRequest;
 import com.example.demo.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -114,6 +116,43 @@ public class UserController {
     public ResponseEntity<UserResponse> getUserByEmail(@PathVariable("userEmail") String userEmail) {
         UserResponse user = userService.findResponseByEmail(userEmail);
         return ResponseEntity.ok(user);
+    }
+
+    @Operation(summary = "Change user`s info without the password", description = "This endpoint is used to change the user info with " +
+            "specified id.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User changed successfully",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserResponse.class))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseDto.class))})
+    })
+    @PutMapping("/{userId}/profile")
+    public ResponseEntity<UserResponse> updateProfile(
+            @PathVariable("userId") Long userId,
+            @Valid @RequestBody UserProfileRequest userRequest) {
+        {
+        UserResponse updatedUser = userService.updateProfile(userId, userRequest);
+        return ResponseEntity.ok(updatedUser);}
+    }
+
+    @Operation(summary = "Reset user`s password by email", description = "This endpoint is used to reset the user password with " +
+            "specified email.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User password changed successfully",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseDto.class))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseDto.class))})
+    })
+    @PutMapping("/resetPassword/{userEmail}")
+    public ResponseEntity<?> resetPassword(
+            @PathVariable("userEmail") String userEmail,
+            @Valid @RequestBody PasswordChangeRequest passwordBody) {
+        userService.changePassword(userEmail, passwordBody);
+        return ResponseEntity.ok().build();
     }
 
 
