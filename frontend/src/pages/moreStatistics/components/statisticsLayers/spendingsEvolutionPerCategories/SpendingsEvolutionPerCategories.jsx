@@ -133,7 +133,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
             </div>
 
             <div className="spendings-evolution-per-categories-statistic">
-                <h2>Statistici ale cheltuielilor</h2>
+                <h2 className="spendings-evolution-per-categories-statistic-title">Statistici ale cheltuielilor</h2>
                 {statistics ? (
                     <p>
                         Cheltuielile din categoria {statistics.category} au
@@ -144,7 +144,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                         (De la {statistics.startTotal} la {statistics.endTotal})
                     </p>
                 ) : (
-                    <p>Nu există date suficiente pentru a genera statistici.</p>
+                    <p className="spendings-evolution-per-categories-statistic-no-data"></p>
                 )}
             </div>
 

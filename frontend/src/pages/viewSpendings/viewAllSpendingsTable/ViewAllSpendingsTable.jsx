@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ViewAllSpendingsTable.css';
 import axios from 'axios';
 
-const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
+const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted }) => {
     const [selectedSpendingId, setSelectedSpendingId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [minPrice, setMinPrice] = useState('');
@@ -13,6 +13,10 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
     const [sortOrder, setSortOrder] = useState('desc');
     const itemsPerPage = 15;
     const currentDate = new Date().toISOString().split('T')[0];
+
+    const minEndDate = startDate
+        ? new Date(new Date(startDate).getTime() + 86400000).toISOString().split('T')[0]
+        : "";
 
 
     const filterByPrice = (spending) => {
@@ -138,7 +142,7 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
                         onChange={(e) => setSelectedCompany(e.target.value)}
                     >
                         <option value="">Toate companiile</option>
-                        {companies.map(company => (
+                        {spendings && [...new Set(spendings.map(s => s.companyName))].map(company => (
                             <option key={company} value={company}>{company}</option>
                         ))}
                     </select>
@@ -161,6 +165,7 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted  }) => {
                         className="filter-input"
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
+                        min={minEndDate}
                         max={currentDate}
                     />
                 </div>

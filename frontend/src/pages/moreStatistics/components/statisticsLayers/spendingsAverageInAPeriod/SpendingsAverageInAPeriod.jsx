@@ -49,7 +49,7 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
 
             <div className="spendings-average-in-a-period">
                 {(!startDate || !endDate) ? (
-                    <p>Nu aveți cheltuieli în această perioadă.</p>
+                    <p className="average-spendings-no-data"></p>
                 ) : (
                     Object.keys(categorySpendings).length > 0 ? (
                         Object.entries(categorySpendings).map(([category, total]) => (
@@ -58,7 +58,7 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
                             </p>
                         ))
                     ) : (
-                        <p>Nu aveți cheltuieli în această perioadă.</p>
+                        <></>
                     )
                 )}
             </div>

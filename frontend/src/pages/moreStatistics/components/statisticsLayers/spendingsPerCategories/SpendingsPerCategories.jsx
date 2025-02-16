@@ -91,7 +91,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
                         <div>{getTotalSpendings()}</div>
                     </div>
                 </>
-                : <p>Nu aveti cheltuieli in aceasta perioada.</p>}
+                : <p>0 RON</p>}
             </div>
 
             {Object.keys(catSpend).length > 0 && (
