@@ -104,7 +104,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
         });
     };
 
-
+    
     const getMonthName = (monthNumber) => {
         const months = [
             "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
