@@ -48,7 +48,6 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
             </h2>
 
             <div className="spendings-average-in-a-period">
-                {/* Dacă nu există interval de date selectat */}
                 {(!startDate || !endDate) ? (
                     <p>Nu aveți cheltuieli în această perioadă.</p>
                 ) : (
