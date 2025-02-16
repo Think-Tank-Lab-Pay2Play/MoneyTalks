@@ -116,7 +116,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--topCheltuieli">
             <Lottie animationData={creditCardAnimation} loop={true} />
           </div>
-          Top cheltuieli
+          Top 10 cheltuieli
           <input type="radio" name="status" id="topCheltuieli" className="statistics-options__radio" onChange={() => setSelectedStatistic("topCheltuieli")} />
         </label>
 
