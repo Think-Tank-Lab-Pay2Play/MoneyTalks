@@ -1,0 +1,83 @@
+.top-shops-attended-container {
+    margin: 50px auto;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    bottom: 250px;
+    left: 325px;
+}
+
+.top-shops-attended-no-spendings-message {
+    font-size: 20px;
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 20px;
+    position: relative;
+    right: 30px;
+}
+
+.top-shops-attended-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.2em;
+    min-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.top-shops-attended-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.top-shops-attended-table th,
+.top-shops-attended-table td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.top-shops-attended-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.top-shops-attended-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.top-shops-attended-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.top-shops-attended-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.top-shops-attended-pagination-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.top-shops-attended-pagination-btn:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+}
+
+.top-shops-attended-pagination-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.top-shops-attended-pagination-info {
+    font-size: 16px;
+    font-weight: bold;
+}

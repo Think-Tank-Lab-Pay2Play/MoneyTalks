@@ -142,25 +142,27 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
                     </table>
                 )}
 
-                <div className="view-all-spendings-table-pagination">
-                    <button
-                        className="view-all-spendings-table-pagination-btn"
-                        onClick={goToPreviousPage}
-                        disabled={currentPage === 1}
-                    >
-                        ⬅ Pagina anterioară
-                    </button>
-                    <span className="view-all-spendings-table-pagination-info">
-                        Pagina {currentPage} din {totalPages}
-                    </span>
-                    <button
-                        className="view-all-spendings-table-pagination-btn"
-                        onClick={goToNextPage}
-                        disabled={currentPage === totalPages}
-                    >
-                        Pagina următoare ➡
-                    </button>
-                </div>
+                {startDate && endDate && filteredSpendings.length > 0 && (
+                    <div className="view-all-spendings-table-pagination">
+                        <button
+                            className="view-all-spendings-table-pagination-btn"
+                            onClick={goToPreviousPage}
+                            disabled={currentPage === 1}
+                        >
+                            ⬅ Pagina anterioară
+                        </button>
+                        <span className="view-all-spendings-table-pagination-info">
+                            Pagina {currentPage} din {totalPages}
+                        </span>
+                        <button
+                            className="view-all-spendings-table-pagination-btn"
+                            onClick={goToNextPage}
+                            disabled={currentPage === totalPages}
+                        >
+                            Pagina următoare ➡
+                        </button>
+                    </div>
+                )}
             </div>
         </>
     );

@@ -90,25 +90,27 @@ export default function TopItemsBoughtInAPeriod({ userSpendings, startDate, setS
                     </table>
                 )}
 
-                <div className="top-items-bought-in-a-period-pagination">
-                    <button
-                        className="top-items-bought-in-a-period-pagination-btn"
-                        onClick={goToPreviousPage}
-                        disabled={currentPage === 1}
-                    >
-                        ⬅ Pagina anterioară
-                    </button>
-                    <span className="top-items-bought-in-a-period-pagination-info">
-                        Pagina {currentPage} din {totalPages}
-                    </span>
-                    <button
-                        className="top-items-bought-in-a-period-pagination-btn"
-                        onClick={goToNextPage}
-                        disabled={currentPage === totalPages}
-                    >
-                        Pagina următoare ➡
-                    </button>
-                </div>
+                {startDate && endDate && filteredSpendings.length > 0 && (
+                    <div className="top-items-bought-in-a-period-pagination">
+                        <button
+                            className="top-items-bought-in-a-period-pagination-btn"
+                            onClick={goToPreviousPage}
+                            disabled={currentPage === 1}
+                        >
+                            ⬅ Pagina anterioară
+                        </button>
+                        <span className="top-items-bought-in-a-period-pagination-info">
+                            Pagina {currentPage} din {totalPages}
+                        </span>
+                        <button
+                            className="top-items-bought-in-a-period-pagination-btn"
+                            onClick={goToNextPage}
+                            disabled={currentPage === totalPages}
+                        >
+                            Pagina următoare ➡
+                        </button>
+                    </div>
+                )}
             </div>
         </>
     );
