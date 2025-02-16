@@ -133,7 +133,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
             </div>
 
             <div className="spendings-evolution-per-categories-statistic">
-                <h2 className="spendings-evolution-per-categories-statistic-title">Statistici ale cheltuielilor</h2>
+                <h2 className="spendings-evolution-per-categories-statistic-title">Selectează un interval de date pentru a vedea evoluția cheltuielilor</h2>
                 {statistics ? (
                     <p>
                         Cheltuielile din categoria {statistics.category} au
