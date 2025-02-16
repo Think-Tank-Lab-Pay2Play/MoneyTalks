@@ -14,15 +14,14 @@ export default function TopShopsAttended({ userSpendings, startDate, setStartDat
         return (!start || spendingDate >= start) && (!end || spendingDate <= end);
     });
 
-    // Crearea unui obiect care conține frecvența fiecărui magazin și valoarea totală
     const shopFrequency = useMemo(() => {
         const frequency = {};
         filteredSpendings.forEach(spending => {
             const shopName = spending.companyName;
             if (frequency[shopName]) {
-                frequency[shopName].count += 1; // Numarul de cheltuieli
-                frequency[shopName].totalPrice += spending.totalPrice; // Totalul cheltuit la magazin
-                frequency[shopName].totalItems += spending.products.reduce((sum, product) => sum + product.units, 0); // Numărul total de produse
+                frequency[shopName].count += 1;
+                frequency[shopName].totalPrice += spending.totalPrice;
+                frequency[shopName].totalItems += spending.products.reduce((sum, product) => sum + product.units, 0);
             } else {
                 frequency[shopName] = {
                     count: 1,
@@ -32,7 +31,6 @@ export default function TopShopsAttended({ userSpendings, startDate, setStartDat
             }
         });
 
-        // Crearea unui array de magazine ordonat dupa totalPrice
         const sortedShops = Object.keys(frequency)
             .map(key => ({
                 name: key,

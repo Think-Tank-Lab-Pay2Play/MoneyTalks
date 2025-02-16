@@ -14,7 +14,6 @@ export default function TopItemsBoughtInAPeriod({ userSpendings, startDate, setS
         return (!start || spendingDate >= start) && (!end || spendingDate <= end);
     });
 
-    // Crearea unui obiect care conține frecvența fiecărui produs și valoarea totală
     const productFrequency = useMemo(() => {
         const frequency = {};
         filteredSpendings.forEach(spending => {
@@ -32,7 +31,6 @@ export default function TopItemsBoughtInAPeriod({ userSpendings, startDate, setS
             });
         });
 
-        // Crearea unui array de produse ordonat dupa totalPrice
         const sortedProducts = Object.keys(frequency)
             .map(key => ({
                 name: key,
