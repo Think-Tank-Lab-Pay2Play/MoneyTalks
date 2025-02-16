@@ -1,0 +1,98 @@
+.top-items-bought-in-a-period-container {
+    margin: 50px auto;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    bottom: 250px;
+    left: 325px;
+}
+
+.top-items-bought-in-a-period-no-spendings-message {
+    font-size: 20px;
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 20px;
+    position: relative;
+    right:30px;
+}
+
+.top-items-bought-in-a-period-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.2em;
+    min-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.top-items-bought-in-a-period-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.top-items-bought-in-a-period-table th,
+.top-items-bought-in-a-period-table td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.top-items-bought-in-a-period-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.top-items-bought-in-a-period-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.top-items-bought-in-a-period-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+.top-items-bought-in-a-period-pagination {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.top-items-bought-in-a-period-pagination-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.top-items-bought-in-a-period-pagination-btn:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+}
+
+.top-items-bought-in-a-period-pagination-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.top-items-bought-in-a-period-pagination-info {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+.view-all-spendings-table-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  

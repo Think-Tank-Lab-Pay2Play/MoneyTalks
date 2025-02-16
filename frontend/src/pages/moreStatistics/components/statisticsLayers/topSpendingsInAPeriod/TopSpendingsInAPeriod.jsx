@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TopSpendingsInAPeriod.css";
 import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar";
 
 export default function TopSpendingsInAPeriod({ userSpendings, startDate, setStartDate, endDate, setEndDate }) {
     const [selectedSpendingId, setSelectedSpendingId] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(5);
     
     const parseEuropeanDate = (dateString) => new Date(dateString);
 
@@ -24,11 +26,24 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
 
             return (!start || spendingDate >= start) && (!end || spendingDate <= end);
         })
-        .sort((a, b) => b.totalPrice - a.totalPrice)
-        .slice(0, 10);
+        .sort((a, b) => b.totalPrice - a.totalPrice);
+
+    const totalPages = Math.ceil(filteredSpendings.length / itemsPerPage);
+    
+    const indexOfLastSpending = currentPage * itemsPerPage;
+    const indexOfFirstSpending = indexOfLastSpending - itemsPerPage;
+    const currentSpendings = filteredSpendings.slice(indexOfFirstSpending, indexOfLastSpending);
 
     const handleToggleDetails = (spendingId) => {
         setSelectedSpendingId(prev => prev === spendingId ? null : spendingId);
+    };
+
+    const goToPreviousPage = () => {
+        setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
+    };
+
+    const goToNextPage = () => {
+        setCurrentPage(prevPage => Math.min(prevPage + 1, totalPages));
     };
 
     return (
@@ -38,7 +53,7 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
             <div className="top-spendings-in-a-table-container">
                 {(!startDate || !endDate) ? (
                     <div className="no-spendings-message">Selectează un interval de date pentru a vedea topul cheltuielilor.</div>
-                ) : filteredSpendings.length === 0 ? (
+                ) : currentSpendings.length === 0 ? (
                     <div className="no-spendings-message">Nu există cheltuieli în această perioadă.</div>
                 ) : (
                     <table className="top-spendings-in-a-table">
@@ -52,7 +67,7 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredSpendings.map(spending => (
+                            {currentSpendings.map(spending => (
                                 <React.Fragment key={spending.spendingId}>
                                     <tr>
                                         <td>{spending.companyName}</td>
@@ -126,6 +141,26 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
                         </tbody>
                     </table>
                 )}
+
+                <div className="view-all-spendings-table-pagination">
+                    <button
+                        className="view-all-spendings-table-pagination-btn"
+                        onClick={goToPreviousPage}
+                        disabled={currentPage === 1}
+                    >
+                        ⬅ Pagina anterioară
+                    </button>
+                    <span className="view-all-spendings-table-pagination-info">
+                        Pagina {currentPage} din {totalPages}
+                    </span>
+                    <button
+                        className="view-all-spendings-table-pagination-btn"
+                        onClick={goToNextPage}
+                        disabled={currentPage === totalPages}
+                    >
+                        Pagina următoare ➡
+                    </button>
+                </div>
             </div>
         </>
     );

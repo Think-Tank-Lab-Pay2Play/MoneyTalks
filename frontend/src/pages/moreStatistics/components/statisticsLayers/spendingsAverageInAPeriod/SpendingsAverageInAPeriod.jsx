@@ -48,14 +48,19 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
             </h2>
 
             <div className="spendings-average-in-a-period">
-                {Object.keys(categorySpendings).length > 0 ? (
-                    Object.entries(categorySpendings).map(([category, total]) => (
-                        <p key={category}>
-                            Ai cheltuit în medie {(total / daysCount).toFixed(2)} RON pe zi pentru achizițiile din categoria {category}.
-                        </p>
-                    ))
-                ) : (
+                {/* Dacă nu există interval de date selectat */}
+                {(!startDate || !endDate) ? (
                     <p>Nu aveți cheltuieli în această perioadă.</p>
+                ) : (
+                    Object.keys(categorySpendings).length > 0 ? (
+                        Object.entries(categorySpendings).map(([category, total]) => (
+                            <p key={category}>
+                                Ai cheltuit în medie {(total / daysCount).toFixed(2)} RON pe zi pentru achizițiile din categoria {category}.
+                            </p>
+                        ))
+                    ) : (
+                        <p>Nu aveți cheltuieli în această perioadă.</p>
+                    )
                 )}
             </div>
         </>
