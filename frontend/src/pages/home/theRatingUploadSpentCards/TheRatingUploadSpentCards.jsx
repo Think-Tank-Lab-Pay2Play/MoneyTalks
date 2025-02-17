@@ -1,9 +1,118 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TheRatingUploadSpentCards.css';
+import SpendingsLimit from './spendingsLimit/SpendingsLimit';
+import axios from 'axios';
 
 const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOnThePastThirtyDays }) => {
+    const [userId, setUserId] = useState();
+    const [myUserEmail, setMyUserEmail] = useState();
+    const [myUserPassword, setMyUserPassword] = useState();
+    const [myUserSpendingsLimits, setMyUserSpendingsLimits] = useState(null);
+    const [thisMonthSpendingLimit, setThisMonthSpendingLimit] = useState(0);
+    const [limitSet, setLimitSet] = useState(false);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const storedData = localStorage.getItem("auth");
+            if (!storedData) return;
+
+            const { email, password } = JSON.parse(storedData);
+            try {
+                const userEmail = email;
+                const userResponse = await axios.get(`http://localhost:8080/users/byEmail/${userEmail}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    auth: {
+                        username: email,
+                        password: password,
+                    }
+                });
+                const userData = {
+                    id: userResponse.data.id,
+                    spendingLimits: userResponse.data.spendingLimits
+                };
+                setUserId(userResponse.data.id);
+                setMyUserEmail(userEmail);
+                setMyUserPassword(password);
+                setMyUserSpendingsLimits(userResponse.data.spendingLimits);
+
+                const currentMonth = new Date().getMonth();
+                const currentMonthLimit = userResponse.data.spendingLimits.find(limit => {
+                    const limitMonth = new Date(limit.startDate).getMonth();
+                    return currentMonth === limitMonth;
+                });
+
+                setThisMonthSpendingLimit(currentMonthLimit ? currentMonthLimit.spendingLimit : 0);
+
+                console.log(thisMonthSpendingLimit);
+
+            } catch (error) {
+                console.error("Eroare la preluarea userului:", error);
+            }
+        };
+
+        fetchUserData();
+    }, [limitSet]);
+
+    const sendSpendingLimitToBackend = async (limit) => {
+        const today = new Date();
+        const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+        const spendingLimitData = {
+            spendingLimit: limit,
+            startDate: today.toISOString().split('T')[0],
+            endDate: endOfMonth.toISOString().split('T')[0],
+            userId: userId
+        };
+
+        try {
+            const response = await axios.post("http://localhost:8080/spendingLimits", spendingLimitData, {
+                headers: {
+                    "Authorization": "Basic dGVzdEBleGFtcGxlLmNvbTpQYXNzd29yZDEyMw==",
+                    "Content-Type": "application/json"
+                },
+                auth: {
+                    username: myUserEmail,
+                    password: myUserPassword,
+                }
+            });
+
+            if (response.status === 200 || response.status === 201) {
+                console.log("Spending limit set successfully!");
+                setLimitSet(true);
+            } else {
+                console.warn(`Unexpected response code: ${response.status}`);
+            }
+        } catch (error) {
+            console.error("Failed to set spending limit:", error.response?.data || error.message);
+        }
+    };
 
 
+    const hasSpendingLimitForCurrentMonth = myUserSpendingsLimits?.some(limit => {
+        const currentMonth = new Date().getMonth();
+        const limitMonth = new Date(limit.startDate).getMonth();
+        return currentMonth === limitMonth;
+    });
+
+    const currentMonthName = new Date().toLocaleString('ro-RO', { month: 'long' });
+
+    const getWarningIconColor = () => {
+        if (thisMonthSpendingLimit === 0) return 'green';
+
+        const percentageSpent = (lastThirtyDaysSpendingsSum / thisMonthSpendingLimit) * 100;
+        if (percentageSpent < 50) {
+            return `rgb(${255 - percentageSpent * 5}, ${255}, ${0})`;
+        }
+        if (percentageSpent < 75) {
+            return `rgb(${255}, ${255 - (percentageSpent - 50) * 5}, 0)`;
+        }
+        if (percentageSpent < 100) {
+            return `rgb(${255}, ${Math.max(0, 255 - (percentageSpent - 75) * 5)}, 0)`;
+        }
+        return 'black';
+    };
 
 
     return (
@@ -21,7 +130,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
                                     </g>
                                 </g>
                             </svg>
-                            <p className="custom-value">0/10</p> {/* aici afisam rezultatul unei functii backend*/}
+                            <p className="custom-value">0/10</p>
                         </div>
                     </div>
                 </div>
@@ -43,14 +152,32 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
                         </div>
                     </div>
                 </div>
+
+                {!hasSpendingLimitForCurrentMonth && <SpendingsLimit onLimitaConfirm={sendSpendingLimitToBackend} />}
+
                 <div className="custom-stat-box">
                     <div className="custom-stat-box custom-third-card">
-                        <p className="custom-title">Bani cheltuiti <br />(30 zile)</p>
-                        <div className="custom-bottom-section">
-                            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className="custom-icon custom-tag">
+                        <p className="custom-title-third-card">Bani cheltuiti <br />({currentMonthName})</p>
+                        <div className="custom-bottom-section-third-card">
+                            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className="custom-icon custom-tag-third-card">
                                 <path d="M448 183.8v-123A44.66 44.66 0 00403.29 16H280.36a30.62 30.62 0 00-21.51 8.89L13.09 270.58a44.86 44.86 0 000 63.34l117 117a44.84 44.84 0 0063.33 0l245.69-245.61A30.6 30.6 0 00448 183.8zM352 144a32 32 0 1132-32 32 32 0 01-32 32z" />
                             </svg>
-                            <p className="custom-value">{lastThirtyDaysSpendingsSum === undefined ? '0' : lastThirtyDaysSpendingsSum} RON</p>
+                            <svg
+                                viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="custom-icon custom-warning-icon"
+                                style={{ fill: getWarningIconColor(), transition: 'fill 0.3s ease' }}
+                            >
+                                <path d="M256 32L20 464h472L256 32zM256 176c10.7 0 19.6 8.6 19.6 19.2V320c0 10.6-8.9 19.2-19.6 19.2s-19.6-8.6-19.6-19.2V195.2c0-10.6 8.9-19.2 19.6-19.2zm0 192c14.2 0 25.6 11.4 25.6 25.6s-11.4 25.6-25.6 25.6-25.6-11.4-25.6-25.6 11.4-25.6 25.6-25.6z" />
+                            </svg>
+
+                            <p className="custom-value-third-card">{lastThirtyDaysSpendingsSum === undefined ? '0' : lastThirtyDaysSpendingsSum} RON</p>
+                            <p className="custom-value-third-card-money-limit">
+                                {myUserSpendingsLimits && myUserSpendingsLimits.length > 0
+                                    ? `${myUserSpendingsLimits[0].spendingLimit} RON`
+                                    : '0 RON'}
+                            </p>
+
                         </div>
                     </div>
                 </div>
