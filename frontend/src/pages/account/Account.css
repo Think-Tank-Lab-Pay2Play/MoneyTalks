@@ -1,0 +1,158 @@
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.options-table {
+  width: 325px;
+  text-align: center;
+  border-right: 1px solid #000000;
+  padding: 20px;
+}
+
+.option {
+  display: inline-flex;  
+  align-items: center;  
+  border: 2px solid black;
+  margin: 20px 0;
+  cursor: pointer;
+  padding: 10px 20px;  
+  background-color: #fff200;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  width: 250px;  
+  text-align: center;  
+}
+
+.option i {
+  margin-right: 10px;  
+  font-size: 20px; 
+}
+
+.option:hover {
+  background-color: #e5d119;
+}
+
+.form-container {
+  display: none;
+  transition: transform 0.3s ease;
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.form-container.show {
+  display: block;
+  transform: translateX(20px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  width: 1050px;
+  margin-bottom: 15px; 
+  padding: 10px; 
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+
+form button {
+  width: 250px; 
+  padding: 10px;
+  background-color: #fff200;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+form button:hover {
+  background-color: #fff200;
+}
+
+button {
+  padding: 8px;
+  background-color: #cf6f68;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #a8483d;
+}
+
+button[type="submit"] {
+  background-color: #fff200; 
+  color: rgb(0, 0, 0); 
+  border: 2px solid black; 
+  padding: 12px 24px; 
+  font-size: 14px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+button[type="submit"]:hover {
+  background-color: #e5d119; 
+}
+
+i {
+  margin-right: 10px; 
+  font-size: 20px; 
+  color: black;
+}
+
+.popup-message {
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color: #89c08a; 
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 1000;
+  min-width: 250px;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-message.error {
+  background-color: #cf6f68; 
+}
+
+.popup-message .close-btn {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 15px; 
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.popup-message .close-btn:hover {
+  background-color: #333;
+}
+
+.popup-message.success {
+  background-color: #89c08a;
+}
+
+.popup-message.error {
+  background-color: #cf6f68;
+}
