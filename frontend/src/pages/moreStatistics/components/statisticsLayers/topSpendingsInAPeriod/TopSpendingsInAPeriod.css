@@ -109,4 +109,14 @@
         top:255px;
         left:130px;
       }
+
+      .no-spendings-message {
+        font-size: 18px;
+        color: #dc3545;
+        font-weight: bold;
+        margin-top: 20px;
+        position: relative;
+        top:-65px;
+        left:-5px;
+    }
 }

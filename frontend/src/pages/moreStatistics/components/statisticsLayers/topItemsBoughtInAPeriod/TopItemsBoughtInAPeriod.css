@@ -101,5 +101,15 @@
         bottom: 145px;
         left: 720px;
         transform: scale(0.85);
-    }    
+    }   
+    
+    .top-items-bought-in-a-period-no-spendings-message {
+        font-size: 22px;
+        color: #dc3545;
+        font-weight: bold;
+        margin-top: 20px;
+        position: relative;
+        right: 10px;
+        bottom: 352px;
+    }
 }
