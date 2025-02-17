@@ -44,3 +44,15 @@
     font-weight: 600;
   }
   
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .show-hide-upload-online-spending-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+      position: absolute;
+      bottom: 125px;
+      right: 410px;
+    }
+  }

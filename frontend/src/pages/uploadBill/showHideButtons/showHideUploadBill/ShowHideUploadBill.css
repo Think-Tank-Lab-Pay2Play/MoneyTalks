@@ -44,3 +44,17 @@
     font-weight: 600;
   }
   
+
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .show-hide-upload-bill-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+      position: absolute;
+      bottom:125px;
+      left:400px;
+    }
+    
+  }
