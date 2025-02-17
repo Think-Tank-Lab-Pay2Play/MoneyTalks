@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.spendings.SpendingResponse;
 import com.example.demo.dto.user.UserRequest;
 import com.example.demo.dto.user.UserResponse;
 import com.example.demo.dto.userUpdate.PasswordChangeRequest;
@@ -7,7 +8,9 @@ import com.example.demo.dto.userUpdate.UserProfileRequest;
 import com.example.demo.exceptions.AlreadyExistsException;
 import com.example.demo.exceptions.AuthException;
 import com.example.demo.model.User;
+import com.example.demo.repository.SpendingRepo;
 import com.example.demo.repository.UserRepo;
+import com.example.demo.utils.mapper.SpendingMapper;
 import com.example.demo.utils.mapper.UserMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.security.access.prepost.PreAuthorize;
