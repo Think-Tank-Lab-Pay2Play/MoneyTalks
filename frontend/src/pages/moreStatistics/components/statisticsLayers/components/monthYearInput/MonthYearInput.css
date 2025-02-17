@@ -27,3 +27,21 @@
     bottom: 25px;
     left:80px;
   }
+
+
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .month-year-input-one{
+        position: absolute;
+        top: 175px;
+        right: 530px;
+        transform: scale(0.9);
+    }
+    
+    .month-year-input-two{
+        position: absolute;
+        top: 175px;
+        right: 60px;
+        transform: scale(0.9);
+    }
+
+}

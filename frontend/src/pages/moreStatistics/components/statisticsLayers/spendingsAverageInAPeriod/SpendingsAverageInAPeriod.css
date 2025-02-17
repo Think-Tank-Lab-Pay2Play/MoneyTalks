@@ -1,20 +1,44 @@
-.spendings-average-in-a-period{
+.spendings-average-in-a-period {
     position: absolute;
-    top:400px;
-    left:775px;
+    top: 400px;
+    left: 775px;
 }
 
-.spendings-average-in-a-period-title{
+.spendings-average-in-a-period-title {
     position: absolute;
     color: #dc3545;
-    top:290px;
-    left:780px;
+    top: 290px;
+    left: 780px;
     font-size: 20px;
 }
 
-.average-spendings-title{
+.average-spendings-title {
     position: relative;
-    bottom:53px;
-    right:20px;
+    bottom: 53px;
+    right: 20px;
     font-size: 24px;
+}
+
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .spendings-average-in-a-period {
+        position: absolute;
+        top: 250px;
+        left: 770px;
+    }
+
+    .spendings-average-in-a-period-title {
+        position: absolute;
+        color: #dc3545;
+        top: 210px;
+        left: 765px;
+        font-size: 18px;
+    }
+
+    .average-spendings-title {
+        position: relative;
+        bottom: 53px;
+        right: 20px;
+        font-size: 24px;
+    }
 }
