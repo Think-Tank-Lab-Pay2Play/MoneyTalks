@@ -96,43 +96,21 @@
     text-align: center;
 }
 
-/* Media Queries pentru a face formularul mai adaptabil */
-@media screen and (max-width: 768px) {
-    .register-container {
-        top: 15%; /* Poziționăm formularul mai sus pe ecrane mici */
-        width: 90%;
-        padding: 20px 25px;
-    }
 
-    .register-heading {
-        font-size: 1.8rem; /* Reducem dimensiunea fontului pentru titlu */
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .register-subtitle-register {
+        font-size: 1.2rem;
+        color: #666;
+        position: relative;
+        margin-left: 60px;
     }
-
-    .register-form .register-input {
-        padding: 12px 3px;
+    
+    .register-subtitle-already-have-acc {
+        font-size: 1.2rem;
+        font-weight: 550;
+        color: #666;
+        position: relative;
+        margin-left: 50px;
+        cursor: pointer;
     }
-
-    .register-form .register-button {
-        padding: 12px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .register-container {
-        top: 20%; /* Ajustăm și mai mult pentru dispozitive foarte mici */
-        width: 85%;
-        padding: 15px 20px;
-    }
-
-    .register-heading {
-        font-size: 1.6rem; /* Reducem dimensiunea fontului și mai mult */
-    }
-
-    .register-form .register-input {
-        padding: 10px 3px;
-    }
-
-    .register-form .register-button {
-        padding: 10px;
-    }
-}
+  }

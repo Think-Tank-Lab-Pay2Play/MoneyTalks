@@ -16,3 +16,12 @@
     height: auto;
     /* Menține raportul corect de aspect */
 }
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .logPageAppLogo img {
+        max-width: 100%;
+        /* imaginea este 100% din container */
+        height: auto;
+        transform: scale(0.8);
+    }
+  }
