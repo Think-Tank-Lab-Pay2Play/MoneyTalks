@@ -4,7 +4,8 @@ import GeneralTopBar from '../generalTopBar/GeneralTopBar';
 import PagesBackground from '../components/pages-background/PagesBackground';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from "../../components/authContext/AuthContext.jsx";
+import { useAuth } from "../../components/authContext/AuthContext.jsx"
+
 
 const Account = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -184,94 +185,95 @@ const Account = () => {
   return (
     <>
       <GeneralTopBar />
-      <div className="pages-background"></div>
-      <div className="account-container">
-        <div className="options-table">
-          <h2>Alegeți o opțiune:</h2>
-          <div className="option" onClick={() => handleOptionChange('update')}>
-            <i className="fas fa-edit"></i>
-            <h3>Actualizați detaliile contului</h3>
-          </div>
-          <div className="option" onClick={() => handleOptionChange('password')}>
-            <i className="fas fa-key"></i>
-            <h3>Schimbați parola</h3>
-          </div>
-          <div className="option" onClick={() => handleOptionChange('delete')}>
-            <i className="fas fa-trash"></i>
-            <h3>Ștergeți contul</h3>
-          </div>
-        </div>
-
-        <div className={`form-container ${selectedOption === 'update' ? 'show' : ''}`}>
-          {selectedOption === 'update' && (
-            <form onSubmit={handleUpdateAccount}>
-              <h3>Actualizați contul dumneavoastră:</h3>
-              <input
-                type="text"
-                placeholder="Prenume"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Nume"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <button type="submit">Salvați modificările</button>
-            </form>
-          )}
-        </div>
-
-        <div className={`form-container ${selectedOption === 'password' ? 'show' : ''}`}>
-          {selectedOption === 'password' && (
-            <form onSubmit={handleChangePassword}>
-              <h3>Schimbați parola:</h3>
-              <input
-                type="password"
-                placeholder="Parola veche"
-                value={oldPassword}
-                onChange={(e) => setOldPassword(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Parola nouă"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Confirmare parola nouă"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              <button type="submit">Schimbați parola</button>
-            </form>
-          )}
-        </div>
-
-        <div className={`form-container ${selectedOption === 'delete' ? 'show' : ''}`}>
-          {selectedOption === 'delete' && (
-            <div className="delete-account">
-              <h3>Sigur doriți să vă ștergeți contul?</h3>
-              <button onClick={handleDeleteAccount}>Confirmați ștergerea contului</button>
+      <div className="account-settings-page">
+        <div className="pages-background"></div>
+        <div className="account-container">
+          <div className="options-table">
+            <h2>Alegeți o opțiune:</h2>
+            <div className="option" onClick={() => handleOptionChange('update')}>
+              <i className="fas fa-edit"></i>
+              <h3>Actualizați detaliile contului</h3>
             </div>
-          )}
-        </div>
-
-        <div id="popup-message" className="popup-message">
-          <p>{confirmationMessage || error}</p>
-          <button className="close-btn" onClick={closePopup}>OK</button>
+            <div className="option" onClick={() => handleOptionChange('password')}>
+              <i className="fas fa-key"></i>
+              <h3>Schimbați parola</h3>
+            </div>
+            <div className="option" onClick={() => handleOptionChange('delete')}>
+              <i className="fas fa-trash"></i>
+              <h3>Ștergeți contul</h3>
+            </div>
+          </div>
+  
+          <div className={`form-container ${selectedOption === 'update' ? 'show' : ''}`}>
+            {selectedOption === 'update' && (
+              <form onSubmit={handleUpdateAccount}>
+                <h3>Actualizați contul dumneavoastră:</h3>
+                <input
+                  type="text"
+                  placeholder="Prenume"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="Nume"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button type="submit">Salvați modificările</button>
+              </form>
+            )}
+          </div>
+  
+          <div className={`form-container ${selectedOption === 'password' ? 'show' : ''}`}>
+            {selectedOption === 'password' && (
+              <form onSubmit={handleChangePassword}>
+                <h3>Schimbați parola:</h3>
+                <input
+                  type="password"
+                  placeholder="Parola veche"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+                <input
+                  type="password"
+                  placeholder="Parola nouă"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <input
+                  type="password"
+                  placeholder="Confirmare parola nouă"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button type="submit">Schimbați parola</button>
+              </form>
+            )}
+          </div>
+  
+          <div className={`form-container ${selectedOption === 'delete' ? 'show' : ''}`}>
+            {selectedOption === 'delete' && (
+              <div className="delete-account">
+                <h3>Sigur doriți să vă ștergeți contul?</h3>
+                <button onClick={handleDeleteAccount}>Confirmați ștergerea contului</button>
+              </div>
+            )}
+          </div>
+  
+          <div id="popup-message" className="popup-message">
+            <p>{confirmationMessage || error}</p>
+            <button className="close-btn" onClick={closePopup}>OK</button>
+          </div>
         </div>
       </div>
     </>
-  );
-};
-
+  )};
+  
 export default Account;
