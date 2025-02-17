@@ -4,6 +4,7 @@ import GeneralTopBar from '../generalTopBar/GeneralTopBar';
 import PagesBackground from '../components/pages-background/PagesBackground';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../../components/authContext/AuthContext.jsx";
 
 const Account = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -17,6 +18,7 @@ const Account = () => {
   const [error, setError] = useState('');
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate(); 
+  const { logout } = useAuth();
 
   useEffect(() => {
     const storedData = localStorage.getItem("auth");
@@ -154,7 +156,8 @@ const Account = () => {
       
         setTimeout(() => {
           console.log("Redirecting to /register...");
-          navigate('/');  // 
+          logout();
+          navigate('/');
         }, 3000);  
       } else {
         setError('A apărut o eroare la ștergerea contului!');
