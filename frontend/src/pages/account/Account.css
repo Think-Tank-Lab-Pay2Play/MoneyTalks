@@ -1,4 +1,4 @@
-.account-container {
+.account-settings-page .account-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,14 +6,14 @@
   text-align: center;
 }
 
-.options-table {
+.account-settings-page .options-table {
   width: 325px;
   text-align: center;
   border-right: 1px solid #000000;
   padding: 20px;
 }
 
-.option {
+.account-settings-page .option {
   display: inline-flex;  
   align-items: center;  
   border: 2px solid black;
@@ -27,33 +27,33 @@
   text-align: center;  
 }
 
-.option i {
+.account-settings-page .option i {
   margin-right: 10px;  
   font-size: 20px; 
 }
 
-.option:hover {
+.account-settings-page .option:hover {
   background-color: #e5d119;
 }
 
-.form-container {
+.account-settings-page .form-container {
   display: none;
   transition: transform 0.3s ease;
   margin-left: 20px;
   flex-grow: 1;
 }
 
-.form-container.show {
+.account-settings-page .form-container.show {
   display: block;
   transform: translateX(20px);
 }
 
-form {
+.account-settings-page form {
   display: flex;
   flex-direction: column;
 }
 
-form input {
+.account-settings-page form input {
   width: 1050px;
   margin-bottom: 15px; 
   padding: 10px; 
@@ -62,7 +62,7 @@ form input {
   border: 1px solid #000000;
 }
 
-form button {
+.account-settings-page form button {
   width: 250px; 
   padding: 10px;
   background-color: #fff200;
@@ -73,11 +73,11 @@ form button {
   border-radius: 5px;
 }
 
-form button:hover {
+.account-settings-page form button:hover {
   background-color: #fff200;
 }
 
-button {
+.account-settings-page button {
   padding: 8px;
   background-color: #cf6f68;
   color: rgb(0, 0, 0);
@@ -86,11 +86,11 @@ button {
   border-radius: 5px;
 }
 
-button:hover {
+.account-settings-page button:hover {
   background-color: #a8483d;
 }
 
-button[type="submit"] {
+.account-settings-page button[type="submit"] {
   background-color: #fff200; 
   color: rgb(0, 0, 0); 
   border: 2px solid black; 
@@ -101,17 +101,18 @@ button[type="submit"] {
   transition: background-color 0.3s ease; 
 }
 
-button[type="submit"]:hover {
+
+.account-settings-page button[type="submit"]:hover {
   background-color: #e5d119; 
 }
 
-i {
+.account-settings-page i {
   margin-right: 10px; 
   font-size: 20px; 
   color: black;
 }
 
-.popup-message {
+.account-settings-page .popup-message {
   position: fixed;
   top: 50%; 
   left: 50%;
@@ -129,11 +130,11 @@ i {
   transition: opacity 0.3s ease-in-out;
 }
 
-.popup-message.error {
+.account-settings-page .popup-message.error {
   background-color: #cf6f68; 
 }
 
-.popup-message .close-btn {
+.account-settings-page .popup-message .close-btn {
   background-color: #555;
   color: white;
   border: none;
@@ -145,14 +146,14 @@ i {
   transition: background-color 0.3s ease;
 }
 
-.popup-message .close-btn:hover {
+.account-settings-page .popup-message .close-btn:hover {
   background-color: #333;
 }
 
-.popup-message.success {
+.account-settings-page .popup-message.success {
   background-color: #89c08a;
 }
 
-.popup-message.error {
+.account-settings-page .popup-message.error {
   background-color: #cf6f68;
 }
