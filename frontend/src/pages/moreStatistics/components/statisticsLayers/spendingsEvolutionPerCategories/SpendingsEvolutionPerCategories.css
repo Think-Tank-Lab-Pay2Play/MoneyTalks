@@ -25,3 +25,30 @@
     right:20px;
     font-size: 20px;
 }
+
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+    .spendings-evolution-per-categories-pick-category-button{
+        position: absolute;
+        top:175px;
+        right: 335px;
+        transform: scale(0.9);
+    }
+
+    .spendings-evolution-per-categories-statistic-title{
+        position: relative;
+        color: #dc3545;
+        top:13px;
+        left:25px;
+        font-size: 18px;
+        transform: scale(1.1);
+    }
+
+    .spendings-evolution-per-categories-statistic{
+        position: absolute;
+        top:200px;
+        left: 740px;
+        z-index: 1;
+        transform: scale(0.9);
+    }
+}

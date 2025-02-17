@@ -84,12 +84,6 @@
     font-weight: bold;
 }
 
-
-
-
-
-
-
 .view-all-spendings-table-pagination {
     display: flex;
     justify-content: center;
@@ -97,3 +91,15 @@
     margin-top: 20px;
   }
   
+
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .top-items-bought-in-a-period-container {
+        margin: 50px auto;
+        max-width: 800px;
+        text-align: center;
+        position: absolute;
+        bottom: 145px;
+        left: 720px;
+        transform: scale(0.85);
+    }    
+}

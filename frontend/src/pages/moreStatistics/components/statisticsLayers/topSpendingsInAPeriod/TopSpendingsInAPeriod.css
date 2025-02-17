@@ -86,3 +86,27 @@
     font-weight: bold;
   }
   
+  @media (max-width: 2000px) and (max-width: 1600px) {
+    .top-spendings-in-a-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 1.2em;
+        min-width: 800px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        position: absolute;
+        top: -80px;
+        left: -50px;
+        transform: scale(0.85);
+    }
+
+    .view-all-spendings-table-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.85);
+        position: relative;
+        top:255px;
+        left:130px;
+      }
+}
