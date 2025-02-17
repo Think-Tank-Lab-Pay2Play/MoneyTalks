@@ -3,6 +3,7 @@ import './Account.css';
 import GeneralTopBar from '../generalTopBar/GeneralTopBar';
 import PagesBackground from '../components/pages-background/PagesBackground';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -15,6 +16,7 @@ const Account = () => {
   const [confirmationMessage, setConfirmationMessage] = useState('');
   const [error, setError] = useState('');
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const storedData = localStorage.getItem("auth");
@@ -145,10 +147,15 @@ const Account = () => {
         },
       });
   
-      if (response.status === 204) {
+      if (response.status === 204 || response.status === 200) {
         setConfirmationMessage("Contul a fost șters cu succes!");
         showPopup('success');
         localStorage.removeItem("auth");
+      
+        setTimeout(() => {
+          console.log("Redirecting to /register...");
+          navigate('/');  // 
+        }, 3000);  
       } else {
         setError('A apărut o eroare la ștergerea contului!');
         showPopup('error');
@@ -159,7 +166,6 @@ const Account = () => {
       showPopup('error');
     }
   };
-  
 
   const showPopup = (type) => {
     const popup = document.getElementById('popup-message');
