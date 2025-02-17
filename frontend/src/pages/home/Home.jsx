@@ -11,61 +11,6 @@ import axios from "axios";
 import PagesBackground from "../components/pages-background/PagesBackground";
 
 export default function Home() {
-    const sampleDataForLastFiveSpendings = [
-        {
-            id: 1,
-            companyName: "Conda",
-            numberOfProducts: 10,
-            totalPrice: 250.75,
-            date: "2025-01-28 12:35:56"
-        },
-        {
-            id: 2,
-            companyName: "Exemplu companie 2",
-            numberOfProducts: 5,
-            totalPrice: 100.5,
-            date: "2025-01-27 18:24:16"
-        },
-        {
-            id: 3,
-            companyName: "Exemplu companie 3",
-            numberOfProducts: 20,
-            totalPrice: 500.99,
-            date: "2025-01-26 21:03:39"
-        },
-        {
-            id: 4,
-            companyName: "Exemplu companie 4",
-            numberOfProducts: 1,
-            totalPrice: 46.99,
-            date: "2025-01-26 21:03:39"
-        },
-        {
-            id: 5,
-            companyName: "Exemplu companie 5",
-            numberOfProducts: 62,
-            totalPrice: 1234,
-            date: "2025-01-26 21:03:39"
-        }
-    ];
-
-
-    const sampleDataForLastTwelveMonthsSpendings = [
-        { luna: "Ianuarie", suma: 1250 },
-        { luna: "Februarie", suma: 1500 },
-        { luna: "Martie", suma: 1000 },
-        { luna: "Aprilie", suma: 1000 },
-        { luna: "Mai", suma: 1250 },
-        { luna: "Iunie", suma: 1300 },
-        { luna: "Iulie", suma: 1500 },
-        { luna: "August", suma: 1700 },
-        { luna: "Septembrie", suma: 1250 },
-        { luna: "Octombrie", suma: 1200 },
-        { luna: "Noiembrie", suma: 1300 },
-        { luna: "Decembrie", suma: 1100 },
-    ];
-
-
     const [lastFiveSpendings, setLastFiveSpendings] = useState("");
     const [lastTwelveMonthsSpendings, setLastTwelveMonthsSpendings] = useState("");
     const [lastThirtyDaysSpendingsSum, setLastThirtyDaysSpendingsSum] = useState("");
@@ -96,10 +41,12 @@ export default function Home() {
                     lastName: userResponse.data.lastName,
                     email: userResponse.data.email,
                     password: password,
-                    allSpendings: userResponse.data.allSpendings
+                    allSpendings: userResponse.data.allSpendings,
+                    spendingLimits: userResponse.data.spendingLimits
                 };
 
                 console.log(userResponse.data);
+                console.log(userResponse.data.spendingLimits);
 
                  setLastFiveSpendings(
                     userResponse.data.spendings
@@ -134,18 +81,21 @@ export default function Home() {
 
                 setLastThirtyDaysSpendingsSum(() => {
                     const now = new Date();
-                    const thirtyDaysAgo = new Date();
-                    thirtyDaysAgo.setDate(now.getDate() - 30);
-
-                    const totalLastThirtyDays = userResponse.data.spendings
+                    const currentMonth = now.getMonth();
+                    const currentYear = now.getFullYear();
+                
+                    const totalCurrentMonthSpendings = userResponse.data.spendings
                         ?.filter(spending => {
                             const spendingDate = new Date(spending.date);
-                            return spendingDate >= thirtyDaysAgo && spendingDate <= now;
+                            const spendingMonth = spendingDate.getMonth();
+                            const spendingYear = spendingDate.getFullYear();
+                            return spendingMonth === currentMonth && spendingYear === currentYear;
                         })
                         .reduce((sum, spending) => sum + spending.totalPrice, 0);
-
-                    return totalLastThirtyDays.toFixed(2);
+                
+                    return totalCurrentMonthSpendings.toFixed(2);
                 });
+                
 
                 setUploadedBillsOnThePastThirtyDays(() => {
                     const now = new Date();
