@@ -79,7 +79,7 @@ form button:hover {
 
 button {
   padding: 8px;
-  background-color: #de877d;
+  background-color: #cf6f68;
   color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
@@ -87,7 +87,7 @@ button {
 }
 
 button:hover {
-  background-color: #b1584f;
+  background-color: #a8483d;
 }
 
 button[type="submit"] {
@@ -116,7 +116,7 @@ i {
   top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%); 
-  background-color: #4CAF50; 
+  background-color: #89c08a; 
   color: white;
   padding: 20px;
   border-radius: 5px;
@@ -130,7 +130,7 @@ i {
 }
 
 .popup-message.error {
-  background-color: #f44336; 
+  background-color: #cf6f68; 
 }
 
 .popup-message .close-btn {
@@ -150,9 +150,9 @@ i {
 }
 
 .popup-message.success {
-  background-color: #4CAF50;
+  background-color: #89c08a;
 }
 
 .popup-message.error {
-  background-color: #f44336;
+  background-color: #cf6f68;
 }
