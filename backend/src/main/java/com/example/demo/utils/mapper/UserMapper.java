@@ -15,7 +15,8 @@ public final class UserMapper {
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
-                user.getSpendings() != null ? SpendingMapper.entityListToDto(user.getSpendings()) : null
+                user.getSpendings() != null ? SpendingMapper.entityListToDto(user.getSpendings()) : null,
+                user.getSpendingLimits() != null ? SpendingLimitMapper.entityListToDto(user.getSpendingLimits()) : null
         );
     }
 
