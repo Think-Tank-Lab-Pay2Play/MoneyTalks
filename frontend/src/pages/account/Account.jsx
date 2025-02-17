@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Account.css';
 import GeneralTopBar from '../generalTopBar/GeneralTopBar';
-import PagesBackground from '../components/pages-background/PagesBackground';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../components/authContext/AuthContext.jsx"
+import PagesBackground from '../components/pages-background/PagesBackground.jsx';
 
 
 const Account = () => {
@@ -185,8 +185,8 @@ const Account = () => {
   return (
     <>
       <GeneralTopBar />
+      <PagesBackground/>
       <div className="account-settings-page">
-        <div className="pages-background"></div>
         <div className="account-container">
           <div className="options-table">
             <h2>Alegeți o opțiune:</h2>
@@ -261,7 +261,8 @@ const Account = () => {
           <div className={`form-container ${selectedOption === 'delete' ? 'show' : ''}`}>
             {selectedOption === 'delete' && (
               <div className="delete-account">
-                <h3>Sigur doriți să vă ștergeți contul?</h3>
+                <h3 className='account-settings-delete-acc-title'>Sigur doriți să vă ștergeți contul?</h3>
+                <h4 className='account-settings-delete-acc-warning'>Această acțiune este ireversibilă și duce la ștergerea tuturor datelor tale din sistemele Money Talks.</h4>
                 <button onClick={handleDeleteAccount}>Confirmați ștergerea contului</button>
               </div>
             )}
