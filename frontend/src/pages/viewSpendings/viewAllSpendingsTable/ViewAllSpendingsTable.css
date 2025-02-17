@@ -218,15 +218,43 @@
   text-align: center;
 }
 
-
-@media (max-width: 2000px) and (max-width: 1600px) {
-  .view-all-spendings-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 1.2em;
-    min-width: 1350px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+@media (max-width: 1600px) {
+  .view-all-spendings-table-container {
+    margin: 250px 25px 50px; 
+    overflow: visible;
   }
 
+  .view-all-spendings-table {
+    min-width: 100%;
+    font-size: 1em;
+  }
+
+  .view-all-spendings-table-pagination {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin: 20px 0;
+    padding: 10px;
+    overflow: visible;
+  }
+
+  .view-all-spendings-table-pagination-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    position: relative;
+    top:10px;
+    right:center;
+  }
+
+  .view-all-spendings-table-pagination-info {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    top:10px;
+    right:center;
+  }
+
+  .no-spendings-to-show {
+    top: 120px;
+    font-size: 1.8em;
+  }
 }

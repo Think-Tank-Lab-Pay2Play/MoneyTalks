@@ -52,9 +52,9 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
 
             <div className="top-spendings-in-a-table-container">
                 {(!startDate || !endDate) ? (
-                    <div className="no-spendings-message">Selectează un interval de date pentru a vedea topul cheltuielilor.</div>
+                    <div className="no-spendings-message-statistic">Selectează un interval de date pentru a vedea topul cheltuielilor.</div>
                 ) : currentSpendings.length === 0 ? (
-                    <div className="no-spendings-message">Nu există cheltuieli în această perioadă.</div>
+                    <div className="no-spendings-message-statistic">Nu există cheltuieli în această perioadă.</div>
                 ) : (
                     <table className="top-spendings-in-a-table">
                         <thead>
@@ -143,19 +143,19 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
                 )}
 
                 {startDate && endDate && filteredSpendings.length > 0 && (
-                    <div className="view-all-spendings-table-pagination">
+                    <div className="view-all-spendings-table-pagination-statistic">
                         <button
-                            className="view-all-spendings-table-pagination-btn"
+                            className="view-all-spendings-table-pagination-btn-statistic"
                             onClick={goToPreviousPage}
                             disabled={currentPage === 1}
                         >
                             ⬅ Pagina anterioară
                         </button>
-                        <span className="view-all-spendings-table-pagination-info">
+                        <span className="view-all-spendings-table-pagination-info-statistic">
                             Pagina {currentPage} din {totalPages}
                         </span>
                         <button
-                            className="view-all-spendings-table-pagination-btn"
+                            className="view-all-spendings-table-pagination-btn-statistic"
                             onClick={goToNextPage}
                             disabled={currentPage === totalPages}
                         >

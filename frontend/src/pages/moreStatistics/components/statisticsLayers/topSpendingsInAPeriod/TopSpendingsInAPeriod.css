@@ -13,7 +13,7 @@
     margin-bottom: 20px;
 }
 
-.no-spendings-message {
+.no-spendings-message-statistic {
     font-size: 20px;
     color: #dc3545;
     font-weight: bold;
@@ -58,14 +58,14 @@
 }
 
 
-.view-all-spendings-table-pagination {
+.view-all-spendings-table-pagination-statistic {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
   }
   
-  .view-all-spendings-table-pagination-btn {
+  .view-all-spendings-table-pagination-btn-statistic {
     background-color: #007bff;
     color: white;
     border: none;
@@ -76,12 +76,12 @@
     transition: background-color 0.3s;
   }
   
-  .view-all-spendings-table-pagination-btn:disabled {
+  .view-all-spendings-table-pagination-btn-statistic:disabled {
     background-color: #b0c4de;
     cursor: not-allowed;
   }
   
-  .view-all-spendings-table-pagination-info {
+  .view-all-spendings-table-pagination-info-statistic {
     font-size: 16px;
     font-weight: bold;
   }
@@ -100,7 +100,7 @@
         transform: scale(0.85);
     }
 
-    .view-all-spendings-table-pagination {
+    .view-all-spendings-table-pagination-statistic {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -110,7 +110,7 @@
         left:130px;
       }
 
-      .no-spendings-message {
+      .no-spendings-message-statistic {
         font-size: 18px;
         color: #dc3545;
         font-weight: bold;
