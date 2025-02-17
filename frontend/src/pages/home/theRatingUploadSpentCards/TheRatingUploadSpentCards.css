@@ -167,4 +167,11 @@
     top: 133px;
     right: 22px;
   }
+
+  .custom-title {
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    top:-15px;
+  }
 }
