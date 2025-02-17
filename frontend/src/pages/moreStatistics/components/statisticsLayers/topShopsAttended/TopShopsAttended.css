@@ -21,6 +21,7 @@
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    margin-left: -8px;
     font-size: 1.2em;
     min-width: 800px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
