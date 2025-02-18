@@ -49,8 +49,8 @@ const Reports = () => {
             <button onClick={() => handleGenerateReport('impulse')}>
               Cheltuieli Impulsive
             </button>
-            <button onClick={() => handleGenerateReport('recommendations')}>
-              Recomandări de reducere cheltuieli
+            <button onClick={() => handleGenerateReport('investments')}>
+              Investitii
             </button>
             <button onClick={() => handleGenerateReport('needs')}>
               Cheltuieli Necesare vs Lux
