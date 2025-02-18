@@ -7,7 +7,7 @@ import OnlineSpendingDescription from './components/onlineSpendingDescription/On
 import OnlineSpendingHourInput from './components/onlineSpendingHourInput/OnlineSpendingHourInput';
 import axios from 'axios';
 import OnlineSpendingConfirmationButton from './components/onlineSpendingConfirmationButton/OnlineSpendingConfirmationButton';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export default function OnlineSpending() {
     const [companyName, setCompanyName] = useState('');
@@ -18,7 +18,7 @@ export default function OnlineSpending() {
 
     const handleSubmit = async () => {
         if (!companyName || !date || !description || !hour.hour || !hour.minute || items.length === 0) {
-            alert("Toate câmpurile obligatorii trebuie completate!");
+            toast.error('Toate câmpurile trebuie completate obligatoriu!', { autoClose: 5000 });
             return;
         }
 
