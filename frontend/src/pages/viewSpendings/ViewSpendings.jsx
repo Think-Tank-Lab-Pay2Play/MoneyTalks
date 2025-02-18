@@ -1,6 +1,6 @@
 import GeneralTopBar from "../generalTopBar/GeneralTopBar";
 import ViewAllSpendingsImage from "./viewAllSpendingsImage/ViewAllSpendingsImage";
-import ViewAllSpendingsTable from "./ViewAllSpendingsTable/ViewAllSpendingsTable";
+import ViewAllSpendingsTable from "./viewAllSpendingsTable/ViewAllSpendingsTable";
 import "./ViewSpendings.css"
 import ViewSpendingsTopWriting from "./viewSpendingsTopWriting/ViewSpendingsTopWriting";
 import React, { useEffect, useState } from "react";

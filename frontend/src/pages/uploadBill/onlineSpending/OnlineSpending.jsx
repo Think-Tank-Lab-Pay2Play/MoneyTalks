@@ -7,6 +7,7 @@ import OnlineSpendingDescription from './components/onlineSpendingDescription/On
 import OnlineSpendingHourInput from './components/onlineSpendingHourInput/OnlineSpendingHourInput';
 import axios from 'axios';
 import OnlineSpendingConfirmationButton from './components/onlineSpendingConfirmationButton/OnlineSpendingConfirmationButton';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function OnlineSpending() {
     const [companyName, setCompanyName] = useState('');
@@ -41,12 +42,6 @@ export default function OnlineSpending() {
             });
 
             const userId = userResponse.data.id;
-            //console.log(userId);
-            //console.log(companyName);
-            //console.log(totalPrice);
-            //console.log(formattedDate);
-            //console.log(formattedItems);
-            //console.log(description);
 
             const response = await axios.post('http://localhost:8080/spending', {
                 userId: userId,
@@ -56,24 +51,12 @@ export default function OnlineSpending() {
                 products: formattedItems,
                 description: description
             }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                auth: {
-                    username: email,
-                    password,
-                }
+                headers: { 'Content-Type': 'application/json' },
+                auth: { username: email, password }
             });
 
-            console.log(userId);
-            console.log(companyName);
-            console.log(totalPrice);
-            console.log(formattedDate);
-            console.log(formattedItems);
-            console.log(description);
-
             if (response.status === 200) {
-                alert('Datele au fost trimise cu succes!');
+                toast.success('Cheltuiala a fost înregistrată cu succes!', { autoClose: 2000 });
             } else {
                 alert('Eroare la trimiterea datelor.');
             }
@@ -82,6 +65,7 @@ export default function OnlineSpending() {
             alert('A apărut o problemă. Detalii: ' + (error.response ? error.response.data : error.message));
         }
     };
+
 
     return (
         <div className="the-whole-online-spending-table">

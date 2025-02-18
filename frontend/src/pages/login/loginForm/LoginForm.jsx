@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../../components/authContext/AuthContext';
 import './LoginForm.css';
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -21,8 +22,6 @@ const LoginForm = () => {
                 headers: { 'Content-Type': 'application/json' },
                 auth: { username: email, password: password }
             });
-
-            console.log("Authentication successful");
 
             /*
             const userEmail = email;
@@ -53,9 +52,14 @@ const LoginForm = () => {
 
             login(email, password);
 
-            navigate("/home");
+            toast.success('Bine ai (re)venit!', {
+                autoClose: 2000,
+            });
+
+            setTimeout(() => navigate("//home", { replace: true }), 1000);
+
         } catch (error) {
-            setError(error.response?.data?.message || "Eroare la conexiunea cu serverul");
+            setError(error.response?.data?.message || "Datele introduse nu corespund cu cele ale unui cont!");
         }
     };
 

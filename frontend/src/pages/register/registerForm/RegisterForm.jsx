@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'; // Adaugă axios
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './RegisterForm.css';
 
 const RegisterForm = () => {
     const navigate = useNavigate();
-    
-    // Adaugă state-uri pentru toate câmpurile
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -23,28 +24,30 @@ const RegisterForm = () => {
             setError('Parolele introduse nu se potrivesc!');
             return;
         }
-
+    
         try {
-            // Trimite datele către backend
             const response = await axios.post('http://localhost:8080/signup', {
                 firstName,
                 lastName,
                 email,
                 password
             });
-
+    
             if (response.status === 200) {
-                alert('Înregistrarea s-a realizat cu succes!');
-                navigate("/login");
+                toast.success('Înregistrarea s-a realizat cu succes!', {
+                    autoClose: 3000, // Notificarea rămâne 3 secunde
+                });
+    
+                setTimeout(() => navigate("/login", { replace: true }), 1500);
             }
         } catch (err) {
-            if (err.response && err.response.status === 400) {
-                setError(err.response.data);
-            } else {
-                setError('A apărut o eroare la înregistrare.');
-            }
+            const errorMessage = err.response?.data || 'A apărut o eroare la înregistrare.';
+            setError(errorMessage);
+            toast.error(errorMessage, { autoClose: 3000 });
         }
     };
+    
+    
 
     return (
         <div className="register-form-wrapper">
