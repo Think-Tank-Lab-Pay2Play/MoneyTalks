@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './TheRatingUploadSpentCards.css';
 import SpendingsLimit from './spendingsLimit/SpendingsLimit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOnThePastThirtyDays }) => {
     const [userId, setUserId] = useState();
@@ -79,7 +80,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
             });
 
             if (response.status === 200 || response.status === 201) {
-                console.log("Spending limit set successfully!");
+                toast.success('Ai setat limita de cheltuieli cu!', {autoClose: 2000,});
                 setLimitSet(true);
             } else {
                 console.warn(`Unexpected response code: ${response.status}`);

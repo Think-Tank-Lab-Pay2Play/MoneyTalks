@@ -14,6 +14,8 @@ import GenerateReports from "./pages/generateReports/GenerateReports.jsx";
 import { AuthProvider } from './components/authContext/AuthContext.jsx';
 import ProtectedRoute from "./components/protectedRoutes/ProtectedRoutes.jsx";
 import PublicRoute from "./components/protectedRoutes/PublicRoute.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 {/* open the terminal and run: npm install packages */ }
 {/* to run the project run: npm run dev     in the terminal and go to your localhost address shown in the terminal*/ }
@@ -24,6 +26,7 @@ function App() {
       <Router>
         <main>
           <AuthProvider>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
             <Routes>
               <Route element={<PublicRoute />}>
                 <Route path="/" element={<Welcome />} /> {/* Welcome Page-ul - pagina pe care incepe user-ul navigarea */}

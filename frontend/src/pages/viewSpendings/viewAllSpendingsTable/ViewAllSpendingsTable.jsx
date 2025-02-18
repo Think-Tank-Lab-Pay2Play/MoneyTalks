@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ViewAllSpendingsTable.css';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted }) => {
     const [selectedSpendingId, setSelectedSpendingId] = useState(null);
@@ -94,6 +95,7 @@ const ViewAllSpendingsTable = ({ spendings, onSpendingDeleted }) => {
                 }
             });
             //console.log(response.data);
+            toast.success('Cheltuiala a fost ștearsă cu succes!', { autoClose: 2000 });
             onSpendingDeleted();
         } catch (error) {
             console.error(error);
