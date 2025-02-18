@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./SpendingsLimit.css";
+import { toast } from 'react-toastify';
 
 export default function SpendingsLimit({ onLimitaConfirm }) {
     const [showInput, setShowInput] = useState(false);
@@ -11,7 +12,7 @@ export default function SpendingsLimit({ onLimitaConfirm }) {
             onLimitaConfirm(numar);
             setShowInput(false);
         } else {
-            alert("Introduceți un număr mai mare de 100!");
+            toast.error('Introduceți un număr mai mare de 100 și mai mic ca 999.999!', {autoClose: 5000});
         }
     };
 
