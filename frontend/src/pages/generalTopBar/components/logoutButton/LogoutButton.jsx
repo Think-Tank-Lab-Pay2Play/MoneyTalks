@@ -2,6 +2,7 @@ import React from 'react';
 import './LogoutButton.css';
 import { useAuth } from '../../../../components/authContext/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LogoutButton = () => {
   const { logout } = useAuth();
@@ -9,6 +10,7 @@ const LogoutButton = () => {
 
   const handleLogout = () => {
     logout();
+    toast.success('Delogarea a avut loc cu succes!', { autoClose: 2000 });
     navigate('/');
   };
   
