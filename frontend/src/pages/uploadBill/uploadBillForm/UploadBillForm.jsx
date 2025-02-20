@@ -2,16 +2,16 @@ import React, { useState, useRef } from 'react';
 import './UploadBillForm.css';
 import QRCodeComponent from "./qRCodeComponent/QRCodeComponent.jsx";
 
+{/* npm run dev --host */}
 
 const UploadBillForm = () => {
   const [fileName, setFileName] = useState('Niciun fișier selectat');
   const [resultText, setResultText] = useState('');
   const fileInputRef = useRef(null);
 
-
   const localIP = "192.168.1.128";
   const userId = 12;
-  const uploadUrl = `http://${localIP}:3000/upload-form?userId=${userId}`;
+  const uploadUrl = `http://${localIP}:3000/upload`;
 
 
   const handleFileChange = async (event) => {
@@ -112,7 +112,7 @@ const UploadBillForm = () => {
           </label>
         )}
 
-<div className="qr-section">
+        <div className="qr-section">
           <p>sau scanează codul QR pentru a încărca direct de pe telefon:</p>
           <QRCodeComponent value={uploadUrl} />
         </div>

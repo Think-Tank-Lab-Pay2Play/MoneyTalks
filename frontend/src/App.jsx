@@ -17,6 +17,7 @@ import PublicRoute from "./components/protectedRoutes/PublicRoute.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./components/ToastCSS.css";
+import UploadImage from "./pages/uploadBill/uploadBillForm/qRCodeComponent/UploadImage.jsx";
 
 {/* open the terminal and run: npm install packages */ }
 {/* to run the project run: npm run dev     in the terminal and go to your localhost address shown in the terminal*/ }
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/login" element={<Login />} /> {/* Pagina de logare */}
                 <Route path="/register" element={<Register />} /> {/* Pagina de register */}
                 <Route path="/aboutapp" element={<AboutTheApp />} /> {/* Pagina Despre aplicatie */}
+                <Route path="/upload-image" element={<UploadImage />} />
               </Route>
               <Route element={<ProtectedRoute />}>
                 <Route path="/home" element={<Home />} /> {/* Home Page-ul pe care user-ul il poate accesa doar daca e logat */}
