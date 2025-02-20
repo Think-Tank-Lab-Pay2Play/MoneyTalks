@@ -4,7 +4,7 @@
   align-items: center;
   position: absolute;
   top: 320px;
-  left:150px;
+  left: 150px;
 }
 
 .upload-bill-form-container {
@@ -34,11 +34,13 @@
 
 .upload-bill-form-header svg {
   height: 100px;
+  transform: translateY(-75px);
 }
 
 .upload-bill-form-header p {
   text-align: center;
   color: black;
+  transform: translateY(-75px);
 }
 
 .upload-bill-form-footer {
@@ -97,6 +99,18 @@
   background-color: #2a4d9b;
 }
 
+.qr-section{
+  position: absolute;
+  top:68px;
+  padding-top: 150px;
+  transform: scale(0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  gap:10px;
+}
+
 @media (max-width: 2000px) and (max-width: 1600px) {
   .upload-bill-form-wrapper {
     display: flex;
@@ -104,6 +118,6 @@
     align-items: center;
     position: absolute;
     top: 320px;
-    left:70px;
+    left: 70px;
   }
 }
