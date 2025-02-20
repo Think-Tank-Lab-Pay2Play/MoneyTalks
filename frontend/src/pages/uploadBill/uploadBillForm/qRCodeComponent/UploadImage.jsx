@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { imageDB } from "../../../components/firebase/FireBaseConfig.jsx";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { imageDB } from "../../../../../firebase/FireBaseConfig";
 
 const UploadImage = () => {
     const [image, setImage] = useState(null);
