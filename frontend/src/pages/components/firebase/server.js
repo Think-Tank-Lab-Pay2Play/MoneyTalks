@@ -6,6 +6,8 @@ const uuid = require("uuid").v4;
 
 const serviceAccount = require("./serviceAccountKey.json");
 
+// node server.js
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   storageBucket: "moneytalks-da829.firebasestorage.app"
