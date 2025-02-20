@@ -10,7 +10,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "moneytalks-da829.firebasestorage.app"
+  storageBucket: ""
 });
 
 const bucket = admin.storage().bucket();
