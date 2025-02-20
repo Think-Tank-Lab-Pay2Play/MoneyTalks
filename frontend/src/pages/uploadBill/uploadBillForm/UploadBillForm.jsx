@@ -1,11 +1,18 @@
 import React, { useState, useRef } from 'react';
 import './UploadBillForm.css';
+import QRCodeComponent from "./qRCodeComponent/QRCodeComponent.jsx";
 
 
-const UploadBillForm = ({ userId }) => {
+const UploadBillForm = () => {
   const [fileName, setFileName] = useState('Niciun fișier selectat');
   const [resultText, setResultText] = useState('');
   const fileInputRef = useRef(null);
+
+
+  const localIP = "192.168.1.128";
+  const userId = 12;
+  const uploadUrl = `http://${localIP}:3000/upload-form?userId=${userId}`;
+
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -33,7 +40,7 @@ const UploadBillForm = ({ userId }) => {
       if (!response.ok) throw new Error('Eroare la încărcare');
 
       const data = await response.json();
-      
+
       setFileName(data.filename);
       setResultText(data.analysisResult);
     } catch (error) {
@@ -45,22 +52,21 @@ const UploadBillForm = ({ userId }) => {
 
   const handleConfirm = async () => {
     try {
-      // Trimite confirmarea către backend
       await fetch('/api/confirm', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           userId: userId,
-          confirmed: true 
+          confirmed: true
         }),
       });
 
       // Resetează starea
       setFileName('Niciun fișier selectat');
       setResultText('');
-      if(fileInputRef.current) fileInputRef.current.value = '';
+      if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (error) {
       console.error('Eroare:', error);
     }
@@ -85,7 +91,7 @@ const UploadBillForm = ({ userId }) => {
         </div>
 
         {resultText ? (
-          <button 
+          <button
             className="confirm-button"
             onClick={handleConfirm}
           >
@@ -105,6 +111,11 @@ const UploadBillForm = ({ userId }) => {
             </svg>
           </label>
         )}
+
+<div className="qr-section">
+          <p>sau scanează codul QR pentru a încărca direct de pe telefon:</p>
+          <QRCodeComponent value={uploadUrl} />
+        </div>
 
         <input
           id="file"
