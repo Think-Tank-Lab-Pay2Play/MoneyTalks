@@ -3,6 +3,7 @@ const multer = require("multer");
 const cors = require("cors");
 const admin = require("firebase-admin");
 const uuid = require("uuid").v4;
+require("dotenv").config();
 
 const serviceAccount = require("./serviceAccountKey.json");
 
@@ -10,7 +11,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: ""
+  storageBucket: "moneytalks-da829.firebasestorage.app"
 });
 
 const bucket = admin.storage().bucket();
