@@ -1,76 +1,113 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './UploadBillForm.css';
 import QRCodeComponent from "./qRCodeComponent/QRCodeComponent.jsx";
+import axios from "axios";
 
-{/* npm run dev --host */}
 
 const UploadBillForm = () => {
   const [fileName, setFileName] = useState('Niciun fișier selectat');
   const [resultText, setResultText] = useState('');
   const fileInputRef = useRef(null);
 
-  const localIP = "192.168.1.128";
-  const userId = 12;
-  const uploadUrl = `http://${localIP}:3000/upload`;
+  const localIP = ""; // your ipv4 address here from ipconfig
 
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const storedData = localStorage.getItem("auth");
+      if (!storedData) return;
+
+      const { email, password } = JSON.parse(storedData);
+      try {
+        const userResponse = await axios.get(
+          `http://localhost:8080/users/byEmail/${email}`,
+          {
+            headers: { "Content-Type": "application/json" },
+            auth: { username: email, password },
+          }
+        );
+
+        if (userResponse.data?.id) {
+          setUserId(userResponse.data.id);
+        }
+      } catch (error) {
+        console.error("Eroare la preluarea userului:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const uploadUrl = `http://${localIP}:3001/upload`;
+
+
+  const handleGenerateUserIdFile = async () => {
+    try {
+      // Trimite userId către server pentru a crea fișierul JSON
+      const response = await fetch('http://localhost:3001/generateUserIdFile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Fișierul a fost generat cu succes:", data);
+      } else {
+        console.error("Eroare la generarea fișierului");
+      }
+    } catch (error) {
+      console.error("Eroare la comunicarea cu serverul:", error);
+    }
+  };
+
+  handleGenerateUserIdFile();
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
-    // Validare tip fișier
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    if (!allowedTypes.includes(file.type)) {
-      setFileName('Tip de fișier invalid!');
-      event.target.value = '';
+    if (!userId) {
+      console.error("User ID invalid");
       return;
     }
 
     try {
       const formData = new FormData();
-      formData.append('file', file);
-      formData.append('userId', userId);
+      formData.append("image", file);
 
-      // Trimite fișierul către backend
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
+      const response = await fetch(`${uploadUrl}${userId}`, {
+        method: "POST",
+        body: formData
       });
 
-      if (!response.ok) throw new Error('Eroare la încărcare');
-
       const data = await response.json();
-
-      setFileName(data.filename);
-      setResultText(data.analysisResult);
+      setFileName(file.name);
+      setResultText(`Imagine încărcată: ${data.imageUrl}`);
     } catch (error) {
-      console.error('Eroare:', error);
-      setFileName('Eroare la încărcare');
-      event.target.value = '';
+      console.error("Eroare:", error);
+      setFileName("Eroare la încărcare");
+      event.target.value = "";
     }
   };
+
 
   const handleConfirm = async () => {
     try {
-      await fetch('/api/confirm', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: userId,
-          confirmed: true
-        }),
+      await fetch("/api/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, confirmed: true }),
       });
-
-      // Resetează starea
-      setFileName('Niciun fișier selectat');
-      setResultText('');
-      if (fileInputRef.current) fileInputRef.current.value = '';
+      setFileName("Niciun fișier selectat");
+      setResultText("");
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error) {
-      console.error('Eroare:', error);
+      console.error("Eroare:", error);
     }
   };
+
 
   return (
     <div className="upload-bill-form-wrapper">
