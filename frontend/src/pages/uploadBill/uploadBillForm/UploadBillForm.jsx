@@ -12,6 +12,7 @@ const UploadBillForm = () => {
   const [fileName, setFileName] = useState('Niciun fișier selectat');
   const [resultText, setResultText] = useState('');
   const fileInputRef = useRef(null);
+  const [firstRun, setFirstRun] = useState(true);
 
   const localIP = ""; // your ipv4 address here from ipconfig
 
@@ -46,12 +47,12 @@ const UploadBillForm = () => {
   const uploadUrl = `http://${localIP}:3001/upload`;
   const [numberOfPictures, setNumberOfPictures] = useState(0);
   const prevNumberOfPictures = useRef(numberOfPictures);
-  
+
   const fetchNumberOfPictures = async (userId, setNumberOfPictures) => {
     if (!userId) return;
-  
+
     const imageListRef = ref(storage, `upload/${userId}`);
-  
+
     try {
       const res = await listAll(imageListRef);
       setNumberOfPictures(res.items.length);
@@ -59,28 +60,38 @@ const UploadBillForm = () => {
       console.error("Eroare la obținerea listei de imagini:", error);
     }
   };
-  
+
+
+  useEffect(() => { // apel endpoint backend
+    if (prevNumberOfPictures.current !== numberOfPictures && (prevNumberOfPictures.current !== 0 || numberOfPictures === 1)) {
+      console.log("User-ul a uploadat o imagine!");
+      console.log(numberOfPictures);
+      console.log(prevNumberOfPictures.current);
+      setFirstRun(false);
+      prevNumberOfPictures.current= numberOfPictures;
+    }
+  }, [numberOfPictures]);
+
+  useEffect(() => {
+
+    if (numberOfPictures > prevNumberOfPictures.current) {
+      prevNumberOfPictures.current = numberOfPictures;
+    }
+  }, [numberOfPictures]);
+
+
   useEffect(() => {
     if (!userId) return;
 
     //incearca de aici sa setezi cu first render
-  
+
     const intervalId = setInterval(() => {
       fetchNumberOfPictures(userId, setNumberOfPictures);
-    }, 5000);
-  
+    }, 1000);
+
     return () => clearInterval(intervalId);
   }, [userId]);
 
-  useEffect(() => {
-    if (numberOfPictures > prevNumberOfPictures.current) {
-      console.log("User-ul a uploadat o imagine!");
-      console.log(numberOfPictures);
-      console.log(prevNumberOfPictures.current);
-      prevNumberOfPictures.current = numberOfPictures;
-    }
-  }, [numberOfPictures]);
-  
 
   //console.log(numberOfPictures);
 
@@ -90,8 +101,8 @@ const UploadBillForm = () => {
       const response = await fetch('http://localhost:3001/generateUserIdFile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          userId, 
+        body: JSON.stringify({
+          userId,
           numberOfPictures: numberOfPictures + 1
         })
       });
@@ -106,8 +117,6 @@ const UploadBillForm = () => {
       console.error("Eroare la comunicarea cu serverul:", error);
     }
   };
-
-  handleGenerateUserIdFile();
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
