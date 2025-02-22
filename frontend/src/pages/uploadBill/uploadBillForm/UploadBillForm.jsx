@@ -2,6 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import './UploadBillForm.css';
 import QRCodeComponent from "./qRCodeComponent/QRCodeComponent.jsx";
 import axios from "axios";
+import { storage } from '../../../../firebase/FireBaseConfig.jsx';
+import { ref } from "firebase/storage";
+import { listAll } from "firebase/storage";
+
 
 
 const UploadBillForm = () => {
@@ -40,15 +44,56 @@ const UploadBillForm = () => {
   }, []);
 
   const uploadUrl = `http://${localIP}:3001/upload`;
+  const [numberOfPictures, setNumberOfPictures] = useState(0);
+  const prevNumberOfPictures = useRef(numberOfPictures);
+  
+  const fetchNumberOfPictures = async (userId, setNumberOfPictures) => {
+    if (!userId) return;
+  
+    const imageListRef = ref(storage, `upload/${userId}`);
+  
+    try {
+      const res = await listAll(imageListRef);
+      setNumberOfPictures(res.items.length);
+    } catch (error) {
+      console.error("Eroare la obținerea listei de imagini:", error);
+    }
+  };
+  
+  useEffect(() => {
+    if (!userId) return;
 
+    //incearca de aici sa setezi cu first render
+  
+    const intervalId = setInterval(() => {
+      fetchNumberOfPictures(userId, setNumberOfPictures);
+    }, 5000);
+  
+    return () => clearInterval(intervalId);
+  }, [userId]);
+
+  useEffect(() => {
+    if (numberOfPictures > prevNumberOfPictures.current) {
+      console.log("User-ul a uploadat o imagine!");
+      console.log(numberOfPictures);
+      console.log(prevNumberOfPictures.current);
+      prevNumberOfPictures.current = numberOfPictures;
+    }
+  }, [numberOfPictures]);
+  
+
+  //console.log(numberOfPictures);
 
   const handleGenerateUserIdFile = async () => {
+
     try {
-      // Trimite userId către server pentru a crea fișierul JSON
       const response = await fetch('http://localhost:3001/generateUserIdFile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId })
+        body: JSON.stringify({ 
+          userId, 
+          numberOfPictures: numberOfPictures + 1
+        })
       });
 
       if (response.ok) {
