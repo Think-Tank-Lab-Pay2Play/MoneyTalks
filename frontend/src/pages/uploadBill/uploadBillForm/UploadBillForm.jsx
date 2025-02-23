@@ -12,7 +12,6 @@ const UploadBillForm = () => {
   const [fileName, setFileName] = useState('Niciun fișier selectat');
   const [resultText, setResultText] = useState('');
   const fileInputRef = useRef(null);
-  const [firstRun, setFirstRun] = useState(true);
 
   const localIP = ""; // your ipv4 address here from ipconfig
 
@@ -47,6 +46,8 @@ const UploadBillForm = () => {
   const uploadUrl = `http://${localIP}:3001/upload`;
   const [numberOfPictures, setNumberOfPictures] = useState(0);
   const prevNumberOfPictures = useRef(numberOfPictures);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+  const [qrUploadUrl, setQrUploadUrl] = useState(uploadUrl);
 
   const fetchNumberOfPictures = async (userId, setNumberOfPictures) => {
     if (!userId) return;
@@ -62,16 +63,40 @@ const UploadBillForm = () => {
   };
 
 
-  useEffect(() => { // apel endpoint backend
-    if (prevNumberOfPictures.current !== numberOfPictures && (prevNumberOfPictures.current !== 0 || numberOfPictures === 1)) {
+  useEffect(() => {
+    if (
+      prevNumberOfPictures.current !== numberOfPictures &&
+      (prevNumberOfPictures.current !== 0 || numberOfPictures === 1)
+    ) {
       console.log("User-ul a uploadat o imagine!");
       console.log(numberOfPictures);
       console.log(prevNumberOfPictures.current);
       prevNumberOfPictures.current = numberOfPictures;
-      setResultText('Imagine încărcată cu succes!');
-      setFileName(`Imagine ${numberOfPictures}`);
+
+      const fetchLatestImage = async () => {
+        try {
+          const imageListRef = ref(storage, `upload/${userId}`);
+          const res = await listAll(imageListRef);
+
+          if (res.items.length === 0) {
+            console.warn("Nu există imagini încărcate.");
+            return;
+          }
+
+          const latestImageRef = res.items[res.items.length - 1];
+          const latestImageUrl = await getDownloadURL(latestImageRef);
+
+          setResultText(`Imagine încărcată cu succes!\nURL: ${latestImageUrl}`);
+          setFileName(`Imagine ${numberOfPictures}`);
+        } catch (error) {
+          console.error("Eroare la obținerea imaginii:", error);
+        }
+      };
+
+      fetchLatestImage();
     }
   }, [numberOfPictures]);
+
 
   useEffect(() => {
 
@@ -83,9 +108,6 @@ const UploadBillForm = () => {
 
   useEffect(() => {
     if (!userId) return;
-
-    //incearca de aici sa setezi cu first render
-
     const intervalId = setInterval(() => {
       fetchNumberOfPictures(userId, setNumberOfPictures);
     }, 1000);
@@ -135,7 +157,6 @@ const UploadBillForm = () => {
       const res = await listAll(imageListRef);
 
       const newFileName = `${res.items.length + 1}${file.name.substring(file.name.lastIndexOf('.'))}`;
-
       const fileRef = ref(storage, `upload/${userId}/${newFileName}`);
 
       await uploadBytes(fileRef, file);
@@ -146,6 +167,8 @@ const UploadBillForm = () => {
 
       setFileName(newFileName);
       setResultText(`Imagine încărcată cu succes!`);
+      setQrUploadUrl(imageUrl);
+      setResultText(`Imagine încărcată cu succes!\nURL: ${imageUrl}`);
     } catch (error) {
       console.error("Eroare la încărcare:", error);
       setFileName("Eroare la încărcare");
@@ -157,7 +180,8 @@ const UploadBillForm = () => {
 
 
   const handleConfirm = async (event) => { // aici fac sa se dea post la spending-ul returnat in handleFileChange
-    try {                                  // FA O NOTIFICARE TOAST CAND SE APASA PE BUTONUL DE CONFIRM/RESPINGERE
+                                           // FA O NOTIFICARE TOAST CAND SE APASA PE BUTONUL DE CONFIRM/RESPINGERE
+    try {                                  
       await fetch("/api/confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -192,7 +216,7 @@ const UploadBillForm = () => {
         {resultText ? (
           <button
             className="confirm-button"
-            onClick={handleConfirm} 
+            onClick={handleConfirm}
           >
             Confirma date
           </button>
