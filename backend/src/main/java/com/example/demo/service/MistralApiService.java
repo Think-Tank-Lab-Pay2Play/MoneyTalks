@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.config.ApiConfig;
+import com.example.demo.model.Spending;
+import com.example.demo.model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -10,13 +12,18 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MistralApiService {
 
     private final ApiConfig apiConfig;
+    private final UserService userService;
 
-    public MistralApiService(ApiConfig apiConfig) {
+    public MistralApiService(ApiConfig apiConfig, UserService userService) {
         this.apiConfig = apiConfig;
+        this.userService = userService;
     }
 
     public JSONObject extractProductsFromImageUrl(String url,Long userId) throws IOException {
@@ -138,6 +145,36 @@ public class MistralApiService {
             return finalResponse;
         } catch (Exception e) {
             throw new RuntimeException("Failed to parse JSON response: " + e.getMessage(), e);
+        }
+    }
+
+    public JSONObject report(String type, Long userId) throws IOException {
+        try {
+
+            //iau userul dupa id si creez un obiect json cu datele userului si cheltuielile lui ca si string
+            JSONObject jsonInput = new JSONObject();
+            User user = userService.findById(userId);
+            jsonInput.put("type", type);
+            jsonInput.put("spendings", user.getSpendings().stream()
+                    .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
+                            s.getCompanyName(),
+                            s.getTotalPrice(),
+                            s.getDate(),
+                            s.getProducts().stream()
+                                    .map(p -> String.format("[%s, Price: %.2f, Units: %d, Total: %.2f, Category: %s]",
+                                            p.getItemName(),
+                                            p.getPricePerUnit(),
+                                            p.getUnits(),
+                                            p.getTotalPrice(),
+                                            p.getCategory()))
+                                    .collect(Collectors.joining(", "))))
+                    .collect(Collectors.joining("\n")));
+
+            String response = makeHttpRequest("/chatbot", jsonInput);
+
+            return new JSONObject(response);
+        } catch (IOException e) {
+            throw e;
         }
     }
 }
