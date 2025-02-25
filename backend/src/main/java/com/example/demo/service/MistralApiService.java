@@ -9,7 +9,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.net.URLDecoder;
 @Service
 public class MistralApiService {
 
@@ -44,36 +44,36 @@ public class MistralApiService {
 
     //descarc imaginea temporal pentru a extrage produsele dand inapoi path-ul unde se descarca
     private String downloadImage(String imageUrl) throws IOException {
-        //creez un obiect de tip url cu url-ul de la imagine
-        URL url = new URL(imageUrl);
+        // Decodifică URL-ul pentru a evita problemele cu caractere speciale (ex: %2F -> /) specific pt firebase
+        String decodedUrl = URLDecoder.decode(imageUrl, "UTF-8");
 
-        //creeze numele imaginii pe care o voi descarca cu temp_ pentru a sti ca este temporala + milisecundele pentru a fi unica+
-        // + incerca sa iau numele fisierului origninal luand textul de dupa ultimul / din url
+        // Extragem numele fișierului original din URL, fără parametrii de query (după ?)
         String fileName = "temp_" + System.currentTimeMillis() + "_" +
-                imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+                decodedUrl.substring(decodedUrl.lastIndexOf('/') + 1).split("\\?")[0];
 
-        // aici e clar ca pun in folderul temporar fisierul descarcat
+        // Directorul temporar unde se va salva imaginea
         String tempDir = System.getProperty("java.io.tmpdir");
-
-        //aici creez pathul
         String filePath = tempDir + File.separator + fileName;
 
-        //aici descarc imaginea
-        //deschid un stream de input pentru a citi imaginea si un stream de output pentru a scrie imaginea in fisierul respectiv
-        try (InputStream in = url.openStream();
+        // Deschidem stream-ul pentru a citi imaginea și a o salva în fișierul temporar
+        try (InputStream in = new URL(imageUrl).openStream();
              FileOutputStream out = new FileOutputStream(filePath)) {
 
-            //aici folosesc un buffer de maxim 4096 de bytes pentru a descarca imaginea
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[8192]; // Buffer de 8KB pentru viteză
             int bytesRead;
 
-            //cat timp citesc din input stream si nu am ajuns la finalul fisierului scriu in output stream
+            // Citim și scriem datele în fișier
             while ((bytesRead = in.read(buffer)) != -1) {
                 out.write(buffer, 0, bytesRead);
             }
+
             return filePath;
+        } catch (IOException e) {
+            throw e;
         }
     }
+
+
 
     private String makeHttpRequest(String endpoint, JSONObject jsonInput) throws IOException {
         HttpURLConnection conn = null;
@@ -125,15 +125,7 @@ public class MistralApiService {
 
     private JSONObject parseResponse(String response,Long userId) {
         try {
-            JSONObject jsonResponse = new JSONObject(response);
-
-            String rawData = jsonResponse.getString("response")
-                    .replace("```json\n", "")
-                    .replace("\n```", "")
-                    .trim();
-
-            JSONArray dataArray = new JSONArray(rawData);
-            JSONObject productData = dataArray.getJSONObject(0);
+            JSONObject productData = new JSONObject(response);
 
             JSONObject finalResponse = new JSONObject();
             finalResponse.put("userId", userId);
