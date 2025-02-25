@@ -85,7 +85,7 @@
 
 .confirm-button {
   position: relative;
-  width: 100%;
+  width: 48%;
   height: 50px;
   background-color: #4169e1;
   color: white;
@@ -94,6 +94,7 @@
   font-size: 1.1em;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 5px;
 }
 
 .confirm-button:hover {
@@ -111,6 +112,87 @@
   font-size: 20px;
   gap:10px;
 }
+
+
+.upload-bill-form-loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-text {
+  font-size: 24px;
+  color: black;
+  position: absolute;
+}
+
+.loading-text::after {
+  position: absolute;
+  animation: loadingAnimation 3s infinite linear;
+  content: "";
+  left: 105%;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    content: "";
+  }
+  10% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  70% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+
+.upload-bill-form-loading-icon-animation{
+  position: relative;
+  right:100px;
+  transform: scale(0.1);
+}
+
+.reject-button {
+  position: relative;
+  width: 48%;
+  height: 50px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 5px;
+}
+
+.reject-button:hover {
+  background-color: #c0392b;
+}
+
+
+.confirmation-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+  gap: 10px;
+}
+
 
 @media (max-width: 2000px) and (max-width: 1600px) {
   .upload-bill-form-wrapper {
