@@ -9,14 +9,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-
-import java.io.*;
 import java.net.URLDecoder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-
 @Service
 public class MistralApiService {
 
@@ -25,8 +18,6 @@ public class MistralApiService {
     public MistralApiService(ApiConfig apiConfig) {
         this.apiConfig = apiConfig;
     }
-    private static final Logger LOGGER = LogManager.getLogger(MistralApiService.class);
-
 
     public JSONObject extractProductsFromImageUrl(String url,Long userId) throws IOException {
         String imagePath = null;
@@ -53,7 +44,7 @@ public class MistralApiService {
 
     //descarc imaginea temporal pentru a extrage produsele dand inapoi path-ul unde se descarca
     private String downloadImage(String imageUrl) throws IOException {
-        // Decodifică URL-ul pentru a evita problemele cu caractere speciale (ex: %2F -> /)
+        // Decodifică URL-ul pentru a evita problemele cu caractere speciale (ex: %2F -> /) specific pt firebase
         String decodedUrl = URLDecoder.decode(imageUrl, "UTF-8");
 
         // Extragem numele fișierului original din URL, fără parametrii de query (după ?)
@@ -63,9 +54,6 @@ public class MistralApiService {
         // Directorul temporar unde se va salva imaginea
         String tempDir = System.getProperty("java.io.tmpdir");
         String filePath = tempDir + File.separator + fileName;
-
-        LOGGER.info("Downloading image from URL: " + imageUrl);
-        LOGGER.info("Saving image to: " + filePath);
 
         // Deschidem stream-ul pentru a citi imaginea și a o salva în fișierul temporar
         try (InputStream in = new URL(imageUrl).openStream();
@@ -79,11 +67,9 @@ public class MistralApiService {
                 out.write(buffer, 0, bytesRead);
             }
 
-            LOGGER.info("Image downloaded successfully: " + filePath);
-            return filePath; // Returnează calea fișierului temporar
+            return filePath;
         } catch (IOException e) {
-            LOGGER.error("Error downloading image: " + e.getMessage(), e);
-            throw e; // Propagăm excepția pentru a fi gestionată corespunzător
+            throw e;
         }
     }
 
