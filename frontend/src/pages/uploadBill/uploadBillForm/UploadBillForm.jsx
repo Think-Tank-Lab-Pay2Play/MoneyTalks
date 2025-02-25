@@ -6,14 +6,18 @@ import { storage } from '../../../../firebase/FireBaseConfig.jsx';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { listAll } from "firebase/storage";
 import BillDetails from './billDetails/BillDetails.jsx';
+import animatieLoading from "./loadingCircleIcon/loadingCircleIcon.json"
+import Lottie from "lottie-react";
+import { toast } from 'react-toastify';
 
 
 const UploadBillForm = () => {
   const [fileName, setFileName] = useState('Niciun fișier selectat');
-  const [resultText, setResultText] = useState('');
   const fileInputRef = useRef(null);
   const [billData, setBillData] = useState(null);
   const [isManualUpload, setIsManualUpload] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const localIP = ""; // your ipv4 address here from ipconfig
 
@@ -25,6 +29,7 @@ const UploadBillForm = () => {
       if (!storedData) return;
 
       const { email, password } = JSON.parse(storedData);
+      setIsLoading(true);
       try {
         const userResponse = await axios.get(
           `http://localhost:8080/users/byEmail/${email}`,
@@ -39,6 +44,8 @@ const UploadBillForm = () => {
         }
       } catch (error) {
         console.error("Eroare la preluarea userului:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -77,6 +84,7 @@ const UploadBillForm = () => {
       prevNumberOfPictures.current = numberOfPictures;
 
       const fetchLatestImage = async () => {
+        setIsLoading(true);
         try {
           const imageListRef = ref(storage, `upload/${userId}`);
           const res = await listAll(imageListRef);
@@ -91,7 +99,7 @@ const UploadBillForm = () => {
               const match = item.name.match(/^(\d+)\.png$/);
               return match ? { ref: item, number: parseInt(match[1], 10) } : null;
             })
-            .filter(item => item !== null) 
+            .filter(item => item !== null)
             .sort((a, b) => b.number - a.number);
 
           if (imageItems.length === 0) {
@@ -99,7 +107,7 @@ const UploadBillForm = () => {
             return;
           }
 
-          const latestImageRef = imageItems[0].ref; 
+          const latestImageRef = imageItems[0].ref;
           const latestImageUrl = await getDownloadURL(latestImageRef);
           setQrUploadUrl(latestImageUrl);
 
@@ -126,6 +134,8 @@ const UploadBillForm = () => {
           setFileName(`Imagine ${imageItems[0].number}`);
         } catch (error) {
           console.error("Eroare la obținerea imaginii:", error);
+        } finally {
+          setIsLoading(false);
         }
       };
 
@@ -189,7 +199,7 @@ const UploadBillForm = () => {
       console.error("User ID invalid");
       return;
     }
-
+    setIsLoading(true);
     try {
       const imageListRef = ref(storage, `upload/${userId}`);
       const res = await listAll(imageListRef);
@@ -230,96 +240,168 @@ const UploadBillForm = () => {
       console.error("Eroare la încărcare:", error);
       setFileName("Eroare la încărcare");
       event.target.value = "";
+    } finally {
+      setIsLoading(false);
     }
   };
 
 
-
-
-  const handleConfirm = async (event) => { // aici fac sa se dea post la spending-ul returnat in handleFileChange
-    // FA O NOTIFICARE TOAST CAND SE APASA PE BUTONUL DE CONFIRM/RESPINGERE
+  const handleConfirm = async (event) => {
+    console.log(billData);
     try {
-      await fetch("/api/confirm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, confirmed: true }),
+      if (!billData || !billData.products || billData.products.length === 0) {
+        toast.error('Nu există produse de trimis!', { autoClose: 5000 });
+        return;
+      }
+
+      const companyName = billData.companyName || '';
+      const description = billData.description || '';
+      const date = billData.date || '';
+      const hour = billData.hour || { hour: '', minute: '' };
+
+      const formattedItems = billData.products.map(item => ({
+        itemName: item.itemName, 
+        pricePerUnit: parseFloat(item.pricePerUnit),
+        units: parseInt(item.units, 10),
+        category: item.category
+      }));
+
+      const totalPrice = formattedItems.reduce((sum, item) => sum + (item.pricePerUnit * item.units), 0);
+
+      // Format date without adding extra T00:00:00
+      let formattedDate = new Date(date);  // Create a new Date object from the string
+      if (hour && hour.hour && hour.minute) {
+        formattedDate.setHours(parseInt(hour.hour), parseInt(hour.minute)); // Set the hour and minute
+      }
+
+      // Format the date into the correct string format (yyyy-MM-dd'T'HH:mm:ss)
+      formattedDate = formattedDate.toISOString();  // Convert to ISO string
+
+
+      const storedData = localStorage.getItem("auth");
+      if (!storedData) return;
+
+      const { email, password } = JSON.parse(storedData);
+
+      const response = await axios.post('http://localhost:8080/spending', {
+        userId: userId,
+        companyName: companyName,
+        totalPrice: totalPrice,
+        date: formattedDate,
+        products: formattedItems,
+        description: description
+      }, {
+        headers: { 'Content-Type': 'application/json' },
+        auth: { username: email, password }
       });
+
+      if (response.status === 200) {
+        toast.success('Cheltuiala a fost înregistrată cu succes!', { autoClose: 2000 });
+      }
+
       setFileName("Niciun fișier selectat");
       setBillData(null);
       setIsManualUpload(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
+
     } catch (error) {
-      console.error("Eroare:", error);
+      console.error("Eroare:", error.response ? error.response.data : error.message);
+      alert('A apărut o problemă. Detalii: ' + (error.response ? error.response.data : error.message));
     }
   };
+
+
+  const handleRejectData = async () => {
+    toast.error('Vă rugăm să faceți o poză mai clară bonului sau facturii pentru o procesare corectă!', { autoClose: 10000 });
+    setFileName("Niciun fișier selectat");
+    setBillData(null);
+    setIsManualUpload(false);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+
+  };
+
 
 
   return (
     <div className="upload-bill-form-wrapper">
       <div className="upload-bill-form-container">
-        <div className="upload-bill-form-header">
-          {billData ? (
-            <BillDetails billData={billData} />
-          ) : (
-            <>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
-                  stroke="#000000"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <p>Încarcă poza unui bon sau a unei facturi</p>
-            </>
-          )}
-        </div>
-
-        {billData ? (
-          <button className="confirm-button" onClick={handleConfirm}>
-            Confirmă datele
-          </button>
+        {isLoading ? (
+          <div className="upload-bill-form-loading-animation">
+            <Lottie animationData={animatieLoading} loop={true} className='upload-bill-form-loading-icon-animation' /><div className="loading-text">Se încarcă</div>
+          </div>
         ) : (
           <>
-            <label htmlFor="file" className="upload-bill-form-footer">
-              <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15.331 6H8.5v20h15V14.154h-8.169z" />
-                <path d="M18.153 6h-.009v5.342H23.5v-.002z" />
-              </svg>
-              <p>{fileName}</p>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z"
-                  stroke="#000000"
-                  strokeWidth={2}
-                />
-                <path d="M19.5 5H4.5" stroke="#000000" strokeWidth={2} strokeLinecap="round" />
-                <path
-                  d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z"
-                  stroke="#000000"
-                  strokeWidth={2}
-                />
-              </svg>
-            </label>
-
-            <div className="qr-section">
-              <p>sau scanează codul QR pentru a încărca direct de pe telefon:</p>
-              <QRCodeComponent value={uploadUrl} />
+            <div className="upload-bill-form-header">
+              {billData ? (
+                <BillDetails billData={billData} />
+              ) : (
+                <>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
+                      stroke="#000000"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <p>Încarcă poza unui bon sau a unei facturi</p>
+                </>
+              )}
             </div>
+
+            {billData ? (
+              <div className="confirmation-buttons">
+                <button className="confirm-button" onClick={handleConfirm}>
+                  Confirma Date
+                </button>
+                <button className="reject-button" onClick={handleRejectData}>
+                  Respinge Date
+                </button>
+              </div>
+            ) : (
+              <>
+                <label htmlFor="file" className="upload-bill-form-footer">
+                  <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.331 6H8.5v20h15V14.154h-8.169z" />
+                    <path d="M18.153 6h-.009v5.342H23.5v-.002z" />
+                  </svg>
+                  <p>{fileName}</p>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z"
+                      stroke="#000000"
+                      strokeWidth={2}
+                    />
+                    <path d="M19.5 5H4.5" stroke="#000000" strokeWidth={2} strokeLinecap="round" />
+                    <path
+                      d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z"
+                      stroke="#000000"
+                      strokeWidth={2}
+                    />
+                  </svg>
+                </label>
+
+                <div className="qr-section">
+                  <p>sau scanează codul QR pentru a încărca direct de pe telefon:</p>
+                  <QRCodeComponent value={uploadUrl} />
+                </div>
+              </>
+            )}
+
+            <input
+              id="file"
+              type="file"
+              accept="image/jpeg, image/jpg, image/png"
+              onChange={handleFileChange}
+              ref={fileInputRef}
+            />
           </>
         )}
-
-        <input
-          id="file"
-          type="file"
-          accept="image/jpeg, image/jpg, image/png"
-          onChange={handleFileChange}
-          ref={fileInputRef}
-        />
       </div>
     </div>
   );
+
 
 };
 
