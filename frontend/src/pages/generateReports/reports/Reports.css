@@ -125,7 +125,7 @@
 }
 
 /* Loading Animation */
-.loading {
+.loading-generate-report {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,7 +134,7 @@
   font-style: italic;
 }
 
-.loading::after {
+.loading-generate-report::after {
   content: '';
   width: 24px;
   height: 24px;
