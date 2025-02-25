@@ -3,6 +3,25 @@ import "./TopSpendingsInAPeriod.css";
 import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar";
 
 export default function TopSpendingsInAPeriod({ userSpendings, startDate, setStartDate, endDate, setEndDate }) {
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
+
     const [selectedSpendingId, setSelectedSpendingId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(5);
@@ -125,7 +144,7 @@ export default function TopSpendingsInAPeriod({ userSpendings, startDate, setSta
                                                             {spending.products.map((product, index) => (
                                                                 <tr key={index}>
                                                                     <td>{product.itemName}</td>
-                                                                    <td>{product.category}</td>
+                                                                    <td>{categoryMap[product.category]}</td>
                                                                     <td>{product.units}</td>
                                                                     <td>{(product.pricePerUnit * product.units).toFixed(2)}</td>
                                                                 </tr>

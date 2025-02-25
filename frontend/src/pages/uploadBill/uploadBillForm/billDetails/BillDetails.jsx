@@ -2,6 +2,25 @@ import React, { useState } from "react";
 import "./BillDetails.css";
 
 const BillDetails = ({ billData }) => {
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
+
     const [showDetails, setShowDetails] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 5;
@@ -74,7 +93,7 @@ const BillDetails = ({ billData }) => {
                                     {currentProducts.map((product, index) => (
                                         <tr key={index}>
                                             <td>{product.itemName}</td>
-                                            <td>{product.category}</td>
+                                            <td>{categoryMap[product.category]}</td>
                                             <td>{product.units}</td>
                                             <td>{product.pricePerUnit} RON</td>
                                             <td>{(product.pricePerUnit * product.units).toFixed(2)} RON</td>

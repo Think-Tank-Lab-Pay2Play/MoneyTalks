@@ -12,6 +12,26 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
     const [filteredSpendings, setFilteredSpendings] = useState([]);
     const [statistics, setStatistics] = useState(null);
 
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
+
+
     const categories = spendingCategories;
 
     useEffect(() => {
@@ -104,7 +124,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
         });
     };
 
-    
+
     const getMonthName = (monthNumber) => {
         const months = [
             "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
@@ -127,7 +147,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                 <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
                     <option value="" disabled hidden>Selectează o categorie</option>
                     {categories.map((category, index) => (
-                        <option key={index} value={category}>{category}</option>
+                        <option key={index} value={category}>{categoryMap[category]}</option>
                     ))}
                 </select>
             </div>
@@ -136,7 +156,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                 <h2 className="spendings-evolution-per-categories-statistic-title">Selectează un interval de date pentru a vedea evoluția cheltuielilor</h2>
                 {statistics ? (
                     <p>
-                        Cheltuielile din categoria {statistics.category} au
+                        Cheltuielile din categoria {categoryMap[statistics.category] || statistics.category} au
                         {statistics.percentageChange >= 0 ? " crescut " : " scăzut "}
                         cu {Math.abs(statistics.percentageChange)}%
                         din luna {getMonthName(startMonth)} {startYear} până în luna {getMonthName(endMonth)} {endYear}.
@@ -146,6 +166,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                 ) : (
                     <p className="spendings-evolution-per-categories-statistic-no-data"></p>
                 )}
+
             </div>
 
         </>

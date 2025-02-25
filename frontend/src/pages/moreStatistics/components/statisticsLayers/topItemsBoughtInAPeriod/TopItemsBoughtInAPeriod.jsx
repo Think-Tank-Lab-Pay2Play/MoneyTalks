@@ -3,6 +3,25 @@ import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar
 import "./TopItemsBoughtInAPeriod.css";
 
 export default function TopItemsBoughtInAPeriod({ userSpendings, startDate, setStartDate, endDate, setEndDate }) {
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
+
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(5);
 
@@ -79,7 +98,7 @@ export default function TopItemsBoughtInAPeriod({ userSpendings, startDate, setS
                             {currentProducts.map((product, index) => (
                                 <tr key={index}>
                                     <td>{product.name.split(" - ")[0]}</td>
-                                    <td>{product.name.split(" - ")[1]}</td>
+                                    <td>{categoryMap[product.name.split(" - ")[1]]}</td>
                                     <td>{product.count}</td>
                                     <td>{product.totalPrice.toFixed(2)}</td>
                                 </tr>
