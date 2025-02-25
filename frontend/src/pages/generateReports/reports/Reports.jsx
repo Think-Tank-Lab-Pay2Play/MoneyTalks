@@ -133,7 +133,7 @@ const Reports = () => {
         <div className="report-results">
           <div className="report-content-box">
             {isLoading ? (
-              <div className="loading">Se generează raportul...</div>
+              <div className="loading-generate-report">Se generează raportul...</div>
             ) : (
               Array.isArray(reportContent) ? (
                 reportContent.map((paragraph, index) => (
@@ -141,9 +141,7 @@ const Reports = () => {
                     {paragraph.split('\n').map((line, lineIndex, arr) => (
                       <React.Fragment key={lineIndex}>
                         {line}
-                        {/* Adaugă spațiu doar între rânduri, nu după ultimul */}
                         {lineIndex !== arr.length - 1 && <br />}
-                        {/* Adaugă spațiu suplimentar după puncte */}
                         {line.trim().endsWith('.') && <div style={{ height: '0.8rem' }} />}
                       </React.Fragment>
                     ))}
