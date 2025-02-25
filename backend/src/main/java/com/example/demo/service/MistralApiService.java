@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.config.ApiConfig;
 import com.example.demo.model.Spending;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.Category;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -148,10 +150,121 @@ public class MistralApiService {
         }
     }
 
+
     public JSONObject report(String type, Long userId) throws IOException {
         try {
 
+            // verific tipul de raport si apelez metoda corespunzatoare
+            if(type == "budget"){
+                return reportBudget(type, userId);
+            }
+            else if (type == "subscription") {
+                return reportSubscription(type, userId);
+            }
+            else if (type == "savings") {
+                return reportSavings(type, userId);
+            }
+            else return reportCustom(type, userId);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public JSONObject reportBudget(String type, Long userId) throws IOException {
+        try {
+
             //iau userul dupa id si creez un obiect json cu datele userului si cheltuielile lui ca si string
+            JSONObject jsonInput = new JSONObject();
+            User user = userService.findById(userId);
+            jsonInput.put("type", type);
+            jsonInput.put("spendings", user.getSpendings().stream()
+                    .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
+                            s.getCompanyName(),
+                            s.getTotalPrice(),
+                            s.getDate(),
+                            s.getProducts().stream()
+                                    .map(p -> String.format("[%s, Price: %.2f, Units: %d, Total: %.2f, Category: %s]",
+                                            p.getItemName(),
+                                            p.getPricePerUnit(),
+                                            p.getUnits(),
+                                            p.getTotalPrice(),
+                                            p.getCategory()))
+                                    .collect(Collectors.joining(", "))))
+                    .collect(Collectors.joining("\n")));
+
+            String response = makeHttpRequest("/chatbot", jsonInput);
+
+            return new JSONObject(response);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public JSONObject reportSubscription(String type, Long userId) throws IOException {
+        try {
+
+            //iau userul dupa id si creez un obiect json cu datele userului si cheltuielile lui ca si string unde tipul de cheltuiala este abonamente
+            JSONObject jsonInput = new JSONObject();
+            User user = userService.findById(userId);
+            jsonInput.put("type", type);
+            jsonInput.put("spendings", user.getSpendings().stream()
+                    .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
+                            s.getCompanyName(),
+                            s.getTotalPrice(),
+                            s.getDate(),
+                            s.getProducts().stream().filter(p -> p.getCategory() == Category.ABONAMENTE)
+                                    .map(p -> String.format("[%s, Price: %.2f, Units: %d, Total: %.2f, Category: %s]",
+                                            p.getItemName(),
+                                            p.getPricePerUnit(),
+                                            p.getUnits(),
+                                            p.getTotalPrice(),
+                                            p.getCategory()))
+                                    .collect(Collectors.joining(", "))))
+                    .collect(Collectors.joining("\n")));
+
+            String response = makeHttpRequest("/chatbot", jsonInput);
+
+            return new JSONObject(response);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public JSONObject reportSavings(String type, Long userId) throws IOException {
+        try {
+
+            //iau userul dupa id si creez un obiect json cu datele userul si cheltuielile lui din ultmele 90 de zile ca si string
+            JSONObject jsonInput = new JSONObject();
+            User user = userService.findById(userId);
+            jsonInput.put("type", type);
+            jsonInput.put("spendings", user.getSpendings().stream().filter(s -> s.getDate().isAfter(LocalDateTime.now().minusDays(90)))
+                    .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
+                            s.getCompanyName(),
+                            s.getTotalPrice(),
+                            s.getDate(),
+                            s.getProducts().stream()
+                                    .map(p -> String.format("[%s, Price: %.2f, Units: %d, Total: %.2f, Category: %s]",
+                                            p.getItemName(),
+                                            p.getPricePerUnit(),
+                                            p.getUnits(),
+                                            p.getTotalPrice(),
+                                            p.getCategory()))
+                                    .collect(Collectors.joining(", "))))
+                    .collect(Collectors.joining("\n")));
+            jsonInput.put("current_date", LocalDateTime.now().toString());
+
+            String response = makeHttpRequest("/chatbot", jsonInput);
+
+            return new JSONObject(response);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public JSONObject reportCustom(String type, Long userId) throws IOException {
+        try {
+
+            //iau userul dupa id si creez un obiect json cu datele userului si cheltuielile lui ca si string pentru un raport custom
             JSONObject jsonInput = new JSONObject();
             User user = userService.findById(userId);
             jsonInput.put("type", type);
