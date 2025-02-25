@@ -47,9 +47,11 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
     }, {});
 
     const colors = [
-        '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#E74C3C', '#1ABC9C'
+        '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#E74C3C', '#1ABC9C',
+        '#8E44AD', '#2ECC71', '#D35400', '#C0392B', '#2980B9', '#F39C12', '#16A085',
+        '#7F8C8D', '#27AE60'
     ];
-
+    
     // sorteaza cheltuielile pe categorii
     const catSpend = Object.fromEntries(
         Object.entries(categorySpendings)
