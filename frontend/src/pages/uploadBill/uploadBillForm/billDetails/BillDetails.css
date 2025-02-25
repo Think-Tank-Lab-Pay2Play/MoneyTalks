@@ -1,0 +1,136 @@
+.upload-bill-form-bill-details-table-container {
+    max-width: 1200px;
+    text-align: center;
+    position: relative;
+    top:-40px;
+    left:0px;
+    transform: scale(0.7);
+}
+
+.upload-bill-form-bill-details-table,
+.upload-bill-form-bill-details-table-products {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2em;
+    min-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.upload-bill-form-bill-details-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.upload-bill-form-bill-details-table th,
+.upload-bill-form-bill-details-table td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.upload-bill-form-bill-details-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+.upload-bill-form-bill-details-btn:hover {
+    background-color: #0056b3;
+}
+
+.upload-bill-form-bill-details-extra {
+    padding: 15px;
+    border: 1px solid #009879;
+    border-radius: 10px;
+    background: #f3f3f3;
+    margin-bottom: -100px;
+}
+
+.upload-bill-form-bill-details-subtitle {
+    font-size: 20px;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+.upload-bill-form-bill-details-desc {
+    position: relative;
+    top:80px;
+    left:0px;
+    font-size: 16px;
+    color: #333;
+}
+
+.upload-bill-form-bill-details-table-products {
+    position: relative;
+    border-collapse: collapse;
+    font-size: 1.1em;
+    min-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.upload-bill-form-bill-details-table-products thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.upload-bill-form-bill-details-table-products th,
+.upload-bill-form-bill-details-table-products td {
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.upload-bill-form-bill-details-table-products tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.upload-bill-form-bill-details-table-products tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.upload-bill-form-bill-details-table-products tbody tr:last-of-type {
+    border-bottom: 2px solid #007bff;
+}
+
+.upload-bill-form-bill-details-no-products {
+    font-size: 18px;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+
+.upload-bill-form-bill-details-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+  }
+  
+  .upload-bill-form-bill-details-pagination-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-bill-form-bill-details-pagination-btn:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+  }
+  
+  .upload-bill-form-bill-details-pagination-info {
+    font-size: 16px;
+    font-weight: bold;
+  }
