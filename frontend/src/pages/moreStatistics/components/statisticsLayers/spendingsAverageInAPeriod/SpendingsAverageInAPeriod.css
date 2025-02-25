@@ -1,13 +1,13 @@
 .spendings-average-in-a-period {
     position: absolute;
-    top: 350px;
-    left: 775px;
+    top: 330px;
+    left: 780px;
 }
 
 .spendings-average-in-a-period-title {
     position: absolute;
     color: #dc3545;
-    top: 290px;
+    top: 280px;
     left: 780px;
     font-size: 20px;
 }
