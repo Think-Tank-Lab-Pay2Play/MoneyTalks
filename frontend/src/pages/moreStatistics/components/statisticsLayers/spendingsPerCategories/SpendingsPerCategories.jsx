@@ -29,15 +29,15 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
     const colors = [
         '#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#E74C3C', '#1ABC9C'
     ];
-    
+
     // sorteaza cheltuielile pe categorii
     const catSpend = Object.fromEntries(
         Object.entries(categorySpendings)
             .map(([category, total]) => [category, parseFloat(total.toFixed(2))])
             .sort((a, b) => b[1] - a[1])
     );
-    
-    
+
+
 
     const chartData = {
         series: Object.values(catSpend),
@@ -63,7 +63,6 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         }
     };
 
-    // afiseaza cheltuielile per categorii pe o perioada de timp
     const categoryStatistics = Object.entries(catSpend).map(([category, totalPrice], index) => (
         <div key={category} className="category-statistic">
             <span
@@ -84,25 +83,31 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         <>
             <DateInputCalendar startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
             <h2 className="spendings-per-categories-title">Cheltuieli per categorie</h2>
-            <div className="spendings-per-categories-stats">
-                {categoryStatistics.length > 0 ? <> {categoryStatistics}
-                    <div className="spendings-per-categories-total-spendings">
-                        <div>RON</div>
-                        <div>{getTotalSpendings()}</div>
+            <div className="spendings-container">
+                <div className="spendings-data-container">
+                    <div className="spendings-per-categories-stats">
+                        {categoryStatistics.length > 0 ? categoryStatistics : <p>0 RON</p>}
                     </div>
-                </>
-                : <p>0 RON</p>}
-            </div>
 
-            {Object.keys(catSpend).length > 0 && (
-                <div className="spendings-chart-container">
-                    <ReactApexChart 
-                        options={chartData.options} 
-                        series={chartData.series} 
-                        type="donut" 
-                    />
+                    {categoryStatistics.length > 0 && (
+                        <div className="spendings-per-categories-total-spendings">
+                            <div>RON</div>
+                            <div>{getTotalSpendings()}</div>
+                        </div>
+                    )}
                 </div>
-            )}
+
+                {Object.keys(catSpend).length > 0 && (
+                    <div className="spendings-chart-container">
+                        <ReactApexChart
+                            options={chartData.options}
+                            series={chartData.series}
+                            type="donut"
+                        />
+                    </div>
+                )}
+            </div>
         </>
     );
+
 }
