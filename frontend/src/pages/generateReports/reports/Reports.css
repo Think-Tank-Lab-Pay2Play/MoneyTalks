@@ -103,7 +103,7 @@
   box-shadow: var(--shadow);
   line-height: 1.8;
   font-size: 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .report-content-box p {
@@ -191,7 +191,7 @@
   :root {
     --background: #1a1a1a;
     --text-dark: #ffffff;
-    --glass-bg: rgba(30, 30, 30, 0.95);
+    --glass-bg: rgba(255, 255, 255, 0.95);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
