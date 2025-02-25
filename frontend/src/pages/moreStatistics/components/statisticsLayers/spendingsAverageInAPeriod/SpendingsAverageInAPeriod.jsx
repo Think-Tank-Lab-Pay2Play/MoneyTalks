@@ -2,6 +2,25 @@ import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar
 import "./SpendingsAverageInAPeriod.css";
 
 export default function SpendingsAverageInAPeriod({ userSpendings, startDate, setStartDate, endDate, setEndDate }) {
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
+    
     const formatDate = (date) => {
         if (!date) return "";
         const months = [
@@ -54,7 +73,7 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
                     Object.keys(categorySpendings).length > 0 ? (
                         Object.entries(categorySpendings).map(([category, total]) => (
                             <p key={category}>
-                                Ai cheltuit în medie {(total / daysCount).toFixed(2)} RON pe zi pentru achizițiile din categoria {category}.
+                                Ai cheltuit în medie {(total / daysCount).toFixed(2)} RON pe zi pentru achizițiile din categoria {categoryMap[category]}.
                             </p>
                         ))
                     ) : (

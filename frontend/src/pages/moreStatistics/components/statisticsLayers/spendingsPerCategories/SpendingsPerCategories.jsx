@@ -4,6 +4,26 @@ import DateInputCalendar from "../components/dateInputCalendar/DateInputCalendar
 import "./SpendingsPerCategories.css";
 
 export default function SpendingsPerCategories({ userSpendings, startDate, setStartDate, endDate, setEndDate }) {
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
+    
+
     // preia cheltuielile dintr-o anumita perioada de timp
     const filteredSpendings = userSpendings.filter(spending => {
         const spendingDate = new Date(spending.date);
@@ -45,7 +65,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
             chart: {
                 type: 'donut',
             },
-            labels: Object.keys(catSpend),
+            labels: Object.keys(catSpend).map(category => categoryMap[category]),
             colors: colors.slice(0, Object.keys(catSpend).length),
             responsive: [
                 {
@@ -69,7 +89,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
                 className="category-color-bullet"
                 style={{ backgroundColor: colors[index % colors.length] }}
             />
-            <div>{category}: {totalPrice.toFixed(2)} RON</div>
+            <div>{categoryMap[category]}: {totalPrice.toFixed(2)} RON</div>
         </div>
     ));
 

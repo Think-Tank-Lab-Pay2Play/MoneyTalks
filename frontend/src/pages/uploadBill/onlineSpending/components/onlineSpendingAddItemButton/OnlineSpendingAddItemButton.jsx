@@ -11,6 +11,24 @@ const IconAdd = () => (
 );
 
 const InputGroup = ({ id, onInputChange, categories }) => {
+    const categoryMap = {
+        "ABONAMENTE": "Abonamente",
+        "ASIGURARI": "Asigurări",
+        "BUNURI_DE_LUX": "Bunuri de lux",
+        "COSMETICE": "Cosmetice",
+        "DIVERTISMENT": "Divertisment",
+        "EDUCATIE": "Educație",
+        "HOBBY_URI": "Hobby-uri",
+        "INVESTITII": "Investiții",
+        "LOCUINTA": "Locuință",
+        "MANCARE": "Mâncare",
+        "SANATATE": "Sănătate",
+        "TAXE": "Taxe",
+        "TEHNOLOGIE": "Tehnologie",
+        "TRANSPORT": "Transport",
+        "UZ_CASNIC": "Uz casnic",
+        "IMBRACAMINTE": "Îmbrăcăminte"
+    };
     const handleChange = (field, value) => {
         onInputChange(id, field, value);
     };
@@ -46,7 +64,7 @@ const InputGroup = ({ id, onInputChange, categories }) => {
                     <option value="">Selectează o categorie</option>
                     {categories.map((category) => (
                         <option key={category} value={category}>
-                            {category}
+                            {categoryMap[category]}
                         </option>
                     ))}
                 </select>
