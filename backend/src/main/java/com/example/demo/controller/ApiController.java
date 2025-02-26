@@ -2,9 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.ResponseDto;
 import com.example.demo.dto.image.ImageUrlRequest;
-import com.example.demo.dto.item.ItemResponse;
-import com.example.demo.dto.spendings.SpendingResponse;
-import com.example.demo.service.MistralApiService;
+import com.example.demo.dto.report.CustomReportRequest;
+import com.example.demo.service.ApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,9 +21,9 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class MistralApiController {
+public class ApiController {
 
-    private final MistralApiService mistralApiService;
+    private final ApiService apiService;
 
     @Operation(summary = "Extract products from an image URL")
     @ApiResponses(value = {
@@ -39,7 +38,7 @@ public class MistralApiController {
     public ResponseEntity<?> extractProductsFromImageUrl(@PathVariable Long userId,
             @RequestBody @Valid ImageUrlRequest imageUrlRequest){
         try{
-        JSONObject response = mistralApiService.extractProductsFromImageUrl(imageUrlRequest.url(), userId);
+        JSONObject response = apiService.extractProductsFromImageUrl(imageUrlRequest.url(), userId);
             return ResponseEntity.ok(response.toString());
         } catch (IOException e){
             return ResponseEntity
@@ -61,7 +60,7 @@ public class MistralApiController {
     @PostMapping("/report/{type}/{userId}")
     public ResponseEntity<String> report(@PathVariable String type,@PathVariable Long userId){
         try{
-            JSONObject response = mistralApiService.report(type,userId);
+            JSONObject response = apiService.report(type,userId);
             return ResponseEntity.ok(response.toString());
         } catch (IOException e){
             return ResponseEntity
@@ -69,4 +68,28 @@ public class MistralApiController {
                     .body("Failed to load the prompt message: " + e.getMessage());
         }
     }
+
+    @Operation(summary = "Generate a custom report")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Custom report generated successfully",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid file",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "Spending not found",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class)))
+    })
+    @PostMapping("/report/custom/{userId}")
+    public ResponseEntity<String> report(@RequestBody @Valid CustomReportRequest customReportRequest,
+                                         @PathVariable Long userId){
+        try{
+            JSONObject response = apiService.reportCustom(customReportRequest,userId);
+            return ResponseEntity.ok(response.toString());
+        } catch (IOException e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to load the prompt message: " + e.getMessage());
+        }
+    }
+
+
 }
