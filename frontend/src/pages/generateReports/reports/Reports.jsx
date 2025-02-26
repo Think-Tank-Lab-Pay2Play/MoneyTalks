@@ -97,7 +97,7 @@ const Reports = () => {
             <button onClick={() => handleGenerateReport('budget')}>
               Buget vs Cheltuieli
             </button>
-            <button onClick={() => handleGenerateReport('subscriptions')}>
+            <button onClick={() => handleGenerateReport('subscription')}>
               Abonamente
             </button>
             <button onClick={() => handleGenerateReport('savings')}>
@@ -133,7 +133,7 @@ const Reports = () => {
         <div className="report-results">
           <div className="report-content-box">
             {isLoading ? (
-              <div className="loading-generate-report">Se generează raportul...</div>
+              <div className="loading">Se generează raportul...</div>
             ) : (
               Array.isArray(reportContent) ? (
                 reportContent.map((paragraph, index) => (

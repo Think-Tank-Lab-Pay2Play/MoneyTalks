@@ -19,7 +19,6 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Selection View */
 .report-buttons-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -45,7 +44,6 @@
   text-align: center;
 }
 
-/* Custom Report Section */
 .custom-report-input {
   display: flex;
   gap: 1rem;
@@ -124,7 +122,6 @@
   transform: translateX(-5px) !important;
 }
 
-/* Loading Animation */
 .loading-generate-report {
   display: flex;
   align-items: center;
@@ -144,7 +141,6 @@
   animation: spin 1s linear infinite;
 }
 
-/* Animations */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -162,42 +158,18 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .report-buttons-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .reports-container {
-    padding: 1.5rem;
-    top: 80px;
-  }
-
-  .report-buttons-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .custom-report-input {
-    flex-direction: column;
-  }
-
-  .report-content-box {
-    padding: 2rem;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1a1a1a;
-    --text-dark: #ffffff;
+    --text-dark: #000000;
     --glass-bg: rgba(255, 255, 255, 0.95);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
   .custom-report-input input {
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: white;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: rgb(0, 0, 0);
   }
 }
