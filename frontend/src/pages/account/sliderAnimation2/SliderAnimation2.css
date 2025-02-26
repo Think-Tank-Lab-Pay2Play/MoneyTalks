@@ -5,30 +5,30 @@
     --duration: 32s;
 }
 
-.slider {
+.slider2 {
     width: 99.55%;
     height: var(--height);
     position: absolute;
-    top: 200px;
+    top: 800px;
     overflow: hidden;
 }
 
-.slider img {
+.slider2 img {
     position: absolute;
     width: var(--width);
     height: var(--height);
     object-fit: contain;
     left: 100%;
-    animation: autoRunSlider var(--duration) linear infinite;
+    animation: autoRunSlider2 var(--duration) linear infinite;
     animation-delay: calc(-1 * (var(--pos) - 1) * (var(--duration) / var(--items-count)));
 }
 
-@keyframes autoRunSlider {
+@keyframes autoRunSlider2 {
     from {
-        left: 100%;
+        left: calc(-1 * var(--width));
     }
 
     to {
-        left: calc(-1 * var(--width));
+        left: 100%
     }
 }
