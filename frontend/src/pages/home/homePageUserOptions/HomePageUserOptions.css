@@ -44,14 +44,9 @@
     background-color: #3b82f6;
 }
 
-.blue {
-    background-color: #f43f5e;
-}
-
 .green {
     background-color: #22c55e;
 }
-
 .turquoise {
     background-color: #20b2aa;
 }
@@ -60,6 +55,9 @@
     background-color: #a855f7;
 }
 
+.blue {
+    background-color: #f43f5e;
+}
 
 /* Pentru ecrane între 1281px și 1920px */
 @media (max-width: 2000px) and (max-width: 1600px) {

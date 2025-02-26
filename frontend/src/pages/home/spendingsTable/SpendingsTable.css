@@ -22,20 +22,20 @@
     padding: 12px 15px;
     text-align: center;
     font-size: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #0000003f;
     width: 100%;
 }
 
 /* Stiluri pentru antetul tabelului */
 .spendings-table th {
-    background-color: #f4f4f4;
+    background-color: #fff2001a;
     font-weight: bold;
     color: #333;
 }
 
 /* Stiluri pentru rândurile datelor */
 .spendings-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #fff2001a;
 }
 
 .spendings-table tbody tr:hover {
