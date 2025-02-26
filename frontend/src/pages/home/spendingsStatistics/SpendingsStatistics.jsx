@@ -41,9 +41,9 @@ const SpendingsStatistic = ({ data }) => {
           {
             label: "Cheltuieli lunare",
             data: values,
-            borderColor: "#007bff",
-            backgroundColor: "#007bff",
-            pointBackgroundColor: "#dc3545",
+            borderColor: "#FFF200",
+            backgroundColor: "#FFF200",
+            pointBackgroundColor: "#000000",
             pointRadius: 5,
             borderWidth: 2,
             tension: 0.4,
