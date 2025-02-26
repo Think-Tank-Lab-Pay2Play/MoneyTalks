@@ -4,7 +4,7 @@
     text-align: center;
     position: relative;
     bottom: 250px;
-    left: 325px;
+    left: 334px;
 }
 
 .top-shops-attended-no-spendings-message {
@@ -86,6 +86,15 @@
 
 
 @media (max-width: 2000px) and (max-width: 1600px) {
+    .top-shops-attended-container {
+        margin: 50px auto;
+        max-width: 800px;
+        text-align: center;
+        position: relative;
+        bottom: 250px;
+        left: 325px;
+    }
+
     .top-shops-attended-table {
         width: 100%;
         border-collapse: collapse;

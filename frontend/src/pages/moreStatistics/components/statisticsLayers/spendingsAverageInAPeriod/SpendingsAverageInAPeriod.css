@@ -23,15 +23,16 @@
 @media (max-width: 2000px) and (max-width: 1600px) {
     .spendings-average-in-a-period {
         position: absolute;
-        top: 250px;
-        left: 770px;
+        top: 222px;
+        left: 760px;
         font-size: 14px;
+        transform: scale(0.95);
     }
 
     .spendings-average-in-a-period-title {
         position: absolute;
         color: #dc3545;
-        top: 210px;
+        top: 195px;
         left: 765px;
         font-size: 18px;
     }
