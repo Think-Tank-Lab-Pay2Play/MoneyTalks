@@ -5,7 +5,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../components/authContext/AuthContext.jsx"
 import PagesBackground from '../components/pages-background/PagesBackground.jsx';
-
+import SliderAnimation from './sliderAnimation/SliderAnimation.jsx';
+import SliderAnimation2 from './sliderAnimation2/SliderAnimation2.jsx';
+import { toast } from 'react-toastify';
 
 const Account = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -77,19 +79,16 @@ const Account = () => {
       });
 
       if (response.status === 200) {
-        setConfirmationMessage("Datele contului au fost actualizate cu succes!");
-        showPopup('success');
+        toast.success('Datele contului au fost actualizate!', { autoClose: 3000 });
         localStorage.setItem('userEmail', email);
         localStorage.setItem('userPassword', localStorage.getItem('userPassword')); 
-        setUserData(response.data);  
+        setUserData(response.data);
       } else {
-        setError('A apărut o eroare!');
-        showPopup('error');
+        toast.error('A apărut o eroare!', { autoClose: 3000 });
       }
     } catch (err) {
       console.error('Eroare la actualizarea datelor:', err);
-      setError('A apărut o eroare la actualizarea datelor!');
-      showPopup('error');
+      toast.error('A apărut o eroare la actualizarea datelor!', { autoClose: 3000 });
     }
   };
 
@@ -97,8 +96,7 @@ const Account = () => {
     e.preventDefault();
 
     if (newPassword !== confirmPassword) {
-      setError('Parolele nu se potrivesc!');
-      showPopup('error');
+      toast.error('Parolele nu coincid!', { autoClose: 5000 });
       return;
     }
 
@@ -119,11 +117,9 @@ const Account = () => {
       });
 
       if (response.status === 200) {
-        setConfirmationMessage("Parola a fost schimbată cu succes!");
-        showPopup('success');
+        toast.success('Parola a fost schimbată cu succes!', { autoClose: 3000 });
       } else {
-        setError('A apărut o eroare la schimbarea parolei!');
-        showPopup('error');
+        toast.error('A apărut o eroare la schimbarea parolei!', { autoClose: 3000 });
       }
     } catch (err) {
       console.error('Eroare la schimbarea parolei:', err);
@@ -151,12 +147,10 @@ const Account = () => {
       });
   
       if (response.status === 204 || response.status === 200) {
-        setConfirmationMessage("Contul a fost șters cu succes!");
-        showPopup('success');
+        toast.success('Contul a fost șters cu succes!', { autoClose: 3000 });
         localStorage.removeItem("auth");
       
         setTimeout(() => {
-          console.log("Redirecting to /register...");
           logout();
           navigate('/');
         }, 3000);  
@@ -186,6 +180,8 @@ const Account = () => {
     <>
       <GeneralTopBar />
       <PagesBackground/>
+      <SliderAnimation/>
+      <SliderAnimation2/>
       <div className="account-settings-page">
         <div className="account-container">
           <div className="options-table">
