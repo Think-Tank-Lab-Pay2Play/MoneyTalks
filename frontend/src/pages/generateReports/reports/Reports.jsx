@@ -56,16 +56,15 @@ const Reports = () => {
     try {
       const credentials = btoa(`${email}:${password}`);
 
+      const headers = { Authorization: `Basic ${credentials}`, "Content-Type": "application/json" };
+
       const response = await axios.post(
-        `http://localhost:8080/api/report/${reportType}/${userId}`,
-        {},
-        {
-          headers: {
-            Authorization: `Basic ${credentials}`,
-            "Content-Type": "application/json",
-          },
-        }
+        `http://localhost:8080/api/report/${reportType === "custom" ? "custom" : reportType}/${userId}`,
+        reportType === "custom" ? { description: customInput } : {},
+        { headers }
       );
+
+
       console.log(response.data);
       const processedContent = processReportContent(response.data.response);
       setReportContent(processedContent);
@@ -78,17 +77,19 @@ const Reports = () => {
   };
 
   const processReportContent = (content) => {
-    const cleanContent = content
-      .replace(/\*\*/g, '')
-      .replace(/###|####/g, '')
+    if (!content) return "Raportul nu conține date.";
+
+    return content
+      .replace(/\$\$?[\s\S]+?\$\$?/g, '') 
+      .replace(/\\text{.*?}/g, '')
+      .replace(/\*\*/g, '') 
+      .replace(/###|####/g, '') 
       .replace(/\[.*?\]/g, '')
       .replace(/\n{3,}/g, '\n\n')
-      .trim();
-
-    return cleanContent.split('\n\n').map(p => p.trim());
+      .trim()
+      .split('\n\n')
+      .map(p => p.trim());
   };
-
-
 
 
   return (
@@ -127,7 +128,7 @@ const Reports = () => {
               onClick={() => handleGenerateReport('custom')}
               disabled={!customInput.trim()}
             >
-              Generează Custom
+              Generează raport personalizat
             </button>
           </div>
         </div>
