@@ -7,13 +7,13 @@
     left: 334px;
 }
 
-.top-shops-attended-no-spendings-message {
+.top-shops-attended-no-spendings-message2 {
     font-size: 20px;
     color: #dc3545;
     font-weight: bold;
     margin-top: 20px;
     position: relative;
-    right: 73px;
+    right: 80px;
     bottom: 70px;
 }
 
@@ -118,13 +118,13 @@
         top:100px;
     }
 
-    .top-shops-attended-no-spendings-message {
+    .top-shops-attended-no-spendings-message2 {
         font-size: 18px;
         color: #dc3545;
         font-weight: bold;
         margin-top: 20px;
         position: relative;
         right: 30px;
-        bottom: 152px;
+        bottom: 145px;
     }
 }

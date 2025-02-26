@@ -63,9 +63,9 @@ export default function TopShopsAttended({ userSpendings, startDate, setStartDat
 
             <div className="top-shops-attended-container">
                 {(!startDate || !endDate) ? (
-                    <div className="top-shops-attended-no-spendings-message">Selectează un interval de date pentru a vedea topul magazinelor frecventate.</div>
+                    <div className="top-shops-attended-no-spendings-message2">Selectează un interval de date pentru a vedea topul magazinelor frecventate.</div>
                 ) : filteredSpendings.length === 0 ? (
-                    <div className="top-shops-attended-no-spendings-message">Nu există cheltuieli în această perioadă.</div>
+                    <div className="top-shops-attended-no-spendings-message2">Nu există cheltuieli în această perioadă.</div>
                 ) : (
                     <table className="top-shops-attended-table">
                         <thead>
