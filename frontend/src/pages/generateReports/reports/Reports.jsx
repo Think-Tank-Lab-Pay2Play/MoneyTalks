@@ -51,6 +51,8 @@ const Reports = () => {
     }
 
     setIsLoading(true);
+    setSelectedReport(reportType);
+
     try {
       const credentials = btoa(`${email}:${password}`);
 
@@ -117,7 +119,7 @@ const Reports = () => {
           <div className="custom-report-input">
             <input
               type="text"
-              placeholder="Introduceți cerința pentru raport custom..."
+              placeholder="Introduceți cerința pentru raport personalizat..."
               value={customInput}
               onChange={(e) => setCustomInput(e.target.value)}
             />
@@ -133,7 +135,7 @@ const Reports = () => {
         <div className="report-results">
           <div className="report-content-box">
             {isLoading ? (
-              <div className="loading">Se generează raportul...</div>
+              <div className="loading-generate-report">Se generează raportul</div>
             ) : (
               Array.isArray(reportContent) ? (
                 reportContent.map((paragraph, index) => (
@@ -153,16 +155,19 @@ const Reports = () => {
             )}
           </div>
 
-          <button
-            className="back-button"
-            onClick={() => {
-              setSelectedReport(null);
-              setReportContent('');
-              setCustomInput('');
-            }}
-          >
-            ← Înapoi la Rapoarte
-          </button>
+          {!isLoading && (
+            <button
+              className="back-button"
+              onClick={() => {
+                setSelectedReport(null);
+                setReportContent('');
+                setCustomInput('');
+              }}
+            >
+              ← Înapoi la Rapoarte
+            </button>
+          )}
+
         </div>
       )}
     </div>
