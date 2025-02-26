@@ -1,29 +1,26 @@
 package com.example.demo.service;
 
 import com.example.demo.config.ApiConfig;
-import com.example.demo.model.Spending;
+import com.example.demo.dto.report.CustomReportRequest;
 import com.example.demo.model.User;
 import com.example.demo.model.enums.Category;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MistralApiService {
+public class ApiService {
 
     private final ApiConfig apiConfig;
     private final UserService userService;
 
-    public MistralApiService(ApiConfig apiConfig, UserService userService) {
+    public ApiService(ApiConfig apiConfig, UserService userService) {
         this.apiConfig = apiConfig;
         this.userService = userService;
     }
@@ -161,10 +158,10 @@ public class MistralApiService {
             else if (type == "subscription") {
                 return reportSubscription(type, userId);
             }
-            else if (type == "savings") {
-                return reportSavings(type, userId);
+            else if (type == "savings" || type == "impulsive" || type == "needs") {
+                return reportSavingsAndImpulsiveAndNeeds(type, userId);
             }
-            else return reportCustom(type, userId);
+            else return reportInvestment(type, userId);
         } catch (IOException e) {
             throw e;
         }
@@ -230,7 +227,7 @@ public class MistralApiService {
         }
     }
 
-    public JSONObject reportSavings(String type, Long userId) throws IOException {
+    public JSONObject reportSavingsAndImpulsiveAndNeeds(String type, Long userId) throws IOException {
         try {
 
             //iau userul dupa id si creez un obiect json cu datele userul si cheltuielile lui din ultmele 90 de zile ca si string
@@ -261,13 +258,43 @@ public class MistralApiService {
         }
     }
 
-    public JSONObject reportCustom(String type, Long userId) throws IOException {
+    public JSONObject reportInvestment(String type, Long userId) throws IOException {
+        try {
+
+            //iau userul dupa id si creez un obiect json cu datele userului si cheltuielile lui ca si string unde tipul de cheltuiala este abonamente
+            JSONObject jsonInput = new JSONObject();
+            User user = userService.findById(userId);
+            jsonInput.put("type", type);
+            jsonInput.put("spendings", user.getSpendings().stream()
+                    .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
+                            s.getCompanyName(),
+                            s.getTotalPrice(),
+                            s.getDate(),
+                            s.getProducts().stream().filter(p -> p.getCategory() == Category.INVESTITII)
+                                    .map(p -> String.format("[%s, Price: %.2f, Units: %d, Total: %.2f, Category: %s]",
+                                            p.getItemName(),
+                                            p.getPricePerUnit(),
+                                            p.getUnits(),
+                                            p.getTotalPrice(),
+                                            p.getCategory()))
+                                    .collect(Collectors.joining(", "))))
+                    .collect(Collectors.joining("\n")));
+
+            String response = makeHttpRequest("/chatbot", jsonInput);
+
+            return new JSONObject(response);
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public JSONObject reportCustom(CustomReportRequest customReportRequest, Long userId) throws IOException {
         try {
 
             //iau userul dupa id si creez un obiect json cu datele userului si cheltuielile lui ca si string pentru un raport custom
             JSONObject jsonInput = new JSONObject();
             User user = userService.findById(userId);
-            jsonInput.put("type", type);
+            jsonInput.put("type", customReportRequest.description());
             jsonInput.put("spendings", user.getSpendings().stream()
                     .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
                             s.getCompanyName(),
