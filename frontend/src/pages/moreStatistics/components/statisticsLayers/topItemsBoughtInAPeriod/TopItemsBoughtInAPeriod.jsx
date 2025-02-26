@@ -81,9 +81,9 @@ export default function TopItemsBoughtInAPeriod({ userSpendings, startDate, setS
 
             <div className="top-items-bought-in-a-period-container">
                 {(!startDate || !endDate) ? (
-                    <div className="top-items-bought-in-a-period-no-spendings-message">Selectează un interval de date pentru a vedea topul produselor cumpărate.</div>
+                    <div className="top-items-bought-in-a-period-no-spendings-message1">Selectează un interval de date pentru a vedea topul produselor cumpărate.</div>
                 ) : filteredSpendings.length === 0 ? (
-                    <div className="top-items-bought-in-a-period-no-spendings-message">Nu există cheltuieli în această perioadă.</div>
+                    <div className="top-items-bought-in-a-period-no-spendings-message1">Nu există cheltuieli în această perioadă.</div>
                 ) : (
                     <table className="top-items-bought-in-a-period-table">
                         <thead>
