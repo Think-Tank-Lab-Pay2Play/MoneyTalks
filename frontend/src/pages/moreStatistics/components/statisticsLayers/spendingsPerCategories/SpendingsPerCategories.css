@@ -63,9 +63,9 @@
 }
 
 .spendings-per-categories-total-spendings{
-    position: absolute;
-    top:160px;
-    left:462px;
+    position: fixed;
+    top:505px;
+    left:1240px;
     flex-direction: column;
     align-items: flex-start;
     text-align: center;

@@ -22,7 +22,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         "UZ_CASNIC": "Uz casnic",
         "IMBRACAMINTE": "Îmbrăcăminte"
     };
-    
+
 
     // preia cheltuielile dintr-o anumita perioada de timp
     const filteredSpendings = userSpendings.filter(spending => {
@@ -51,7 +51,7 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
         '#8E44AD', '#2ECC71', '#D35400', '#C0392B', '#2980B9', '#F39C12', '#16A085',
         '#7F8C8D', '#27AE60'
     ];
-    
+
     // sorteaza cheltuielile pe categorii
     const catSpend = Object.fromEntries(
         Object.entries(categorySpendings)
@@ -110,14 +110,14 @@ export default function SpendingsPerCategories({ userSpendings, startDate, setSt
                     <div className="spendings-per-categories-stats">
                         {categoryStatistics.length > 0 ? categoryStatistics : <p>0 RON</p>}
                     </div>
-
-                    {categoryStatistics.length > 0 && (
-                        <div className="spendings-per-categories-total-spendings">
-                            <div>RON</div>
-                            <div>{getTotalSpendings()}</div>
-                        </div>
-                    )}
                 </div>
+
+                {categoryStatistics.length > 0 && (
+                    <div className="spendings-per-categories-total-spendings">
+                        <div>RON</div>
+                        <div>{getTotalSpendings()}</div>
+                    </div>
+                )}
 
                 {Object.keys(catSpend).length > 0 && (
                     <div className="spendings-chart-container">
