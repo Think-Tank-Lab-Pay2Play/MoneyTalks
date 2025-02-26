@@ -38,10 +38,12 @@
 
 
 .spendings-chart-container {
-    position: absolute;
+    position: fixed;
     width: 400px;
     top:400px;
     right:175px;
+    flex-wrap: nowrap;
+    height: 400px;
 }
 
 .spendings-amount {
@@ -62,15 +64,15 @@
     gap: 10px;
 }
 
-.spendings-per-categories-total-spendings{
+.spendings-per-categories-total-spendings {
     position: fixed;
-    top:505px;
-    left:1240px;
-    flex-direction: column;
-    align-items: flex-start;
+    top: 507px;
+    left: 1215px;
+    width: 120px;
     text-align: center;
-    font-size: 20px;
+    font-size: 23px;
 }
+
 
 
 @media (max-width: 2000px) and (max-width: 1600px) {
