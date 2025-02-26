@@ -19,7 +19,7 @@ const UploadBillForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const localIP = "192.168.1.128"; // your ipv4 address here from ipconfig
+  const localIP = ""; // your ipv4 address here from ipconfig
 
   const [userId, setUserId] = useState(null);
 
@@ -71,6 +71,29 @@ const UploadBillForm = () => {
     }
   };
 
+  const handleGenerateUserIdFile = async () => {
+
+    try {
+      const response = await fetch('http://localhost:3001/generateUserIdFile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          numberOfPictures: numberOfPictures
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Fișierul a fost generat cu succes:", data);
+      } else {
+        console.error("Eroare la generarea fișierului");
+      }
+    } catch (error) {
+      console.error("Eroare la comunicarea cu serverul:", error);
+    }
+  };
+  handleGenerateUserIdFile();
 
   useEffect(() => {
     if (isManualUpload) return;
@@ -164,31 +187,6 @@ const UploadBillForm = () => {
 
 
   //console.log(numberOfPictures);
-  /*
-
-  const handleGenerateUserIdFile = async () => {
-
-    try {
-      const response = await fetch('http://localhost:3001/generateUserIdFile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId,
-          numberOfPictures: numberOfPictures + 1
-        })
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Fișierul a fost generat cu succes:", data);
-      } else {
-        console.error("Eroare la generarea fișierului");
-      }
-    } catch (error) {
-      console.error("Eroare la comunicarea cu serverul:", error);
-    }
-  };
-  */
 
   const handleFileChange = async (event) => {
     setIsManualUpload(true);
