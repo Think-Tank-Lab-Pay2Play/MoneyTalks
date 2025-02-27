@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MonthYearInput from "../components/monthYearInput/MonthYearInput";
+import ReactApexChart from "react-apexcharts";
 import "./SpendingsEvolutionPerCategories.css";
 import { spendingCategories } from "../../../../components/spendingsCategories/SpendingCategories.jsx";
 
@@ -8,9 +9,9 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
     const [startYear, setStartYear] = useState(null);
     const [endMonth, setEndMonth] = useState(null);
     const [endYear, setEndYear] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState("");
     const [filteredSpendings, setFilteredSpendings] = useState([]);
     const [statistics, setStatistics] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     const categoryMap = {
         "ABONAMENTE": "Abonamente",
@@ -31,12 +32,9 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
         "IMBRACAMINTE": "Îmbrăcăminte"
     };
 
-
-    const categories = spendingCategories;
-
     useEffect(() => {
         applyFilter();
-    }, [selectedCategory, startMonth, startYear, endMonth, endYear]);
+    }, [startMonth, startYear, endMonth, endYear]);
 
     useEffect(() => {
         if (startMonth && startYear && endMonth && endYear) {
@@ -58,28 +56,23 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                 ? (spendingYear < endYear || (spendingYear === endYear && spendingMonth <= endMonth))
                 : true;
 
-            const isCategoryMatch = selectedCategory
-                ? spending.products.some(product => product.category === selectedCategory)
-                : true;
-
-            return isAfterStart && isBeforeEnd && isCategoryMatch;
+            return isAfterStart && isBeforeEnd;
         });
 
         setFilteredSpendings(filtered);
     };
 
-    useEffect(() => {
-        setStatistics(null);
-    }, [selectedCategory]);
-
     const calculateStatistics = () => {
-        if (!selectedCategory || !startMonth || !startYear || !endMonth || !endYear) {
+        if (!startMonth || !startYear || !endMonth || !endYear) {
             setStatistics(null);
             return;
         }
 
-        let startTotal = 0;
-        let endTotal = 0;
+        const categoryData = {};
+
+        spendingCategories.forEach(category => {
+            categoryData[category] = { startTotal: 0, endTotal: 0, entriesStart: 0, entriesEnd: 0 };
+        });
 
         filteredSpendings.forEach(spending => {
             const spendingDate = new Date(spending.date);
@@ -87,52 +80,43 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
             const year = spendingDate.getFullYear();
 
             spending.products.forEach(product => {
-                if (product.category === selectedCategory) {
+                if (categoryData.hasOwnProperty(product.category)) {
                     if (year === startYear && month === startMonth) {
-                        startTotal += Number(product.totalPrice) || 0;
+                        categoryData[product.category].startTotal += Number(product.totalPrice) || 0;
+                        categoryData[product.category].entriesStart += 1;
                     }
                     if (year === endYear && month === endMonth) {
-                        endTotal += Number(product.totalPrice) || 0;
+                        categoryData[product.category].endTotal += Number(product.totalPrice) || 0;
+                        categoryData[product.category].entriesEnd += 1;
                     }
                 }
             });
         });
 
-        if (startTotal === 0 && endTotal === 0) {
-            setStatistics(null);
-            return;
-        }
+        const filteredCategories = Object.keys(categoryData).filter(category =>
+            categoryData[category].entriesStart > 0 && categoryData[category].entriesEnd > 0
+        );
 
-        const percentageChange = startTotal !== 0
-            ? ((endTotal - startTotal) / startTotal) * 100
-            : 100;
+        const data = filteredCategories.map(category => {
+            const startTotal = categoryData[category].startTotal;
+            const endTotal = categoryData[category].endTotal;
+            const change = startTotal !== 0 ? ((endTotal - startTotal) / startTotal) * 100 : 100;
 
-
-        const isValid = !isNaN(startTotal) && !isNaN(endTotal);
-        const bothZero = startTotal === 0 && endTotal === 0;
-
-        if (!isValid || bothZero) {
-            setStatistics(null);
-            return;
-        }
-
-        setStatistics({
-            category: selectedCategory,
-            startTotal: startTotal.toFixed(2),
-            endTotal: endTotal.toFixed(2),
-            percentageChange: percentageChange.toFixed(2)
+            return {
+                category,
+                startTotal,
+                endTotal,
+                change
+            };
         });
+
+        setStatistics({ categories: filteredCategories, data });
     };
 
-
-    const getMonthName = (monthNumber) => {
-        const months = [
-            "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
-            "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"
-        ];
-        return months[monthNumber - 1] || '';
+    const handleCategoryClick = (event, chartContext, config) => {
+        const selected = statistics.data[config.dataPointIndex];
+        setSelectedCategory(selected);
     };
-
 
     return (
         <>
@@ -143,32 +127,74 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                 endYear={endYear} setEndYear={setEndYear}
             />
 
-            <div className="spendings-evolution-per-categories-pick-category-button">
-                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-                    <option value="" disabled hidden>Selectează o categorie</option>
-                    {categories.map((category, index) => (
-                        <option key={index} value={category}>{categoryMap[category]}</option>
-                    ))}
-                </select>
-            </div>
-
             <div className="spendings-evolution-per-categories-statistic">
-                <h2 className="spendings-evolution-per-categories-statistic-title">Selectează un interval de date pentru a vedea evoluția cheltuielilor</h2>
-                {statistics ? (
-                    <p>
-                        Cheltuielile din categoria {categoryMap[statistics.category] || statistics.category} au
-                        {statistics.percentageChange >= 0 ? " crescut " : " scăzut "}
-                        cu {Math.abs(statistics.percentageChange)}%
-                        din luna {getMonthName(startMonth)} {startYear} până în luna {getMonthName(endMonth)} {endYear}.
-                        <br />
-                        (De la {statistics.startTotal} la {statistics.endTotal})
-                    </p>
+                <h2 className="spendings-evolution-per-categories-statistic-title">
+                    Evoluția cheltuielilor pe categorii
+                </h2>
+                {statistics && statistics.data.length > 0 ? (
+                    <>
+                        <ReactApexChart
+                            options={{
+                                chart: { type: 'bar', height: 350 },
+                                plotOptions: {
+                                    bar: {
+                                        colors: {
+                                            ranges: [
+                                                { from: -100, to: -46, color: '#F15B46' },
+                                                { from: -45, to: 0, color: '#FEB019' }
+                                            ]
+                                        },
+                                        columnWidth: '80%',
+                                    }
+                                },
+                                dataLabels: { enabled: false },
+                                yaxis: {
+                                    labels: { formatter: (y) => `${y.toFixed(0)}%` }
+                                },
+                                xaxis: {
+                                    categories: statistics.categories.map(category => categoryMap[category]), // Aplici categoryMap pentru a obține denumirile
+                                    labels: { rotate: -45 }
+                                },
+                                tooltip: {
+                                    y: {
+                                        formatter: (val, { seriesIndex, dataPointIndex }) => {
+                                            const category = statistics.data[dataPointIndex];
+                                            return `
+                                                        Categoria: ${categoryMap[category.category]}<br />
+                                                        Cheltuieli în ${startMonth}/${startYear}: ${category.startTotal.toFixed(2)}<br />
+                                                        Cheltuieli în ${endMonth}/${endYear}: ${category.endTotal.toFixed(2)}<br />
+                                                        Creștere/Scădere: ${category.change.toFixed(2)}%
+                                                    `;
+                                        }
+                                    }
+                                },
+                                events: {
+                                    dataPointSelection: handleCategoryClick
+                                }
+                            }}
+                            series={[{ name: '', data: statistics.data.map(item => item.change) }]}
+                            type="bar"
+                            height={350}
+                            width={800}
+                        />
+                        {selectedCategory && (
+                            <div className="category-details">
+                                <p>
+                                    Categoria: {categoryMap[selectedCategory.category]} <br />
+                                    Cheltuieli în {startMonth}/{startYear}: {selectedCategory.startTotal.toFixed(2)} <br />
+                                    Cheltuieli în {endMonth}/{endYear}: {selectedCategory.endTotal.toFixed(2)} <br />
+                                    Creștere/Scădere: {selectedCategory.change.toFixed(2)}%
+                                </p>
+                            </div>
+                        )}
+
+                    </>
                 ) : (
-                    <p className="spendings-evolution-per-categories-statistic-no-data"></p>
+                    <p className="spendings-evolution-per-categories-statistic-no-data">
+                        Nu există date pentru perioada selectată.
+                    </p>
                 )}
-
             </div>
-
         </>
     );
 }
