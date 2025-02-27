@@ -80,7 +80,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
             });
 
             if (response.status === 200 || response.status === 201) {
-                toast.success('Ai setat limita de cheltuieli cu!', {autoClose: 2000,});
+                toast.success('Ai setat limita de cheltuieli cu!', { autoClose: 2000, });
                 setLimitSet(true);
             } else {
                 console.warn(`Unexpected response code: ${response.status}`);
@@ -103,16 +103,18 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
         if (thisMonthSpendingLimit === 0) return 'green';
 
         const percentageSpent = (lastThirtyDaysSpendingsSum / thisMonthSpendingLimit) * 100;
-        if (percentageSpent < 50) {
-            return `rgb(${255 - percentageSpent * 5}, ${255}, ${0})`;
+
+        let red, green;
+
+        if (percentageSpent < 80) {
+            red = Math.min(255, Math.round((percentageSpent / 85) * 200)); 
+            green = 255;
+        } else {
+            red = 255;
+            green = Math.max(0, Math.round(255 - ((percentageSpent - 85) / 15) * 255));
         }
-        if (percentageSpent < 75) {
-            return `rgb(${255}, ${255 - (percentageSpent - 50) * 5}, 0)`;
-        }
-        if (percentageSpent < 100) {
-            return `rgb(${255}, ${Math.max(0, 255 - (percentageSpent - 75) * 5)}, 0)`;
-        }
-        return 'black';
+
+        return `rgb(${red}, ${green}, 0)`;
     };
 
 

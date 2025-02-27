@@ -132,7 +132,7 @@ export default function Home() {
                 uploadedBillsOnThePastThirtyDays={uploadedBillsOnThePastThirtyDays}
             />
 
-            <HomePageUserOptions />
+            {/*<HomePageUserOptions />*/}
 
             <h3 className="last-5-bills-uploaded-text">Ultimele 5 bonuri incarcate</h3>
             <SpendingsTable data={lastFiveSpendings} />
