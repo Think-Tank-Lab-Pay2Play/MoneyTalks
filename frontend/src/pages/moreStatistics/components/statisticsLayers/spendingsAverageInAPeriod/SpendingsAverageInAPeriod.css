@@ -1,7 +1,7 @@
 .spendings-average-in-a-period {
     position: absolute;
-    top: 330px;
-    left: 780px;
+    top: 380px;
+    left: 770px;
 }
 
 .spendings-average-in-a-period-title {
@@ -18,7 +18,6 @@
     right: 20px;
     font-size: 24px;
 }
-
 
 @media (max-width: 2000px) and (max-width: 1600px) {
     .spendings-average-in-a-period {
