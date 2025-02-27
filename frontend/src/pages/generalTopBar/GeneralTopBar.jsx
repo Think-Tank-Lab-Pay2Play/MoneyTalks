@@ -5,6 +5,7 @@ import TopBarAppLogo from './components/topBarAppLogo/TopBarAppLogo.jsx';
 import LogoutButton from './components/logoutButton/LogoutButton.jsx';
 import GifPisicaMiu from './components/gifPisicaMiu/GifPisicaMiu.jsx';
 import AccSettingsLogo from './components/accSettingsLogo/accSettingsLogo.jsx';
+import SideBarWrapper from '../components/sideBar/sideBarWrapper.jsx';
 
 export default function GeneralTopBar() {
     return (
@@ -14,6 +15,7 @@ export default function GeneralTopBar() {
             <LogoutButton />
             <GifPisicaMiu />
             <AccSettingsLogo/>
+            <SideBarWrapper/>
         </div>
     );
 }

@@ -1,0 +1,6 @@
+.side-bar-open{
+    position: absolute;
+    width: 64px;
+    left: 1%;
+    cursor: pointer;
+}
