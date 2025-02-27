@@ -1,7 +1,7 @@
 .pisica-miu{
-    position: relative;
+    position: fixed;
     width: 60px;
     height: 60px;
-    top:30px;
-    right:200px;
+    top:39px;
+    left:550px;
 }

@@ -180,8 +180,6 @@ const Account = () => {
     <>
       <GeneralTopBar />
       <PagesBackground/>
-      <SliderAnimation/>
-      <SliderAnimation2/>
       <div className="account-settings-page">
         <div className="account-container">
           <div className="options-table">
