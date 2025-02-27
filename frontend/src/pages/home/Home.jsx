@@ -140,7 +140,7 @@ export default function Home() {
             <h3 className="last-12-month-spendings">Cheltuielile tale pe ultimele 12 luni</h3>
             <SpendingsStatistic data={lastTwelveMonthsSpendings} />
 
-            <VectorialIlustration />
+            {/*<VectorialIlustration />*/}
         </>
     );
 }

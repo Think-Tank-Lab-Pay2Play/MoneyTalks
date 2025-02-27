@@ -37,8 +37,8 @@
   }
   
   .spendings-limit-home-page-confirm-btn {
-    background-color: #28a745;
-    color: white;
+    background-color: #FFF200;
+    color: black;
     border: none;
     padding: 10px 16px;
     border-radius: 6px;
@@ -47,7 +47,7 @@
   }
   
   .spendings-limit-home-page-confirm-btn:hover {
-    background-color: #1e7e34;
+    background-color: #d3c504;
   }
   
   .spendings-limit-home-page-limita-text {
