@@ -27,7 +27,7 @@
 /* Ștergem regulile generale pentru input și le mutăm în clasele specifice */
 .online-spending-add-item-button__input {
   padding: 8px;
-  border: 1px solid #34974d;
+  border: 1px solid #FFF200;
   border-radius: 4px;
   flex-grow: 0;
 }
@@ -55,8 +55,9 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 1px solid #34974d;
-  background-color: #3aa856;
+  border: 1px solid #FFF200;
+  background-color: #FFF200;
+  color: black;
   margin: 8px 0;
 }
 
@@ -68,7 +69,7 @@
 
 .online-spending-add-item-button__text {
   transform: translateX(5px);
-  color: #fff;
+  color: #000000;
   font-weight: 600;
 }
 
@@ -77,7 +78,7 @@
   transform: translateX(109px);
   height: 100%;
   width: 39px;
-  background-color: #34974d;
+  background-color: #FFF200;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,11 +86,11 @@
 
 .online-spending-add-item-button__svg {
   width: 30px;
-  stroke: #fff;
+  stroke: #000;
 }
 
 .online-spending-add-item-button__button:hover {
-  background: #34974d;
+  background: #FFF200;
 }
 
 .online-spending-add-item-button__button:hover .online-spending-add-item-button__text {
@@ -102,11 +103,11 @@
 }
 
 .online-spending-add-item-button__button:active .online-spending-add-item-button__icon {
-  background-color: #2e8644;
+  background-color: #FFF200;
 }
 
 .online-spending-add-item-button__button:active {
-  border: 1px solid #2e8644;
+  border: 1px solid #FFF200;
 }
 
 

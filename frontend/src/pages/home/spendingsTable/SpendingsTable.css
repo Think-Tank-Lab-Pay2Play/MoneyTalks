@@ -28,14 +28,14 @@
 
 /* Stiluri pentru antetul tabelului */
 .spendings-table th {
-    background-color: #fff2001a;
+    background-color: #f4f4f4;
     font-weight: bold;
     color: #333;
 }
 
 /* Stiluri pentru rândurile datelor */
 .spendings-table tbody tr:nth-child(even) {
-    background-color: #fff2001a;
+    background-color: #f4f4f4;
 }
 
 .spendings-table tbody tr:hover {

@@ -1,7 +1,7 @@
 .confirmation-button-fixed {
     position: absolute;
     bottom: 90px;
-    right: 640px;
+    right: 618px;
     z-index: 100;
 }
 
@@ -10,8 +10,8 @@
     padding: 14px 25px;
     font-size: 1.25em;
     font-weight: bold;
-    color: #fff;
-    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    color: #000000;
+    background: #FFF000;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -38,7 +38,7 @@
     content: "";
     position: absolute;
     inset: 0px;
-    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    background: #FFF000;
     border-radius: 9px;
     opacity: 0;
     filter: blur(20px);

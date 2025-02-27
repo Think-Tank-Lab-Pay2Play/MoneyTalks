@@ -4,7 +4,6 @@ import OnlineSpendingAddItemButton from './components/onlineSpendingAddItemButto
 import OnlineSpendingCompanyNameInput from './components/onlineSpendingCompanyNameInput/OnlineSpendingCompanyNameInput';
 import OnlineSpendingDateInput from './components/onlineSpendingDateInput/OnlineSpendingDateInput';
 import OnlineSpendingDescription from './components/onlineSpendingDescription/OnlineSpendingDescription';
-import OnlineSpendingHourInput from './components/onlineSpendingHourInput/OnlineSpendingHourInput';
 import axios from 'axios';
 import OnlineSpendingConfirmationButton from './components/onlineSpendingConfirmationButton/OnlineSpendingConfirmationButton';
 import { toast } from 'react-toastify';
@@ -13,16 +12,16 @@ export default function OnlineSpending() {
     const [companyName, setCompanyName] = useState('');
     const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
-    const [hour, setHour] = useState({ hour: '', minute: '' });
     const [items, setItems] = useState([{ itemName: '', pricePerUnit: '', units: '', category: '' }]);
 
     const handleSubmit = async () => {
-        if (!companyName || !date || !description || !hour.hour || !hour.minute || items.length === 0) {
+        if (!companyName || !date || !description || items.length === 0) {
             toast.error('Toate câmpurile trebuie completate obligatoriu!', { autoClose: 5000 });
             return;
         }
 
-        const formattedDate = `${date}T${hour.hour.padStart(2, '0')}:${hour.minute.padStart(2, '0')}:00`;
+        const now = new Date();
+        const formattedDate = `${date}T${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:00`;
         const formattedItems = items.map(item => ({
             itemName: item.itemName,
             pricePerUnit: parseFloat(item.pricePerUnit),
@@ -66,7 +65,6 @@ export default function OnlineSpending() {
         }
     };
 
-
     return (
         <div className="the-whole-online-spending-table">
             <div className="online-spending-background-wrapper">
@@ -77,13 +75,12 @@ export default function OnlineSpending() {
 
                 <OnlineSpendingCompanyNameInput onChange={setCompanyName} />
                 <OnlineSpendingDateInput onChange={setDate} />
-                <OnlineSpendingHourInput onChange={(h, m) => setHour({ hour: h, minute: m })} />
             </div>
 
             <OnlineSpendingAddItemButton onItemsChange={setItems} />
             <div className="line"></div>
             <div className="line2"></div>
-            <h1 className="online-spending-form-title">Adaugă o cheltuială online</h1>
+            <h1 className="online-spending-form-title">Adăugare manuală a cheltuielilor</h1>
             <h1 className="add-product-list-title">Lista produselor:</h1>
             <OnlineSpendingDescription onChange={setDescription} />
 

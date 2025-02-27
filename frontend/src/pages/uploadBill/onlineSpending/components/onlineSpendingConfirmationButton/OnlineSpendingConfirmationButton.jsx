@@ -11,7 +11,7 @@ const OnlineSpendingConfirmationButton = ({ onClick }) => {
     return (
         <div className="confirmation-button-wrapper">
             <button className="confirmation-button" onClick={handleConfirmClick}>
-                <span>Trimite Date</span>
+                <span>Incarca cheltuiala</span>
             </button>
         </div>
     );
