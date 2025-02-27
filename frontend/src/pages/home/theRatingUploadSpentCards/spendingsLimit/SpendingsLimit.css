@@ -7,8 +7,8 @@
   }
   
   .spendings-limit-home-page-button {
-    background-color: #007bff;
-    color: white;
+    background-color: #FFF200;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 10px 16px;
     border-radius: 6px;
@@ -17,7 +17,7 @@
   }
   
   .spendings-limit-home-page-button:hover {
-    background-color: #0056b3;
+    background-color: #d3c504;
   }
   
   .spendings-limit-home-page-input-container {
