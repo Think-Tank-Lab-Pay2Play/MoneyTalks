@@ -126,7 +126,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: var(--primary-color);
+  color: var(--text-light);
   font-style: italic;
 }
 

@@ -3,6 +3,7 @@
   position: absolute;
   top: 320px;
   right: 150px;
+  padding-bottom: 50px;
 }
 
 .online-spending-background-card {
@@ -83,7 +84,7 @@
   .line {
     position: absolute;
     top: 400px;
-    bottom: -164px;
+    bottom: -145px;
     left: 1000px;
     width: 5px;
     background-color: black;
@@ -101,12 +102,12 @@
   .add-product-list-title {
     position: absolute;
     right: 175px;
-    bottom: 260px;
+    bottom: 265px;
   }
 
   .online-spending-form-title {
     position: absolute;
-    right: 250px;
-    bottom: 325px;
+    right: 203px;
+    bottom: 335px;
   }
 }

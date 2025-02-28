@@ -1,58 +1,68 @@
 .spendings-limit-home-page-container {
+  position: absolute;
+  top: 170px;
+  right: 262px;
+  transform: scale(0.7);
+  z-index: 11;
+}
+
+.spendings-limit-home-page-button {
+  background-color: #FFF200;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.spendings-limit-home-page-button:hover {
+  background-color: #d3c504;
+}
+
+.spendings-limit-home-page-input-container {
+  position: relative;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.spendings-limit-home-page-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.spendings-limit-home-page-confirm-btn {
+  background-color: #FFF200;
+  color: black;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.spendings-limit-home-page-confirm-btn:hover {
+  background-color: #d3c504;
+}
+
+.spendings-limit-home-page-limita-text {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #218838;
+}
+
+
+@media (max-width: 2000px) and (max-width: 1600px) {
+  .spendings-limit-home-page-container {
     position: absolute;
-    top:170px;
-    right:262px;
+    top: 170px;
+    right: 175.5px;
     transform: scale(0.7);
     z-index: 11;
   }
-  
-  .spendings-limit-home-page-button {
-    background-color: #FFF200;
-    color: rgb(0, 0, 0);
-    border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .spendings-limit-home-page-button:hover {
-    background-color: #d3c504;
-  }
-  
-  .spendings-limit-home-page-input-container {
-    position: relative;
-    left: 40px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .spendings-limit-home-page-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-  }
-  
-  .spendings-limit-home-page-confirm-btn {
-    background-color: #FFF200;
-    color: black;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .spendings-limit-home-page-confirm-btn:hover {
-    background-color: #d3c504;
-  }
-  
-  .spendings-limit-home-page-limita-text {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #218838;
-  }
-  
+}
