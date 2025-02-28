@@ -27,8 +27,8 @@
 }
 
 .top-items-bought-in-a-period-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
+    background-color: #fff200;
+    color: #000000;
     text-align: center;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .top-items-bought-in-a-period-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #000000;
 }
 
 
@@ -60,8 +60,8 @@
 }
 
 .top-items-bought-in-a-period-pagination-btn {
-    background-color: #007bff;
-    color: white;
+    background-color: #fff200;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -71,12 +71,12 @@
 }
 
 .top-items-bought-in-a-period-pagination-btn:disabled {
-    background-color: #b0c4de;
+    background-color: #f7f2a3;
     cursor: not-allowed;
 }
 
 .top-items-bought-in-a-period-pagination-btn:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: #f7f2a3;
 }
 
 .top-items-bought-in-a-period-pagination-info {
