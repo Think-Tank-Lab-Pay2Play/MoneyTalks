@@ -182,6 +182,14 @@
   bottom:70px;
 }
 
+.settings-page-man-image{
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  left: 150px;
+  bottom: 0px;
+}
+
 @media (max-width: 2000px) and (max-width: 1600px) {
   .account-settings-page .account-container {
     display: flex;

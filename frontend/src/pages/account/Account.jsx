@@ -8,8 +8,10 @@ import PagesBackground from '../components/pages-background/PagesBackground.jsx'
 import SliderAnimation from './sliderAnimation/SliderAnimation.jsx';
 import SliderAnimation2 from './sliderAnimation2/SliderAnimation2.jsx';
 import { toast } from 'react-toastify';
+import SettingsPageImage from "../../assets/settings-page-img.png";
 
 const Account = () => {
+  const [renderImage, setRenderImage] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -54,6 +56,7 @@ const Account = () => {
   const handleOptionChange = (option) => {
     setSelectedOption(option);
     setConfirmationMessage('');
+    setRenderImage(false);
     setError('');
   };
 
@@ -197,6 +200,10 @@ const Account = () => {
               <h3>Ștergeți contul</h3>
             </div>
           </div>
+
+
+          {renderImage === true ? <img src={SettingsPageImage} className='settings-page-man-image'/> : undefined } 
+
   
           <div className={`form-container ${selectedOption === 'update' ? 'show' : ''}`}>
             {selectedOption === 'update' && (

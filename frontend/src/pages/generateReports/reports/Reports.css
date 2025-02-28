@@ -34,7 +34,7 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   box-shadow: var(--shadow);
   min-height: 80px;
   display: flex;
@@ -77,13 +77,13 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .custom-report-input button:disabled {
-  background: #c1cad1;
+  background: #f7f2a3;
   cursor: not-allowed;
 }
 
@@ -134,7 +134,7 @@
   content: '';
   width: 24px;
   height: 24px;
-  border: 3px solid var(--primary-color);
+  border: 3px solid var(--text-light);
   border-radius: 50%;
   border-top-color: transparent;
   animation: spin 1s linear infinite;
