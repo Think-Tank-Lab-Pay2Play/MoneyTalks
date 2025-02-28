@@ -152,7 +152,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
                                     labels: { formatter: (y) => `${y.toFixed(0)}%` }
                                 },
                                 xaxis: {
-                                    categories: statistics.categories.map(category => categoryMap[category]), // Aplici categoryMap pentru a obține denumirile
+                                    categories: statistics.categories.map(category => categoryMap[category]),
                                     labels: { rotate: -45 }
                                 },
                                 tooltip: {

@@ -40,19 +40,26 @@
     }
 
     .spendings-evolution-per-categories-statistic-title{
-        position: relative;
+        position: absolute;
         color: #dc3545;
-        top:13px;
-        left:25px;
+        top:-53px;
+        left:50px;
         font-size: 18px;
         transform: scale(1.1);
     }
 
     .spendings-evolution-per-categories-statistic{
         position: absolute;
-        top:200px;
-        left: 740px;
+        top:270px;
+        left: 720px;
         z-index: 1;
         transform: scale(0.9);
+    }
+
+    .spendings-evolution-per-categories-statistic-no-data{
+        position: relative;
+        bottom:23px;
+        right:-38px;
+        font-size: 20px;
     }
 }
