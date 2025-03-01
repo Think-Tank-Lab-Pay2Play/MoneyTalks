@@ -92,7 +92,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--cheltuieliPeCategorii">
             <Lottie animationData={calendarAnimation} loop={true} />
           </div>
-          Afisarea cheltuielilor pe categorii
+          Afisarea cheltuielilor
           <input type="radio" name="status" defaultChecked id="cheltuieliPeCategorii" className="statistics-options__radio" onChange={() => setSelectedStatistic("cheltuieliPeCategorii")} />
         </label>
 
@@ -100,7 +100,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--evolutieCheltuieli">
             <Lottie animationData={barGraphAnimation} loop={true} />
           </div>
-          Evoluția cheltuielilor pe categorii
+          Evoluția cheltuielilor
           <input type="radio" name="status" id="evolutieCheltuieli" className="statistics-options__radio" onChange={() => setSelectedStatistic("evolutieCheltuieli")} />
         </label>
 
@@ -124,7 +124,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--topProduseCumparate">
             <Lottie animationData={tagIconAnimation} loop={true} />
           </div>
-          Top produse achizitionate
+          Produse achizitionate
           <input type="radio" name="status" id="topProduseCumparate" className="statistics-options__radio" onChange={() => setSelectedStatistic("topProduseCumparate")} />
         </label>
 
@@ -132,7 +132,7 @@ const StatisticsOptions = () => {
           <div className="statistics-options__icon statistics-options__icon--topMagazineFrecventate">
             <Lottie animationData={shoppingCartAnimation} loop={true} />
           </div>
-          Top magazine frecventate de tine
+          Magazine frecventate
           <input type="radio" name="status" id="topMagazineFrecventate" className="statistics-options__radio" onChange={() => setSelectedStatistic("topMagazineFrecventate")} />
         </label>
       </div>
