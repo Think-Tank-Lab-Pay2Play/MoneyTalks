@@ -96,7 +96,8 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
     };
 
     const chartSeries = [{
-        data: sortedChartData.map(data => parseFloat(data.avgPerDay))
+        name: "Ai cheltuit în medie pe zi",
+        data: sortedChartData.map(data => parseFloat(data.avgPerDay)),
     }];
 
     return (

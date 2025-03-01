@@ -19,7 +19,7 @@ const UploadBillForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const localIP = "172.20.10.11"; // your ipv4 address here from ipconfig
+  const localIP = ""; // your ipv4 address here from ipconfig
 
   const [userId, setUserId] = useState(null);
 
