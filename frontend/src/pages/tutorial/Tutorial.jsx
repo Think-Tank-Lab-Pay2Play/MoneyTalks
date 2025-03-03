@@ -10,7 +10,7 @@ export default function Tutorial() {
             <GeneralTopBar />
             <PagesBackground />
             <img src={ImgBackground} className="img-background-tutorial-video" />
-            <video width="1000" controls className="video-prezentare">
+            <video controls className="video-prezentare">
                 <source src={VideoPrezentare} type="video/mp4" />
             </video>
         </>
