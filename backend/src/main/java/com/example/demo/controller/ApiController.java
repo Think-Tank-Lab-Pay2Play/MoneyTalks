@@ -91,5 +91,26 @@ public class ApiController {
         }
     }
 
+    @Operation(summary = "Evaluate spendings to get rating")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Rating generated successfully",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "Spending not found",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class)))
+
+    })
+    @PostMapping("/ratingSpendings/{userId}")
+    public ResponseEntity<String> ratingSpendings(@PathVariable Long userId){
+        try {
+            JSONObject response = apiService.ratingSpendings(userId);
+            return ResponseEntity.ok(response.toString());
+        }catch (IOException e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to rate spendings: " + e.getMessage());
+        }
+    }
+
 
 }

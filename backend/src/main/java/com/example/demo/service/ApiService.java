@@ -317,4 +317,29 @@ public class ApiService {
             throw e;
         }
     }
+
+    public JSONObject ratingSpendings(Long userId) throws IOException {
+        try{
+            JSONObject jsonInput = new JSONObject();
+            User user = userService.findById(userId);
+            jsonInput.put("spendings", user.getSpendings().stream()
+                    .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
+                            s.getCompanyName(),
+                            s.getTotalPrice(),
+                            s.getDate(),
+                            s.getProducts().stream()
+                                    .map(p -> String.format("[%s, Price: %.2f, Units: %d, Total: %.2f, Category: %s]",
+                                            p.getItemName(),
+                                            p.getPricePerUnit(),
+                                            p.getUnits(),
+                                            p.getTotalPrice(),
+                                            p.getCategory()))
+                                    .collect(Collectors.joining(", "))))
+                    .collect(Collectors.joining("\n")));
+            String response = makeHttpRequest("/rating_spendings", jsonInput);
+            return new JSONObject(response);
+        }catch(IOException e){
+            throw e;
+        }
+    }
 }
