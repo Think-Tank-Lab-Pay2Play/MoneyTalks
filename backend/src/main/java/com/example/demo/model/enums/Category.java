@@ -3,6 +3,7 @@ package com.example.demo.model.enums;
 public enum Category {
     ABONAMENTE,
     ASIGURARI,
+    BAUTURI,
     BUNURI_DE_LUX,
     COSMETICE,
     DIVERTISMENT,

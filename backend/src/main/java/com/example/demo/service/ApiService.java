@@ -158,7 +158,7 @@ public class ApiService {
             else if (type == "subscription") {
                 return reportSubscription(type, userId);
             }
-            else if (type == "savings" || type == "impulsive" || type == "needs") {
+            else if (type == "savings" || type == "impulsive" || type == "needs" || type == "nota_ai") {
                 return reportSavingsAndImpulsiveAndNeeds(type, userId);
             }
             else return reportInvestment(type, userId);
@@ -317,4 +317,5 @@ public class ApiService {
             throw e;
         }
     }
+
 }

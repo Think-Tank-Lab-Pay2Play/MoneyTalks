@@ -47,7 +47,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
 
                 setThisMonthSpendingLimit(currentMonthLimit ? currentMonthLimit.spendingLimit : 0);
 
-                console.log(thisMonthSpendingLimit);
+                //console.log(thisMonthSpendingLimit);
 
             } catch (error) {
                 console.error("Eroare la preluarea userului:", error);
@@ -144,8 +144,9 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
             const response = await axios.post(`http://localhost:8080/api/report/nota_ai/${userId}`, {}, { headers });
     
             const aiScore = response.data.response;
+            console.log(aiScore);
     
-            if (!isNaN(aiScore) && typeof aiScore === "number") {
+            if (!isNaN(Number(aiScore))) {
                 setAiRating(aiScore);
                 localStorage.setItem('lastReportExecution', new Date().getTime().toString());
             } else if (retryCount < 3) {
