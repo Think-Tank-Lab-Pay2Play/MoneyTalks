@@ -148,6 +148,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
     
             if (!isNaN(Number(aiScore))) {
                 setAiRating(aiScore);
+                localStorage.setItem('aiRating', aiScore);
                 localStorage.setItem('lastReportExecution', new Date().getTime().toString());
             } else if (retryCount < 3) {
                 console.warn(`Răspuns invalid primit (${aiScore}). Reîncercare ${retryCount + 1}...`);
@@ -155,13 +156,16 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
             } else {
                 console.error("Eroare: Nu s-a putut obține un răspuns valid după 3 încercări.");
                 setAiRating("0");
+                localStorage.setItem('aiRating', "0");
             }
         } catch (error) {
             console.error("Eroare la generarea raportului:", error);
             setAiRating("0");
+            localStorage.setItem('aiRating', "0");
         }
     };
-    
+
+    const storedAiRating = localStorage.getItem('aiRating') || "0";
 
     return (
         <div className="custom-card-container">
@@ -178,7 +182,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
                                     </g>
                                 </g>
                             </svg>
-                            <p className="custom-value">{aiRating ? `${aiRating}/10` : "0/10"}</p>
+                            <p className="custom-value">{`${storedAiRating}/10`}</p>
                         </div>
                     </div>
                 </div>
