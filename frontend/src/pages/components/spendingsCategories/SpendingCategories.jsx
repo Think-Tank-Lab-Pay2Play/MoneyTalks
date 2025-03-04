@@ -1,6 +1,7 @@
 export const spendingCategories = [
     "ABONAMENTE",
     "ASIGURARI",
+    "BAUTURI",
     "BUNURI_DE_LUX",
     "COSMETICE",
     "DIVERTISMENT",

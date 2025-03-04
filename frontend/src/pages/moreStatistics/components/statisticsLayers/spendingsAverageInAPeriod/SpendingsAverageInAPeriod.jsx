@@ -7,6 +7,7 @@ export default function SpendingsAverageInAPeriod({ userSpendings, startDate, se
     const categoryMap = {
         "ABONAMENTE": "Abonamente",
         "ASIGURARI": "Asigurări",
+        "BAUTURI": "Băuturi",
         "BUNURI_DE_LUX": "Bunuri de lux",
         "COSMETICE": "Cosmetice",
         "DIVERTISMENT": "Divertisment",

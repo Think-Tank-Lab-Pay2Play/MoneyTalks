@@ -16,6 +16,7 @@ export default function SpendingsEvolutionPerCategories({ userSpendings }) {
     const categoryMap = {
         "ABONAMENTE": "Abonamente",
         "ASIGURARI": "Asigurări",
+        "BAUTURI": "Băuturi",
         "BUNURI_DE_LUX": "Bunuri de lux",
         "COSMETICE": "Cosmetice",
         "DIVERTISMENT": "Divertisment",
