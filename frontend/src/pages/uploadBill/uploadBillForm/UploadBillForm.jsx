@@ -206,10 +206,10 @@ const UploadBillForm = () => {
       const fileRef = ref(storage, `upload/${userId}/${newFileName}`);
 
       await uploadBytes(fileRef, file);
-      console.log("Imagine încărcată cu succes în Firebase 2");
+      //console.log("Imagine incarcata in firebase prin cod qr");
 
       const imageUrl = await getDownloadURL(fileRef);
-      console.log("URL imagine:", imageUrl);
+      //console.log("URL imagine: ", imageUrl);
 
       setFileName(newFileName);
       setQrUploadUrl(imageUrl);
@@ -231,8 +231,6 @@ const UploadBillForm = () => {
       setBillData(response.data);
 
       //console.log(response.data);
-
-      //setResultText(`Imagine încărcată cu succes!\nText: ${response.data}`);
 
     } catch (error) {
       console.error("Eroare la încărcare:", error);
