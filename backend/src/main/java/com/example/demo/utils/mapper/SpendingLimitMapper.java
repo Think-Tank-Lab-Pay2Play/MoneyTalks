@@ -4,10 +4,11 @@ import com.example.demo.dto.item.ItemResponse;
 import com.example.demo.dto.spendingLimit.SpendingLimitResponse;
 import com.example.demo.model.Item;
 import com.example.demo.model.SpendingLimit;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class SpendingLimitMapper {
     public static SpendingLimitResponse entityToDto(SpendingLimit spendingLimit) {
         return new SpendingLimitResponse(

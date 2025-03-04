@@ -2,10 +2,11 @@ package com.example.demo.utils.mapper;
 
 import com.example.demo.dto.item.ItemResponse;
 import com.example.demo.model.Item;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class ItemMapper {
     public static ItemResponse entityToDto(Item item) {
         return new ItemResponse(
