@@ -101,10 +101,10 @@ public class ApiController {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseDto.class)))
 
     })
-    @PostMapping("/ratingSpendings/{userId}")
-    public ResponseEntity<String> ratingSpendings(@PathVariable Long userId){
+    @PostMapping("/nota_ai/{userId}")
+    public ResponseEntity<String> ratingSpendings(@PathVariable String type,@PathVariable Long userId){
         try {
-            JSONObject response = apiService.ratingSpendings(userId);
+            JSONObject response = apiService.ratingSpendings(type,userId);
             return ResponseEntity.ok(response.toString());
         }catch (IOException e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

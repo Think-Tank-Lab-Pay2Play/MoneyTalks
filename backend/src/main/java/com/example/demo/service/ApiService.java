@@ -318,10 +318,11 @@ public class ApiService {
         }
     }
 
-    public JSONObject ratingSpendings(Long userId) throws IOException {
+    public JSONObject ratingSpendings(String type, Long userId) throws IOException {
         try{
             JSONObject jsonInput = new JSONObject();
             User user = userService.findById(userId);
+            jsonInput.put("type", type);
             jsonInput.put("spendings", user.getSpendings().stream()
                     .map(s -> String.format("%s, Total: %.2f, Date: %s, Products: %s",
                             s.getCompanyName(),
@@ -336,7 +337,7 @@ public class ApiService {
                                             p.getCategory()))
                                     .collect(Collectors.joining(", "))))
                     .collect(Collectors.joining("\n")));
-            String response = makeHttpRequest("/rating_spendings", jsonInput);
+            String response = makeHttpRequest("/chatbot", jsonInput);
             return new JSONObject(response);
         }catch(IOException e){
             throw e;
