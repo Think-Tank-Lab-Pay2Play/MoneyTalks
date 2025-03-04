@@ -118,6 +118,19 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
         return `rgb(${red}, ${green}, 0)`;
     };
 
+    useEffect(() => {
+        if (userId) {
+            const lastExecution = localStorage.getItem('lastReportExecution');
+            const now = new Date().getTime();
+    
+            if (!lastExecution || now - parseInt(lastExecution) > 12 * 60 * 60 * 1000) {
+                handleGenerateReport();
+            }
+        }
+    }, [userId]);
+    
+    
+
     const handleGenerateReport = async () => {
         if (!userId) {
             console.error("User ID-ul nu este setat!");
