@@ -131,28 +131,36 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
     
     
 
-    const handleGenerateReport = async () => {
+    const handleGenerateReport = async (retryCount = 0) => {
         if (!userId) {
             console.error("User ID-ul nu este setat!");
             return;
         }
+    
         try {
             const credentials = btoa(`${myUserEmail}:${myUserPassword}`);
             const headers = { Authorization: `Basic ${credentials}`, "Content-Type": "application/json" };
-            
+    
             const response = await axios.post(`http://localhost:8080/api/report/nota_ai/${userId}`, {}, { headers });
-            
-            setAiRating(response.data.response || "0");
     
-            localStorage.setItem('lastReportExecution', new Date().getTime().toString());
+            const aiScore = response.data.response;
     
+            if (!isNaN(aiScore) && typeof aiScore === "number") {
+                setAiRating(aiScore);
+                localStorage.setItem('lastReportExecution', new Date().getTime().toString());
+            } else if (retryCount < 3) {
+                console.warn(`Răspuns invalid primit (${aiScore}). Reîncercare ${retryCount + 1}...`);
+                setTimeout(() => handleGenerateReport(retryCount + 1), 2000);
+            } else {
+                console.error("Eroare: Nu s-a putut obține un răspuns valid după 3 încercări.");
+                setAiRating("0");
+            }
         } catch (error) {
             console.error("Eroare la generarea raportului:", error);
             setAiRating("0");
         }
     };
     
-
 
     return (
         <div className="custom-card-container">
