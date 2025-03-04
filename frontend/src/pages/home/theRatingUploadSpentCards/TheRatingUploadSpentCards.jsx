@@ -11,6 +11,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
     const [myUserSpendingsLimits, setMyUserSpendingsLimits] = useState(null);
     const [thisMonthSpendingLimit, setThisMonthSpendingLimit] = useState(0);
     const [limitSet, setLimitSet] = useState(false);
+    const [aiRating, setAiRating] = useState(0);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -117,6 +118,28 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
         return `rgb(${red}, ${green}, 0)`;
     };
 
+    const handleGenerateReport = async () => {
+        if (!userId) {
+            console.error("User ID-ul nu este setat!");
+            return;
+        }
+        try {
+            const credentials = btoa(`${myUserEmail}:${myUserPassword}`);
+            const headers = { Authorization: `Basic ${credentials}`, "Content-Type": "application/json" };
+            
+            const response = await axios.post(`http://localhost:8080/api/report/nota_ai/${userId}`, {}, { headers });
+            
+            setAiRating(response.data.response || "0");
+    
+            localStorage.setItem('lastReportExecution', new Date().getTime().toString());
+    
+        } catch (error) {
+            console.error("Eroare la generarea raportului:", error);
+            setAiRating("0");
+        }
+    };
+    
+
 
     return (
         <div className="custom-card-container">
@@ -133,7 +156,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
                                     </g>
                                 </g>
                             </svg>
-                            <p className="custom-value">0/10</p>
+                            <p className="custom-value">{aiRating ? `${aiRating}/10` : "0/10"}</p>
                         </div>
                     </div>
                 </div>

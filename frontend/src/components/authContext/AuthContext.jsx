@@ -36,9 +36,17 @@ export const AuthProvider = ({ children }) => {
         setUserEmail(email);
         setUserPassword(password);
         setTimeout(logout, SESSION_EXPIRATION_MS);
-
+    
+        const lastExecution = localStorage.getItem('lastReportExecution');
+        const now = new Date().getTime();
+    
+        if (!lastExecution || now - parseInt(lastExecution) > SESSION_EXPIRATION_MS) {
+            handleGenerateReport();
+        }
+    
         navigate(location.state?.from?.pathname || '/home');
     };
+    
 
     const logout = () => {
         localStorage.removeItem('auth');
