@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DATASOURCE_URL=${DATASOURCE_URL}
+      - DATASOURCE_USER=${DATASOURCE_USER}
+      - DATASOURCE_PASS=${DATASOURCE_PASS}
+      - FlaskURL=${FlaskURL}
+      - FlaskTimeout=${FlaskTimeout}
+      - FlaskReadTimeout=${FlaskReadTimeout}
+    depends_on:
+      - db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  db:
+    image: postgres:latest
+    ports:
+      - "7777:5432"
+    environment:
+      - POSTGRES_DB=ThinkTankLab
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Marcel112
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
