@@ -9,6 +9,7 @@ import BillDetails from './billDetails/BillDetails.jsx';
 import animatieLoading from "./loadingCircleIcon/loadingCircleIcon.json"
 import Lottie from "lottie-react";
 import { toast } from 'react-toastify';
+import { isEqual } from 'lodash';
 
 
 const UploadBillForm = () => {
@@ -17,7 +18,7 @@ const UploadBillForm = () => {
   const [billData, setBillData] = useState(null);
   const [isManualUpload, setIsManualUpload] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const prevBillDataRef = useRef(null);
 
   const localIP = ""; // your ipv4 address here from ipconfig
 
@@ -256,7 +257,7 @@ const UploadBillForm = () => {
       const hour = billData.hour || { hour: '', minute: '' };
 
       const formattedItems = billData.products.map(item => ({
-        itemName: item.itemName, 
+        itemName: item.itemName,
         pricePerUnit: parseFloat(item.pricePerUnit),
         units: parseInt(item.units, 10),
         category: item.category
@@ -317,6 +318,12 @@ const UploadBillForm = () => {
   };
 
 
+  useEffect(() => {
+    if (!isEqual(prevBillDataRef.current, billData)) {
+      prevBillDataRef.current = billData;
+    }
+  }, [billData]);
+
 
   return (
     <div className="upload-bill-form-wrapper">
@@ -329,7 +336,10 @@ const UploadBillForm = () => {
           <>
             <div className="upload-bill-form-header">
               {billData ? (
-                <BillDetails billData={billData} />
+                <BillDetails
+                  billData={billData}
+                  onBillDataChange={setBillData}
+                />
               ) : (
                 <>
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -396,7 +406,6 @@ const UploadBillForm = () => {
         )}
       </div>
     </div>
-    // asdasd
   );
 
 
