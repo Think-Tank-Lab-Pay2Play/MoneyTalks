@@ -88,6 +88,10 @@
     vertical-align: middle;
 }
 
+.upload-bill-form-bill-details-table-products td {
+    min-width: 70px;
+  }
+
 .upload-bill-form-bill-details-table-products tbody tr {
     border-bottom: 1px solid #dddddd;
 }
