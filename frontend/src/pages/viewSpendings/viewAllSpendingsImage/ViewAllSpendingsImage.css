@@ -2,23 +2,23 @@
   width: 80%;
   margin: -150px 150px auto;
   padding-bottom: 15px;
-  position: absolute; 
+  position: absolute;
   margin-top: -100px;
 }
-  
-  .viewAllSpendingsPageImage img {
-    max-width: 100%;
-    height: auto;
-  }
-  
+
+.viewAllSpendingsPageImage img {
+  max-width: 100%;
+  height: auto;
+}
 
 
-  @media (max-width: 1600px) {
-    .viewAllSpendingsPageImage {
-      width: 80%;
-      margin: -150px 150px auto;
-      padding-bottom: 15px;
-      position: absolute; 
-      margin-top: -10px;
-    }
+
+@media (max-width: 1600px) {
+  .viewAllSpendingsPageImage {
+    width: 80%;
+    margin: -150px 150px auto;
+    padding-bottom: 15px;
+    position: absolute;
+    margin-top: -10px;
   }
+}
