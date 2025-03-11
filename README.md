@@ -24,4 +24,8 @@ După ce introduci poze cu bonuri, facturi sau cheltuieli online, sistemul extra
 
 Aplicația îți oferă posibilitatea de a introduce cerințe personalizate legate de domeniul financiar, în funcție de nevoile tale. Aceasta îți analizează cheltuielile și generează un raport detaliat pe baza acestora, oferindu-ți sfaturi utile pentru a-ți atinge obiectivele financiare.
 
-De exemplu, poți seta cerințe precum economisirea pentru vacanțe, achiziționarea unor bunuri (cum ar fi o mașină nouă) sau gestionarea bugetului lunar pentru o perspectivă mai clară asupra finanțelor tale. De asemenea, poți introduce obiective legate de investiții și multe altele—practic, orice aspect legat de domeniul financiar.
+De exemplu, poți seta cerințe precum economisirea pentru vacanțe, achiziționarea unor bunuri (cum ar fi o mașină nouă) sau gestionarea bugetului lunar pentru o perspectivă mai clară asupra finanțelor tale. De asemenea, poți introduce obiective legate de investiții și multe altele. Practic, orice aspect legat de domeniul financiar.
+
+Am introdus cerinta "Vreau sa merg in vacanta la mare! Cum pot realiza acest lucru?"
+
+<img width="341" alt="Screenshot_1" src="https://github.com/user-attachments/assets/fccdde68-ec38-442e-b7e9-deea02640c44" />
