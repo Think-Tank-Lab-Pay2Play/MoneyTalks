@@ -18,3 +18,10 @@ După ce introduci poze cu bonuri, facturi sau cheltuieli online, sistemul extra
 <img width="1280" alt="Screenshot_8" src="https://github.com/user-attachments/assets/e58569c0-1a21-4f28-8460-cc811ca28228" />
 
 <img width="1280" alt="Screenshot_9" src="https://github.com/user-attachments/assets/6b571bf1-f0ea-40aa-a5bc-8df507b2fa59" />
+
+#
+# Consiliere financiară personalizată.
+
+Aplicația îți oferă posibilitatea de a introduce cerințe personalizate legate de domeniul financiar, în funcție de nevoile tale. Aceasta îți analizează cheltuielile și generează un raport detaliat pe baza acestora, oferindu-ți sfaturi utile pentru a-ți atinge obiectivele financiare.
+
+De exemplu, poți seta cerințe precum economisirea pentru vacanțe, achiziționarea unor bunuri (cum ar fi o mașină nouă) sau gestionarea bugetului lunar pentru o perspectivă mai clară asupra finanțelor tale. De asemenea, poți introduce obiective legate de investiții și multe altele—practic, orice aspect legat de domeniul financiar.
