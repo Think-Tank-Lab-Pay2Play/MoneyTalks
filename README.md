@@ -1,6 +1,5 @@
-<video width="600" controls>
-  <source src="[https://raw.githubusercontent.com/Think-Tank-Lab-Pay2Play/MoneyTalks/main/frontend/src/assets/prezentare.mp4](https://github.com/Think-Tank-Lab-Pay2Play/MoneyTalks/raw/refs/heads/main/frontend/src/assets/prezentare.mp4)" type="video/mp4">
-</video>
+📽️ [Vizualizează videoclipul aici](https://github.com/Think-Tank-Lab-Pay2Play/MoneyTalks/blob/main/frontend/src/assets/prezentare.mp4)
+
 
 
 
