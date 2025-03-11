@@ -11,4 +11,10 @@ Poți încărca bonuri fiscale, facturi sau alte tipuri de cheltuieli, iar aplic
 # MoneyTalks funcționează în felul următor:
 Folosește inteligența artificială pentru a analiza cheltuielile pe care le încarci.
 
-După ce introduci poze cu bonuri, facturi sau cheltuieli online, sistemul extrage informațiile relevante, le organizează și generează statistici și rapoarte personalizate pentru tine.
+După ce introduci poze cu bonuri, facturi sau cheltuieli online, sistemul extrage informațiile relevante, le organizează și generează statistici și îți oferă consiliere financiară personalizate pentru tine.
+
+<img width="1280" alt="Screenshot_7" src="https://github.com/user-attachments/assets/b17186f6-4b78-4fb5-bb67-b7aebf09b316" />
+
+<img width="1280" alt="Screenshot_8" src="https://github.com/user-attachments/assets/e58569c0-1a21-4f28-8460-cc811ca28228" />
+
+<img width="1280" alt="Screenshot_9" src="https://github.com/user-attachments/assets/6b571bf1-f0ea-40aa-a5bc-8df507b2fa59" />
