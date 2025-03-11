@@ -1,4 +1,4 @@
-#!!!!CLICK PE IMAGINE PENTRU A VIZUALIZA PREZENTAREA APLICATIEI!!!!
+# !!!!CLICK PE IMAGINE PENTRU A VIZUALIZA PREZENTAREA APLICATIEI!!!!
 [![Demo Video](https://img.youtube.com/vi/2pNxjMm2V_A/maxresdefault.jpg)](https://www.youtube.com/watch?v=2pNxjMm2V_A)
 
 # MoneyTalks
