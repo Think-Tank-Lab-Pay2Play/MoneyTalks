@@ -26,7 +26,7 @@ Aplicația îți oferă posibilitatea de a introduce cerințe personalizate lega
 
 De exemplu, poți seta cerințe precum economisirea pentru vacanțe, achiziționarea unor bunuri (cum ar fi o mașină nouă) sau gestionarea bugetului lunar pentru o perspectivă mai clară asupra finanțelor tale. De asemenea, poți introduce obiective legate de investiții și multe altele. Practic, orice aspect legat de domeniul financiar.
 
-Am introdus cerinta "Vreau sa merg in vacanta la mare! Cum pot realiza acest lucru?"
+Am introdus cerința: "Vreau să merg în vacanță la mare! Cum pot realiza acest lucru?"
 
 <img width="1000" alt="Screenshot_1" src="https://github.com/user-attachments/assets/fccdde68-ec38-442e-b7e9-deea02640c44" />
 
