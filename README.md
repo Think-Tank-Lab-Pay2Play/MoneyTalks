@@ -34,4 +34,5 @@ Am introdus cerinta "Vreau sa merg in vacanta la mare! Cum pot realiza acest luc
 # Concluzie
 
 Money Talks este concepută să fie un instrument pe termen lung pentru gestionarea și îmbunătățirea obiceiurilor financiare. Cu cât o folosești mai mult, cu atât devine mai precisă și mai utilă.
+
 Cu cât contul tău conține mai multe informații, cu atât precizia inteligenței artificiale crește, oferindu-ți recomandări și analize mai exacte.
