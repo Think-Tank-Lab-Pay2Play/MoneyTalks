@@ -28,4 +28,4 @@ De exemplu, poți seta cerințe precum economisirea pentru vacanțe, achizițion
 
 Am introdus cerinta "Vreau sa merg in vacanta la mare! Cum pot realiza acest lucru?"
 
-<img width="341" alt="Screenshot_1" src="https://github.com/user-attachments/assets/fccdde68-ec38-442e-b7e9-deea02640c44" />
+<img width="650" alt="Screenshot_1" src="https://github.com/user-attachments/assets/fccdde68-ec38-442e-b7e9-deea02640c44" />
