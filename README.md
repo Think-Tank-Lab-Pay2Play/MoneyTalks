@@ -1,4 +1,8 @@
-[![Prezentare MoneyTalks](https://img.youtube.com/vi/2pNxjMm2V_A/maxresdefault.jpg)](https://www.youtube.com/watch?v=2pNxjMm2V_A)
+<video width="600" controls>
+  <source src="https://raw.githubusercontent.com/Think-Tank-Lab-Pay2Play/MoneyTalks/main/frontend/src/assets/prezentare.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 
 
 # MoneyTalks
