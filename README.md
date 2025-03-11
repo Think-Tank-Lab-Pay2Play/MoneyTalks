@@ -1,3 +1,4 @@
+<img width="840" alt="Screenshot_1" src="https://github.com/user-attachments/assets/dc38fc23-ae5c-4e92-8d93-972151ae24ce" />
 
 # MoneyTalks
 Aplicația Money Talks
