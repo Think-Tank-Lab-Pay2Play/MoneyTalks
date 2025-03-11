@@ -1,3 +1,4 @@
+#
 # MoneyTalks
 Aplicația Money Talks
 
