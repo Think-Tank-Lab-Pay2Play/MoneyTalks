@@ -1,7 +1,4 @@
-📽️ [Vizualizează videoclipul aici](https://github.com/Think-Tank-Lab-Pay2Play/MoneyTalks/blob/main/frontend/src/assets/prezentare.mp4)
-
-
-
+[![Demo Video](https://img.youtube.com/vi/2pNxjMm2V_A/maxresdefault.jpg)](https://www.youtube.com/watch?v=2pNxjMm2V_A)
 
 # MoneyTalks
 Aplicația Money Talks
