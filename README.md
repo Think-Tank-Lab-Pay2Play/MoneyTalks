@@ -38,3 +38,6 @@ Money Talks este concepută să fie un instrument pe termen lung pentru gestiona
 Cu cât contul tău conține mai multe informații, cu atât precizia inteligenței artificiale crește, oferindu-ți recomandări și analize mai exacte.
 
 <img width="1059" alt="Screenshot_3" src="https://github.com/user-attachments/assets/875df0bf-58e9-4b0c-8fdc-a4588b94707f" />
+
+# CLICK PE IMAGINEA DE JOS PENTRU PREZENTAREA IN DETALIU A APLICATIEI
+[![Demo Video2](https://img.youtube.com/vi/2pNxjMm2V_A/maxresdefault.jpg)](https://youtu.be/uaBqCVU-Ru8)
