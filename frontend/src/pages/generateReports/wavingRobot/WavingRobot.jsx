@@ -4,7 +4,7 @@ import RobotWaveGif from "../../../assets/robot_wave_gif.gif";
 
 export default function WavingRobot() {
     const ANIMATION_DURATION = 8670; // do not modify, this is the duration of the gif
-    const INTERVAL_TIME = 60000;
+    const INTERVAL_TIME = 180000;
 
     const [isVisible, setIsVisible] = useState(true);
 
