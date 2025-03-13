@@ -81,7 +81,7 @@ const TheRatingUploadSpentCards = ({ lastThirtyDaysSpendingsSum, uploadedBillsOn
             });
 
             if (response.status === 200 || response.status === 201) {
-                toast.success('Ai setat limita de cheltuieli cu!', { autoClose: 2000, });
+                toast.success('Ai setat limita de cheltuieli cu succes!', { autoClose: 2000, });
                 setLimitSet(true);
             } else {
                 console.warn(`Unexpected response code: ${response.status}`);
