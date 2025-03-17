@@ -4,6 +4,10 @@ import logoCraciun from "../../../assets/app-logo-craciun.png";
 import logoPaste from "../../../assets/app-logo-paste.png";
 
 export default function Logos() {
+    // INTERVAL: [ holiday - holidayMinus .. holiday .. holiday + holidayPlus ]
+    const holidayMinus = 7;
+    const holidayPlus = 7;
+
     const [logo, setLogo] = useState(logoDefault);
 
     useEffect(() => {
@@ -12,9 +16,9 @@ export default function Logos() {
 
         const craciun = new Date(year, 11, 25);
         const craciunStart = new Date(craciun);
-        craciunStart.setDate(craciunStart.getDate() - 7);
+        craciunStart.setDate(craciunStart.getDate() - holidayMinus);
         const craciunEnd = new Date(craciun);
-        craciunEnd.setDate(craciunEnd.getDate() + 7);
+        craciunEnd.setDate(craciunEnd.getDate() + holidayPlus);
 
         function getEasterDate(y) {
             const a = y % 19;
@@ -33,9 +37,9 @@ export default function Logos() {
 
         const paste = getEasterDate(year);
         const pasteStart = new Date(paste);
-        pasteStart.setDate(pasteStart.getDate() - 7);
+        pasteStart.setDate(pasteStart.getDate() - holidayMinus);
         const pasteEnd = new Date(paste);
-        pasteEnd.setDate(pasteEnd.getDate() + 7);
+        pasteEnd.setDate(pasteEnd.getDate() + holidayPlus);
 
         if (today >= craciunStart && today <= craciunEnd) {
             setLogo(logoCraciun);
