@@ -12,7 +12,7 @@ export default function Logos() {
 
         const craciun = new Date(year, 11, 25);
         const craciunStart = new Date(craciun);
-        craciunStart.setDate(craciunStart.getDate() - 14);
+        craciunStart.setDate(craciunStart.getDate() - 7);
         const craciunEnd = new Date(craciun);
         craciunEnd.setDate(craciunEnd.getDate() + 7);
 
@@ -33,7 +33,7 @@ export default function Logos() {
 
         const paste = getEasterDate(year);
         const pasteStart = new Date(paste);
-        pasteStart.setDate(pasteStart.getDate() - 14);
+        pasteStart.setDate(pasteStart.getDate() - 7);
         const pasteEnd = new Date(paste);
         pasteEnd.setDate(pasteEnd.getDate() + 7);
 
