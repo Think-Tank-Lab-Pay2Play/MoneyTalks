@@ -30,6 +30,6 @@ export default function InvestmentCalculator(){
         <GeneralTopBar />
         <Header />
         <UserInput userInput={userInput} handleChange={handleInputChange} />
-        {isValidInput ? <Results userInput={userInput}/> : <p className="investment-calculator-center">Please enter a valid input.</p>}
+        {isValidInput ? <Results userInput={userInput}/> : <p className="investment-calculator-center">Vă rugăm să introduceți date corecte!</p>}
         </div>
 }
