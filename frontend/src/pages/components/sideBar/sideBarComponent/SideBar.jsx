@@ -21,7 +21,7 @@ export default function SideBar() {
         { id: "sideBarOptionJurnalCheltuieli", path: "/view-spendings", label: "Jurnal cheltuieli", icon: JurnalCheltuieliIcon },
         { id: "sideBarOptionStatisticiCheltuieli", path: "/more-statistics", label: "Statistici cheltuieli", icon: StatisticiCheltuieliIcon },
         { id: "sideBarOptionConsiliereFinanciara", path: "/generate-reports", label: "Consiliere financiara", icon: ConsiliereCheltuieliIcon },
-        { id: "sideBarOptionInvestmentCalculator", path: "/investment-calculator", label: "Calculator investitii", icon: InvestmentCalculatorIcon },
+        { id: "sideBarOptionInvestmentCalculator", path: "/investment-calculator", label: "Calculator investiții", icon: InvestmentCalculatorIcon },
     ];
 
     return (
