@@ -45,7 +45,7 @@ export default function Home() {
                     spendingLimits: userResponse.data.spendingLimits
                 };
 
-                console.log(userResponse.data);
+                //console.log(userResponse.data);
                 //console.log(userResponse.data.spendingLimits);
 
                  setLastFiveSpendings(

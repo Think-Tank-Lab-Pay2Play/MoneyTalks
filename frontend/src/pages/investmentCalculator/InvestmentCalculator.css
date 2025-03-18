@@ -1,0 +1,124 @@
+.investment-calculator-wrapper {
+    margin-top: 100px;
+    min-height: 100vh;
+}
+
+#investment-calculator-header {
+    text-align: center;
+    margin: 4rem auto 3rem;
+    font-family: 'Inter', sans-serif;
+}
+
+#investment-calculator-header img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    background-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+#investment-calculator-header h1 {
+    font-size: 2.25rem;
+    margin-top: 1.5rem;
+    background: linear-gradient(90deg, rgba(193,192,48,1) 35%, rgba(244,255,0,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+#investment-calculator-user-input {
+    padding: 2rem;
+    max-width: 40rem;
+    margin: 2rem auto;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 8px 32px rgba(43, 153, 109, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.investment-calculator-input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#investment-calculator-user-input label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2b996d;
+    letter-spacing: 0.5px;
+}
+
+#investment-calculator-user-input input {
+    width: 80%;
+    padding: 0.85rem 1.25rem;
+    border: 2px solid rgba(41, 9, 9, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #000000;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+#investment-calculator-user-input input:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#investment-calculator-result {
+    font-family: 'Inter', sans-serif;
+    max-width: 60rem;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+#investment-calculator-result thead {
+    font-size: 0.9rem;
+    color: #2b996d;
+    font-weight: 600;
+    background: rgba(43, 153, 109, 0.05);
+}
+
+#investment-calculator-result tbody {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+#investment-calculator-result th,
+#investment-calculator-result td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+#investment-calculator-result tbody tr:hover {
+    background: rgba(43, 153, 109, 0.03);
+}
+
+.investment-calculator-center {
+    text-align: center;
+    padding: 2rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Add a subtle animation for table entries */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#investment-calculator-result tbody tr {
+    animation: fadeIn 0.4s ease forwards;
+}
