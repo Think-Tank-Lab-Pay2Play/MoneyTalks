@@ -8,6 +8,7 @@ import GestionareCheltuieliIcon from "../icons/Folder open_custom_icon.json";
 import JurnalCheltuieliIcon from "../icons/Mail_custom_icon.json";
 import StatisticiCheltuieliIcon from "../icons/Graph_custom_icon.json";
 import ConsiliereCheltuieliIcon from "../icons/Bulb_custom_icon.json";
+import InvestmentCalculatorIcon from "../icons/Internet_Banking.json";
 
 export default function SideBar() {
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function SideBar() {
         { id: "sideBarOptionJurnalCheltuieli", path: "/view-spendings", label: "Jurnal cheltuieli", icon: JurnalCheltuieliIcon },
         { id: "sideBarOptionStatisticiCheltuieli", path: "/more-statistics", label: "Statistici cheltuieli", icon: StatisticiCheltuieliIcon },
         { id: "sideBarOptionConsiliereFinanciara", path: "/generate-reports", label: "Consiliere financiara", icon: ConsiliereCheltuieliIcon },
+        { id: "sideBarOptionInvestmentCalculator", path: "/investment-calculator", label: "Calculator investitii", icon: InvestmentCalculatorIcon },
     ];
 
     return (

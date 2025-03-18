@@ -17,6 +17,7 @@ import PublicRoute from "./components/protectedRoutes/PublicRoute.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./components/ToastCSS.css";
+import InvestmentCalculator from "./pages/investmentCalculator/InvestmentCalculator.jsx";
 
 {/* open the terminal and run: npm install packages */ }
 {/* to run the project run: npm run dev     in the terminal and go to your localhost address shown in the terminal*/ }
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/upload-bill" element={<UploadBill />} /> {/* Pagina pentru upload bill */}
                 <Route path="/view-spendings" element={<ViewSpendings />} /> {/* Pagina pentru vizualizarea cheltuielilor */}
                 <Route path="/more-statistics" element={<MoreStatistics />} /> {/* Pagina pentru diferite statistici */}
+                <Route path="/investment-calculator" element={<InvestmentCalculator />} /> {/* Pagina pentru calculator investitii */}
               </Route>
             </Routes>
           </AuthProvider>
