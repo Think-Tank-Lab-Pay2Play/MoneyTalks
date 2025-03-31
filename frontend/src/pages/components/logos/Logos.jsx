@@ -20,22 +20,29 @@ export default function Logos() {
         const craciunEnd = new Date(craciun);
         craciunEnd.setDate(craciunEnd.getDate() + holidayPlus);
 
-        function getEasterDate(y) {
-            const a = y % 19;
-            const b = y % 4;
-            const c = y % 7;
+        function getOrthodoxEasterDate(year) {
+            const a = year % 19;
+            const b = year % 7;
+            const c = year % 4;
             const d = (19 * a + 16) % 30;
-            const e = (2 * b + 4 * c + 6 * d) % 7;
+            const e = (2 * c + 4 * b + 6 * d) % 7;
             const f = d + e;
-            const easter = new Date(y, 2, 22 + f);
-            if (easter.getMonth() === 3 && easter.getDate() > 31) {
-                easter.setMonth(3);
-                easter.setDate(easter.getDate() - 31);
+
+            let day = 22 + f;
+            let month = 3;
+            if (day > 31) {
+                day -= 31;
+                month = 4;
             }
-            return easter;
+
+            const easterIulian = new Date(year, month - 1, day); 
+            const gregorianOffset = 13; 
+            easterIulian.setDate(easterIulian.getDate() + gregorianOffset);
+
+            return easterIulian;
         }
 
-        const paste = getEasterDate(year);
+        const paste = getOrthodoxEasterDate(year);
         const pasteStart = new Date(paste);
         pasteStart.setDate(pasteStart.getDate() - holidayMinus);
         const pasteEnd = new Date(paste);
@@ -48,6 +55,7 @@ export default function Logos() {
         } else {
             setLogo(logoDefault);
         }
+
     }, []);
 
     return <img src={logo} alt="Logo" />;
